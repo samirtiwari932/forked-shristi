@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
-    // Redirect to main React app
     window.location.href = "https://shristiuniverse.com/";
   }, []);
 

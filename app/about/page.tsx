@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       "About Us - Family Connection,Heritage Preservation & Event plan Platform | Shristi Universe",
     description:
       "Helping families connect, preserve heritage, and manage shared memories — all in one place.Build family trees, organize events, and create lasting legacies.",
-    url: "https://shristiuniverse.com/about",
+    url: "/about",
     siteName: "Shristi Universe",
     type: "website",
   },
@@ -77,19 +77,10 @@ export default function AboutPage() {
 
       <main className="flex-1">
         {/* Page Header - Full width */}
-        <div className="w-full bg-gradient-to-r from-[#5d87ff] to-[#4a7cff] py-16 text-center text-white">
+        <div className="w-full bg-linear-to-r from-[#5d87ff] to-[#4a7cff] py-16 text-center text-white">
           <h1 className="text-5xl font-bold mb-2">
             About <span className="text-white">Shristi Universe</span>
           </h1>
-
-          <p className="text-lg max-w-4xl mx-auto mt-6 opacity-95">
-            At Shristi Universe, we are committed to helping families preserve
-            their legacy and heritage in the modern era through innovative
-            digital technology. Our platform enables families to create detailed
-            family trees, protect cultural heritage sites, store precious
-            memories, and manage events securely — ensuring your family's story
-            lives on for generations.
-          </p>
         </div>
 
         {/* Alternating Layout Sections */}
@@ -112,7 +103,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
+              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
                 <div className="text-center p-6">
                   <div className="text-5xl mb-4">👨‍👩‍👧‍👦</div>
                   <p className="text-gray-700 font-medium">
@@ -175,7 +166,7 @@ export default function AboutPage() {
               </ul>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
+              <div className="bg-linear-to-br from-green-100 to-emerald-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
                 <div className="text-center p-6">
                   <div className="text-5xl mb-4">🏆</div>
                   <p className="text-gray-700 font-medium">Trusted Choice</p>
@@ -205,7 +196,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
+              <div className="bg-linear-to-br from-purple-100 to-pink-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
                 <div className="text-center p-6">
                   <div className="text-5xl mb-4">🔭</div>
                   <p className="text-gray-700 font-medium">Future Vision</p>
@@ -215,7 +206,7 @@ export default function AboutPage() {
           </div>
 
           {/* What We Stand For Section */}
-          <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-8 text-white mb-12">
+          <div className="bg-linear-to-r from-gray-800 to-gray-900 rounded-2xl p-8 text-white mb-12">
             <div className="flex items-center gap-3 mb-6">
               <Flag className="w-8 h-8 text-white" />
               <h2 className="text-3xl font-bold">What We Stand For</h2>
