@@ -1,18 +1,19 @@
-"use client";
+// app/page.tsx
+import type { Metadata } from "next";
+import Landing from "@/components/Landing/Landing";
 
-import { useEffect } from "react";
+export const metadata: Metadata = {
+  title: "Shristi Universe - Family Tree & Heritage Preservation",
+  description:
+    "Build your family tree, preserve heritage, plan events and manage family finances in one place.",
+  openGraph: {
+    title: "Shristi Universe",
+    description:
+      "Connect generations, preserve stories, and celebrate your roots.",
+    images: "/assets/images/family.png",
+  },
+};
 
 export default function Home() {
-  useEffect(() => {
-    window.location.href = "https://shristiuniverse.com/";
-  }, []);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-white">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
-        <p className="mt-4 text-gray-600">Redirecting...</p>
-      </div>
-    </div>
-  );
+  return <Landing />;
 }
