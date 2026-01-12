@@ -108,13 +108,13 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
-              href="#"
+              href="https://shristiuniverse.com/legal/privacy-policy/"
               className="text-gray-500 hover:text-blue-400 transition-colors text-sm"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="/terms"
               className="text-gray-500 hover:text-blue-400 transition-colors text-sm"
             >
               Terms of Service
