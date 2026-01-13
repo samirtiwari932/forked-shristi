@@ -620,11 +620,7 @@ const Landing: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen ${
-        isDarkMode
-          ? "bg-gray-900 text-gray-100"
-          : "bg-gradient-to-b from-[#5D87FF33] to-white"
-      }`}
+      className="min-h-screen  bg-linear-to-b from-[#5D87FF33] to-white"
     >
       {/* Navbar */}
       <nav className="container mx-auto px-4 md:px-12 lg:px-24 flex items-center justify-between py-4 md:py-6">
