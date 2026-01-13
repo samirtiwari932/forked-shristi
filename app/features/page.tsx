@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "Features - Shristi Universe",
     description:
       "Discover powerful tools to build family trees, organize events, manage shared finances, and preserve cultural heritage digitally.",
-    url: "https://shristiuniverse.com/features",
+    url: "/features",
     siteName: "Shristi Universe",
     type: "website",
   },
