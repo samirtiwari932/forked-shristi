@@ -498,7 +498,7 @@ const CreateHeritageCard = ({ onClick }: { onClick: () => void }) => {
 
 const Landing: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [selectedHeritage, setSelectedHeritage] =
@@ -523,7 +523,7 @@ const Landing: React.FC = () => {
 
   // ---------- Routing handlers ----------
 
-  const toggleDarkMode = () => setIsDarkMode((v) => !v);
+  // const toggleDarkMode = () => setIsDarkMode((v) => !v);
 
   const handleFamilySearch = async () => {
     const query = searchQuery.trim();
@@ -660,7 +660,7 @@ const Landing: React.FC = () => {
           >
             Sign Up
           </a>
-          <button
+          {/* <button
             onClick={toggleDarkMode}
             className="p-1.5 rounded-full hover:bg-white/20 transition-colors duration-300"
             aria-label="Toggle dark mode"
@@ -670,7 +670,7 @@ const Landing: React.FC = () => {
             ) : (
               <Sun className="w-6 h-6" />
             )}
-          </button>
+          </button> */}
         </div>
         {/* Mobile Hamburger */}
         <button
@@ -713,7 +713,7 @@ const Landing: React.FC = () => {
           >
             About Us
           </a>
-          <button
+          {/* <button
             onClick={() => {
               setIsMenuOpen(false);
               toggleDarkMode();
@@ -721,16 +721,16 @@ const Landing: React.FC = () => {
             className="block w-full text-center p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 mt-2 dark:bg-gray-700 dark:text-gray-100"
           >
             {isDarkMode ? "Light Mode" : "Dark Mode"}
-          </button>
+          </button> */}
         </div>
       )}
       {/* Hero */}
       <main className="container mx-auto px-4 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center justify-between py-10 md:py-12">
         <div className="lg:w-1/2 w-full text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight dark:text-white">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight ">
             Build Your Family Tree <br className="hidden sm:block" /> Online
           </h1>
-          <p className="mt-3 text-sm sm:text-base md:text-lg dark:text-gray-100">
+          <p className="mt-3 text-sm sm:text-base md:text-lg">
             Uncover your ancestry, trace family roots, and preserve your
             heritage with easy-to-use tools. From documenting family trees and
             stories to planning events and managing family finances, our
@@ -773,15 +773,15 @@ const Landing: React.FC = () => {
       {/* Features */}
       <section
         id="about"
-        className="py-12 md:py-16 bg-linear-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900"
+        className="py-12 md:py-16 bg-linear-to-br from-gray-50 to-blue-50 "
       >
         <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-6xl">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold dark:text-gray-100 mb-2 md:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">
               <span className="text-[#5d87ff]">Family Tree</span>, Heritage,
               Events <br /> <span> & Finance Management </span>
             </h2>
-            <p className="text-sm md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-sm md:text-xl text-gray-600  max-w-3xl mx-auto">
               Tools to uncover, preserve, and share your family's unique story.
             </p>
           </div>
@@ -796,10 +796,10 @@ const Landing: React.FC = () => {
               >
                 <span className="text-2xl leading-none">{f.icon}</span>
                 <div className="text-left">
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                  <h4 className="text-sm font-semibold text-gray-900 ">
                     {f.title}
                   </h4>
-                  <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">
+                  <p className="text-xs text-gray-600  line-clamp-2">
                     {f.description}
                   </p>
                 </div>
@@ -809,7 +809,7 @@ const Landing: React.FC = () => {
 
           {/* Desktop: carousel */}
           <div className="relative hidden md:block">
-            <div className="overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl">
+            <div className="overflow-hidden rounded-2xl bg-white shadow-xl">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -820,10 +820,10 @@ const Landing: React.FC = () => {
                       {/* Text */}
                       <div className="space-y-4 relative z-10">
                         <div className="text-6xl">{feature.icon}</div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 leading-tight">
+                        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
                           {feature.title}
                         </h3>
-                        <p className="text-base md:text-lg text-gray-600 dark:text-gray-300">
+                        <p className="text-base md:text-lg text-gray-600 ">
                           {feature.description}
                         </p>
                         <div className="flex gap-3 pt-2">
@@ -858,14 +858,14 @@ const Landing: React.FC = () => {
                           <button
                             onClick={prevSlide}
                             aria-label="Previous feature"
-                            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
                           >
                             <ChevronLeft className="w-6 h-6" />
                           </button>
                           <button
                             onClick={nextSlide}
                             aria-label="Next feature"
-                            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
                           >
                             <ChevronRight className="w-6 h-6" />
                           </button>
@@ -896,7 +896,8 @@ const Landing: React.FC = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-linear-to-br from-indigo-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/30">
+      <section className="relative overflow-hidden bg-linear-to-br from-indigo-50 via-white to-blue-50">
+       {/* dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/30" */}
         {/* Subtle animated background glows */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-linear-to-br from-[#5d87ff]/20 to-purple-500/10 blur-3xl animate-pulse"></div>
@@ -908,7 +909,7 @@ const Landing: React.FC = () => {
             {/* Left: Text + Search */}
             <div className="space-y-10">
               {/* Badge */}
-              <div className="inline-flex items-center gap-3 bg-white/90 dark:bg-white/10 backdrop-blur-md border border-gray-200/50 dark:border-white/20 rounded-full px-5 py-2.5 text-sm font-semibold text-[#5d87ff] shadow-sm">
+              <div className="inline-flex items-center gap-3 bg-white/90  backdrop-blur-md border border-gray-200/50 dark:border-white/20 rounded-full px-5 py-2.5 text-sm font-semibold text-[#5d87ff] shadow-sm">
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -926,7 +927,7 @@ const Landing: React.FC = () => {
               </div>
 
               {/* Hero Title */}
-              <h1 className="text-5xl md:text-6xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h1 className="text-5xl md:text-6xl lg:text-5xl font-bold leading-tight text-gray-900 ">
                 Build & Explore Your
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#5d87ff] to-indigo-600">
                   Family Tree
@@ -935,7 +936,7 @@ const Landing: React.FC = () => {
               </h1>
 
               {/* Description */}
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+              <p className="text-lg md:text-xl text-gray-600  leading-relaxed max-w-2xl">
                 Start exploring your lineage now and uncover the connections,
                 stories, and generations that shaped your family. Build your
                 family tree effortlessly and keep your heritage preserved for
@@ -1240,14 +1241,14 @@ const Landing: React.FC = () => {
         </div>
       </section>
       {/* Heritage Sites Section - NEW */}
-      <section className="py-12 md:py-16 bg-white dark:bg-gray-900">
+      <section className="py-12 md:py-16 bg-white ">
         <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-7xl">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold dark:text-gray-100 mb-2 md:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold  mb-2 md:mb-4">
               Discover{" "}
               <span className="text-[#5d87ff]">Nepal's Heritage Sites</span>
             </h2>
-            <p className="text-sm md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-sm md:text-xl text-gray-600  max-w-3xl mx-auto">
               Explore and preserve Nepal's rich cultural and natural heritage
               for future generations.
             </p>
@@ -1284,7 +1285,8 @@ const Landing: React.FC = () => {
       <section className="container mx-auto px-4 md:px-12 lg:px-24 py-12 md:py-20 max-w-7xl">
         <div
           className={`${
-            isDarkMode ? "bg-gray-800" : "bg-white"
+            // isDarkMode ? "bg-gray-800" :
+             "bg-white"
           } rounded-2xl md:rounded-3xl shadow-xl overflow-hidden`}
         >
           {/* Mobile minimal */}
@@ -1331,7 +1333,9 @@ const Landing: React.FC = () => {
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold leading-tight">
                   <span
-                    className={isDarkMode ? "text-gray-100" : "text-gray-900"}
+                    className={
+                      // isDarkMode ? "text-gray-100" :
+                       "text-gray-900"}
                   >
                     <span className="text-[#5d87ff]">
                       Download the Shristi App{" "}
@@ -1341,7 +1345,8 @@ const Landing: React.FC = () => {
                 </h2>
                 <p
                   className={`text-base md:text-lg ${
-                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                    // isDarkMode ? "text-gray-300" :
+                     "text-gray-600"
                   }`}
                 >
                   Access your family tree anywhere with our mobile app. Preserve
@@ -1357,14 +1362,16 @@ const Landing: React.FC = () => {
                   </div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-900"
+                      // isDarkMode ? "text-gray-100" : 
+                      "text-gray-900"
                     }`}
                   >
                     Mobile Optimized
                   </h3>
                   <p
                     className={`text-sm ${
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
+                      // isDarkMode ? "text-gray-300" :
+                       "text-gray-600"
                     }`}
                   >
                     Full-featured on any device
@@ -1376,14 +1383,16 @@ const Landing: React.FC = () => {
                   </div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-900"
+                      // isDarkMode ? "text-gray-100" :
+                       "text-gray-900"
                     }`}
                   >
                     Cloud Sync
                   </h3>
                   <p
                     className={`text-sm ${
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
+                      // isDarkMode ? "text-gray-300" :
+                       "text-gray-600"
                     }`}
                   >
                     Seamless sync across devices
@@ -1395,14 +1404,16 @@ const Landing: React.FC = () => {
                   </div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-900"
+                      // isDarkMode ? "text-gray-100" :
+                       "text-gray-900"
                     }`}
                   >
                     Instant Upload
                   </h3>
                   <p
                     className={`text-sm ${
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
+                      // isDarkMode ? "text-gray-300" :
+                       "text-gray-600"
                     }`}
                   >
                     Capture & share instantly
@@ -1414,14 +1425,16 @@ const Landing: React.FC = () => {
                   </div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      isDarkMode ? "text-gray-100" : "text-gray-900"
+                      // isDarkMode ? "text-gray-100" : 
+                      "text-gray-900"
                     }`}
                   >
                     Smart Alerts
                   </h3>
                   <p
                     className={`text-sm ${
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
+                      // isDarkMode ? "text-gray-300" :
+                       "text-gray-600"
                     }`}
                   >
                     Get notified of discoveries
@@ -1471,9 +1484,8 @@ const Landing: React.FC = () => {
             {/* Right: phone mock */}
             <div
               className={`lg:w-1/2 w-full ${
-                isDarkMode
-                  ? "bg-gray-700"
-                  : "bg-linear-to-br from-[#5d87ff]/5 to-[#5d87ff]/20"
+                // isDarkMode? "bg-gray-700": 
+                  "bg-linear-to-br from-[#5d87ff]/5 to-[#5d87ff]/20"
               } p-10 lg:p-14 flex justify-center items-center`}
             >
               <div className="relative">
@@ -1507,7 +1519,8 @@ const Landing: React.FC = () => {
         >
           <div
             className={`w-full max-w-3xl rounded-2xl shadow-2xl ${
-              isDarkMode ? "bg-gray-900" : "bg-white"
+              // isDarkMode ? "bg-gray-900" : 
+              "bg-white"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -1561,7 +1574,8 @@ const Landing: React.FC = () => {
                   rel="noreferrer"
                   // ⬇️ FIX: ensure readable in both themes
                   className={`mt-3 inline-block text-sm font-semibold underline ${
-                    isDarkMode ? "text-white/90" : "text-gray-800"
+                    // isDarkMode ? "text-white/90" : 
+                    "text-gray-800"
                   }`}
                 >
                   Open link

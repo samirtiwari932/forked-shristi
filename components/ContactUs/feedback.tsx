@@ -115,13 +115,13 @@ const Feedback: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-blue-100 px-4 py-10">
       <div className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-5xl transition-all">
         {/* Left Image Visual */}
-        <div className="hidden sm:block sm:w-1/2 bg-gradient-to-br from-blue-100 to-blue-200 relative">
+        <div className="hidden sm:block sm:w-1/2 bg-linear-to-br from-blue-100 to-blue-200 relative">
           <img
             src="/assets/images/person-calling.png"
-            alt="Person calling illustration"
+            alt="Person callinsg illustration"
             className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
