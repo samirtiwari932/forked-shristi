@@ -320,7 +320,7 @@ const HeritageSiteCard = ({
   return (
     <div className="group cursor-pointer h-full" onClick={onClick}>
       <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm transition-all duration-300 ease-out hover:shadow-xl hover:scale-105 h-full flex flex-col">
-        <div className="aspect-[4/3] relative overflow-hidden bg-gray-100 dark:bg-gray-700">
+        <div className="aspect-4/3 relative overflow-hidden bg-gray-100 dark:bg-gray-700">
           {firstImage && !imgError ? (
             <>
               <img
@@ -350,7 +350,7 @@ const HeritageSiteCard = ({
               {site.title}
             </h3>
             <div className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-300">
-              <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
+              <MapPin className="h-3.5 w-3.5 shrink-0" />
               <span className="truncate">{site.city?.name || "Unknown"}</span>
             </div>
           </div>
@@ -427,13 +427,13 @@ export const HeritageSiteCarousel = ({
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {/* Create Heritage Card - Always first */}
-        <div className="flex-shrink-0 w-[300px]">
+        <div className="shrink-0 w-75">
           <CreateHeritageCard onClick={onCreateClick} />
         </div>
 
         {/* Existing Heritage Sites */}
         {sites.map((site) => (
-          <div key={site.id} className="flex-shrink-0 w-[300px] ">
+          <div key={site.id} className="shrink-0 w-75 ">
             <HeritageSiteCard
               site={site}
               onCreateClick={onCreateClick}
@@ -459,7 +459,7 @@ const CreateHeritageCard = ({ onClick }: { onClick: () => void }) => {
     <div className="group cursor-pointer h-full" onClick={onClick}>
       <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm transition-all duration-300 ease-out hover:shadow-xl hover:scale-105 h-full flex flex-col">
         {/* Top section with plus icon */}
-        <div className="aspect-[4/3] bg-gradient-to-br from-[#5d87ff]/5 to-transparent dark:from-[#5d87ff]/10 flex items-center justify-center">
+        <div className="aspect-4/3 bg-linear-to-br from-[#5d87ff]/5 to-transparent dark:from-[#5d87ff]/10 flex items-center justify-center">
           <div className="flex flex-col items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-[#5d87ff]/10 dark:bg-[#5d87ff]/20 flex items-center justify-center group-hover:bg-[#5d87ff]/20 dark:group-hover:bg-[#5d87ff]/30 transition-colors">
               <svg
@@ -640,7 +640,7 @@ const Landing: React.FC = () => {
         <div className="hidden md:flex items-center gap-6 px-6 py-2 rounded-full bg-[#5d87ff] text-white shadow-lg">
           <a
             href="/about"
-            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             About Us
           </a>
@@ -648,7 +648,7 @@ const Landing: React.FC = () => {
             href="https://shristiuniverse.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             Login
           </a>
@@ -656,7 +656,7 @@ const Landing: React.FC = () => {
             href="https://shristiuniverse.com/register"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             Sign Up
           </a>
@@ -748,7 +748,7 @@ const Landing: React.FC = () => {
         </div>
 
         <div className="lg:w-1/2 w-full flex justify-center lg:justify-end mt-10 lg:mt-0">
-          <div className="flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 rounded-full shadow-md shadow-gray-500 w-64 h-64 sm:w-80 sm:h-80">
+          <div className="flex items-center justify-center bg-linear-to-br from-blue-100 to-blue-300 rounded-full shadow-md shadow-gray-500 w-64 h-64 sm:w-80 sm:h-80">
             <Image
               className="w-56 h-56 sm:w-72 sm:h-72 rounded-full object-cover border-4 border-white shadow-lg"
               src={family || "/placeholder.svg"}
@@ -773,7 +773,7 @@ const Landing: React.FC = () => {
       {/* Features */}
       <section
         id="about"
-        className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900"
+        className="py-12 md:py-16 bg-linear-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900"
       >
         <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-6xl">
           <div className="text-center mb-8 md:mb-12">
@@ -815,7 +815,7 @@ const Landing: React.FC = () => {
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {features.map((feature, index) => (
-                  <div key={index} className="w-full flex-shrink-0">
+                  <div key={index} className="w-full shrink-0">
                     <div className="grid md:grid-cols-2 gap-8 p-8 items-center">
                       {/* Text */}
                       <div className="space-y-4 relative z-10">
@@ -896,11 +896,11 @@ const Landing: React.FC = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/30">
+      <section className="relative overflow-hidden bg-linear-to-br from-indigo-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/30">
         {/* Subtle animated background glows */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-br from-[#5d87ff]/20 to-purple-500/10 blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-gradient-to-tr from-blue-400/20 to-cyan-400/10 blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-linear-to-br from-[#5d87ff]/20 to-purple-500/10 blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-linear-to-tr from-blue-400/20 to-cyan-400/10 blur-3xl animate-pulse delay-1000"></div>
         </div>
 
         <div className="relative container mx-auto px-6 py-24 md:py-32 lg:py-40 max-w-7xl">
@@ -928,7 +928,7 @@ const Landing: React.FC = () => {
               {/* Hero Title */}
               <h1 className="text-5xl md:text-6xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
                 Build & Explore Your
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#5d87ff] to-indigo-600">
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#5d87ff] to-indigo-600">
                   Family Tree
                 </span>
                 in One Place
@@ -946,18 +946,18 @@ const Landing: React.FC = () => {
               <div className="max-w-xl">
                 <div className="group relative">
                   {/* Subtle glow */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#5d87ff] to-indigo-600 rounded-2xl blur-xl opacity-35 group-hover:opacity-50 transition-opacity duration-400"></div>
+                  <div className="absolute inset-0 bg-linear-to-r from-[#5d87ff] to-indigo-600 rounded-2xl blur-xl opacity-35 group-hover:opacity-50 transition-opacity duration-400"></div>
 
                   {/* Create Your Family Tree CTA - Compact Version */}
                   <div className="mt-8 max-w-3xl mx-auto">
                     <div className="relative group">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#5d87ff] to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-0.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
 
                       <div className="relative bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
                         <div className="p-6">
                           {/* Horizontal Layout */}
                           <div className="flex flex-col md:flex-row items-center gap-6">
-                            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#5d87ff] to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
+                            <div className="shrink-0 w-12 h-12 bg-lienar-to-br from-[#5d87ff] to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
                               <TreePine className="w-7 h-7 text-white" />
                             </div>
 
@@ -971,10 +971,10 @@ const Landing: React.FC = () => {
                               </p>
                             </div>
 
-                            <div className="flex-shrink-0 flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+                            <div className="shrink-0 flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                               <button
                                 onClick={() => setIsLoginOpen(true)}
-                                className="px-5 py-2.5 bg-gradient-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+                                className="px-5 py-2.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto"
                               >
                                 Start Now
                               </button>
@@ -1124,7 +1124,7 @@ const Landing: React.FC = () => {
 
                       {/* Search Icon */}
                       <svg
-                        className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0"
+                        className="w-5 h-5 text-gray-500 dark:text-gray-400 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -1156,7 +1156,7 @@ const Landing: React.FC = () => {
                       {/* Button */}
                       <button
                         onClick={handleFamilySearch}
-                        className="px-6 py-2.5 bg-gradient-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-[#5d87ff]/40 transform hover:scale-105 transition-all duration-300 whitespace-nowrap"
+                        className="px-6 py-2.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-[#5d87ff]/40 transform hover:scale-105 transition-all duration-300 whitespace-nowrap"
                         disabled={isSearching || !searchQuery.trim()}
                       >
                         {isSearching ? (
@@ -1215,12 +1215,12 @@ const Landing: React.FC = () => {
             <div className="relative flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Glow backdrop */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#5d87ff]/25 to-indigo-500/15 rounded-3xl blur-3xl scale-90"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-[#5d87ff]/25 to-indigo-500/15 rounded-3xl blur-3xl scale-90"></div>
 
                 {/* Main card */}
                 <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 ring-1 ring-gray-200/50 dark:ring-white/10">
                   <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-                    <div className="px-6 py-3 bg-gradient-to-r from-[#5d87ff] to-indigo-600 text-white font-bold rounded-full shadow-xl text-sm">
+                    <div className="px-6 py-3 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white font-bold rounded-full shadow-xl text-sm">
                       Your Family Legacy Lives Here
                     </div>
                   </div>
@@ -1435,7 +1435,7 @@ const Landing: React.FC = () => {
                   <button
                     onClick={handleStoreCta}
                     aria-label="Get it on Google Play"
-                    className="group bg-gradient-to-r from-[#3CB371] to-[#4CAF50] text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-3 shadow-md hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-100 active:translate-y-0 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5d87ff] cursor-pointer"
+                    className="group bg-linear-to-r from-[#3CB371] to-[#4CAF50] text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-3 shadow-md hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-100 active:translate-y-0 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5d87ff] cursor-pointer"
                   >
                     <div className="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-colors">
                       <FaGooglePlay className="text-base group-hover:scale-110 transition-transform" />
@@ -1452,7 +1452,7 @@ const Landing: React.FC = () => {
                   <button
                     onClick={handleStoreCta}
                     aria-label="Download on the App Store"
-                    className="group bg-gradient-to-r from-[#2C2C2C] to-[#1A1A1A] text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-3 shadow-md hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-100 active:translate-y-0 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5d87ff] cursor-pointer"
+                    className="group bg-linear-to-r from-[#2C2C2C] to-[#1A1A1A] text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-3 shadow-md hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-100 active:translate-y-0 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5d87ff] cursor-pointer"
                   >
                     <div className="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-colors">
                       <FaApple className="text-base group-hover:scale-110 transition-transform" />
@@ -1473,18 +1473,18 @@ const Landing: React.FC = () => {
               className={`lg:w-1/2 w-full ${
                 isDarkMode
                   ? "bg-gray-700"
-                  : "bg-gradient-to-br from-[#5d87ff]/5 to-[#5d87ff]/20"
+                  : "bg-linear-to-br from-[#5d87ff]/5 to-[#5d87ff]/20"
               } p-10 lg:p-14 flex justify-center items-center`}
             >
               <div className="relative">
-                <div className="relative w-60 h-[520px] bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl">
-                  <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
+                <div className="relative w-60 h-130 bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl">
+                  <div className="w-full h-full bg-white rounded-4xl overflow-hidden relative">
                     <Image
                       src={shristimob || "/placeholder.svg"}
                       alt="App Screenshot"
-                      className="w-full h-full object-cover rounded-[2rem]"
+                      className="w-full h-full object-cover rounded-4xl"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent rounded-[2rem] pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent rounded-4xl pointer-events-none"></div>
                   </div>
                   <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-white rounded-full"></div>
                 </div>
@@ -1502,7 +1502,7 @@ const Landing: React.FC = () => {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/50 p-4"
           onClick={() => setShowQr(false)}
         >
           <div
@@ -1588,7 +1588,7 @@ const Landing: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with icon */}
-            <div className="bg-gradient-to-r from-[#5d87ff] to-[#4c73e6] p-6 text-center">
+            <div className="bg-linear-to-r from-[#5d87ff] to-[#4c73e6] p-6 text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                 <svg
                   className="w-8 h-8 text-white"
@@ -1626,7 +1626,7 @@ const Landing: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsLoginOpen(false)}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-[#5d87ff] to-[#4c73e6] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-200 text-center block"
+                  className="w-full px-6 py-3 bg-linear-to-r from-[#5d87ff] to-[#4c73e6] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-200 text-center block"
                 >
                   Go to Login
                 </a>
