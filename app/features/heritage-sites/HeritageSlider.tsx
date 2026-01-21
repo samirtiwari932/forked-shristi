@@ -9,21 +9,24 @@ const HeritageSlider = () => {
       id: 1,
       title: "Preserve Family Heritage",
       description: "Document ancestral homes, temples, and cultural landmarks for future generations",
-      image: "bg-gradient-to-r from-amber-500 to-orange-400",
+      bgColor: "bg-[#3d4f6f]",
+      accentColor: "bg-[#5d87ff]",
       icon: <Castle className="h-12 w-12 text-white" />,
     },
     {
       id: 2,
       title: "Digital Legacy Building",
       description: "Create a permanent digital archive of your family's history and traditions",
-      image: "bg-gradient-to-r from-blue-500 to-indigo-400",
+      bgColor: "bg-[#2d3748]",
+      accentColor: "bg-[#5d87ff]",
       icon: <BookOpen className="h-12 w-12 text-white" />,
     },
     {
       id: 3,
       title: "Cultural Connection",
       description: "Connect family members across generations through shared heritage",
-      image: "bg-gradient-to-r from-purple-500 to-pink-400",
+      bgColor: "bg-[#3d4f6f]",
+      accentColor: "bg-[#5d87ff]",
       icon: <Users className="h-12 w-12 text-white" />,
     },
   ];
@@ -42,7 +45,6 @@ const HeritageSlider = () => {
     setCurrentSlide(index);
   };
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -51,21 +53,30 @@ const HeritageSlider = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[500px] overflow-hidden">
+    <section className="relative w-full h-[500px] overflow-hidden rounded-b-3xl">
       <div className="absolute inset-0 flex transition-transform duration-500 ease-in-out">
-        {slides.map((slide, index) => (
+        {slides.map((slide) => (
           <div
             key={slide.id}
-            className={`${slide.image} w-full h-full flex-shrink-0 flex flex-col items-center justify-center text-white p-6`}
+            className={`${slide.bgColor} w-full h-full flex-shrink-0 flex flex-col items-center justify-center text-white p-6 relative`}
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
-            <div className="text-center max-w-4xl mx-auto">
+            {/* Decorative elements */}
+            <div className="absolute top-10 left-10 w-32 h-32 bg-[#5d87ff]/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#5d87ff]/10 rounded-full blur-3xl" />
+            
+            <div className="text-center max-w-4xl mx-auto relative z-10">
               <div className="flex justify-center mb-6">
-                {slide.icon}
+                <div className={`${slide.accentColor} p-5 rounded-2xl shadow-lg`}>
+                  {slide.icon}
+                </div>
               </div>
-              <h1 className="text-5xl font-bold mb-6">{slide.title}</h1>
-              <p className="text-xl opacity-90 mb-8">{slide.description}</p>
-              <button className="bg-white text-gray-800 font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+              <span className="inline-block px-4 py-1.5 bg-white/10 text-white/90 text-sm font-medium rounded-full mb-4 border border-white/20">
+                Heritage Preservation
+              </span>
+              <h1 className="text-5xl font-bold mb-6 text-balance">{slide.title}</h1>
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">{slide.description}</p>
+              <button className="bg-[#5d87ff] text-white font-semibold px-8 py-3.5 rounded-full hover:bg-[#4a72e6] transition-all duration-300 shadow-lg hover:shadow-xl">
                 Start Preserving Now
               </button>
             </div>
@@ -76,25 +87,25 @@ const HeritageSlider = () => {
       {/* Slider Controls */}
       <button 
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
+        className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20"
       >
         <ChevronLeft className="h-6 w-6 text-white" />
       </button>
       <button 
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
+        className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20"
       >
         <ChevronRight className="h-6 w-6 text-white" />
       </button>
       
       {/* Slider Dots */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
         {slides.map((slide, index) => (
           <button
             key={slide.id}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentSlide ? "bg-white" : "bg-white/50 hover:bg-white/70"
+            className={`h-2.5 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-[#5d87ff] w-8" : "bg-white/40 hover:bg-white/60 w-2.5"
             }`}
           />
         ))}
