@@ -88,6 +88,62 @@ export default function FamilyTreePage() {
             </div>
           </header>
 
+          {/* ================= VISUAL TREE DIAGRAM ================= */}
+          <section className="text-center">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8">Explore Your Family Tree</h2>
+            <div className="relative bg-white rounded-2xl shadow-xl p-8 border">
+              {/* Simple Tree Structure using CSS */}
+              <div className="flex flex-col items-center">
+                {/* Trunk */}
+                <div className="w-4 h-16 bg-brown-600 rounded-full mb-4"></div>
+                {/* Branches */}
+                <div className="flex justify-center gap-8 mb-8">
+                  <div className="flex flex-col items-center">
+                    <div className="w-2 h-8 bg-green-500 rounded-full"></div>
+                    <div className="bg-blue-100 p-4 rounded-full shadow-md hover:shadow-lg transition-shadow">
+                      <Users className="w-8 h-8 text-blue-600" />
+                      <p className="text-sm font-medium mt-2">Grandparents</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-2 h-8 bg-green-500 rounded-full"></div>
+                    <div className="bg-blue-100 p-4 rounded-full shadow-md hover:shadow-lg transition-shadow">
+                      <Users className="w-8 h-8 text-blue-600" />
+                      <p className="text-sm font-medium mt-2">Parents</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-2 h-8 bg-green-500 rounded-full"></div>
+                    <div className="bg-blue-100 p-4 rounded-full shadow-md hover:shadow-lg transition-shadow">
+                      <Users className="w-8 h-8 text-blue-600" />
+                      <p className="text-sm font-medium mt-2">You</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Sub-branches */}
+                <div className="flex justify-center gap-16">
+                  <div className="flex flex-col items-center">
+                    <div className="w-1 h-6 bg-green-400 rounded-full"></div>
+                    <div className="bg-green-100 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow">
+                      <Plus className="w-6 h-6 text-green-600" />
+                      <p className="text-xs font-medium mt-1">Children</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-1 h-6 bg-green-400 rounded-full"></div>
+                    <div className="bg-green-100 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow">
+                      <Share2 className="w-6 h-6 text-green-600" />
+                      <p className="text-xs font-medium mt-1">Relatives</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 mt-8 max-w-2xl mx-auto">
+                This interactive tree grows with your family. Add members, photos, and stories to each branch, creating a living legacy.
+              </p>
+            </div>
+          </section>
+
           {/* ================= WHY IT MATTERS ================= */}
           <section>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
@@ -112,7 +168,7 @@ export default function FamilyTreePage() {
             </p>
           </section>
 
-          {/* ================= FEATURES GRID ================= */}
+          {/* ================= FEATURES GRID - Branched Layout ================= */}
           <section className="grid lg:grid-cols-2 gap-12">
             <div>
               <h2 className="text-2xl font-bold text-gray-800 mb-6">
@@ -125,7 +181,7 @@ export default function FamilyTreePage() {
                   return (
                     <article
                       key={i}
-                      className="bg-white p-6 rounded-xl shadow-sm border"
+                      className="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow"
                     >
                       <div className="flex gap-4">
                         <div className="bg-blue-100 p-3 rounded-lg">
@@ -146,14 +202,19 @@ export default function FamilyTreePage() {
               </div>
             </div>
 
-            {/* Visual */}
+            {/* Visual - Enhanced Tree-like */}
             <aside className="bg-white rounded-2xl shadow-xl p-8 border">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">
                 Interactive Family Tree Experience
               </h2>
 
-              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-xl p-8 h-64 flex items-center justify-center mb-6">
+              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-xl p-8 h-64 flex items-center justify-center mb-6 relative">
                 <span className="text-5xl">🌳</span>
+                {/* Add branching lines for visual effect */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-16 h-1 bg-green-500 rounded-full rotate-45"></div>
+                  <div className="w-16 h-1 bg-green-500 rounded-full -rotate-45 mt-2"></div>
+                </div>
               </div>
 
               <p className="text-gray-600">

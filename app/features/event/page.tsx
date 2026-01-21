@@ -1,16 +1,16 @@
 import { Metadata } from "next";
 import {
-  Users,
   Calendar,
-  Bell,
-  Share2,
-  MessageSquare,
-  Image,
-  Video,
+  Users,
+  Lock,
+  Globe,
+  CheckCircle,
   Eye,
-  Heart,
+  Clock,
+  Shield,
+  Star,
+  ArrowRight,
   Target,
-  Flag,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 // import Footer from "@/components/Footer";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title:
     "Family Groups & Events - Plan, Manage & Celebrate Family and Community Events | Shristi Universe",
   description:
-    "Bring families and communities together effortlessly. Organize birthdays, anniversaries, community events, and more with Shristi Universe’s Family Groups & Events feature.",
+    "Bring families and communities together effortlessly. Organize birthdays, anniversaries, community events, and more with Shristi Universe's Family Groups & Events feature.",
   keywords: [
     "family groups",
     "event management",
@@ -44,68 +44,150 @@ export const metadata: Metadata = {
 };
 
 export default function EventPage() {
+  const eventCategories = [
+    {
+      icon: <Eye className="h-6 w-6" />,
+      title: "Suggested Events",
+      description: "Discover events happening around you within families, communities, or groups.",
+      features: [
+        "Displays upcoming public events",
+        "Shows who is organizing the event",
+        "Provides essential details such as event description, host name, and number of participants",
+        "Allows users to view event details before deciding to participate"
+      ]
+    },
+    {
+      icon: <Clock className="h-6 w-6" />,
+      title: "Going (Upcoming Events)",
+      description: "Your personal event calendar for all events you plan to attend.",
+      features: [
+        "Displays all events you plan to attend in the future",
+        "Helps you stay organized and avoid missing important gatherings",
+        "Works as a reminder hub for family, community, and group events"
+      ]
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: "My Events (Events You Organize)",
+      description: "Complete control center for event organizers.",
+      features: [
+        "View all events they have created",
+        "Organize events for families, communities, or groups",
+        "Choose private or public visibility based on requirements",
+        "Edit event information such as date, time, location, and description",
+        "Manage participants efficiently",
+        "Transfer event ownership to another trusted member"
+      ]
+    }
+  ];
+
+  const privacyTypes = [
+    {
+      icon: <Lock className="h-6 w-6" />,
+      title: "Private Events",
+      color: "bg-purple-100 text-purple-600",
+      description: "Ideal for birthdays, anniversaries, family meetings, or internal group discussions.",
+      features: [
+        "Only invited members can view and attend",
+        "Complete privacy for personal gatherings",
+        "Perfect for intimate family moments"
+      ]
+    },
+    {
+      icon: <Globe className="h-6 w-6" />,
+      title: "Public Events",
+      color: "bg-blue-100 text-blue-600",
+      description: "Suitable for community programs, cultural events, Kul Puja, or open group meetings.",
+      features: [
+        "Visible in Suggested Events section",
+        "Encourages wider participation",
+        "Great for community engagement"
+      ]
+    }
+  ];
+
+  const eventTypes = [
+    "Family birthdays and anniversaries",
+    "Religious and cultural ceremonies",
+    "Community gatherings and festivals",
+    "Organizational or group meetings",
+    "Social and networking events"
+  ];
+
+  const standoutFeatures = [
+    "Built specifically for families, communities, and groups",
+    "Simple and intuitive user interface",
+    "Centralized event management system",
+    "Strong privacy controls",
+    "Real-time participant tracking",
+    "Seamless coordination without external tools"
+  ];
+
+  const featuresList = [
+    "Create events in minutes",
+    "Choose between public or private events",
+    "Manage participants effortlessly",
+    "Track attendance in real time",
+    "Edit event details anytime",
+    "Transfer event ownership when required"
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
       <Navbar />
 
-      {/* Page Header */}
-      <div className="w-full bg-linear-to-r from-green-500 to-emerald-500 py-16 text-center text-white">
-        <h1 className="text-4xl font-bold mb-4">
-          Bring Families, Communities, and Groups Together — Effortlessly
-        </h1>
-        {/* <p className="text-lg max-w-3xl mx-auto leading-relaxed">
-          In today’s fast-moving digital world, families and communities are
-          more connected than ever, yet organizing meaningful gatherings still
-          remains a challenge. Phone calls, scattered messages, and multiple
-          social platforms often create confusion instead of clarity. Shristi
-          Universe solves this problem by offering a powerful yet simple Family
-          Groups & Events feature designed to help families, communities, and
-          organizations plan, manage, and participate in events with ease and
-          joy.
-        </p> */}
-        {/* <p className="text-lg max-w-3xl mx-auto mt-4">
-          Whether it’s a private family birthday, an anniversary celebration, a
-          community Kul Puja, or a group meeting, Shristi Universe provides a
-          centralized and reliable event management experience that keeps
-          everyone informed and involved.
-        </p> */}
+      {/* Page Header - Enhanced with modern styling */}
+      <div className="relative w-full bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 py-20 text-center text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative z-10">
+          <h1 className="text-5xl font-extrabold mb-6 leading-tight">
+            Bring Families, Communities, and Groups Together — Effortlessly
+          </h1>
+          <p className="text-xl max-w-4xl mx-auto leading-relaxed opacity-90">
+            Organize birthdays, anniversaries, community events, and more with seamless planning and real-time coordination.
+          </p>
+          <div className="mt-8">
+            <button className="bg-white text-purple-600 font-bold px-8 py-4 rounded-full text-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg">
+              Get Started
+              <ArrowRight className="h-5 w-5 inline ml-2" />
+            </button>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
       </div>
 
       <main className="flex-1">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          {/* Section 1: Event Management Features */}
-          <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          {/* Section 1: Event Management Features - Improved layout */}
+          <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
             <div className="lg:w-1/2">
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              <h2 className="text-4xl font-bold text-gray-800 mb-8 flex items-center gap-4">
+                <Calendar className="h-10 w-10 text-purple-600" />
                 A Smarter Way to Create and Manage Events
               </h2>
-              <p className="text-gray-600 mb-4">
-                The Events feature in Shristi Universe is built to serve diverse
-                needs — from intimate family occasions to large public community
-                gatherings. Events are not limited to family activities alone;
-                users can organize events for families, communities, and groups,
-                making it a versatile solution for real-life connections.
+              <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+                The Events feature in Shristi Universe is built to serve diverse needs — from intimate family occasions to large public community gatherings. Events are not limited to family activities alone; users can organize events for families, communities, and groups, making it a versatile solution for real-life connections.
               </p>
-              <p className="text-gray-600 mb-2">Users can:</p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-1">
-                <li>Create events in minutes</li>
-                <li>Choose between public or private events</li>
-                <li>Manage participants effortlessly</li>
-                <li>Track attendance in real time</li>
-                <li>Edit event details anytime</li>
-                <li>Transfer event ownership when required</li>
+              <p className="text-gray-600 mb-6 text-lg">Users can:</p>
+              <ul className="space-y-3 mb-8">
+                {featuresList.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700 text-lg">{feature}</span>
+                  </li>
+                ))}
               </ul>
-              <p className="text-gray-600 mt-4">
-                This flexibility makes Shristi Universe more than just an event
-                tool — it becomes a complete family and community event
-                management platform.
-              </p>
+              <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-2xl border border-purple-100 shadow-sm">
+                <p className="text-gray-800 font-semibold text-lg">
+                  This flexibility makes Shristi Universe more than just an event tool — it becomes a complete family and community event management platform.
+                </p>
+              </div>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-linear-to-br from-green-100 to-emerald-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">📅</div>
-                  <p className="text-gray-700 font-medium">
+              <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl h-80 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="text-center p-8">
+                  <Calendar className="h-20 w-20 text-purple-600 mx-auto mb-6" />
+                  <p className="text-gray-700 font-semibold text-2xl">
                     Create and Manage Events
                   </p>
                 </div>
@@ -113,150 +195,147 @@ export default function EventPage() {
             </div>
           </div>
 
-          {/* Section 2: Event Categories */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
+          {/* Section 2: Event Categories - Modern cards with hover */}
+          <div className="mb-24">
+            <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
               Event Categories Designed for Simplicity
             </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-center mb-16 text-lg">
+              Organized sections to help you discover, track, and manage all your events in one place
+            </p>
 
-            {/* Suggested Events */}
-            <div className="mb-10">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                1. Suggested Events
-              </h3>
-              <p className="text-gray-600 mb-2">
-                The Suggested Events section helps users discover events happening
-                around them within families, communities, or groups.
-              </p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-1">
-                <li>Displays upcoming public events</li>
-                <li>Shows who is organizing the event</li>
-                <li>
-                  Provides essential details such as event description, host
-                  name, and number of participants
-                </li>
-                <li>Allows users to view event details before deciding to participate</li>
-              </ul>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {eventCategories.map((category, index) => (
+                <div key={index} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="p-4 bg-purple-100 rounded-xl">
+                      <div className="text-purple-600">
+                        {category.icon}
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900">{category.title}</h3>
+                  </div>
+                  <p className="text-gray-600 mb-6 text-lg">{category.description}</p>
+                  <ul className="space-y-3">
+                    {category.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <div className="h-2 w-2 bg-purple-500 rounded-full mt-3 flex-shrink-0" />
+                        <span className="text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
 
-            {/* Going */}
-            <div className="mb-10">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                2. Going (Upcoming Events)
-              </h3>
-              <p className="text-gray-600 mb-2">
-                The Going section acts as your personal event calendar. Once you
-                confirm participation in an event, it appears here.
-              </p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-1">
-                <li>Displays all events you plan to attend in the future</li>
-                <li>Helps you stay organized and avoid missing important gatherings</li>
-                <li>Works as a reminder hub for family, community, and group events</li>
-              </ul>
-            </div>
-
-            {/* My Events */}
-            <div className="mb-10">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                3. My Events (Events You Organize)
-              </h3>
-              <p className="text-gray-600 mb-2">
-                The My Events section is a complete control center for event organizers.
-              </p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-1">
-                <li>View all events they have created</li>
-                <li>Organize events for families, communities, or groups</li>
-                <li>Choose private or public visibility based on requirements</li>
-                <li>Edit event information such as date, time, location, and description</li>
-                <li>Manage participants efficiently</li>
-                <li>Transfer event ownership to another trusted member</li>
-              </ul>
-              <p className="text-gray-600 mt-2">
-                Private events are only visible to invited members. Public events
-                appear in Suggested Events to encourage community engagement.
+            <div className="mt-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <p className="text-gray-700 text-lg">
+                <strong>Note:</strong> Private events are only visible to invited members. Public events appear in Suggested Events to encourage community engagement.
               </p>
             </div>
           </div>
 
-          {/* Section 3: Public vs Private */}
-          <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
+          {/* Section 3: Public vs Private - Enhanced cards */}
+          <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
             <div className="lg:w-1/2">
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              <h2 className="text-4xl font-bold text-gray-800 mb-8 flex items-center gap-4">
+                <Shield className="h-10 w-10 text-blue-600" />
                 Public vs Private Events: Full Control Over Privacy
               </h2>
-              <p className="text-gray-600 mb-2">
+              <p className="text-gray-600 mb-6 text-lg">
                 Shristi Universe understands that not all events are meant for everyone. Users can decide the visibility of each event.
               </p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li>
-                  <strong>Private Events:</strong> Ideal for birthdays, anniversaries, family meetings, or internal group discussions. Only invited members can view and attend.
-                </li>
-                <li>
-                  <strong>Public Events:</strong> Suitable for community programs, cultural events, Kul Puja, or open group meetings. Visible in Suggested Events section for wider participation.
-                </li>
-              </ul>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                {privacyTypes.map((type, index) => (
+                  <div key={index} className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className={`p-4 rounded-xl ${type.color}`}>
+                        {type.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900">{type.title}</h3>
+                    </div>
+                    <p className="text-gray-700 mb-6">{type.description}</p>
+                    <ul className="space-y-3">
+                      {type.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">🔒</div>
-                  <p className="text-gray-700 font-medium">Privacy Control</p>
+              <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl h-80 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="text-center p-8">
+                  <Shield className="h-20 w-20 text-blue-600 mx-auto mb-6" />
+                  <p className="text-gray-700 font-semibold text-2xl">Privacy Control</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Section 4: More Than Meetings */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+          {/* Section 4: More Than Meetings - Modern list */}
+          <div className="mb-24">
+            <h2 className="text-4xl font-bold text-gray-800 mb-8 flex items-center gap-4">
+              <Star className="h-10 w-10 text-yellow-500" />
               More Than Meetings — Meaningful Life Events
             </h2>
-            <p className="text-gray-600 mb-4">
-              The Events feature is equally powerful for personal and cultural moments:
+            <p className="text-gray-600 mb-12 text-lg">
+              The Events feature is equally powerful for personal and cultural moments. By tracking participant counts, hosts can plan better and ensure smoother execution, also managing financial standards.
             </p>
-            <ul className="list-disc pl-6 text-gray-600 space-y-1">
-              <li>Family birthdays and anniversaries</li>
-              <li>Religious and cultural ceremonies</li>
-              <li>Community gatherings and festivals</li>
-              <li>Organizational or group meetings</li>
-              <li>Social and networking events</li>
-            </ul>
-            <p className="text-gray-600 mt-2">
-              By tracking participant counts, hosts can plan better and ensure smoother execution, also managing financial standards.
-            </p>
+            
+            <div className="bg-white rounded-2xl shadow-lg p-12 mb-12 border border-gray-100">
+              <ul className="space-y-4">
+                {eventTypes.map((type, index) => (
+                  <li key={index} className="flex items-center gap-4">
+                    <div className="h-3 w-3 bg-purple-600 rounded-full flex-shrink-0" />
+                    <span className="text-gray-700 text-lg">{type}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Section 5: Why it stands out */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+          {/* Section 5: Why it stands out - Grid with modern cards */}
+          <div className="mb-24">
+            <h2 className="text-4xl font-bold text-gray-800 mb-12">
               Why Shristi Universe Events Stand Out
             </h2>
-            <ul className="list-disc pl-6 text-gray-600 space-y-1">
-              <li>Built specifically for families, communities, and groups</li>
-              <li>Simple and intuitive user interface</li>
-              <li>Centralized event management system</li>
-              <li>Strong privacy controls</li>
-              <li>Real-time participant tracking</li>
-              <li>Seamless coordination without external tools</li>
-            </ul>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mb-12 text-lg">
               While many platforms focus only on public events or business meetings, Shristi Universe bridges the gap between personal, cultural, and community events.
             </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {standoutFeatures.map((feature, index) => (
+                <div key={index} className="flex items-start gap-4 bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+                  <Target className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
+                  <span className="text-gray-700 text-lg">{feature}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Section 6: Conclusion */}
-          <div className="mb-20 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">Conclusion</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              The Family Groups & Events feature in Shristi Universe transforms
-              the way people connect, plan, and celebrate together. From private
-              family occasions to large public community events, the platform
-              offers a secure, organized, and joyful experience for everyone
-              involved. If you are looking for a reliable way to manage family
-              events, community programs, or group activities without complexity,
-              Shristi Universe provides the perfect digital space to bring people
-              together — effortlessly.
-            </p>
+          {/* Section 6: Conclusion CTA - Enhanced */}
+          <div className="mb-24 text-center">
+            <div className="bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 rounded-3xl p-12 md:p-16 text-white shadow-2xl">
+              <h2 className="text-5xl font-bold mb-8">Bring Your Community Together</h2>
+              <p className="text-2xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed">
+                The Family Groups & Events feature in Shristi Universe transforms the way people connect, plan, and celebrate together. From private family occasions to large public community events, the platform offers a secure, organized, and joyful experience for everyone involved.
+              </p>
+              <div className="mb-12">
+                <p className="text-xl font-semibold max-w-3xl mx-auto">
+                  If you are looking for a reliable way to manage family events, community programs, or group activities without complexity, Shristi Universe provides the perfect digital space to bring people together — effortlessly.
+                </p>
+              </div>
+              <button className="bg-white text-purple-600 font-bold px-10 py-5 rounded-full text-xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-3 mx-auto">
+                Start Planning Your First Event
+                <ArrowRight className="h-6 w-6" />
+              </button>
+            </div>
           </div>
         </div>
       </main>
