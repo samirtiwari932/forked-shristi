@@ -12,8 +12,6 @@ import {
   ArrowRight,
   Target,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title:
@@ -46,28 +44,30 @@ export const metadata: Metadata = {
 export default function EventPage() {
   const eventCategories = [
     {
-      icon: <Eye className="h-6 w-6" />,
+      icon: <Eye className="h-5 w-5" />,
       title: "Suggested Events",
-      description: "Discover events happening around you within families, communities, or groups.",
+      description:
+        "Discover events happening around you within families, communities, or groups.",
       features: [
         "Displays upcoming public events",
         "Shows who is organizing the event",
         "Provides essential details such as event description, host name, and number of participants",
-        "Allows users to view event details before deciding to participate"
-      ]
+        "Allows users to view event details before deciding to participate",
+      ],
     },
     {
-      icon: <Clock className="h-6 w-6" />,
+      icon: <Clock className="h-5 w-5" />,
       title: "Going (Upcoming Events)",
-      description: "Your personal event calendar for all events you plan to attend.",
+      description:
+        "Your personal event calendar for all events you plan to attend.",
       features: [
         "Displays all events you plan to attend in the future",
         "Helps you stay organized and avoid missing important gatherings",
-        "Works as a reminder hub for family, community, and group events"
-      ]
+        "Works as a reminder hub for family, community, and group events",
+      ],
     },
     {
-      icon: <Users className="h-6 w-6" />,
+      icon: <Users className="h-5 w-5" />,
       title: "My Events (Events You Organize)",
       description: "Complete control center for event organizers.",
       features: [
@@ -76,34 +76,34 @@ export default function EventPage() {
         "Choose private or public visibility based on requirements",
         "Edit event information such as date, time, location, and description",
         "Manage participants efficiently",
-        "Transfer event ownership to another trusted member"
-      ]
-    }
+        "Transfer event ownership to another trusted member",
+      ],
+    },
   ];
 
   const privacyTypes = [
     {
-      icon: <Lock className="h-6 w-6" />,
+      icon: <Lock className="h-5 w-5" />,
       title: "Private Events",
-      color: "bg-purple-100 text-purple-600",
-      description: "Ideal for birthdays, anniversaries, family meetings, or internal group discussions.",
+      description:
+        "Ideal for birthdays, anniversaries, family meetings, or internal group discussions.",
       features: [
         "Only invited members can view and attend",
         "Complete privacy for personal gatherings",
-        "Perfect for intimate family moments"
-      ]
+        "Perfect for intimate family moments",
+      ],
     },
     {
-      icon: <Globe className="h-6 w-6" />,
+      icon: <Globe className="h-5 w-5" />,
       title: "Public Events",
-      color: "bg-blue-100 text-blue-600",
-      description: "Suitable for community programs, cultural events, Kul Puja, or open group meetings.",
+      description:
+        "Suitable for community programs, cultural events, Kul Puja, or open group meetings.",
       features: [
         "Visible in Suggested Events section",
         "Encourages wider participation",
-        "Great for community engagement"
-      ]
-    }
+        "Great for community engagement",
+      ],
+    },
   ];
 
   const eventTypes = [
@@ -111,16 +111,34 @@ export default function EventPage() {
     "Religious and cultural ceremonies",
     "Community gatherings and festivals",
     "Organizational or group meetings",
-    "Social and networking events"
+    "Social and networking events",
   ];
 
   const standoutFeatures = [
-    "Built specifically for families, communities, and groups",
-    "Simple and intuitive user interface",
-    "Centralized event management system",
-    "Strong privacy controls",
-    "Real-time participant tracking",
-    "Seamless coordination without external tools"
+    {
+      title: "Built for Families",
+      description: "Specifically designed for families, communities, and groups",
+    },
+    {
+      title: "Simple Interface",
+      description: "Intuitive user interface that anyone can use",
+    },
+    {
+      title: "Centralized Management",
+      description: "All your events in one organized system",
+    },
+    {
+      title: "Privacy Controls",
+      description: "Strong privacy settings for your events",
+    },
+    {
+      title: "Real-time Tracking",
+      description: "Track participants as they join",
+    },
+    {
+      title: "No External Tools",
+      description: "Seamless coordination without complexity",
+    },
   ];
 
   const featuresList = [
@@ -129,98 +147,210 @@ export default function EventPage() {
     "Manage participants effortlessly",
     "Track attendance in real time",
     "Edit event details anytime",
-    "Transfer event ownership when required"
+    "Transfer event ownership when required",
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
-      <Navbar />
-
-      {/* Page Header - Enhanced with modern styling */}
-      <div className="relative w-full bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 py-20 text-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative z-10">
-          <h1 className="text-5xl font-extrabold mb-6 leading-tight">
-            Bring Families, Communities, and Groups Together — Effortlessly
-          </h1>
-          <p className="text-xl max-w-4xl mx-auto leading-relaxed opacity-90">
-            Organize birthdays, anniversaries, community events, and more with seamless planning and real-time coordination.
-          </p>
-          <div className="mt-8">
-            <button className="bg-white text-purple-600 font-bold px-8 py-4 rounded-full text-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg">
+    <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
+      {/* Navigation */}
+      <nav className="w-full px-6 py-4 bg-[#f8f6f3]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <span className="text-xl font-bold text-[#2d3748]">
+            Shristi Universe
+          </span>
+          <div className="flex items-center gap-6">
+            <a
+              href="#"
+              className="text-[#64748b] hover:text-[#5d87ff] transition-colors"
+            >
+              Features
+            </a>
+            <a
+              href="#"
+              className="text-[#64748b] hover:text-[#5d87ff] transition-colors"
+            >
+              About
+            </a>
+            <button className="bg-[#5d87ff] text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#4a6fe0] transition-colors">
               Get Started
-              <ArrowRight className="h-5 w-5 inline ml-2" />
             </button>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+      </nav>
+
+      {/* Hero Section - Warm cream background with blue accent */}
+      <div className="relative w-full bg-[#f1ede8] py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                <Calendar className="h-4 w-4 text-[#5d87ff]" />
+                <span className="text-sm text-[#64748b]">
+                  Family Groups & Events
+                </span>
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-[#2d3748] mb-6 leading-tight text-balance">
+                Bring Families, Communities, and Groups Together
+              </h1>
+              <p className="text-lg text-[#64748b] mb-8 leading-relaxed max-w-xl">
+                Organize birthdays, anniversaries, community events, and more
+                with seamless planning and real-time coordination.
+              </p>
+              <div className="flex flex-wrap gap-3 mb-8">
+                {["Birthdays", "Anniversaries", "Community", "Gatherings"].map(
+                  (tag) => (
+                    <span
+                      key={tag}
+                      className="bg-white/70 backdrop-blur-sm text-[#2d3748] px-4 py-2 rounded-full text-sm border border-[#e2ded9]"
+                    >
+                      {tag}
+                    </span>
+                  )
+                )}
+              </div>
+              <button className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg shadow-[#5d87ff]/20 flex items-center gap-2">
+                Get Started
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="relative">
+              <div className="bg-white rounded-3xl p-8 shadow-xl shadow-black/5">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-12 w-12 rounded-2xl bg-[#5d87ff]/10 flex items-center justify-center">
+                    <Calendar className="h-6 w-6 text-[#5d87ff]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#2d3748]">
+                      Family Reunion
+                    </h3>
+                    <p className="text-sm text-[#64748b]">
+                      25 participants joined
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {["Date & Time Set", "Venue Confirmed", "Invites Sent"].map(
+                    (item, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-3 bg-[#f8f6f3] rounded-xl px-4 py-3"
+                      >
+                        <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
+                        <span className="text-[#2d3748]">{item}</span>
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 h-24 w-24 bg-[#5d87ff]/10 rounded-full blur-2xl" />
+              <div className="absolute -bottom-4 -left-4 h-32 w-32 bg-[#5d87ff]/5 rounded-full blur-3xl" />
+            </div>
+          </div>
+        </div>
       </div>
 
       <main className="flex-1">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          {/* Section 1: Event Management Features - Improved layout */}
-          <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
-            <div className="lg:w-1/2">
-              <h2 className="text-4xl font-bold text-gray-800 mb-8 flex items-center gap-4">
-                <Calendar className="h-10 w-10 text-purple-600" />
+          {/* Section 1: Event Management Features */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-6">
+                <Calendar className="h-4 w-4 text-[#5d87ff]" />
+                <span className="text-sm font-medium text-[#5d87ff]">
+                  Smart Management
+                </span>
+              </div>
+              <h2 className="text-3xl font-bold text-[#2d3748] mb-6">
                 A Smarter Way to Create and Manage Events
               </h2>
-              <p className="text-gray-600 mb-6 text-lg leading-relaxed">
-                The Events feature in Shristi Universe is built to serve diverse needs — from intimate family occasions to large public community gatherings. Events are not limited to family activities alone; users can organize events for families, communities, and groups, making it a versatile solution for real-life connections.
+              <p className="text-[#64748b] mb-8 leading-relaxed">
+                The Events feature in Shristi Universe is built to serve diverse
+                needs — from intimate family occasions to large public community
+                gatherings.
               </p>
-              <p className="text-gray-600 mb-6 text-lg">Users can:</p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4">
                 {featuresList.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700 text-lg">{feature}</span>
+                    <div className="h-6 w-6 rounded-full bg-[#5d87ff]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-[#5d87ff]" />
+                    </div>
+                    <span className="text-[#2d3748]">{feature}</span>
                   </li>
                 ))}
               </ul>
-              <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-2xl border border-purple-100 shadow-sm">
-                <p className="text-gray-800 font-semibold text-lg">
-                  This flexibility makes Shristi Universe more than just an event tool — it becomes a complete family and community event management platform.
-                </p>
-              </div>
             </div>
-            <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-3xl h-80 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="text-center p-8">
-                  <Calendar className="h-20 w-20 text-purple-600 mx-auto mb-6" />
-                  <p className="text-gray-700 font-semibold text-2xl">
-                    Create and Manage Events
-                  </p>
+            <div className="bg-[#3d4f6f] rounded-3xl p-8 text-white">
+              <div className="flex items-center justify-between mb-8">
+                <span className="text-white/60 text-sm">Event Platform</span>
+                <span className="font-bold text-xl">SU</span>
+              </div>
+              <h3 className="text-3xl font-bold mb-2">Events</h3>
+              <p className="text-white/60 mb-8">Complete Management Platform</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-white/80">Active Events</span>
+                  <span className="text-2xl font-bold">24</span>
+                </div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-white/80">Participants</span>
+                  <span className="text-2xl font-bold">156</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-white/80">Communities</span>
+                  <span className="text-2xl font-bold">8</span>
                 </div>
               </div>
+              <button className="mt-6 bg-[#5d87ff] text-white px-6 py-3 rounded-full text-sm font-medium w-full hover:bg-[#4a6fe0] transition-colors flex items-center justify-center gap-2">
+                Explore Features
+                <ArrowRight className="h-4 w-4" />
+              </button>
             </div>
           </div>
 
-          {/* Section 2: Event Categories - Modern cards with hover */}
+          {/* Section 2: Event Categories */}
           <div className="mb-24">
-            <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
-              Event Categories Designed for Simplicity
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-center mb-16 text-lg">
-              Organized sections to help you discover, track, and manage all your events in one place
-            </p>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-4">
+                <Target className="h-4 w-4 text-[#5d87ff]" />
+                <span className="text-sm font-medium text-[#5d87ff]">
+                  Categories
+                </span>
+              </div>
+              <h2 className="text-3xl font-bold text-[#2d3748] mb-4">
+                Event Categories Designed for Simplicity
+              </h2>
+              <p className="text-[#64748b] max-w-2xl mx-auto">
+                Organized sections to help you discover, track, and manage all
+                your events in one place
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6">
               {eventCategories.map((category, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-4 bg-purple-100 rounded-xl">
-                      <div className="text-purple-600">
-                        {category.icon}
-                      </div>
+                <div
+                  key={index}
+                  className="bg-white rounded-3xl p-6 border border-[#e2ded9] hover:shadow-lg hover:shadow-black/5 transition-all duration-300 group"
+                >
+                  <div className="h-12 w-12 rounded-2xl bg-[#5d87ff]/10 flex items-center justify-center mb-5 group-hover:bg-[#5d87ff] transition-colors">
+                    <div className="text-[#5d87ff] group-hover:text-white transition-colors">
+                      {category.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900">{category.title}</h3>
                   </div>
-                  <p className="text-gray-600 mb-6 text-lg">{category.description}</p>
-                  <ul className="space-y-3">
-                    {category.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <div className="h-2 w-2 bg-purple-500 rounded-full mt-3 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
+                  <h3 className="text-xl font-bold text-[#2d3748] mb-3">
+                    {category.title}
+                  </h3>
+                  <p className="text-[#64748b] mb-5 text-sm leading-relaxed">
+                    {category.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {category.features.slice(0, 3).map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-2 text-sm text-[#64748b]"
+                      >
+                        <div className="h-1.5 w-1.5 bg-[#5d87ff] rounded-full mt-2 flex-shrink-0" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -228,119 +358,229 @@ export default function EventPage() {
               ))}
             </div>
 
-            <div className="mt-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-              <p className="text-gray-700 text-lg">
-                <strong>Note:</strong> Private events are only visible to invited members. Public events appear in Suggested Events to encourage community engagement.
+            <div className="mt-8 bg-[#f1ede8] rounded-2xl p-6 border border-[#e2ded9]">
+              <p className="text-[#64748b] text-sm">
+                <strong className="text-[#2d3748]">Note:</strong> Private events
+                are only visible to invited members. Public events appear in
+                Suggested Events to encourage community engagement.
               </p>
             </div>
           </div>
 
-          {/* Section 3: Public vs Private - Enhanced cards */}
-          <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
-            <div className="lg:w-1/2">
-              <h2 className="text-4xl font-bold text-gray-800 mb-8 flex items-center gap-4">
-                <Shield className="h-10 w-10 text-blue-600" />
+          {/* Section 3: Public vs Private */}
+          <div className="grid lg:grid-cols-2 gap-16 items-start mb-24">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-6">
+                <Shield className="h-4 w-4 text-[#5d87ff]" />
+                <span className="text-sm font-medium text-[#5d87ff]">
+                  Privacy Control
+                </span>
+              </div>
+              <h2 className="text-3xl font-bold text-[#2d3748] mb-6">
                 Public vs Private Events: Full Control Over Privacy
               </h2>
-              <p className="text-gray-600 mb-6 text-lg">
-                Shristi Universe understands that not all events are meant for everyone. Users can decide the visibility of each event.
+              <p className="text-[#64748b] mb-8 leading-relaxed">
+                Shristi Universe understands that not all events are meant for
+                everyone. Users can decide the visibility of each event based on
+                their requirements.
               </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+
+              <div className="space-y-4">
                 {privacyTypes.map((type, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`p-4 rounded-xl ${type.color}`}>
-                        {type.icon}
+                  <div
+                    key={index}
+                    className="bg-white rounded-2xl p-6 border border-[#e2ded9] hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="h-10 w-10 rounded-xl bg-[#5d87ff]/10 flex items-center justify-center">
+                        <div className="text-[#5d87ff]">{type.icon}</div>
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">{type.title}</h3>
+                      <h3 className="text-lg font-bold text-[#2d3748]">
+                        {type.title}
+                      </h3>
                     </div>
-                    <p className="text-gray-700 mb-6">{type.description}</p>
-                    <ul className="space-y-3">
+                    <p className="text-[#64748b] mb-4 text-sm">
+                      {type.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
                       {type.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
+                        <span
+                          key={idx}
+                          className="bg-[#f8f6f3] text-[#2d3748] px-3 py-1.5 rounded-full text-xs border border-[#e2ded9]"
+                        >
+                          {feature}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="lg:w-1/2">
-              <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl h-80 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="text-center p-8">
-                  <Shield className="h-20 w-20 text-blue-600 mx-auto mb-6" />
-                  <p className="text-gray-700 font-semibold text-2xl">Privacy Control</p>
+            <div className="bg-[#f1ede8] rounded-3xl p-8">
+              <div className="bg-white rounded-2xl p-6 mb-4 border border-[#e2ded9]">
+                <div className="flex items-center gap-3 mb-4">
+                  <Lock className="h-5 w-5 text-[#5d87ff]" />
+                  <span className="font-medium text-[#2d3748]">
+                    Private Event
+                  </span>
                 </div>
+                <div className="h-2 bg-[#e2ded9] rounded-full overflow-hidden">
+                  <div className="h-full w-3/4 bg-[#5d87ff] rounded-full" />
+                </div>
+                <p className="text-sm text-[#64748b] mt-2">
+                  12 of 16 invited guests confirmed
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-[#e2ded9]">
+                <div className="flex items-center gap-3 mb-4">
+                  <Globe className="h-5 w-5 text-[#5d87ff]" />
+                  <span className="font-medium text-[#2d3748]">
+                    Public Event
+                  </span>
+                </div>
+                <div className="h-2 bg-[#e2ded9] rounded-full overflow-hidden">
+                  <div className="h-full w-full bg-[#5d87ff] rounded-full" />
+                </div>
+                <p className="text-sm text-[#64748b] mt-2">
+                  45 community members participating
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Section 4: More Than Meetings - Modern list */}
+          {/* Section 4: Event Types */}
           <div className="mb-24">
-            <h2 className="text-4xl font-bold text-gray-800 mb-8 flex items-center gap-4">
-              <Star className="h-10 w-10 text-yellow-500" />
-              More Than Meetings — Meaningful Life Events
-            </h2>
-            <p className="text-gray-600 mb-12 text-lg">
-              The Events feature is equally powerful for personal and cultural moments. By tracking participant counts, hosts can plan better and ensure smoother execution, also managing financial standards.
-            </p>
-            
-            <div className="bg-white rounded-2xl shadow-lg p-12 mb-12 border border-gray-100">
-              <ul className="space-y-4">
-                {eventTypes.map((type, index) => (
-                  <li key={index} className="flex items-center gap-4">
-                    <div className="h-3 w-3 bg-purple-600 rounded-full flex-shrink-0" />
-                    <span className="text-gray-700 text-lg">{type}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="bg-[#3d4f6f] rounded-3xl p-8 text-white">
+                <div className="flex items-center gap-3 mb-6">
+                  <Star className="h-6 w-6 text-[#fbbf24]" />
+                  <span className="text-white/80">More Than Meetings</span>
+                </div>
+                <h3 className="text-2xl font-bold mb-6">
+                  Meaningful Life Events
+                </h3>
+                <div className="space-y-4">
+                  {eventTypes.map((type, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3"
+                    >
+                      <div className="h-2 w-2 bg-[#5d87ff] rounded-full" />
+                      <span className="text-white/90">{type}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 bg-[#fbbf24]/10 px-4 py-2 rounded-full mb-6">
+                  <Star className="h-4 w-4 text-[#fbbf24]" />
+                  <span className="text-sm font-medium text-[#d97706]">
+                    Life Events
+                  </span>
+                </div>
+                <h2 className="text-3xl font-bold text-[#2d3748] mb-6">
+                  More Than Meetings — Meaningful Life Events
+                </h2>
+                <p className="text-[#64748b] leading-relaxed">
+                  The Events feature is equally powerful for personal and
+                  cultural moments. By tracking participant counts, hosts can
+                  plan better and ensure smoother execution, also managing
+                  financial standards for their events.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Section 5: Why it stands out - Grid with modern cards */}
+          {/* Section 5: Why it stands out */}
           <div className="mb-24">
-            <h2 className="text-4xl font-bold text-gray-800 mb-12">
-              Why Shristi Universe Events Stand Out
-            </h2>
-            <p className="text-gray-600 mb-12 text-lg">
-              While many platforms focus only on public events or business meetings, Shristi Universe bridges the gap between personal, cultural, and community events.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-4">
+                <Target className="h-4 w-4 text-[#5d87ff]" />
+                <span className="text-sm font-medium text-[#5d87ff]">
+                  Why Choose Us
+                </span>
+              </div>
+              <h2 className="text-3xl font-bold text-[#2d3748] mb-4">
+                Why Shristi Universe Events Stand Out
+              </h2>
+              <p className="text-[#64748b] max-w-2xl mx-auto">
+                While many platforms focus only on public events or business
+                meetings, Shristi Universe bridges the gap between personal,
+                cultural, and community events.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {standoutFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4 bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
-                  <Target className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
-                  <span className="text-gray-700 text-lg">{feature}</span>
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl p-6 border border-[#e2ded9] hover:border-[#5d87ff]/30 hover:shadow-lg hover:shadow-[#5d87ff]/5 transition-all duration-300"
+                >
+                  <div className="h-10 w-10 rounded-xl bg-[#5d87ff]/10 flex items-center justify-center mb-4">
+                    <Target className="h-5 w-5 text-[#5d87ff]" />
+                  </div>
+                  <h3 className="font-bold text-[#2d3748] mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-[#64748b]">{feature.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Section 6: Conclusion CTA - Enhanced */}
-          <div className="mb-24 text-center">
-            <div className="bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 rounded-3xl p-12 md:p-16 text-white shadow-2xl">
-              <h2 className="text-5xl font-bold mb-8">Bring Your Community Together</h2>
-              <p className="text-2xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed">
-                The Family Groups & Events feature in Shristi Universe transforms the way people connect, plan, and celebrate together. From private family occasions to large public community events, the platform offers a secure, organized, and joyful experience for everyone involved.
-              </p>
-              <div className="mb-12">
-                <p className="text-xl font-semibold max-w-3xl mx-auto">
-                  If you are looking for a reliable way to manage family events, community programs, or group activities without complexity, Shristi Universe provides the perfect digital space to bring people together — effortlessly.
+          {/* Section 6: CTA */}
+          <div className="mb-12">
+            <div className="bg-[#3d4f6f] rounded-3xl p-12 text-center text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 h-64 w-64 bg-[#5d87ff]/20 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 h-48 w-48 bg-[#5d87ff]/10 rounded-full blur-3xl" />
+              <div className="relative z-10">
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-balance">
+                  Bring Your Community Together
+                </h2>
+                <p className="text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
+                  The Family Groups & Events feature in Shristi Universe
+                  transforms the way people connect, plan, and celebrate
+                  together. From private family occasions to large public
+                  community events.
                 </p>
+                <button className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 inline-flex items-center gap-2">
+                  Start Planning Your First Event
+                  <ArrowRight className="h-5 w-5" />
+                </button>
               </div>
-              <button className="bg-white text-purple-600 font-bold px-10 py-5 rounded-full text-xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-3 mx-auto">
-                Start Planning Your First Event
-                <ArrowRight className="h-6 w-6" />
-              </button>
             </div>
           </div>
         </div>
       </main>
 
-      {/* <Footer /> */}
+      {/* Footer */}
+      <footer className="bg-[#f1ede8] border-t border-[#e2ded9] py-8 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <span className="text-[#64748b] text-sm">
+            © 2024 Shristi Universe. All rights reserved.
+          </span>
+          <div className="flex items-center gap-6">
+            <a
+              href="#"
+              className="text-[#64748b] hover:text-[#5d87ff] text-sm transition-colors"
+            >
+              Privacy
+            </a>
+            <a
+              href="#"
+              className="text-[#64748b] hover:text-[#5d87ff] text-sm transition-colors"
+            >
+              Terms
+            </a>
+            <a
+              href="#"
+              className="text-[#64748b] hover:text-[#5d87ff] text-sm transition-colors"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
