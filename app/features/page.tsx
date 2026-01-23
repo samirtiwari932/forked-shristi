@@ -1,6 +1,7 @@
-import { Metadata } from "next"
-import Navbar from "@/components/Navbar"
-import Link from "next/link"
+import { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   Users,
@@ -9,7 +10,10 @@ import {
   Landmark,
   ChevronRight,
   Sparkles,
-} from "lucide-react"
+} from "lucide-react";
+import Footer from "@/components/Landing/Footer";
+import royalFamilyTree from "@/public/assets/images/RoyalFamilyTree.jpg";
+import bouddhanathStupa from "@/public/assets/images/bouddhanath-stupa.jpg";
 
 export const metadata: Metadata = {
   title:
@@ -35,7 +39,7 @@ export const metadata: Metadata = {
         "A digital family heritage platform for family trees, events, shared finances, and cultural heritage preservation.",
     }),
   },
-}
+};
 
 /* =========================
    FEATURES DATA
@@ -50,6 +54,8 @@ const features = [
       "Create detailed digital family trees with photos, biographies, and relationships to preserve your family legacy forever.",
     icon: Users,
     tag: "Core Feature",
+    image: royalFamilyTree,
+    imageType: "local" as const,
   },
   {
     id: "event",
@@ -60,6 +66,9 @@ const features = [
       "Plan, manage, and share family events securely with private groups, updates, photos, and schedules.",
     icon: Calendar,
     tag: "Organize",
+    image:
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop&auto=format&q=80",
+    imageType: "url" as const,
   },
   {
     id: "finance",
@@ -70,6 +79,9 @@ const features = [
       "Manage shared finances, contributions, and goals in a secure and transparent digital environment.",
     icon: DollarSign,
     tag: "Finance",
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop&auto=format&q=80",
+    imageType: "url" as const,
   },
   {
     id: "heritage-sites",
@@ -80,8 +92,10 @@ const features = [
       "Preserve heritage sites with historical context, stories, and media for future generations.",
     icon: Landmark,
     tag: "Heritage",
+    image: bouddhanathStupa,
+    imageType: "local" as const,
   },
-]
+];
 
 /* =========================
    PAGE COMPONENT
@@ -120,9 +134,13 @@ export default function FeaturesPage() {
             </h1>
 
             <p className="text-[#64748b] text-lg max-w-3xl mx-auto leading-relaxed">
-              Shristi Universe is a <strong className="text-[#2d3748]">digital family heritage platform</strong>{" "}
-              offering tools to build family trees, organize events, manage shared
-              finances, and preserve cultural heritage across generations.
+              Shristi Universe is a{" "}
+              <strong className="text-[#2d3748]">
+                digital family heritage platform
+              </strong>{" "}
+              offering tools to build family trees, organize events, manage
+              shared finances, and preserve cultural heritage across
+              generations.
             </p>
           </div>
         </section>
@@ -131,7 +149,7 @@ export default function FeaturesPage() {
         <section className="max-w-6xl mx-auto px-6 pb-16">
           <div className="grid md:grid-cols-2 gap-8">
             {features.map((feature) => {
-              const Icon = feature.icon
+              const Icon = feature.icon;
               return (
                 <Link
                   key={feature.id}
@@ -139,41 +157,62 @@ export default function FeaturesPage() {
                   aria-label={`Learn more about ${feature.title}`}
                   className="group block"
                 >
-                  <article
-                    className="bg-white rounded-3xl p-8 h-full border border-[#e2ded9] hover:border-[#5d87ff]/40 transition-all hover:shadow-xl hover:shadow-[#5d87ff]/5"
-                  >
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="bg-[#f1ede8] p-4 rounded-2xl group-hover:bg-[#5d87ff]/10 transition-colors">
-                        <Icon
-                          className="w-10 h-10 text-[#5d87ff]"
-                          aria-hidden
+                  <article className="relative bg-white rounded-3xl p-8 h-full border border-[#e2ded9] hover:border-[#5d87ff]/40 transition-all hover:shadow-xl hover:shadow-[#5d87ff]/5 overflow-hidden">
+                    {/* Background Image on Hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
+                      {feature.imageType === "local" ? (
+                        <Image
+                          src={feature.image}
+                          alt=""
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
                         />
-                      </div>
-                      <span className="px-3 py-1 rounded-full bg-[#f1ede8] text-[#64748b] text-xs font-medium">
-                        {feature.tag}
-                      </span>
+                      ) : (
+                        <img
+                          src={feature.image as string}
+                          alt=""
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                      {/* Gradient overlay for better text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/60 to-white/70" />
                     </div>
 
-                    {/* H2 for SEO */}
-                    <h2 className="text-2xl font-bold text-[#2d3748] mb-3 group-hover:text-[#5d87ff] transition-colors">
-                      {feature.title}
-                    </h2>
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="bg-[#f1ede8] p-4 rounded-2xl group-hover:bg-white/95 transition-colors group-hover:shadow-lg">
+                          <Icon
+                            className="w-10 h-10 text-[#5d87ff]"
+                            aria-hidden
+                          />
+                        </div>
+                        <span className="px-3 py-1 rounded-full bg-[#f1ede8] group-hover:bg-white/95 text-[#64748b] group-hover:text-[#2d3748] text-xs font-semibold transition-colors group-hover:shadow-md">
+                          {feature.tag}
+                        </span>
+                      </div>
 
-                    <p className="text-[#64748b] mb-4 leading-relaxed">
-                      {feature.description}
-                    </p>
+                      <h2 className="text-2xl font-bold text-[#2d3748] mb-3 transition-colors">
+                        {feature.title}
+                      </h2>
 
-                    <p className="text-[#94a3b8] text-sm mb-6 leading-relaxed">
-                      {feature.longDescription}
-                    </p>
+                      <p className="text-[#2d3748] mb-4 leading-relaxed transition-colors font-medium">
+                        {feature.description}
+                      </p>
 
-                    <span className="inline-flex items-center gap-2 text-[#5d87ff] font-medium group-hover:gap-3 transition-all">
-                      Learn more
-                      <ChevronRight className="w-4 h-4" aria-hidden />
-                    </span>
+                      <p className="text-[#64748b] group-hover:text-[#2d3748] text-sm mb-6 leading-relaxed transition-colors font-medium">
+                        {feature.longDescription}
+                      </p>
+
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5d87ff] text-white font-semibold group-hover:gap-3 group-hover:bg-[#4a6fcc] group-hover:shadow-lg transition-all">
+                        Learn more
+                        <ChevronRight className="w-4 h-4" aria-hidden />
+                      </span>
+                    </div>
                   </article>
                 </Link>
-              )
+              );
             })}
           </div>
         </section>
@@ -209,6 +248,7 @@ export default function FeaturesPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
-  )
+  );
 }
