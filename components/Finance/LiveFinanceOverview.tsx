@@ -73,7 +73,7 @@ export default function LiveFinanceOverview() {
   return (
     <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 relative overflow-hidden">
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-br from-blue-50/30 to-transparent pointer-events-none" />
 
       {/* Header with Live indicator */}
       {/* <div className="flex items-center justify-between mb-7">
@@ -122,7 +122,7 @@ export default function LiveFinanceOverview() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100 col-span-2"
+          className="bg-linear-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100 col-span-2"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -163,7 +163,7 @@ export default function LiveFinanceOverview() {
                 initial={{ width: 0 }}
                 animate={{ width: `${(balance / collection) * 100}%` }}
                 transition={{ duration: 1.5, delay: 0.5 }}
-                className="h-full bg-gradient-to-r from-green-500 to-emerald-500"
+                className="h-full bg-linear-to-r from-green-500 to-emerald-500"
               />
             </div>
           </div>
