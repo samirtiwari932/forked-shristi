@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import LiveFinanceOverview from "@/components/Finance/LiveFinanceOverview";
+import Navbar from "@/components/Navbar";
 
 // Animation variants
 const fadeInUp = {
@@ -387,105 +388,8 @@ export default function FinancePage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
       {/* Navbar */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="bg-white/80 backdrop-blur-md border-b border-[#e2ded9] sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-bold text-[#2d3748] cursor-pointer"
-              onClick={() => scrollToSection("hero")}
-            >
-              Shristi Universe
-            </motion.div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#features"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("features");
-                }}
-                className={`text-[#64748b] hover:text-[#2d3748] transition-colors ${activeSection === "features" ? "text-[#5d87ff] font-medium" : ""}`}
-              >
-                Features
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#security"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("security");
-                }}
-                className={`text-[#64748b] hover:text-[#2d3748] transition-colors ${activeSection === "security" ? "text-[#5d87ff] font-medium" : ""}`}
-              >
-                Security
-              </motion.a>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#5d87ff] text-white px-6 py-2 rounded-lg hover:bg-[#4a6fd9] transition-colors"
-              >
-                Get Started
-              </motion.button>
-            </div>
-
-            {/* Mobile menu button */}
-            <button
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              className="md:hidden mt-4 space-y-3"
-            >
-              <a
-                href="#features"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("features");
-                }}
-                className="block text-[#64748b] hover:text-[#2d3748] py-2"
-              >
-                Features
-              </a>
-              <a
-                href="#security"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("security");
-                }}
-                className="block text-[#64748b] hover:text-[#2d3748] py-2"
-              >
-                Security
-              </a>
-              <button className="w-full bg-[#5d87ff] text-white px-6 py-2 rounded-lg hover:bg-[#4a6fd9]">
-                Get Started
-              </button>
-            </motion.div>
-          )}
-        </div>
-      </motion.nav>
-
+     <Navbar />
+     
       {/* Hero Section */}
       <motion.div
         id="hero"
