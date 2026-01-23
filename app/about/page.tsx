@@ -10,6 +10,7 @@ import {
   Flag,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
+
 // import Navbar from "@/components/Navbar";
 // import Footer from "@/components/Footer";
 
@@ -90,40 +91,79 @@ export default function AboutPage() {
             <div className="lg:w-1/2">
               <div className="flex items-center gap-3 mb-6">
                 <Target className="w-8 h-8 text-[#5d87ff]" />
-                <h2 className="text-3xl font-bold text-gray-800">
+                <h2 className="text-2xl font-bold text-gray-800">
                   Our Mission – Protecting Family Legacy and Heritage
                 </h2>
               </div>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-600 text-md leading-relaxed text-justify">
                 Our mission at Shristi Universe is to help families preserve
                 their legacy and heritage in today's modern era using digital
                 technology. We provide a comprehensive platform where users can
-                create family trees, store precious memories, organize events,
-                and safeguard historical heritage sites for generations to come.
+                create trees, store precious memories, and safeguard historical
+                heritage sites for generations to come. Our platform is designed
+                to make it simple for families, communities and groups to
+                organize events, share personal memories, and securely store
+                family photographs. Whether you want to honor your ancestry,
+                celebrate family milestones, or protect heritage landmarks,
+                Shristi
               </p>
+              <h3 className="text-lg m-1 font-bold ">Key Features:</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
+                  <span className="text-gray-700">
+                    ⁠Create detailed family trees effortlessly.
+                  </span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
+                  <span className="text-gray-700">
+                    ⁠Preserve and protect heritage sites linked to your family.
+                  </span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
+                  <span className="text-gray-700">
+                    ⁠Organize events and celebrations.
+                  </span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
+                  <span className="text-gray-700">
+                    Store and share photographs, documents, and memories
+                    securely.
+                  </span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
+                  <span className="text-gray-700">
+                    ⁠Celebrate and pass down your family, community and group
+                    legacy to future generations.
+                  </span>
+                </li>
+              </ul>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">👨‍👩‍👧‍👦</div>
-                  <p className="text-gray-700 font-medium">
-                    Family Connections
-                  </p>
-                </div>
+              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 overflow-hidden">
+                <img
+                  src="/assets/images/FamilyConnection.png"
+                  alt="Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
 
           {/* Section 2: Why Choose Us with image on left */}
           <div className="flex flex-col lg:flex-row-reverse items-center gap-12 mb-20">
-            <div className="lg:w-1/2">
+            <div className="lg:w-2/5">
               <div className="flex items-center gap-3 mb-6">
-                <Heart className="w-8 h-8 text-[#5d87ff]" />
-                <h2 className="text-3xl font-bold text-gray-800">
+                <Heart className="w-6 h-8 text-[#5d87ff]" />
+                <h2 className="text-2xl font-bold text-gray-800">
                   Why Choose Us
                 </h2>
               </div>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              <p className="text-gray-600 text-md leading-relaxed text-justify">
                 Shristi Universe is a unique digital family platform focused on
                 preserving family history, promoting cultural heritage
                 preservation, and fostering family unity. Unlike standard social
@@ -131,7 +171,7 @@ export default function AboutPage() {
                 meaningful way to practice digital memory preservation.
               </p>
 
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-600 text-lg leading-relaxed text-justify mb-4">
                 As a complete family genealogy platform, Shristi Universe allows
                 families, communities, and groups to build and visualize
                 detailed family trees, making it one of the best platforms to
@@ -166,11 +206,12 @@ export default function AboutPage() {
               </ul>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-linear-to-br from-green-100 to-emerald-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">🏆</div>
-                  <p className="text-gray-700 font-medium">Trusted Choice</p>
-                </div>
+              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-2xl h-72 lg:h-125 overflow-hidden">
+                <img
+                  src="/assets/images/Trusted.png"
+                  alt="Trusted"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -180,7 +221,7 @@ export default function AboutPage() {
             <div className="lg:w-1/2">
               <div className="flex items-center gap-3 mb-6">
                 <Eye className="w-8 h-8 text-[#5d87ff]" />
-                <h2 className="text-3xl font-bold text-gray-800">Our Vision</h2>
+                <h2 className="text-3xl font-bold text-gray-800">Join Shristi Universe Today</h2>
               </div>
               <p className="text-gray-600 text-lg leading-relaxed mb-4">
                 We envision a world where every family's heritage is preserved,
