@@ -35,6 +35,7 @@ import {
   Upload,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import LiveFinanceOverview from "@/components/Finance/LiveFinanceOverview";
 
 // Animation variants
 const fadeInUp = {
@@ -576,69 +577,7 @@ export default function FinancePage() {
             </motion.div>
 
             <motion.div variants={slideInRight} className="lg:w-1/2">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-3xl p-8 shadow-lg border border-[#e2ded9]"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold text-[#2d3748]">
-                    Finance Overview
-                  </h3>
-                  <motion.span
-                    animate={{
-                      opacity: [0.7, 1, 0.7],
-                      scale: [1, 1.05, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="px-3 py-1 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-xs font-medium"
-                  >
-                    Live
-                  </motion.span>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    {
-                      label: "Total Collection",
-                      value: "₹4,50,000",
-                      color: "#2d3748",
-                    },
-                    {
-                      label: "Total Expenses",
-                      value: "₹75,000",
-                      color: "#ef4444",
-                    },
-                    {
-                      label: "Net Balance",
-                      value: "₹3,75,000",
-                      color: "#22c55e",
-                    },
-                    { label: "Active Programs", value: "12", color: "#2d3748" },
-                  ].map((stat, index) => (
-                    <motion.div
-                      key={stat.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 + index * 0.1 }}
-                      whileHover={{ y: -5 }}
-                      className="bg-[#f8f6f3] rounded-2xl p-4"
-                    >
-                      <p className="text-sm text-[#64748b] mb-1">
-                        {stat.label}
-                      </p>
-                      <p
-                        className="text-2xl font-bold"
-                        style={{ color: stat.color }}
-                      >
-                        {stat.value}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+              <LiveFinanceOverview />
             </motion.div>
           </div>
         </div>
