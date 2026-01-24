@@ -99,7 +99,7 @@ const HeritageDetailsDialog = ({
                   <button
                     onClick={() =>
                       setCurrentImageIndex(
-                        (prev) => (prev - 1 + images.length) % images.length
+                        (prev) => (prev - 1 + images.length) % images.length,
                       )
                     }
                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-700"
@@ -512,7 +512,7 @@ const Landing: React.FC = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [showSearchTypeMenu, setShowSearchTypeMenu] = useState(false);
   const [searchType, setSearchType] = useState<"familyTree" | "person">(
-    "familyTree"
+    "familyTree",
   );
   const [selectedHeritageForMap, setSelectedHeritageForMap] =
     useState<HeritageResponse | null>(null);
@@ -557,7 +557,7 @@ const Landing: React.FC = () => {
     if (window.innerWidth < 768) return;
     const timer = setInterval(
       () => setCurrentSlide((p) => (p + 1) % features.length),
-      5000
+      5000,
     );
     return () => clearInterval(timer);
   }, []);
@@ -619,9 +619,7 @@ const Landing: React.FC = () => {
   };
 
   return (
-    <div
-      className="min-h-screen  bg-linear-to-b from-[#5D87FF33] to-white"
-    >
+    <div className="min-h-screen  bg-linear-to-b from-[#5D87FF33] to-white">
       {/* Navbar */}
       <nav className="container mx-auto px-4 md:px-12 lg:px-24 flex items-center justify-between py-4 md:py-6">
         {/* Logo Section */}
@@ -643,6 +641,12 @@ const Landing: React.FC = () => {
             className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             About Us
+          </a>
+          <a
+            href="/features"
+            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Features
           </a>
           <a
             href="https://shristiuniverse.com/login"
@@ -757,154 +761,15 @@ const Landing: React.FC = () => {
           </div>
         </div>
       </main>
-
-      <div>
-        <AdBsConverter />
-      </div>
-
-      <FamilySearchDialog
-        results={searchResults}
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        query={searchQuery}
-        onRequireLogin={() => setIsLoginOpen(true)}
-      />
-
-      {/* Features */}
-      <section
-        id="about"
-        className="py-12 md:py-16 bg-linear-to-br from-gray-50 to-blue-50 "
-      >
-        <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-6xl">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">
-              <span className="text-[#5d87ff]">Family Tree</span>, Heritage,
-              Events <br /> <span> & Finance Management </span>
-            </h2>
-            <p className="text-sm md:text-xl text-gray-600  max-w-3xl mx-auto">
-              Tools to uncover, preserve, and share your family's unique story.
-            </p>
-          </div>
-
-          {/* Mobile: minimal cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:hidden">
-            {features.map((f, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentSlide(i)}
-                className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-gray-800 shadow hover:shadow-md active:scale-[0.99]"
-              >
-                <span className="text-2xl leading-none">{f.icon}</span>
-                <div className="text-left">
-                  <h4 className="text-sm font-semibold text-gray-900 ">
-                    {f.title}
-                  </h4>
-                  <p className="text-xs text-gray-600  line-clamp-2">
-                    {f.description}
-                  </p>
-                </div>
-              </button>
-            ))}
-          </div>
-
-          {/* Desktop: carousel */}
-          <div className="relative hidden md:block">
-            <div className="overflow-hidden rounded-2xl bg-white shadow-xl">
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {features.map((feature, index) => (
-                  <div key={index} className="w-full shrink-0">
-                    <div className="grid md:grid-cols-2 gap-8 p-8 items-center">
-                      {/* Text */}
-                      <div className="space-y-4 relative z-10">
-                        <div className="text-6xl">{feature.icon}</div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
-                          {feature.title}
-                        </h3>
-                        <p className="text-base md:text-lg text-gray-600 ">
-                          {feature.description}
-                        </p>
-                        <div className="flex gap-3 pt-2">
-                          <Button className="bg-[#5d87ff] hover:bg-[#4c73e6] text-white px-5 py-3 text-sm rounded-lg shadow transition-all">
-                            Explore Feature
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="border-[#5d87ff] text-[#5d87ff] hover:bg-[#5d87ff] hover:text-white px-5 py-3 text-sm rounded-lg"
-                          >
-                            Learn More
-                          </Button>
-                        </div>
-                      </div>
-
-                      {/* Image + nav */}
-                      <div className="hidden md:block">
-                        <div className="relative group">
-                          <Image
-                            src={feature.image}
-                            alt={feature.alt}
-                            width={800} // any reasonable value
-                            height={480}
-                            className="w-full h-72 object-cover rounded-xl"
-                            loading="lazy"
-                            referrerPolicy="no-referrer"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src =
-                                "https://placehold.co/1200x600?text=Image+Unavailable";
-                            }}
-                          />
-                          <button
-                            onClick={prevSlide}
-                            aria-label="Previous feature"
-                            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
-                          >
-                            <ChevronLeft className="w-6 h-6" />
-                          </button>
-                          <button
-                            onClick={nextSlide}
-                            aria-label="Next feature"
-                            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
-                          >
-                            <ChevronRight className="w-6 h-6" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Dots */}
-            <div className="flex justify-center mt-6 space-x-2">
-              {features.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  aria-label={`Go to feature ${index + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-[#5d87ff] w-8"
-                      : "bg-gray-300 dark:bg-gray-600 w-2"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="relative overflow-hidden bg-linear-to-br from-indigo-50 via-white to-blue-50">
-       {/* dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/30" */}
+        {/* dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/30" */}
         {/* Subtle animated background glows */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-linear-to-br from-[#5d87ff]/20 to-purple-500/10 blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-linear-to-tr from-blue-400/20 to-cyan-400/10 blur-3xl animate-pulse delay-1000"></div>
         </div>
 
-        <div className="relative container mx-auto px-6 py-24 md:py-32 lg:py-40 max-w-7xl">
+        <div className="relative container mx-auto px-6 py-15  max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: Text + Search */}
             <div className="space-y-10">
@@ -1204,7 +1069,7 @@ const Landing: React.FC = () => {
                           >
                             {term}
                           </button>
-                        )
+                        ),
                       )}
                     </>
                   )}
@@ -1240,6 +1105,143 @@ const Landing: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FamilySearchDialog
+        results={searchResults}
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        query={searchQuery}
+        onRequireLogin={() => setIsLoginOpen(true)}
+      />
+
+      {/* Features */}
+      <section
+        id="about"
+        className="py-12 md:py-16 bg-linear-to-br from-gray-50 to-blue-50 "
+      >
+        <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-6xl">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">
+              <span className="text-[#5d87ff]">Family Tree</span>, Heritage,
+              Events <br /> <span> & Finance Management </span>
+            </h2>
+            <p className="text-sm md:text-xl text-gray-600  max-w-3xl mx-auto">
+              Tools to uncover, preserve, and share your family's unique story.
+            </p>
+          </div>
+
+          {/* Mobile: minimal cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:hidden">
+            {features.map((f, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-gray-800 shadow hover:shadow-md active:scale-[0.99]"
+              >
+                <span className="text-2xl leading-none">{f.icon}</span>
+                <div className="text-left">
+                  <h4 className="text-sm font-semibold text-gray-900 ">
+                    {f.title}
+                  </h4>
+                  <p className="text-xs text-gray-600  line-clamp-2">
+                    {f.description}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Desktop: carousel */}
+          <div className="relative hidden md:block">
+            <div className="overflow-hidden rounded-2xl bg-white shadow-xl">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {features.map((feature, index) => (
+                  <div key={index} className="w-full shrink-0">
+                    <div className="grid md:grid-cols-2 gap-8 p-8 items-center">
+                      {/* Text */}
+                      <div className="space-y-4 relative z-10">
+                        <div className="text-6xl">{feature.icon}</div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
+                          {feature.title}
+                        </h3>
+                        <p className="text-base md:text-lg text-gray-600 ">
+                          {feature.description}
+                        </p>
+                        <div className="flex gap-3 pt-2">
+                          <Button className="bg-[#5d87ff] hover:bg-[#4c73e6] text-white px-5 py-3 text-sm rounded-lg shadow transition-all">
+                            Explore Feature
+                          </Button>
+                          <Button
+                            variant="outline"
+                            className="border-[#5d87ff] text-[#5d87ff] hover:bg-[#5d87ff] hover:text-white px-5 py-3 text-sm rounded-lg"
+                          >
+                            Learn More
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Image + nav */}
+                      <div className="hidden md:block">
+                        <div className="relative group">
+                          <Image
+                            src={feature.image}
+                            alt={feature.alt}
+                            width={800} // any reasonable value
+                            height={480}
+                            className="w-full h-72 object-cover rounded-xl"
+                            loading="lazy"
+                            referrerPolicy="no-referrer"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src =
+                                "https://placehold.co/1200x600?text=Image+Unavailable";
+                            }}
+                          />
+                          <button
+                            onClick={prevSlide}
+                            aria-label="Previous feature"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
+                          >
+                            <ChevronLeft className="w-6 h-6" />
+                          </button>
+                          <button
+                            onClick={nextSlide}
+                            aria-label="Next feature"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow hover:shadow-md transition pointer-events-auto"
+                          >
+                            <ChevronRight className="w-6 h-6" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dots */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {features.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to feature ${index + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? "bg-[#5d87ff] w-8"
+                      : "bg-gray-300 dark:bg-gray-600 w-2"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <AdBsConverter />
+
       {/* Heritage Sites Section - NEW */}
       <section className="py-12 md:py-16 bg-white ">
         <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-7xl">
@@ -1286,7 +1288,7 @@ const Landing: React.FC = () => {
         <div
           className={`${
             // isDarkMode ? "bg-gray-800" :
-             "bg-white"
+            "bg-white"
           } rounded-2xl md:rounded-3xl shadow-xl overflow-hidden`}
         >
           {/* Mobile minimal */}
@@ -1335,7 +1337,8 @@ const Landing: React.FC = () => {
                   <span
                     className={
                       // isDarkMode ? "text-gray-100" :
-                       "text-gray-900"}
+                      "text-gray-900"
+                    }
                   >
                     <span className="text-[#5d87ff]">
                       Download the Shristi App{" "}
@@ -1346,7 +1349,7 @@ const Landing: React.FC = () => {
                 <p
                   className={`text-base md:text-lg ${
                     // isDarkMode ? "text-gray-300" :
-                     "text-gray-600"
+                    "text-gray-600"
                   }`}
                 >
                   Access your family tree anywhere with our mobile app. Preserve
@@ -1362,7 +1365,7 @@ const Landing: React.FC = () => {
                   </div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      // isDarkMode ? "text-gray-100" : 
+                      // isDarkMode ? "text-gray-100" :
                       "text-gray-900"
                     }`}
                   >
@@ -1371,7 +1374,7 @@ const Landing: React.FC = () => {
                   <p
                     className={`text-sm ${
                       // isDarkMode ? "text-gray-300" :
-                       "text-gray-600"
+                      "text-gray-600"
                     }`}
                   >
                     Full-featured on any device
@@ -1384,7 +1387,7 @@ const Landing: React.FC = () => {
                   <h3
                     className={`font-semibold mb-1 ${
                       // isDarkMode ? "text-gray-100" :
-                       "text-gray-900"
+                      "text-gray-900"
                     }`}
                   >
                     Cloud Sync
@@ -1392,7 +1395,7 @@ const Landing: React.FC = () => {
                   <p
                     className={`text-sm ${
                       // isDarkMode ? "text-gray-300" :
-                       "text-gray-600"
+                      "text-gray-600"
                     }`}
                   >
                     Seamless sync across devices
@@ -1405,7 +1408,7 @@ const Landing: React.FC = () => {
                   <h3
                     className={`font-semibold mb-1 ${
                       // isDarkMode ? "text-gray-100" :
-                       "text-gray-900"
+                      "text-gray-900"
                     }`}
                   >
                     Instant Upload
@@ -1413,7 +1416,7 @@ const Landing: React.FC = () => {
                   <p
                     className={`text-sm ${
                       // isDarkMode ? "text-gray-300" :
-                       "text-gray-600"
+                      "text-gray-600"
                     }`}
                   >
                     Capture & share instantly
@@ -1425,7 +1428,7 @@ const Landing: React.FC = () => {
                   </div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      // isDarkMode ? "text-gray-100" : 
+                      // isDarkMode ? "text-gray-100" :
                       "text-gray-900"
                     }`}
                   >
@@ -1434,7 +1437,7 @@ const Landing: React.FC = () => {
                   <p
                     className={`text-sm ${
                       // isDarkMode ? "text-gray-300" :
-                       "text-gray-600"
+                      "text-gray-600"
                     }`}
                   >
                     Get notified of discoveries
@@ -1484,8 +1487,8 @@ const Landing: React.FC = () => {
             {/* Right: phone mock */}
             <div
               className={`lg:w-1/2 w-full ${
-                // isDarkMode? "bg-gray-700": 
-                  "bg-linear-to-br from-[#5d87ff]/5 to-[#5d87ff]/20"
+                // isDarkMode? "bg-gray-700":
+                "bg-linear-to-br from-[#5d87ff]/5 to-[#5d87ff]/20"
               } p-10 lg:p-14 flex justify-center items-center`}
             >
               <div className="relative">
@@ -1508,7 +1511,10 @@ const Landing: React.FC = () => {
         </div>
       </section>
       {/* Feedback Section */}
-      <Feedback />
+      <section id="contact">
+        <Feedback />
+      </section>
+
       {/* QR Modal */}
       {showQr && (
         <div
@@ -1519,7 +1525,7 @@ const Landing: React.FC = () => {
         >
           <div
             className={`w-full max-w-3xl rounded-2xl shadow-2xl ${
-              // isDarkMode ? "bg-gray-900" : 
+              // isDarkMode ? "bg-gray-900" :
               "bg-white"
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -1574,7 +1580,7 @@ const Landing: React.FC = () => {
                   rel="noreferrer"
                   // ⬇️ FIX: ensure readable in both themes
                   className={`mt-3 inline-block text-sm font-semibold underline ${
-                    // isDarkMode ? "text-white/90" : 
+                    // isDarkMode ? "text-white/90" :
                     "text-gray-800"
                   }`}
                 >
