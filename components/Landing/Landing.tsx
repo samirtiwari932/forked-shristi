@@ -1511,7 +1511,10 @@ const Landing: React.FC = () => {
         </div>
       </section>
       {/* Feedback Section */}
-      <Feedback />
+      <section id="contact">
+        <Feedback />
+      </section>
+
       {/* QR Modal */}
       {showQr && (
         <div

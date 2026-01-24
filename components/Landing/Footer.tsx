@@ -1,5 +1,6 @@
 import React from "react";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
@@ -19,26 +20,15 @@ const Footer: React.FC = () => {
                 className="text-blue-400 hover:text-blue-300 transition-colors"
                 target="_blank"
               >
-                <Facebook size={20} />
+                <FaFacebook size={20} />
               </a>
-              <a
-                href="#"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
-              >
-                <Twitter size={20} />
-              </a>
+
               <a
                 href="https://www.instagram.com/shristi.universe/"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
                 target="_blank"
               >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="#"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
-              >
-                <Linkedin size={20} />
+                <FaInstagram size={20} />
               </a>
             </div>
           </div>
@@ -48,13 +38,13 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-semibold text-lg">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="/" className="hover:text-blue-400 transition-colors">
                   Home
                 </a>
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="/about"
                   className="hover:text-blue-400 transition-colors"
                 >
                   About Us
@@ -62,7 +52,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="/features"
                   className="hover:text-blue-400 transition-colors"
                 >
                   Features
@@ -70,7 +60,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="/contact"
+                  href="#contact"
                   className="hover:text-blue-400 transition-colors"
                 >
                   Contact
@@ -118,12 +108,6 @@ const Footer: React.FC = () => {
               className="text-gray-500 hover:text-blue-400 transition-colors text-sm"
             >
               Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-blue-400 transition-colors text-sm"
-            >
-              Cookies
             </a>
           </div>
         </div>
