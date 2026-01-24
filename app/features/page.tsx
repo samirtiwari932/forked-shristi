@@ -106,7 +106,7 @@ export default function FeaturesPage() {
       <Navbar />
 
       {/* Back Link */}
-      <div className="max-w-6xl mx-auto px-6 pt-8">
+      <div className="max-w-7xl mx-auto px-6 pt-8">
         <Link
           href="/about"
           className="inline-flex items-center gap-2 text-[#64748b] hover:text-[#5d87ff] transition-colors"
@@ -118,7 +118,7 @@ export default function FeaturesPage() {
 
       <main className="flex-1">
         {/* PAGE HEADER */}
-        <section className="relative max-w-6xl mx-auto px-6 py-16 text-center overflow-hidden">
+        <section className="relative max-w-7xl mx-auto px-6 py-16 text-center overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute top-0 left-1/4 w-72 h-72 bg-[#5d87ff]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#5d87ff]/5 rounded-full blur-3xl pointer-events-none" />
@@ -145,9 +145,9 @@ export default function FeaturesPage() {
           </div>
         </section>
 
-        {/* FEATURES GRID */}
-        <section className="max-w-6xl mx-auto px-6 pb-16">
-          <div className="grid md:grid-cols-2 gap-8">
+        {/* FEATURES GRID - Horizontal Layout with Enhanced Hover Images */}
+        <section className="max-w-7xl mx-auto px-6 pb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
@@ -157,55 +157,55 @@ export default function FeaturesPage() {
                   aria-label={`Learn more about ${feature.title}`}
                   className="group block"
                 >
-                  <article className="relative bg-white rounded-3xl p-8 h-full border border-[#e2ded9] hover:border-[#5d87ff]/40 transition-all hover:shadow-xl hover:shadow-[#5d87ff]/5 overflow-hidden">
-                    {/* Background Image on Hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
+                  <article className="relative bg-white rounded-2xl p-6 h-full border border-[#e2ded9] hover:border-[#5d87ff]/40 transition-all hover:shadow-2xl hover:shadow-[#5d87ff]/10 hover:-translate-y-2 duration-500 overflow-hidden">
+                    {/* Background Image on Hover - IMPROVED */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out z-0">
                       {feature.imageType === "local" ? (
                         <Image
                           src={feature.image}
                           alt=""
                           fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         />
                       ) : (
                         <img
                           src={feature.image as string}
                           alt=""
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
                         />
                       )}
-                      {/* Gradient overlay for better text readability */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/60 to-white/70" />
+                      {/* Stronger gradient overlay for better text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/85 backdrop-blur-[2px]" />
                     </div>
 
-                    {/* Content */}
+                    {/* Content - Now with better contrast on hover */}
                     <div className="relative z-10">
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="bg-[#f1ede8] p-4 rounded-2xl group-hover:bg-white/95 transition-colors group-hover:shadow-lg">
+                      {/* Icon & Tag */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="bg-[#5d87ff]/10 p-3 rounded-xl group-hover:bg-white group-hover:shadow-lg transition-all duration-300">
                           <Icon
-                            className="w-10 h-10 text-[#5d87ff]"
+                            className="w-7 h-7 text-[#5d87ff] transition-colors"
                             aria-hidden
                           />
                         </div>
-                        <span className="px-3 py-1 rounded-full bg-[#f1ede8] group-hover:bg-white/95 text-[#64748b] group-hover:text-[#2d3748] text-xs font-semibold transition-colors group-hover:shadow-md">
+                        <span className="px-2.5 py-1 rounded-full bg-[#f1ede8] group-hover:bg-white group-hover:shadow-md text-[#64748b] group-hover:text-[#2d3748] text-xs font-semibold transition-all duration-300">
                           {feature.tag}
                         </span>
                       </div>
 
-                      <h2 className="text-2xl font-bold text-[#2d3748] mb-3 transition-colors">
+                      {/* Title */}
+                      <h2 className="text-xl font-bold text-[#2d3748] mb-3 group-hover:text-[#5d87ff] transition-colors duration-300">
                         {feature.title}
                       </h2>
 
-                      <p className="text-[#2d3748] mb-4 leading-relaxed transition-colors font-medium">
+                      {/* Description */}
+                      <p className="text-[#64748b] group-hover:text-[#2d3748] text-sm mb-4 leading-relaxed transition-colors duration-300 font-medium">
                         {feature.description}
                       </p>
 
-                      <p className="text-[#64748b] group-hover:text-[#2d3748] text-sm mb-6 leading-relaxed transition-colors font-medium">
-                        {feature.longDescription}
-                      </p>
-
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5d87ff] text-white font-semibold group-hover:gap-3 group-hover:bg-[#4a6fcc] group-hover:shadow-lg transition-all">
+                      {/* CTA */}
+                      <span className="inline-flex items-center gap-1.5 text-[#5d87ff] font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
                         Learn more
                         <ChevronRight className="w-4 h-4" aria-hidden />
                       </span>
@@ -217,14 +217,29 @@ export default function FeaturesPage() {
           </div>
         </section>
 
-        {/* SEO CONTENT BLOCK */}
-        <section className="relative bg-[#3d4f6f] overflow-hidden">
-          {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#5d87ff]/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#2d3748]/50 rounded-full blur-3xl pointer-events-none" />
+        {/* MISSION SECTION WITH BACKGROUND IMAGE */}
+        <section className="relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={bouddhanathStupa}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              quality={90}
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3d4f6f]/95 via-[#2d3748]/90 to-[#3d4f6f]/95" />
+          </div>
 
-          <div className="relative max-w-4xl mx-auto px-6 py-20 text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/90 text-sm font-medium mb-6">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#5d87ff]/20 rounded-full blur-3xl pointer-events-none z-10" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none z-10" />
+
+          {/* Content */}
+          <div className="relative z-20 max-w-4xl mx-auto px-6 py-24 text-center">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/90 text-sm font-medium mb-6">
               Our Mission
             </span>
 
@@ -232,7 +247,7 @@ export default function FeaturesPage() {
               Built for Families, Communities & Future Generations
             </h2>
 
-            <p className="text-white/80 text-lg leading-relaxed mb-8">
+            <p className="text-white/90 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
               Shristi Universe helps families preserve stories, heritage,
               relationships, and memories in a secure digital environment —
               strengthening connections across generations.
@@ -240,7 +255,7 @@ export default function FeaturesPage() {
 
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#5d87ff] text-white font-medium rounded-full hover:bg-[#4a6fcc] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#3d4f6f] font-semibold rounded-full hover:bg-white/90 transition-all hover:shadow-lg hover:shadow-white/20"
             >
               Learn About Us
               <ChevronRight className="w-4 h-4" />
