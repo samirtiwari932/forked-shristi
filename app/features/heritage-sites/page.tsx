@@ -492,13 +492,6 @@ const HeritageSiteCarousel = ({
           </div>
         ))}
       </div>
-
-      {/* Scroll indicator */}
-      <div className="flex justify-center gap-1.5 mt-6">
-        <div className="h-1.5 w-1.5 rounded-full bg-gray-300"></div>
-        <div className="h-1.5 w-6 rounded-full bg-blue-600"></div>
-        <div className="h-1.5 w-1.5 rounded-full bg-gray-300"></div>
-      </div>
     </div>
   );
 };
