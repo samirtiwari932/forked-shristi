@@ -1658,7 +1658,9 @@ const Landing: React.FC = () => {
       </section>
 
       {/* Feedback Section */}
-      <Feedback />
+      <section id="contact">
+        <Feedback />
+      </section>
 
       {/* Sticky Bottom Banner for Mobile */}
       {platform !== "desktop" && showStickyBanner && !open && (
