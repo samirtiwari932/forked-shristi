@@ -1,4 +1,7 @@
-import { Metadata } from "next";
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   Calendar,
   Users,
@@ -11,37 +14,80 @@ import {
   Star,
   ArrowRight,
   Target,
+  ChevronLeft,
+  ChevronRight,
+  Edit,
+  Zap,
+  Heart,
+  TrendingUp,
+  MapPin,
+  UserPlus,
+  Bell,
+  Share2,
 } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
-export const metadata: Metadata = {
-  title:
-    "Family Groups & Events - Plan, Manage & Celebrate Family and Community Events | Shristi Universe",
-  description:
-    "Bring families and communities together effortlessly. Organize birthdays, anniversaries, community events, and more with Shristi Universe's Family Groups & Events feature.",
-  keywords: [
-    "family groups",
-    "event management",
-    "community events",
-    "private events",
-    "public events",
-    "family connection",
-    "heritage preservation",
-  ],
-  authors: [{ name: "Shristi Universe" }],
-  creator: "Shristi Universe",
-  publisher: "Shristi Universe",
-  openGraph: {
-    title:
-      "Family Groups & Events - Organize Family, Community & Group Events | Shristi Universe",
-    description:
-      "Plan family, community, and group events easily. Track participants, manage private/public visibility, and share memories securely.",
-    url: "/features/events",
-    siteName: "Shristi Universe",
-    type: "website",
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
   },
 };
 
-export default function EventPage() {
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+};
+
+const EventsPage = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      id: 1,
+      title: "Bring Families Together",
+      description:
+        "Organize birthdays, anniversaries, and community events with seamless planning",
+      bgColor: "bg-[#3d4f6f]",
+      icon: <Calendar className="h-12 w-12 text-white" />,
+    },
+    {
+      id: 2,
+      title: "Community Gatherings Made Easy",
+      description:
+        "From Kul Puja to festivals, manage all your community events in one place",
+      bgColor: "bg-[#2d3748]",
+      icon: <Users className="h-12 w-12 text-white" />,
+    },
+    {
+      id: 3,
+      title: "Privacy You Control",
+      description:
+        "Choose between public and private events with full control over visibility",
+      bgColor: "bg-[#3d4f6f]",
+      icon: <Shield className="h-12 w-12 text-white" />,
+    },
+  ];
+
   const eventCategories = [
     {
       icon: <Eye className="h-5 w-5" />,
@@ -114,33 +160,6 @@ export default function EventPage() {
     "Social and networking events",
   ];
 
-  const standoutFeatures = [
-    {
-      title: "Built for Families",
-      description: "Specifically designed for families, communities, and groups",
-    },
-    {
-      title: "Simple Interface",
-      description: "Intuitive user interface that anyone can use",
-    },
-    {
-      title: "Centralized Management",
-      description: "All your events in one organized system",
-    },
-    {
-      title: "Privacy Controls",
-      description: "Strong privacy settings for your events",
-    },
-    {
-      title: "Real-time Tracking",
-      description: "Track participants as they join",
-    },
-    {
-      title: "No External Tools",
-      description: "Seamless coordination without complexity",
-    },
-  ];
-
   const featuresList = [
     "Create events in minutes",
     "Choose between public or private events",
@@ -150,71 +169,129 @@ export default function EventPage() {
     "Transfer event ownership when required",
   ];
 
+  const standoutFeatures = [
+    {
+      title: "Built for Families",
+      description:
+        "Specifically designed for families, communities, and groups",
+      icon: <Users className="h-5 w-5" />,
+    },
+    {
+      title: "Simple Interface",
+      description: "Intuitive user interface that anyone can use",
+      icon: <Zap className="h-5 w-5" />,
+    },
+    {
+      title: "Centralized Management",
+      description: "All your events in one organized system",
+      icon: <Target className="h-5 w-5" />,
+    },
+    {
+      title: "Privacy Controls",
+      description: "Strong privacy settings for your events",
+      icon: <Shield className="h-5 w-5" />,
+    },
+    {
+      title: "Real-time Tracking",
+      description: "Track participants as they join",
+      icon: <TrendingUp className="h-5 w-5" />,
+    },
+    {
+      title: "No External Tools",
+      description: "Seamless coordination without complexity",
+      icon: <CheckCircle className="h-5 w-5" />,
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
       {/* Navigation */}
-      <nav className="w-full px-6 py-4 bg-[#f8f6f3]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <span className="text-xl font-bold text-[#2d3748]">
-            Shristi Universe
-          </span>
-          <div className="flex items-center gap-6">
-            <a
-              href="#"
-              className="text-[#64748b] hover:text-[#5d87ff] transition-colors"
-            >
-              Features
-            </a>
-            <a
-              href="#"
-              className="text-[#64748b] hover:text-[#5d87ff] transition-colors"
-            >
-              About
-            </a>
-            <button className="bg-[#5d87ff] text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#4a6fe0] transition-colors">
-              Get Started
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
-      {/* Hero Section - Warm cream background with blue accent */}
-      <div className="relative w-full bg-[#f1ede8] py-20 overflow-hidden">
+      {/* Hero Section - Static with Animation */}
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="relative w-full bg-[#f1ede8] py-20 overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <motion.div variants={slideInLeft}>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6"
+              >
                 <Calendar className="h-4 w-4 text-[#5d87ff]" />
                 <span className="text-sm text-[#64748b]">
                   Family Groups & Events
                 </span>
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-[#2d3748] mb-6 leading-tight text-balance">
+              </motion.div>
+              <motion.h1
+                variants={fadeInUp}
+                className="text-4xl lg:text-5xl font-bold text-[#2d3748] mb-6 leading-tight"
+              >
                 Bring Families, Communities, and Groups Together
-              </h1>
-              <p className="text-lg text-[#64748b] mb-8 leading-relaxed max-w-xl">
+              </motion.h1>
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg text-[#64748b] mb-8 leading-relaxed max-w-xl"
+              >
                 Organize birthdays, anniversaries, community events, and more
                 with seamless planning and real-time coordination.
-              </p>
-              <div className="flex flex-wrap gap-3 mb-8">
+              </motion.p>
+              <motion.div
+                variants={fadeInUp}
+                className="flex flex-wrap gap-3 mb-8"
+              >
                 {["Birthdays", "Anniversaries", "Community", "Gatherings"].map(
-                  (tag) => (
-                    <span
+                  (tag, idx) => (
+                    <motion.span
                       key={tag}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + idx * 0.1 }}
                       className="bg-white/70 backdrop-blur-sm text-[#2d3748] px-4 py-2 rounded-full text-sm border border-[#e2ded9]"
                     >
                       {tag}
-                    </span>
-                  )
+                    </motion.span>
+                  ),
                 )}
-              </div>
-              <button className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg shadow-[#5d87ff]/20 flex items-center gap-2">
+              </motion.div>
+              <motion.button
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg shadow-[#5d87ff]/20 flex items-center gap-2"
+              >
                 Get Started
                 <ArrowRight className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="relative">
-              <div className="bg-white rounded-3xl p-8 shadow-xl shadow-black/5">
+              </motion.button>
+            </motion.div>
+            <motion.div variants={slideInRight} className="relative">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="bg-white rounded-3xl p-8 shadow-xl shadow-black/5"
+              >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="h-12 w-12 rounded-2xl bg-[#5d87ff]/10 flex items-center justify-center">
                     <Calendar className="h-6 w-6 text-[#5d87ff]" />
@@ -231,105 +308,235 @@ export default function EventPage() {
                 <div className="space-y-3">
                   {["Date & Time Set", "Venue Confirmed", "Invites Sent"].map(
                     (item, i) => (
-                      <div
+                      <motion.div
                         key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6 + i * 0.1 }}
                         className="flex items-center gap-3 bg-[#f8f6f3] rounded-xl px-4 py-3"
                       >
                         <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
                         <span className="text-[#2d3748]">{item}</span>
-                      </div>
-                    )
+                      </motion.div>
+                    ),
                   )}
                 </div>
-              </div>
+              </motion.div>
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 h-24 w-24 bg-[#5d87ff]/10 rounded-full blur-2xl" />
-              <div className="absolute -bottom-4 -left-4 h-32 w-32 bg-[#5d87ff]/5 rounded-full blur-3xl" />
-            </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8 }}
+                className="absolute -top-4 -right-4 h-24 w-24 bg-[#5d87ff]/10 rounded-full blur-2xl"
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1 }}
+                className="absolute -bottom-4 -left-4 h-32 w-32 bg-[#5d87ff]/5 rounded-full blur-3xl"
+              />
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.section>
 
       <main className="flex-1">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          {/* Section 1: Event Management Features */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-6">
-                <Calendar className="h-4 w-4 text-[#5d87ff]" />
-                <span className="text-sm font-medium text-[#5d87ff]">
-                  Smart Management
-                </span>
-              </div>
-              <h2 className="text-3xl font-bold text-[#2d3748] mb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+          {/* Introduction Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="flex flex-col lg:flex-row items-center gap-12 mb-24"
+          >
+            <motion.div variants={slideInLeft} className="lg:w-1/2">
+              <motion.span
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-6"
+              >
+                <Calendar className="h-4 w-4" />
+                Event Management
+              </motion.span>
+
+              <motion.h2
+                variants={fadeInUp}
+                className="text-4xl font-bold text-[#2d3748] mb-6"
+              >
+                Bring Families, Communities, and Groups Together — Effortlessly
+              </motion.h2>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-[#64748b] mb-4 leading-relaxed"
+              >
+                In today's fast-moving digital world, families and communities
+                are more connected than ever, yet organizing meaningful
+                gatherings still remains a challenge. Phone calls, scattered
+                messages, and multiple social platforms often create confusion
+                instead of clarity.
+              </motion.p>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-[#64748b] mb-6 leading-relaxed"
+              >
+                Shristi Universe solves this problem by offering a powerful yet
+                simple Family Groups & Events feature designed to help families,
+                communities, and organizations plan, manage, and participate in
+                events with ease and joy.
+              </motion.p>
+
+              <motion.div
+                variants={scaleIn}
+                whileHover={{ scale: 1.02 }}
+                className="bg-[#3d4f6f] p-6 rounded-2xl"
+              >
+                <p className="text-white font-medium leading-relaxed">
+                  Whether it's a private family birthday, an anniversary
+                  celebration, a community Kul Puja, or a group meeting, Shristi
+                  Universe provides a centralized and reliable event management
+                  experience that keeps everyone informed and involved.
+                </p>
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={slideInRight} className="lg:w-1/2">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-[#f1ede8] rounded-3xl p-8 border border-[#e2ded9]"
+              >
+                <h3 className="text-xl font-bold text-[#2d3748] mb-6">
+                  Event Management Features:
+                </h3>
+                <div className="space-y-3">
+                  {featuresList.map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-3 bg-white rounded-xl px-4 py-3"
+                    >
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
+                      <span className="text-[#2d3748]">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Smarter Way Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="flex flex-col lg:flex-row items-center gap-12 mb-24"
+          >
+            <motion.div variants={slideInLeft} className="lg:w-1/2">
+              <motion.span
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-6"
+              >
+                <Target className="h-4 w-4" />
+                Smart Management
+              </motion.span>
+
+              <motion.h2
+                variants={fadeInUp}
+                className="text-4xl font-bold text-[#2d3748] mb-6"
+              >
                 A Smarter Way to Create and Manage Events
-              </h2>
-              <p className="text-[#64748b] mb-8 leading-relaxed">
+              </motion.h2>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-[#64748b] mb-6 leading-relaxed"
+              >
                 The Events feature in Shristi Universe is built to serve diverse
                 needs — from intimate family occasions to large public community
-                gatherings.
-              </p>
-              <ul className="space-y-4">
-                {featuresList.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="h-6 w-6 rounded-full bg-[#5d87ff]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <CheckCircle className="h-4 w-4 text-[#5d87ff]" />
-                    </div>
-                    <span className="text-[#2d3748]">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-[#3d4f6f] rounded-3xl p-8 text-white">
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-white/60 text-sm">Event Platform</span>
-                <span className="font-bold text-xl">SU</span>
-              </div>
-              <h3 className="text-3xl font-bold mb-2">Events</h3>
-              <p className="text-white/60 mb-8">Complete Management Platform</p>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-white/80">Active Events</span>
-                  <span className="text-2xl font-bold">24</span>
-                </div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-white/80">Participants</span>
-                  <span className="text-2xl font-bold">156</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-white/80">Communities</span>
-                  <span className="text-2xl font-bold">8</span>
-                </div>
-              </div>
-              <button className="mt-6 bg-[#5d87ff] text-white px-6 py-3 rounded-full text-sm font-medium w-full hover:bg-[#4a6fe0] transition-colors flex items-center justify-center gap-2">
-                Explore Features
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
+                gatherings. Events are not limited to family activities alone;
+                users can organize events for families, communities, and groups,
+                making it a versatile solution for real-life connections.
+              </motion.p>
 
-          {/* Section 2: Event Categories */}
-          <div className="mb-24">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-4">
-                <Target className="h-4 w-4 text-[#5d87ff]" />
-                <span className="text-sm font-medium text-[#5d87ff]">
-                  Categories
-                </span>
+              <motion.p
+                variants={fadeInUp}
+                className="text-[#64748b] mb-6 leading-relaxed"
+              >
+                This flexibility makes Shristi Universe more than just an event
+                tool — it becomes a complete family and community event
+                management platform.
+              </motion.p>
+            </motion.div>
+
+            <motion.div variants={slideInRight} className="lg:w-1/2">
+              <div className="bg-[#3d4f6f] rounded-3xl p-8 text-white">
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-white/60 text-sm">Event Platform</span>
+                  <span className="font-bold text-xl">SU</span>
+                </div>
+                <h3 className="text-3xl font-bold mb-2">Events</h3>
+                <p className="text-white/60 mb-8">
+                  Complete Management Platform
+                </p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-white/80">Active Events</span>
+                    <span className="text-2xl font-bold">24</span>
+                  </div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-white/80">Participants</span>
+                    <span className="text-2xl font-bold">156</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/80">Communities</span>
+                    <span className="text-2xl font-bold">8</span>
+                  </div>
+                </div>
+                <button className="mt-6 bg-[#5d87ff] text-white px-6 py-3 rounded-full text-sm font-medium w-full hover:bg-[#4a6fe0] transition-colors flex items-center justify-center gap-2">
+                  Explore Features
+                  <ArrowRight className="h-4 w-4" />
+                </button>
               </div>
-              <h2 className="text-3xl font-bold text-[#2d3748] mb-4">
+            </motion.div>
+          </motion.div>
+
+          {/* Event Categories Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-24"
+          >
+            <motion.div variants={fadeInUp} className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
+                <Target className="h-4 w-4" />
+                Categories
+              </span>
+              <h2 className="text-4xl font-bold text-[#2d3748] mb-4">
                 Event Categories Designed for Simplicity
               </h2>
               <p className="text-[#64748b] max-w-2xl mx-auto">
-                Organized sections to help you discover, track, and manage all
-                your events in one place
+                To ensure a smooth and user-friendly experience, events in
+                Shristi Universe are divided into three clear sections
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
               {eventCategories.map((category, index) => (
-                <div
+                <motion.div
                   key={index}
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
                   className="bg-white rounded-3xl p-6 border border-[#e2ded9] hover:shadow-lg hover:shadow-black/5 transition-all duration-300 group"
                 >
                   <div className="h-12 w-12 rounded-2xl bg-[#5d87ff]/10 flex items-center justify-center mb-5 group-hover:bg-[#5d87ff] transition-colors">
@@ -354,111 +561,133 @@ export default function EventPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <div className="mt-8 bg-[#f1ede8] rounded-2xl p-6 border border-[#e2ded9]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="bg-[#f1ede8] rounded-2xl p-6 border border-[#e2ded9]"
+            >
               <p className="text-[#64748b] text-sm">
-                <strong className="text-[#2d3748]">Note:</strong> Private events
-                are only visible to invited members. Public events appear in
-                Suggested Events to encourage community engagement.
+                <strong className="text-[#2d3748]">Note:</strong> Only public
+                events appear in suggestions. This ensures privacy while
+                encouraging community engagement. With a single click, users can
+                explore events and choose to join those that interest them.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Section 3: Public vs Private */}
-          <div className="grid lg:grid-cols-2 gap-16 items-start mb-24">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-6">
-                <Shield className="h-4 w-4 text-[#5d87ff]" />
-                <span className="text-sm font-medium text-[#5d87ff]">
-                  Privacy Control
-                </span>
-              </div>
-              <h2 className="text-3xl font-bold text-[#2d3748] mb-6">
+          {/* Privacy Control Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-24"
+          >
+            <motion.div variants={fadeInUp} className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
+                <Shield className="h-4 w-4" />
+                Privacy Control
+              </span>
+              <h2 className="text-4xl font-bold text-[#2d3748] mb-4">
                 Public vs Private Events: Full Control Over Privacy
               </h2>
-              <p className="text-[#64748b] mb-8 leading-relaxed">
+              <p className="text-[#64748b] max-w-2xl mx-auto">
                 Shristi Universe understands that not all events are meant for
-                everyone. Users can decide the visibility of each event based on
-                their requirements.
+                everyone. That's why users can decide the visibility of each
+                event.
               </p>
+            </motion.div>
 
-              <div className="space-y-4">
-                {privacyTypes.map((type, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-2xl p-6 border border-[#e2ded9] hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="h-10 w-10 rounded-xl bg-[#5d87ff]/10 flex items-center justify-center">
-                        <div className="text-[#5d87ff]">{type.icon}</div>
-                      </div>
-                      <h3 className="text-lg font-bold text-[#2d3748]">
-                        {type.title}
-                      </h3>
+            <div className="grid lg:grid-cols-2 gap-8 mb-8">
+              {privacyTypes.map((type, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white rounded-3xl p-8 border border-[#e2ded9] hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="h-12 w-12 rounded-xl bg-[#5d87ff]/10 flex items-center justify-center">
+                      <div className="text-[#5d87ff]">{type.icon}</div>
                     </div>
-                    <p className="text-[#64748b] mb-4 text-sm">
-                      {type.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {type.features.map((feature, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-[#f8f6f3] text-[#2d3748] px-3 py-1.5 rounded-full text-xs border border-[#e2ded9]"
-                        >
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
+                    <h3 className="text-2xl font-bold text-[#2d3748]">
+                      {type.title}
+                    </h3>
                   </div>
-                ))}
-              </div>
+                  <p className="text-[#64748b] mb-6 leading-relaxed">
+                    {type.description}
+                  </p>
+                  <div className="space-y-3">
+                    {type.features.map((feature, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-3 bg-[#f8f6f3] rounded-xl px-4 py-3"
+                      >
+                        <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
+                        <span className="text-[#2d3748]">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <div className="bg-[#f1ede8] rounded-3xl p-8">
-              <div className="bg-white rounded-2xl p-6 mb-4 border border-[#e2ded9]">
-                <div className="flex items-center gap-3 mb-4">
-                  <Lock className="h-5 w-5 text-[#5d87ff]" />
-                  <span className="font-medium text-[#2d3748]">
-                    Private Event
-                  </span>
-                </div>
-                <div className="h-2 bg-[#e2ded9] rounded-full overflow-hidden">
-                  <div className="h-full w-3/4 bg-[#5d87ff] rounded-full" />
-                </div>
-                <p className="text-sm text-[#64748b] mt-2">
-                  12 of 16 invited guests confirmed
-                </p>
-              </div>
-              <div className="bg-white rounded-2xl p-6 border border-[#e2ded9]">
-                <div className="flex items-center gap-3 mb-4">
-                  <Globe className="h-5 w-5 text-[#5d87ff]" />
-                  <span className="font-medium text-[#2d3748]">
-                    Public Event
-                  </span>
-                </div>
-                <div className="h-2 bg-[#e2ded9] rounded-full overflow-hidden">
-                  <div className="h-full w-full bg-[#5d87ff] rounded-full" />
-                </div>
-                <p className="text-sm text-[#64748b] mt-2">
-                  45 community members participating
-                </p>
-              </div>
-            </div>
-          </div>
 
-          {/* Section 4: Event Types */}
-          <div className="mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="bg-[#5d87ff]/5 rounded-2xl p-6 border border-[#5d87ff]/20"
+            >
+              <div className="flex items-start gap-3">
+                <Shield className="h-6 w-6 text-[#5d87ff] flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-[#2d3748] mb-2">
+                    Flexible Privacy Settings
+                  </h4>
+                  <p className="text-[#64748b]">
+                    This flexibility empowers users to organize events
+                    confidently without compromising privacy. If an event is set
+                    to private, only invited members can attend. If marked
+                    public, it becomes visible in the Suggested Events section,
+                    allowing other users to discover and join.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Meaningful Life Events Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-24"
+          >
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-[#3d4f6f] rounded-3xl p-8 text-white">
+              <motion.div
+                variants={slideInLeft}
+                className="bg-[#3d4f6f] rounded-3xl p-8 text-white"
+              >
                 <div className="flex items-center gap-3 mb-6">
                   <Star className="h-6 w-6 text-[#fbbf24]" />
                   <span className="text-white/80">More Than Meetings</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-6">
+                <h3 className="text-3xl font-bold mb-6">
                   Meaningful Life Events
                 </h3>
+                <p className="text-white/80 mb-6 leading-relaxed">
+                  The Events feature is not limited to formal meetings or
+                  organizational use. It is equally powerful for personal and
+                  cultural moments.
+                </p>
                 <div className="space-y-4">
                   {eventTypes.map((type, index) => (
                     <div
@@ -470,8 +699,8 @@ export default function EventPage() {
                     </div>
                   ))}
                 </div>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div variants={slideInRight}>
                 <div className="inline-flex items-center gap-2 bg-[#fbbf24]/10 px-4 py-2 rounded-full mb-6">
                   <Star className="h-4 w-4 text-[#fbbf24]" />
                   <span className="text-sm font-medium text-[#d97706]">
@@ -479,108 +708,260 @@ export default function EventPage() {
                   </span>
                 </div>
                 <h2 className="text-3xl font-bold text-[#2d3748] mb-6">
-                  More Than Meetings — Meaningful Life Events
+                  Track and Celebrate Every Moment
                 </h2>
-                <p className="text-[#64748b] leading-relaxed">
-                  The Events feature is equally powerful for personal and
-                  cultural moments. By tracking participant counts, hosts can
-                  plan better and ensure smoother execution, also managing
-                  financial standards for their events.
+                <p className="text-[#64748b] mb-6 leading-relaxed">
+                  By tracking participant counts, hosts can plan better and
+                  ensure smoother execution, also by managing the financial
+                  standard. This makes Shristi Universe useful not just for
+                  organizations but for everyday family and community life.
                 </p>
-              </div>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-[#f1ede8] rounded-2xl p-6 border border-[#e2ded9]"
+                >
+                  <h4 className="font-semibold text-[#2d3748] mb-3">
+                    Enhanced Event Planning:
+                  </h4>
+                  <ul className="space-y-2">
+                    {[
+                      "Real-time participant tracking",
+                      "Better resource allocation",
+                      "Improved financial planning",
+                      "Seamless coordination",
+                    ].map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-center gap-2 text-[#64748b]"
+                      >
+                        <CheckCircle className="h-4 w-4 text-[#5d87ff]" />
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Section 5: Why it stands out */}
-          <div className="mb-24">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#5d87ff]/10 px-4 py-2 rounded-full mb-4">
-                <Target className="h-4 w-4 text-[#5d87ff]" />
-                <span className="text-sm font-medium text-[#5d87ff]">
-                  Why Choose Us
-                </span>
-              </div>
-              <h2 className="text-3xl font-bold text-[#2d3748] mb-4">
+          {/* Why Stand Out Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-24"
+          >
+            <motion.div variants={fadeInUp} className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
+                <Target className="h-4 w-4" />
+                Why Choose Us
+              </span>
+              <h2 className="text-4xl font-bold text-[#2d3748] mb-4">
                 Why Shristi Universe Events Stand Out
               </h2>
               <p className="text-[#64748b] max-w-2xl mx-auto">
-                While many platforms focus only on public events or business
-                meetings, Shristi Universe bridges the gap between personal,
-                cultural, and community events.
+                Compared to generic event tools and social media platforms,
+                Shristi Universe focuses on relationship-driven event management
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {standoutFeatures.map((feature, index) => (
-                <div
+                <motion.div
                   key={index}
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
                   className="bg-white rounded-2xl p-6 border border-[#e2ded9] hover:border-[#5d87ff]/30 hover:shadow-lg hover:shadow-[#5d87ff]/5 transition-all duration-300"
                 >
                   <div className="h-10 w-10 rounded-xl bg-[#5d87ff]/10 flex items-center justify-center mb-4">
-                    <Target className="h-5 w-5 text-[#5d87ff]" />
+                    <div className="text-[#5d87ff]">{feature.icon}</div>
                   </div>
                   <h3 className="font-bold text-[#2d3748] mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-[#64748b]">{feature.description}</p>
-                </div>
+                  <p className="text-sm text-[#64748b]">
+                    {feature.description}
+                  </p>
+                </motion.div>
               ))}
             </div>
-          </div>
 
-          {/* Section 6: CTA */}
-          <div className="mb-12">
-            <div className="bg-[#3d4f6f] rounded-3xl p-12 text-center text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 h-64 w-64 bg-[#5d87ff]/20 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 h-48 w-48 bg-[#5d87ff]/10 rounded-full blur-3xl" />
-              <div className="relative z-10">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-balance">
-                  Bring Your Community Together
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="mt-8 bg-[#f1ede8] rounded-2xl p-6 border border-[#e2ded9]"
+            >
+              <h4 className="font-semibold text-[#2d3748] mb-3">
+                Key Advantages:
+              </h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                {[
+                  "Built specifically for families, communities, and groups",
+                  "Simple and intuitive user interface",
+                  "Centralized event management system",
+                  "Strong privacy controls",
+                  "Real-time participant tracking",
+                  "Seamless coordination without external tools",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
+                    <span className="text-[#2d3748] text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Final CTA Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-20"
+          >
+            <motion.div
+              variants={scaleIn}
+              className="bg-[#3d4f6f] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-48 h-48 bg-[#5d87ff]/20 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#5d87ff]/20 rounded-full blur-3xl" />
+
+              <div className="relative z-10 text-center">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="w-16 h-16 bg-[#5d87ff] rounded-2xl flex items-center justify-center mx-auto mb-6"
+                >
+                  <Calendar className="h-8 w-8 text-white" />
+                </motion.div>
+
+                <h2 className="text-4xl font-bold mb-6">
+                  Transform the Way You Connect
                 </h2>
-                <p className="text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
+                <p className="text-lg mb-8 text-white/80 max-w-3xl mx-auto leading-relaxed">
                   The Family Groups & Events feature in Shristi Universe
                   transforms the way people connect, plan, and celebrate
                   together. From private family occasions to large public
-                  community events.
+                  community events, the platform offers a secure, organized, and
+                  joyful experience for everyone involved.
                 </p>
-                <button className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 inline-flex items-center gap-2">
+
+                <p className="text-lg mb-8 text-white/80 max-w-3xl mx-auto leading-relaxed">
+                  If you are looking for a reliable way to manage family events,
+                  community programs, or group activities without complexity,
+                  Shristi Universe provides the perfect digital space to bring
+                  people together — effortlessly.
+                </p>
+
+                <div className="flex flex-wrap justify-center gap-4 mb-8">
+                  {[
+                    "Family Events",
+                    "Community Programs",
+                    "Cultural Ceremonies",
+                    "Group Meetings",
+                  ].map((tag, idx) => (
+                    <motion.span
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="px-6 py-2 bg-white/10 backdrop-blur rounded-full text-sm font-medium border border-white/20"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+
+                <button className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2">
                   Start Planning Your First Event
                   <ArrowRight className="h-5 w-5" />
                 </button>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#f1ede8] border-t border-[#e2ded9] py-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-[#64748b] text-sm">
-            © 2024 Shristi Universe. All rights reserved.
-          </span>
-          <div className="flex items-center gap-6">
-            <a
-              href="#"
-              className="text-[#64748b] hover:text-[#5d87ff] text-sm transition-colors"
-            >
-              Privacy
-            </a>
-            <a
-              href="#"
-              className="text-[#64748b] hover:text-[#5d87ff] text-sm transition-colors"
-            >
-              Terms
-            </a>
-            <a
-              href="#"
-              className="text-[#64748b] hover:text-[#5d87ff] text-sm transition-colors"
-            >
-              Contact
-            </a>
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="bg-[#2d3748] py-12"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
+              <p className="text-white/70 text-sm">
+                Bringing families and communities together through meaningful
+                events.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Features</h4>
+              <ul className="space-y-2">
+                {["Events", "Heritage Sites", "Family Tree", "Finance"].map(
+                  (item) => (
+                    <li key={item}>
+                      <a
+                        href="#"
+                        className="text-white/70 hover:text-white text-sm transition-colors"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <ul className="space-y-2">
+                {["About", "Contact", "Blog"].map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-white/70 hover:text-white text-sm transition-colors"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Legal</h4>
+              <ul className="space-y-2">
+                {["Privacy", "Terms"].map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-white/70 hover:text-white text-sm transition-colors"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8 text-center">
+            <p className="text-white/70 text-sm">
+              &copy; 2026 Shristi Universe. All rights reserved.
+            </p>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
-}
+};
+
+export default EventsPage;
