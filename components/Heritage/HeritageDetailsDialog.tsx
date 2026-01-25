@@ -31,7 +31,7 @@ export default function HeritageDetailsDialog({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
@@ -39,7 +39,7 @@ export default function HeritageDetailsDialog({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-linear-to-r from-blue-50 to-white">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-blue-100 rounded-xl">
               <Building2 className="h-6 w-6 text-blue-600" />
@@ -82,7 +82,7 @@ export default function HeritageDetailsDialog({
                       "/api/placeholder/800/600";
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
               </div>
 
               {images.length > 1 && (
@@ -160,13 +160,13 @@ export default function HeritageDetailsDialog({
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-5 text-center">
+              <div className="bg-linear-to-br from-blue-50 to-blue-100 rounded-2xl p-5 text-center">
                 <div className="text-2xl font-bold text-blue-700 mb-1">
                   {heritage.likes?.length || 0}
                 </div>
                 <div className="text-sm text-blue-600 font-medium">Likes</div>
               </div>
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-5 text-center">
+              <div className="bg-linear-to-br from-green-50 to-green-100 rounded-2xl p-5 text-center">
                 <div className="text-2xl font-bold text-green-700 mb-1">
                   {heritage.comments?.length || 0}
                 </div>
@@ -174,7 +174,7 @@ export default function HeritageDetailsDialog({
                   Comments
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-5 text-center">
+              <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-2xl p-5 text-center">
                 <div className="text-2xl font-bold text-purple-700 mb-1">
                   {images.length}
                 </div>
@@ -182,7 +182,7 @@ export default function HeritageDetailsDialog({
                   Photos
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-5 text-center">
+              <div className="bg-linear-to-br from-amber-50 to-amber-100 rounded-2xl p-5 text-center">
                 <div className="text-2xl font-bold text-amber-700 mb-1">
                   {videos.length}
                 </div>

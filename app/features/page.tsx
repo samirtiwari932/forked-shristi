@@ -176,8 +176,8 @@ export default function FeaturesPage() {
                           className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
                         />
                       )}
-                      {/* Stronger gradient overlay for better text readability */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/85 backdrop-blur-[2px]" />
+                      {/* Stronger linear overlay for better text readability */}
+                      <div className="absolute inset-0 bg-linear-to-b from-white/85 via-white/75 to-white/85 backdrop-blur-[2px]" />
                     </div>
 
                     {/* Content - Now with better contrast on hover */}
@@ -231,7 +231,7 @@ export default function FeaturesPage() {
               quality={90}
             />
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3d4f6f]/95 via-[#2d3748]/90 to-[#3d4f6f]/95" />
+            <div className="absolute inset-0 bg-linear-to-br from-[#3d4f6f]/95 via-[#2d3748]/90 to-[#3d4f6f]/95" />
           </div>
 
           {/* Decorative Elements */}

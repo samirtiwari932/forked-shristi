@@ -301,13 +301,13 @@ const HeritagePage = () => {
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="relative w-full h-[500px] overflow-hidden"
+        className="relative w-full h-125 overflow-hidden"
       >
         <div className="absolute inset-0 flex transition-transform duration-500 ease-in-out">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`${slide.bgColor} w-full h-full flex-shrink-0 flex flex-col items-center justify-center text-white p-6 relative`}
+              className={`${slide.bgColor} w-full h-full shrink-0 flex flex-col items-center justify-center text-white p-6 relative`}
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               <div className="absolute top-10 left-10 w-32 h-32 bg-[#5d87ff]/10 rounded-full blur-3xl" />
@@ -647,7 +647,7 @@ const HeritagePage = () => {
                     whileHover={{ x: 5 }}
                     className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[#e2ded9]"
                   >
-                    <div className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center shrink-0 mt-1">
                       <span className="text-white font-bold text-sm">
                         {feature.step}
                       </span>
@@ -669,7 +669,7 @@ const HeritagePage = () => {
             <motion.div variants={slideInRight} className="lg:w-1/2">
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-gradient-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 border border-[#e2ded9]"
+                className="bg-linear-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 border border-[#e2ded9]"
               >
                 <h3 className="text-xl font-bold text-[#2d3748] mb-6">
                   While Adding a Heritage Site, Include:
@@ -705,7 +705,7 @@ const HeritagePage = () => {
                       transition={{ delay: idx * 0.1 }}
                       className="flex items-start gap-3"
                     >
-                      <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0 mt-0.5" />
                       <div>
                         <span className="font-medium text-[#2d3748]">
                           {item.label}:{" "}
@@ -827,7 +827,7 @@ const HeritagePage = () => {
               className="bg-[#5d87ff]/5 rounded-2xl p-6 border border-[#5d87ff]/20"
             >
               <div className="flex items-start gap-3">
-                <Shield className="h-6 w-6 text-[#5d87ff] flex-shrink-0 mt-1" />
+                <Shield className="h-6 w-6 text-[#5d87ff] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-[#2d3748] mb-2">
                     Collaborative Preservation
@@ -911,7 +911,7 @@ const HeritagePage = () => {
                 gain visibility quickly.
               </p>
 
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6">
+              <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-2xl p-6">
                 <h3 className="font-bold text-[#2d3748] mb-4 flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-purple-600" />
                   Why Latest Heritage Matters
@@ -924,7 +924,7 @@ const HeritagePage = () => {
                     "Be among the first to explore new sites",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-6 h-6 bg-purple-500 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
                         <Star className="h-4 w-4 text-white" />
                       </div>
                       <span className="text-[#2d3748] font-medium">{item}</span>
@@ -1079,7 +1079,7 @@ const HeritagePage = () => {
                       whileHover={{ x: 5 }}
                       className="flex items-center gap-3 bg-white rounded-xl px-4 py-3"
                     >
-                      <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0" />
                       <span className="text-[#2d3748]">{benefit}</span>
                     </motion.div>
                   ))}
@@ -1210,14 +1210,14 @@ const HeritagePage = () => {
       {/* Map Modal */}
       {selectedHeritageForMap && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
           onClick={() => setSelectedHeritageForMap(null)}
         >
           <div
             className="w-full max-w-4xl rounded-3xl shadow-2xl bg-white overflow-hidden animate-in fade-in zoom-in duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-linear-to-r from-blue-50 to-white">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">
                   {selectedHeritageForMap.title}

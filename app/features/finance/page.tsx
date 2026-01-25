@@ -622,7 +622,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.1 }}
-                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
+                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center shrink-0 mt-1"
                       >
                         <span className="text-white font-bold text-sm">
                           {item.step}
@@ -661,7 +661,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.1 }}
-                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
+                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center shrink-0 mt-1"
                       >
                         <span className="text-white font-bold text-sm">
                           {item.step}
@@ -740,7 +740,7 @@ export default function FinancePage() {
                         transition={{ delay: idx * 0.1 }}
                         className="flex items-start gap-3"
                       >
-                        <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0 mt-0.5" />
                         <span className="text-[#64748b]">{permission}</span>
                       </motion.li>
                     ))}
@@ -756,7 +756,7 @@ export default function FinancePage() {
               className="mt-8 bg-[#5d87ff]/5 rounded-2xl p-6 border border-[#5d87ff]/20"
             >
               <div className="flex items-start gap-3">
-                <Shield className="h-6 w-6 text-[#5d87ff] flex-shrink-0 mt-1" />
+                <Shield className="h-6 w-6 text-[#5d87ff] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-[#2d3748] mb-2">
                     Building Trust Through Structure
@@ -827,7 +827,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.2 }}
-                        className="w-6 h-6 bg-[#5d87ff]/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                        className="w-6 h-6 bg-[#5d87ff]/10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
                       >
                         <div className="w-2 h-2 bg-[#5d87ff] rounded-full" />
                       </motion.div>
@@ -903,7 +903,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.2 }}
-                        className="w-6 h-6 bg-[#ef4444]/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                        className="w-6 h-6 bg-[#ef4444]/10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
                       >
                         <div className="w-2 h-2 bg-[#ef4444] rounded-full" />
                       </motion.div>
@@ -1389,7 +1389,7 @@ export default function FinancePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 lg:p-12 border border-[#e2ded9]"
+              className="bg-linear-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 lg:p-12 border border-[#e2ded9]"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
                 {[
@@ -1472,7 +1472,7 @@ export default function FinancePage() {
                       whileHover={{ x: 5 }}
                       className="flex items-center gap-3 bg-white rounded-xl px-4 py-3"
                     >
-                      <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0" />
                       <span className="text-[#2d3748]">{benefit}</span>
                     </motion.div>
                   ))}

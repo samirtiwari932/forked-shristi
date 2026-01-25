@@ -1,13 +1,13 @@
 export default function CreateEventCard({ onClick }: { onClick: () => void }) {
   return (
     <div className="group cursor-pointer h-full" onClick={onClick}>
-      <div className="bg-gradient-to-br from-blue-50 via-white to-blue-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-out hover:-translate-y-2 h-full flex flex-col border-2 border-dashed border-blue-200 hover:border-blue-300">
+      <div className="bg-linear-to-br from-blue-50 via-white to-blue-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-out hover:-translate-y-2 h-full flex flex-col border-2 border-dashed border-blue-200 hover:border-blue-300">
         {/* Top section with plus icon */}
         <div className="flex-1 flex items-center justify-center p-8">
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
-              <div className="h-20 w-20 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                <div className="h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300 shadow-lg">
+              <div className="h-20 w-20 rounded-full bg-linear-to-br from-blue-100 to-blue-200 flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
+                <div className="h-16 w-16 rounded-full bg-linear-to-br from-blue-500 to-blue-600 flex items-center justify-center group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300 shadow-lg">
                   <svg
                     className="h-8 w-8 text-white group-hover:scale-110 transition-transform"
                     fill="none"
@@ -38,7 +38,7 @@ export default function CreateEventCard({ onClick }: { onClick: () => void }) {
         </div>
 
         {/* Bottom text */}
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-5 text-center">
+        <div className="bg-linear-to-r from-blue-50 to-blue-100 p-5 text-center">
           <p className="text-sm text-blue-700 font-medium">
             Click to start planning your event
           </p>

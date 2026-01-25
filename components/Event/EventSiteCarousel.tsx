@@ -71,13 +71,13 @@ export default function EventSiteCarousel({
         className="flex gap-6 overflow-x-auto px-2 py-4 scrollbar-hide"
       >
         {/* Create Event Card - Always first */}
-        <div className="flex-shrink-0 w-[300px]">
+        <div className="shrink-0 w-75">
           <CreateEventCard onClick={onCreateClick} />
         </div>
 
         {/* Existing Events */}
         {events.map((event) => (
-          <div key={event.id} className="flex-shrink-0 w-[300px]">
+          <div key={event.id} className="shrink-0 w-75">
             <EventSiteCard
               event={event}
               onClick={() => onEventClick(event)}

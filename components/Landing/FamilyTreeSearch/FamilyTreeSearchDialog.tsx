@@ -33,12 +33,12 @@ export default function FamilySearchDialog({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-60"
         onClick={onClose}
       />
 
       {/* Dialog */}
-      <div className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto pt-16 pb-10 px-4">
+      <div className="fixed inset-0 z-70 flex items-start justify-center overflow-y-auto pt-16 pb-10 px-4">
         <div
           className="w-full max-w-3xl bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden"
           onClick={(e) => e.stopPropagation()}
@@ -92,7 +92,7 @@ export default function FamilySearchDialog({
                     >
                       <div className="flex gap-5 p-5">
                         {/* Tree Image */}
-                        <div className="flex-shrink-0">
+                        <div className="shrink-0">
                           <div className="w-28 h-28 rounded-2xl overflow-hidden shadow-lg ring-2 ring-white/50">
                             <img
                               src={imageUrl}
@@ -144,7 +144,7 @@ export default function FamilySearchDialog({
                                 {
                                   month: "short",
                                   year: "numeric",
-                                }
+                                },
                               )}
                             </span>
                           </div>
@@ -159,7 +159,7 @@ export default function FamilySearchDialog({
                       </div>
 
                       {/* Subtle bottom indicator */}
-                      <div className="h-1 bg-gradient-to-r from-[#5d87ff] to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="h-1 bg-linear-to-r from-[#5d87ff] to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </button>
                   );
                 })}
@@ -168,7 +168,7 @@ export default function FamilySearchDialog({
           </div>
 
           {/* Footer */}
-          <div className="p-5 bg-gradient-to-r from-[#5d87ff]/5 to-indigo-600/5 dark:from-[#5d87ff]/10 dark:to-indigo-600/10 border-t border-gray-200 dark:border-gray-800">
+          <div className="p-5 bg-linear-to-r from-[#5d87ff]/5 to-indigo-600/5 dark:from-[#5d87ff]/10 dark:to-indigo-600/10 border-t border-gray-200 dark:border-gray-800">
             <p className="text-center text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center justify-center gap-2">
               <Lock className="w-4 h-4" />
               Login required to view full family tree details

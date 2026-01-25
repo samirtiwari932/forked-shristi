@@ -226,7 +226,7 @@ export default function EventPageClient() {
           </p>
         </div>
         <div className="lg:w-1/2">
-          <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
+          <div className="bg-linear-to-br from-green-100 to-emerald-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
             <div className="text-center p-6">
               <div className="text-5xl mb-4">📅</div>
               <p className="text-gray-700 font-medium">
@@ -348,7 +348,7 @@ export default function EventPageClient() {
           </ul>
         </div>
         <div className="lg:w-1/2">
-          <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
+          <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
             <div className="text-center p-6">
               <div className="text-5xl mb-4">🔒</div>
               <p className="text-gray-700 font-medium">Privacy Control</p>

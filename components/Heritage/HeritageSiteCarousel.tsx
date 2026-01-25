@@ -69,13 +69,13 @@ export default function HeritageSiteCarousel({
         className="flex gap-6 overflow-x-auto px-2 py-4 scrollbar-hide"
       >
         {/* Create Heritage Card - Always first */}
-        <div className="flex-shrink-0 w-[300px]">
+        <div className="shrink-0 w-75">
           <CreateHeritageCard onClick={onCreateClick} />
         </div>
 
         {/* Existing Heritage Sites */}
         {sites.map((site) => (
-          <div key={site.id} className="flex-shrink-0 w-[300px]">
+          <div key={site.id} className="shrink-0 w-75">
             <HeritageSiteCard
               site={site}
               onClick={() => onSiteClick(site)}

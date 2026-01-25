@@ -14,10 +14,12 @@ export default function EventDetailsDialog({
   event,
   isOpen,
   onClose,
+  onViewMap,
 }: {
   event: EventResponse;
   isOpen: boolean;
   onClose: () => void;
+  onViewMap?: (event: EventResponse) => void;
 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -42,7 +44,7 @@ export default function EventDetailsDialog({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
@@ -50,7 +52,7 @@ export default function EventDetailsDialog({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+        <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-linear-to-r from-blue-50 to-white">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-blue-100 rounded-xl">
               <Calendar className="h-6 w-6 text-blue-600" />
@@ -87,7 +89,7 @@ export default function EventDetailsDialog({
                   alt={event.name}
                   className="w-full h-full object-cover transition-opacity duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
               </div>
 
               {images.length > 1 && (
@@ -137,7 +139,7 @@ export default function EventDetailsDialog({
           <div className="p-8 space-y-6">
             {/* Event Times */}
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-5">
+              <div className="bg-linear-to-br from-blue-50 to-blue-100 rounded-2xl p-5">
                 <div className="flex items-center gap-3 mb-2">
                   <Calendar className="h-5 w-5 text-blue-600" />
                   <span className="font-semibold text-gray-900">Start</span>
@@ -146,7 +148,7 @@ export default function EventDetailsDialog({
                   {formatDate(event.startDate)}
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-5">
+              <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-2xl p-5">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="h-5 w-5 text-purple-600" />
                   <span className="font-semibold text-gray-900">End</span>
@@ -182,7 +184,7 @@ export default function EventDetailsDialog({
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-5 text-center">
+              <div className="bg-linear-to-br from-blue-50 to-blue-100 rounded-2xl p-5 text-center">
                 <div className="text-2xl font-bold text-blue-700 mb-1">
                   {event.participantsCount}
                 </div>
@@ -191,7 +193,7 @@ export default function EventDetailsDialog({
                   Participants
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-5 text-center">
+              <div className="bg-linear-to-br from-green-50 to-green-100 rounded-2xl p-5 text-center">
                 <div className="text-2xl font-bold text-green-700 mb-1">
                   {event.type}
                 </div>
@@ -199,7 +201,7 @@ export default function EventDetailsDialog({
                   Event Type
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-5 text-center">
+              <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-2xl p-5 text-center">
                 <div className="text-2xl font-bold text-purple-700 mb-1">
                   {images.length}
                 </div>

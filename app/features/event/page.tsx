@@ -628,7 +628,7 @@ const EventsPage = () => {
                         key={idx}
                         className="flex items-start gap-2 text-sm text-[#64748b]"
                       >
-                        <div className="h-1.5 w-1.5 bg-[#5d87ff] rounded-full mt-2 flex-shrink-0" />
+                        <div className="h-1.5 w-1.5 bg-[#5d87ff] rounded-full mt-2 shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -718,7 +718,7 @@ const EventsPage = () => {
               className="bg-[#5d87ff]/5 rounded-2xl p-6 border border-[#5d87ff]/20"
             >
               <div className="flex items-start gap-3">
-                <Shield className="h-6 w-6 text-[#5d87ff] flex-shrink-0 mt-1" />
+                <Shield className="h-6 w-6 text-[#5d87ff] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-[#2d3748] mb-2">
                     Flexible Privacy Settings
@@ -982,14 +982,14 @@ const EventsPage = () => {
       {/* Map Modal */}
       {selectedEventForMap && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
           onClick={() => setSelectedEventForMap(null)}
         >
           <div
             className="w-full max-w-4xl rounded-3xl shadow-2xl bg-white overflow-hidden animate-in fade-in zoom-in duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-linear-to-r from-blue-50 to-white">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">
                   {selectedEventForMap.name}

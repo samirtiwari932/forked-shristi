@@ -1,6 +1,4 @@
 // LoginDialog.tsx
-import React from "react";
-
 interface LoginDialogProps {
   isOpen: boolean;
   onClose: () => void;
@@ -30,7 +28,7 @@ export default function LoginDialog({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with icon */}
-        <div className="bg-gradient-to-r from-[#5d87ff] to-[#4c73e6] p-6 text-center">
+        <div className="bg-linear-to-r from-[#5d87ff] to-[#4c73e6] p-6 text-center">
           <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
             <svg
               className="w-8 h-8 text-white"
@@ -64,7 +62,7 @@ export default function LoginDialog({
                 onClose();
                 onLogin();
               }}
-              className="w-full px-6 py-3 bg-gradient-to-r from-[#5d87ff] to-[#4c73e6] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-200"
+              className="w-full px-6 py-3 bg-linear-to-r from-[#5d87ff] to-[#4c73e6] text-white rounded-lg font-semibold hover:shadow-lg hover:scale-[1.02] active:scale-100 transition-all duration-200"
             >
               Go to Login
             </button>
