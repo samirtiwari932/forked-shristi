@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   MapPin,
@@ -42,6 +42,8 @@ import {
   HeritageSiteCarousel,
   HeritageDetailsDialog,
 } from "@/components/Heritage/index";
+import LoginDialog from "@/components/dialog/Login";
+import Footer from "@/components/Landing/Footer";
 
 // Animation variants (same as finance page)
 const fadeInUp = {
@@ -76,8 +78,9 @@ const slideInRight = {
 
 const HeritagePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeSection, setActiveSection] = useState("hero");
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const heritageSectionRef = useRef<HTMLDivElement | null>(null);
 
   const [selectedHeritage, setSelectedHeritage] =
     useState<HeritageResponse | null>(null);
@@ -94,6 +97,26 @@ const HeritagePage = () => {
 
   const handleViewOnMap = (heritage: HeritageResponse) => {
     setSelectedHeritageForMap(heritage);
+  };
+
+  const handleCreateHeritageClick = () => {
+    // Check if user is logged in
+    const isLoggedIn = false; // Replace with actual auth check
+
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+    } else {
+      // Navigate to create event page or open create event modal
+      console.log("Create event");
+    }
+  };
+
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
+
+  const handleRegister = () => {
+    window.location.href = "/register";
   };
 
   const slides = [
@@ -278,13 +301,13 @@ const HeritagePage = () => {
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="relative w-full h-[500px] overflow-hidden"
+        className="relative w-full h-125 overflow-hidden"
       >
         <div className="absolute inset-0 flex transition-transform duration-500 ease-in-out">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`${slide.bgColor} w-full h-full flex-shrink-0 flex flex-col items-center justify-center text-white p-6 relative`}
+              className={`${slide.bgColor} w-full h-full shrink-0 flex flex-col items-center justify-center text-white p-6 relative`}
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               <div className="absolute top-10 left-10 w-32 h-32 bg-[#5d87ff]/10 rounded-full blur-3xl" />
@@ -437,27 +460,29 @@ const HeritagePage = () => {
             </motion.div>
           </motion.div>
 
-          {loading ? (
-            <div className="text-center py-16">
-              <Loader2 className="h-12 w-12 text-blue-600 animate-spin mx-auto mb-4" />
-              <p className="text-gray-600">Loading heritage sites...</p>
-            </div>
-          ) : error ? (
-            <div className="text-center py-16">
-              <div className="bg-red-50 border border-red-200 rounded-2xl p-8 inline-block">
-                <p className="text-red-600 font-medium">{error}</p>
+          <div ref={heritageSectionRef}>
+            {loading ? (
+              <div className="text-center py-16">
+                <Loader2 className="h-12 w-12 text-blue-600 animate-spin mx-auto mb-4" />
+                <p className="text-gray-600">Loading heritage sites...</p>
               </div>
-            </div>
-          ) : (
-            <>
-              <HeritageSiteCarousel
-                sites={heritages}
-                onCreateClick={() => setIsLoginOpen(true)}
-                onSiteClick={handleHeritageClick}
-                onViewMap={handleViewOnMap}
-              />
-            </>
-          )}
+            ) : error ? (
+              <div className="text-center py-16">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-8 inline-block">
+                  <p className="text-red-600 font-medium">{error}</p>
+                </div>
+              </div>
+            ) : (
+              <>
+                <HeritageSiteCarousel
+                  sites={heritages}
+                  onCreateClick={handleCreateHeritageClick}
+                  onSiteClick={handleHeritageClick}
+                  onViewMap={handleViewOnMap}
+                />
+              </>
+            )}
+          </div>
 
           {/* Heritage Types Section */}
           <motion.div
@@ -465,7 +490,7 @@ const HeritagePage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="mb-24"
+            className="mt-18 mb-24"
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
@@ -622,7 +647,7 @@ const HeritagePage = () => {
                     whileHover={{ x: 5 }}
                     className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[#e2ded9]"
                   >
-                    <div className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center shrink-0 mt-1">
                       <span className="text-white font-bold text-sm">
                         {feature.step}
                       </span>
@@ -644,7 +669,7 @@ const HeritagePage = () => {
             <motion.div variants={slideInRight} className="lg:w-1/2">
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-gradient-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 border border-[#e2ded9]"
+                className="bg-linear-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 border border-[#e2ded9]"
               >
                 <h3 className="text-xl font-bold text-[#2d3748] mb-6">
                   While Adding a Heritage Site, Include:
@@ -680,7 +705,7 @@ const HeritagePage = () => {
                       transition={{ delay: idx * 0.1 }}
                       className="flex items-start gap-3"
                     >
-                      <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0 mt-0.5" />
                       <div>
                         <span className="font-medium text-[#2d3748]">
                           {item.label}:{" "}
@@ -802,7 +827,7 @@ const HeritagePage = () => {
               className="bg-[#5d87ff]/5 rounded-2xl p-6 border border-[#5d87ff]/20"
             >
               <div className="flex items-start gap-3">
-                <Shield className="h-6 w-6 text-[#5d87ff] flex-shrink-0 mt-1" />
+                <Shield className="h-6 w-6 text-[#5d87ff] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-[#2d3748] mb-2">
                     Collaborative Preservation
@@ -886,7 +911,7 @@ const HeritagePage = () => {
                 gain visibility quickly.
               </p>
 
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6">
+              <div className="bg-linear-to-br from-purple-50 to-purple-100 rounded-2xl p-6">
                 <h3 className="font-bold text-[#2d3748] mb-4 flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-purple-600" />
                   Why Latest Heritage Matters
@@ -899,7 +924,7 @@ const HeritagePage = () => {
                     "Be among the first to explore new sites",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-6 h-6 bg-purple-500 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
                         <Star className="h-4 w-4 text-white" />
                       </div>
                       <span className="text-[#2d3748] font-medium">{item}</span>
@@ -1054,7 +1079,7 @@ const HeritagePage = () => {
                       whileHover={{ x: 5 }}
                       className="flex items-center gap-3 bg-white rounded-xl px-4 py-3"
                     >
-                      <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0" />
                       <span className="text-[#2d3748]">{benefit}</span>
                     </motion.div>
                   ))}
@@ -1080,6 +1105,7 @@ const HeritagePage = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-full bg-[#5d87ff] text-white font-semibold py-4 px-6 rounded-xl hover:bg-[#4a6fd9] transition-colors flex items-center justify-center gap-2"
+                      onClick={handleLogin}
                     >
                       Begin Preserving Heritage
                       <ArrowRight className="h-5 w-5" />
@@ -1088,6 +1114,12 @@ const HeritagePage = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-full bg-[#f1ede8] text-[#2d3748] font-semibold py-4 px-6 rounded-xl hover:bg-[#e2ded9] transition-colors"
+                      onClick={() =>
+                        heritageSectionRef.current?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        })
+                      }
                     >
                       Explore Heritage Sites
                     </motion.button>
@@ -1161,75 +1193,7 @@ const HeritagePage = () => {
       </main>
 
       {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="bg-[#2d3748] py-12"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
-              <p className="text-white/70 text-sm">
-                Empowering heritage preservation through digital innovation.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Features</h4>
-              <ul className="space-y-2">
-                {["Heritage Sites", "Family Tree", "Events", "Finance"].map(
-                  (item) => (
-                    <li key={item}>
-                      <a
-                        href="#"
-                        className="text-white/70 hover:text-white text-sm transition-colors"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                {["About", "Contact", "Blog"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                {["Privacy", "Terms"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 text-center">
-            <p className="text-white/70 text-sm">
-              &copy; 2026 Shristi Universe. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </motion.footer>
+      <Footer />
 
       {/* Heritage Details Dialog */}
       {selectedHeritage && (
@@ -1246,14 +1210,14 @@ const HeritagePage = () => {
       {/* Map Modal */}
       {selectedHeritageForMap && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
           onClick={() => setSelectedHeritageForMap(null)}
         >
           <div
             className="w-full max-w-4xl rounded-3xl shadow-2xl bg-white overflow-hidden animate-in fade-in zoom-in duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-linear-to-r from-blue-50 to-white">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">
                   {selectedHeritageForMap.title}
@@ -1289,6 +1253,15 @@ const HeritagePage = () => {
           </div>
         </div>
       )}
+
+      <LoginDialog
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onLogin={handleLogin}
+        onRegister={handleRegister}
+        message="Please login to create your heritage site."
+        feature="create your heritage site"
+      />
     </div>
   );
 };

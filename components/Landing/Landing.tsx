@@ -36,6 +36,8 @@ import FamilySearchDialog from "./FamilyTreeSearch/FamilyTreeSearchDialog";
 import AdBsConverter from "@/components/common/DateConverter";
 import { GoogleMapEmbed } from "../Heritage/Maps";
 import Image, { StaticImageData } from "next/image";
+import event from "@/public/assets/images/event.png";
+import finance from "@/public/assets/images/finance.png";
 
 const HeritageDetailsDialog = ({
   heritage,
@@ -67,9 +69,7 @@ const HeritageDetailsDialog = ({
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-          <h3 className="text-xl font-semibold">
-            {heritage.title}
-          </h3>
+          <h3 className="text-xl font-semibold">{heritage.title}</h3>
           <button
             onClick={onClose}
             className="rounded-lg p-2 hover:bg-gray-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -136,9 +136,7 @@ const HeritageDetailsDialog = ({
 
             {/* Description */}
             <div>
-              <h4 className="font-semibold text-lg mb-2">
-                About
-              </h4>
+              <h4 className="font-semibold text-lg mb-2">About</h4>
               <p className="text-gray-700 whitespace-pre-wrap text-sm md:text-base">
                 {showFullDesc || !isLong
                   ? heritage.description
@@ -292,8 +290,7 @@ const features: Feature[] = [
     description:
       "Plan family gatherings, reunions, and celebrations. Keep memories alive with organized and documented events.",
     icon: "📖",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: event.src,
     alt: "Beautifully decorated event celebration table",
   },
   {
@@ -301,18 +298,8 @@ const features: Feature[] = [
     description:
       "Manage family funds transparently. Track budgets, contributions, and expenses for group events and shared programs.",
     icon: "💰",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: finance.src,
     alt: "Calculator and financial planning documents",
-  },
-  {
-    title: "Story & Document Vault",
-    description:
-      "Securely store and share important documents, stories, and photos. Access them anytime to keep your legacy safe.",
-    icon: "📦",
-    image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&h=600&fit=crop&auto=format&q=80",
-    alt: "Old archive library with books and documents",
   },
 ];
 
@@ -332,7 +319,6 @@ const HeritageSiteCard = ({
   return (
     <div className="group cursor-pointer h-full" onClick={onClick}>
       <div className="bg-white rounded-lg overflow-hidden shadow-sm transition-all duration-300 ease-out hover:shadow-md hover:scale-[1.02] h-full flex flex-col">
-
         <div className="aspect-4/3 relative overflow-hidden bg-gray-100">
           {firstImage && !imgError ? (
             <>
@@ -528,11 +514,9 @@ const Landing: React.FC = () => {
   const [selectedHeritageForMap, setSelectedHeritageForMap] =
     useState<HeritageResponse | null>(null);
 
-
   const [platform, setPlatform] = useState<Platform>("desktop");
   const [open, setOpen] = useState(false);
   const [showStickyBanner, setShowStickyBanner] = useState(true);
-
 
   useEffect(() => {
     const p = getPlatform();
@@ -554,27 +538,27 @@ const Landing: React.FC = () => {
         const elapsed = Date.now() - start;
         // If the user hasn't switched apps (visibility is still visible)
         // and time elapsed is roughly what we expected (meaning main thread wasn't blocked by app switch)
-        if (document.visibilityState !== 'hidden' && elapsed < timeout + 500) {
-          window.location.href = "https://apps.apple.com/us/app/shristi-universe/id6751426376";
+        if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
+          window.location.href =
+            "https://apps.apple.com/us/app/shristi-universe/id6751426376";
         }
       }, timeout);
     }
 
     if (platform === "android") {
-      window.location.href = "intent://shristiuniverse#Intent;scheme=shristi;package=com.shristi.universe;end";
+      window.location.href =
+        "intent://shristiuniverse#Intent;scheme=shristi;package=com.shristi.universe;end";
       // Android intent usually handles fallback via the 'S.browser_fallback_url' extra if we added it,
       // but since we are manually falling back:
       setTimeout(() => {
         const elapsed = Date.now() - start;
-        if (document.visibilityState !== 'hidden' && elapsed < timeout + 500) {
-          window.location.href = "https://play.google.com/store/apps/details?id=com.shristi.universe";
+        if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
+          window.location.href =
+            "https://play.google.com/store/apps/details?id=com.shristi.universe";
         }
       }, timeout);
     }
   };
-
-
-
 
   const handleViewOnMap = (heritage: HeritageResponse) => {
     setSelectedHeritageForMap(heritage);
@@ -742,7 +726,12 @@ const Landing: React.FC = () => {
                   Get the Full Experience
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Open <span className="font-semibold text-[#5d87ff]">Shristi Universe</span> on your {platform === "ios" ? "iPhone" : "Android"} for the best performance and features.
+                  Open{" "}
+                  <span className="font-semibold text-[#5d87ff]">
+                    Shristi Universe
+                  </span>{" "}
+                  on your {platform === "ios" ? "iPhone" : "Android"} for the
+                  best performance and features.
                 </p>
               </div>
 
@@ -751,7 +740,11 @@ const Landing: React.FC = () => {
                   onClick={handleGetApp}
                   className="w-full py-3.5 bg-[#5d87ff] text-white rounded-xl font-bold text-sm shadow-lg shadow-blue-500/30 active:scale-95 transition-all flex items-center justify-center gap-2"
                 >
-                  {platform === "android" ? <FaGooglePlay /> : <FaApple className="text-lg" />}
+                  {platform === "android" ? (
+                    <FaGooglePlay />
+                  ) : (
+                    <FaApple className="text-lg" />
+                  )}
                   Open App
                 </button>
 
@@ -767,13 +760,12 @@ const Landing: React.FC = () => {
         </div>
       )}
 
-
       {/* Mobile dropdown menu */}
       {isMenuOpen && (
         <div className="md:hidden fixed inset-x-0 top-16 z-50 mx-4 bg-white dark:bg-gray-800 shadow-2xl rounded-xl p-4 animate-fade-in">
           <div className="space-y-2">
             <a
-              href="https://shristiuniverse.com/login"
+              href="/login"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
@@ -782,7 +774,7 @@ const Landing: React.FC = () => {
               Login
             </a>
             <a
-              href="https://shristiuniverse.com/register"
+              href="/register"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
@@ -860,8 +852,18 @@ const Landing: React.FC = () => {
             <div className="space-y-6 md:space-y-10">
               {/* Badge */}
               <div className="inline-flex items-center gap-3 bg-white/90 backdrop-blur-md border border-gray-200/50 rounded-full px-4 py-2 text-sm font-semibold text-[#5d87ff] shadow-sm">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
                 </svg>
                 Search Your Family Tree in Seconds
               </div>
@@ -892,17 +894,27 @@ const Landing: React.FC = () => {
                       <div className="flex gap-2">
                         <button
                           onClick={() => setSearchType("familyTree")}
-                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors ${searchType === "familyTree" ? 'bg-[#5d87ff] text-white' : 'bg-gray-100 text-gray-700'}`}
+                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors ${searchType === "familyTree" ? "bg-[#5d87ff] text-white" : "bg-gray-100 text-gray-700"}`}
                         >
                           <TreePine className="w-4 h-4" />
                           <span>Family</span>
                         </button>
                         <button
                           onClick={() => setSearchType("person")}
-                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors ${searchType === "person" ? 'bg-[#5d87ff] text-white' : 'bg-gray-100 text-gray-700'}`}
+                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors ${searchType === "person" ? "bg-[#5d87ff] text-white" : "bg-gray-100 text-gray-700"}`}
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                            />
                           </svg>
                           <span>Person</span>
                         </button>
@@ -911,16 +923,32 @@ const Landing: React.FC = () => {
                       {/* Search Input */}
                       <div className="flex gap-2">
                         <div className="flex-1 relative">
-                          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          <svg
+                            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            />
                           </svg>
                           <input
                             type="text"
-                            placeholder={searchType === "familyTree" ? "Search family name..." : "Search person name..."}
+                            placeholder={
+                              searchType === "familyTree"
+                                ? "Search family name..."
+                                : "Search person name..."
+                            }
                             className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 outline-none focus:border-[#5d87ff] focus:ring-2 focus:ring-[#5d87ff]/20"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            onKeyDown={(e) => e.key === "Enter" && handleFamilySearch()}
+                            onKeyDown={(e) =>
+                              e.key === "Enter" && handleFamilySearch()
+                            }
                           />
                         </div>
                         <button
@@ -978,8 +1006,12 @@ const Landing: React.FC = () => {
                       <TreePine className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Create Your Family Tree</h3>
-                      <p className="text-sm text-gray-600">Build your legacy, preserve stories</p>
+                      <h3 className="font-bold text-gray-900">
+                        Create Your Family Tree
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        Build your legacy, preserve stories
+                      </p>
                     </div>
                   </div>
                   <button
@@ -1011,7 +1043,8 @@ const Landing: React.FC = () => {
                                 Create Your Family Tree
                               </h3>
                               <p className="text-sm text-gray-600">
-                                Build your legacy, preserve stories, connect relatives.
+                                Build your legacy, preserve stories, connect
+                                relatives.
                               </p>
                             </div>
 
@@ -1069,7 +1102,9 @@ const Landing: React.FC = () => {
                       {/* Search Type Dropdown */}
                       <div className="relative">
                         <button
-                          onClick={() => setShowSearchTypeMenu(!showSearchTypeMenu)}
+                          onClick={() =>
+                            setShowSearchTypeMenu(!showSearchTypeMenu)
+                          }
                           className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium text-gray-700"
                         >
                           {searchType === "familyTree" ? (
@@ -1364,11 +1399,6 @@ const Landing: React.FC = () => {
                             height={480}
                             className="w-full h-72 object-cover rounded-xl"
                             loading="lazy"
-                            referrerPolicy="no-referrer"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src =
-                                "https://placehold.co/1200x600?text=Image+Unavailable";
-                            }}
                           />
                           <button
                             onClick={prevSlide}
@@ -1417,10 +1447,12 @@ const Landing: React.FC = () => {
         <div className="container mx-auto px-4 md:px-12 lg:px-24 max-w-7xl">
           <div className="text-center mb-6 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">
-              Discover <span className="text-[#5d87ff]">Nepal's Heritage Sites</span>
+              Discover{" "}
+              <span className="text-[#5d87ff]">Nepal's Heritage Sites</span>
             </h2>
             <p className="text-sm md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore and preserve Nepal's rich cultural and natural heritage for future generations.
+              Explore and preserve Nepal's rich cultural and natural heritage
+              for future generations.
             </p>
           </div>
 
@@ -1464,30 +1496,37 @@ const Landing: React.FC = () => {
                   <Smartphone className="w-6 h-6 text-[#5d87ff]" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  Download the <span className="text-[#5d87ff]">Shristi App</span>
+                  Download the{" "}
+                  <span className="text-[#5d87ff]">Shristi App</span>
                 </h2>
-                <p className="text-gray-600">
-                  Your Family Tree in Your Pocket
-                </p>
+                <p className="text-gray-600">Your Family Tree in Your Pocket</p>
               </div>
 
               {/* Features Grid */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center p-3 bg-gray-50 rounded-lg">
                   <Smartphone className="w-5 h-5 text-[#5d87ff] mx-auto mb-2" />
-                  <p className="text-xs font-medium text-gray-900">Mobile Optimized</p>
+                  <p className="text-xs font-medium text-gray-900">
+                    Mobile Optimized
+                  </p>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-lg">
                   <Cloud className="w-5 h-5 text-[#5d87ff] mx-auto mb-2" />
-                  <p className="text-xs font-medium text-gray-900">Cloud Sync</p>
+                  <p className="text-xs font-medium text-gray-900">
+                    Cloud Sync
+                  </p>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-lg">
                   <Camera className="w-5 h-5 text-[#5d87ff] mx-auto mb-2" />
-                  <p className="text-xs font-medium text-gray-900">Instant Upload</p>
+                  <p className="text-xs font-medium text-gray-900">
+                    Instant Upload
+                  </p>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-lg">
                   <Bell className="w-5 h-5 text-[#5d87ff] mx-auto mb-2" />
-                  <p className="text-xs font-medium text-gray-900">Smart Alerts</p>
+                  <p className="text-xs font-medium text-gray-900">
+                    Smart Alerts
+                  </p>
                 </div>
               </div>
 
@@ -1540,7 +1579,9 @@ const Landing: React.FC = () => {
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold leading-tight">
                   <span className="text-gray-900">
-                    <span className="text-[#5d87ff]">Download the Shristi App </span>
+                    <span className="text-[#5d87ff]">
+                      Download the Shristi App{" "}
+                    </span>
                     Your Family Tree in Your Pocket
                   </span>
                 </h2>
@@ -1659,12 +1700,15 @@ const Landing: React.FC = () => {
 
       {/* Feedback Section */}
       <section id="contact">
+        {" "}
         <Feedback />
       </section>
 
       {/* Sticky Bottom Banner for Mobile */}
       {platform !== "desktop" && showStickyBanner && !open && (
-        <div className={`fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-3 transition-transform duration-300 ${!open ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div
+          className={`fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-3 transition-transform duration-300 ${!open ? "translate-y-0" : "translate-y-full"}`}
+        >
           <div className="flex items-center gap-3 max-w-7xl mx-auto">
             <button
               onClick={() => setShowStickyBanner(false)}
@@ -1674,12 +1718,20 @@ const Landing: React.FC = () => {
             </button>
 
             <div className="w-10 h-10 bg-[#5d87ff] rounded-lg shrink-0 overflow-hidden">
-              <Image src={logo} alt="App" className="w-full h-full object-contain p-1 invert brightness-0" />
+              <Image
+                src={logo}
+                alt="App"
+                className="w-full h-full object-contain p-1 invert brightness-0"
+              />
             </div>
 
             <div className="flex-1 min-w-0">
-              <h4 className="font-semibold text-sm text-gray-900 truncate">Shristi Universe</h4>
-              <p className="text-xs text-gray-500 truncate">Preserve your family legacy</p>
+              <h4 className="font-semibold text-sm text-gray-900 truncate">
+                Shristi Universe
+              </h4>
+              <p className="text-xs text-gray-500 truncate">
+                Preserve your family legacy
+              </p>
             </div>
 
             <button
@@ -1694,11 +1746,20 @@ const Landing: React.FC = () => {
 
       {/* QR Modal */}
       {showQr && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/50 p-4" onClick={() => setShowQr(false)}>
-          <div className="w-full max-w-md rounded-2xl shadow-2xl bg-white" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/50 p-4"
+          onClick={() => setShowQr(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl shadow-2xl bg-white"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
               <h3 className="text-lg font-semibold">Open on your phone</h3>
-              <button onClick={() => setShowQr(false)} className="rounded-lg p-2 hover:bg-gray-100 min-h-[44px] min-w-[44px] flex items-center justify-center">
+              <button
+                onClick={() => setShowQr(false)}
+                className="rounded-lg p-2 hover:bg-gray-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              >
                 ✕
               </button>
             </div>
@@ -1706,7 +1767,11 @@ const Landing: React.FC = () => {
               <div className="text-center">
                 <div className="font-semibold mb-2">Google Play</div>
                 {qrPlay ? (
-                  <img src={qrPlay} alt="QR to Google Play" className="w-40 h-40 mx-auto" />
+                  <img
+                    src={qrPlay}
+                    alt="QR to Google Play"
+                    className="w-40 h-40 mx-auto"
+                  />
                 ) : (
                   <div className="w-40 h-40 mx-auto animate-pulse rounded-xl bg-gray-200" />
                 )}
@@ -1717,17 +1782,27 @@ const Landing: React.FC = () => {
               <div className="text-center">
                 <div className="font-semibold mb-2">App Store</div>
                 {qrApp ? (
-                  <img src={qrApp} alt="QR to App Store" className="w-40 h-40 mx-auto" />
+                  <img
+                    src={qrApp}
+                    alt="QR to App Store"
+                    className="w-40 h-40 mx-auto"
+                  />
                 ) : (
                   <div className="w-40 h-40 mx-auto animate-pulse rounded-xl bg-gray-200" />
                 )}
-                <a href={APP_STORE_URL} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm font-semibold text-gray-800 underline">
+                <a
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-block text-sm font-semibold text-gray-800 underline"
+                >
                   Open link
                 </a>
               </div>
             </div>
             <div className="px-6 pb-6 text-center text-xs text-gray-600">
-              Tip: Open your camera and point it at a QR to jump straight to the store.
+              Tip: Open your camera and point it at a QR to jump straight to the
+              store.
             </div>
           </div>
         </div>
@@ -1735,24 +1810,45 @@ const Landing: React.FC = () => {
 
       {/* Login Dialog */}
       {isLoginOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm" onClick={() => setIsLoginOpen(false)}>
-          <div className="w-full max-w-md rounded-2xl shadow-2xl bg-white overflow-hidden" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+          onClick={() => setIsLoginOpen(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl shadow-2xl bg-white overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="bg-linear-to-r from-[#5d87ff] to-[#4c73e6] p-6 text-center">
               <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Login Required</h3>
-              <p className="text-white/90 text-sm">You need to login to access this feature</p>
+              <h3 className="text-xl font-bold text-white mb-2">
+                Login Required
+              </h3>
+              <p className="text-white/90 text-sm">
+                You need to login to access this feature
+              </p>
             </div>
             <div className="p-6">
               <p className="text-center text-gray-600 mb-6">
-                Please login to create and manage Nepal heritage sites. Join our community to preserve cultural heritage.
+                Please login to create and manage Nepal heritage sites. Join our
+                community to preserve cultural heritage.
               </p>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://shristiuniverse.com/login"
+                  href="/login"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsLoginOpen(false)}
@@ -1770,7 +1866,7 @@ const Landing: React.FC = () => {
               <p className="text-center text-sm text-gray-600 mt-4">
                 Don't have an account?{" "}
                 <a
-                  href="https://shristiuniverse.com/register"
+                  href="/register"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsLoginOpen(false)}
@@ -1786,14 +1882,23 @@ const Landing: React.FC = () => {
 
       {/* Map Modal */}
       {selectedHeritageForMap && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => setSelectedHeritageForMap(null)}>
-          <div className="w-full max-w-4xl rounded-2xl shadow-2xl bg-white overflow-hidden" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          onClick={() => setSelectedHeritageForMap(null)}
+        >
+          <div
+            className="w-full max-w-4xl rounded-2xl shadow-2xl bg-white overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between px-4 md:px-6 py-4 border-b border-gray-200">
               <div>
-                <h3 className="text-lg md:text-xl font-semibold">{selectedHeritageForMap.title}</h3>
+                <h3 className="text-lg md:text-xl font-semibold">
+                  {selectedHeritageForMap.title}
+                </h3>
                 <p className="text-xs md:text-sm text-gray-600 flex items-center gap-1 mt-1">
                   <MapPin className="h-3 w-3 md:h-4 md:w-4" />
-                  {selectedHeritageForMap.city?.name}, {selectedHeritageForMap.country?.countryName}
+                  {selectedHeritageForMap.city?.name},{" "}
+                  {selectedHeritageForMap.country?.countryName}
                 </p>
               </div>
               <button

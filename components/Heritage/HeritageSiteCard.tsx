@@ -10,6 +10,7 @@ export default function HeritageSiteCard({
   site: HeritageResponse;
   onClick: () => void;
   onViewMap?: (site: HeritageResponse) => void;
+  onJoinClick?: (site: HeritageResponse) => void;
 }) {
   const [imgError, setImgError] = useState(false);
   const firstImage = site.medias.find((m) => m.type === "IMAGE");
@@ -18,7 +19,7 @@ export default function HeritageSiteCard({
     <div className="group cursor-pointer h-full" onClick={onClick}>
       <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-out hover:-translate-y-2 h-full flex flex-col border border-gray-100">
         {/* Image container with gradient overlay */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+        <div className="relative aspect-4/3 overflow-hidden bg-linear-to-br from-gray-100 to-gray-200">
           {firstImage && !imgError ? (
             <>
               <img
@@ -28,7 +29,7 @@ export default function HeritageSiteCard({
                 onError={() => setImgError(true)}
               />
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
 
               {site.medias.filter((m) => m.type === "IMAGE").length > 1 && (
                 <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 rounded-lg text-xs font-medium flex items-center gap-1">

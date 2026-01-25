@@ -14,6 +14,8 @@ import {
 import Footer from "@/components/Landing/Footer";
 import royalFamilyTree from "@/public/assets/images/RoyalFamilyTree.jpg";
 import bouddhanathStupa from "@/public/assets/images/bouddhanath-stupa.jpg";
+import EventPlanning from "@/public/assets/images/event.png";
+import Finance from "@/public/assets/images/finance.png";
 
 export const metadata: Metadata = {
   title:
@@ -44,48 +46,47 @@ export const metadata: Metadata = {
 /* =========================
    FEATURES DATA
 ========================= */
+
 const features = [
   {
     id: "family-tree",
-    title: "Digital Family Tree Builder",
+    title: "Family Tree Builder", // Changed from "Digital Family Tree Builder"
     description:
       "Visually build your multi-generation family tree and preserve relationships across generations.",
     longDescription:
       "Create detailed digital family trees with photos, biographies, and relationships to preserve your family legacy forever.",
     icon: Users,
     tag: "Core Feature",
-    image: royalFamilyTree,
+    image: royalFamilyTree.src,
     imageType: "local" as const,
   },
   {
     id: "event",
-    title: "Family Groups & Event Management",
+    title: "Event Planning", // Changed from "Family Groups & Event Management"
     description:
       "Create private family groups and organize events like reunions, birthdays, and ceremonies.",
     longDescription:
       "Plan, manage, and share family events securely with private groups, updates, photos, and schedules.",
     icon: Calendar,
     tag: "Organize",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: EventPlanning.src,
     imageType: "url" as const,
   },
   {
     id: "finance",
-    title: "Shared Family Finance Management",
+    title: "Finance Management", // Changed from "Shared Family Finance Management"
     description:
       "Track shared budgets, event expenses, and collective family savings transparently.",
     longDescription:
       "Manage shared finances, contributions, and goals in a secure and transparent digital environment.",
     icon: DollarSign,
     tag: "Finance",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: Finance.src,
     imageType: "url" as const,
   },
   {
     id: "heritage-sites",
-    title: "Heritage Site Preservation",
+    title: "Heritage Preservation", // Changed from "Heritage Site Preservation"
     description:
       "Document ancestral homes, cultural landmarks, and important family locations.",
     longDescription:
@@ -170,13 +171,13 @@ export default function FeaturesPage() {
                         />
                       ) : (
                         <img
-                          src={feature.image as string}
+                          src={feature.image}
                           alt=""
                           className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
                         />
                       )}
-                      {/* Stronger gradient overlay for better text readability */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/85 backdrop-blur-[2px]" />
+                      {/* Stronger linear overlay for better text readability */}
+                      <div className="absolute inset-0 bg-linear-to-b from-white/85 via-white/75 to-white/85 backdrop-blur-[2px]" />
                     </div>
 
                     {/* Content - Now with better contrast on hover */}
@@ -230,7 +231,7 @@ export default function FeaturesPage() {
               quality={90}
             />
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3d4f6f]/95 via-[#2d3748]/90 to-[#3d4f6f]/95" />
+            <div className="absolute inset-0 bg-linear-to-br from-[#3d4f6f]/95 via-[#2d3748]/90 to-[#3d4f6f]/95" />
           </div>
 
           {/* Decorative Elements */}
@@ -249,7 +250,7 @@ export default function FeaturesPage() {
 
             <p className="text-white/90 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
               Shristi Universe helps families preserve stories, heritage,
-              relationships, and memories in a secure digital environment —
+              relationships, and memories in a secure digital environment
               strengthening connections across generations.
             </p>
 

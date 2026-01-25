@@ -1,19 +1,21 @@
-import { HeritageResponse } from "@/types/heritage";
-import { ArrowRight, Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { EventResponse } from "@/types/event";
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
-import CreateHeritageCard from "./CreateHeritageCard";
-import HeritageSiteCard from "./HeritageSiteCard";
+import CreateEventCard from "./CreateEventCard";
+import EventSiteCard from "./EventSiteCard";
 
-export default function HeritageSiteCarousel({
-  sites,
+export default function EventSiteCarousel({
+  events,
   onCreateClick,
-  onSiteClick,
+  onEventClick,
   onViewMap,
+  onJoinClick,
 }: {
-  sites: HeritageResponse[];
+  events: EventResponse[];
   onCreateClick: () => void;
-  onSiteClick: (site: HeritageResponse) => void;
-  onViewMap?: (site: HeritageResponse) => void;
+  onEventClick: (event: EventResponse) => void;
+  onViewMap?: (event: EventResponse) => void;
+  onJoinClick?: (event: EventResponse) => void;
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -30,16 +32,16 @@ export default function HeritageSiteCarousel({
     }
   };
 
-  if (sites.length === 0) {
+  if (events.length === 0) {
     return (
       <div className="text-center py-16 text-gray-500">
-        <Camera className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-        <p className="text-lg">No heritage sites available</p>
+        <Calendar className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+        <p className="text-lg">No events available</p>
         <button
           onClick={onCreateClick}
           className="mt-4 inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
-          <span>Add First Heritage Site</span>
+          <span>Create First Event</span>
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>
@@ -68,18 +70,19 @@ export default function HeritageSiteCarousel({
         ref={scrollContainerRef}
         className="flex gap-6 overflow-x-auto px-2 py-4 scrollbar-hide"
       >
-        {/* Create Heritage Card - Always first */}
+        {/* Create Event Card - Always first */}
         <div className="shrink-0 w-75">
-          <CreateHeritageCard onClick={onCreateClick} />
+          <CreateEventCard onClick={onCreateClick} />
         </div>
 
-        {/* Existing Heritage Sites */}
-        {sites.map((site) => (
-          <div key={site.id} className="shrink-0 w-75">
-            <HeritageSiteCard
-              site={site}
-              onClick={() => onSiteClick(site)}
+        {/* Existing Events */}
+        {events.map((event) => (
+          <div key={event.id} className="shrink-0 w-75">
+            <EventSiteCard
+              event={event}
+              onClick={() => onEventClick(event)}
               onViewMap={onViewMap}
+              onJoinClick={onJoinClick}
             />
           </div>
         ))}

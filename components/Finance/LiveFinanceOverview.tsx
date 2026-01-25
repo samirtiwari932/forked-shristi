@@ -2,31 +2,25 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 // CountUp Component
 function CountUp({
   end,
   duration = 2200,
-  prefix = "₹",
+  prefix = "Rs.",
 }: {
   end: number;
   duration?: number;
   prefix?: string;
 }) {
-  const [count, setCount] = useState(end);
-  const hasAnimated = React.useRef(false);
+  const pathname = usePathname();
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (hasAnimated.current) {
-      setCount(end);
-      return;
-    }
-
-    //  First-time animation
-    hasAnimated.current = true;
-
     let start = 0;
     const step = end / (duration / 16);
+
     const timer = setInterval(() => {
       start += step;
       setCount(Math.min(Math.floor(start), end));
@@ -34,7 +28,7 @@ function CountUp({
     }, 16);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [end, duration, pathname]); // 👈 KEY FIX
 
   return (
     <span className="tabular-nums">

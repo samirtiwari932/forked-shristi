@@ -14,18 +14,22 @@ import {
   Star,
   ArrowRight,
   Target,
-  ChevronLeft,
-  ChevronRight,
-  Edit,
   Zap,
-  Heart,
   TrendingUp,
   MapPin,
-  UserPlus,
-  Bell,
-  Share2,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { usePopularEvents } from "@/lib/hooks/usePopularEvents";
+import { EventResponse } from "@/types/event";
+import {
+  EventSiteCarousel,
+  EventDetailsDialog,
+} from "@/components/Event/index";
+import { Loader2 } from "lucide-react";
+import { GoogleMapEmbed } from "@/components/Heritage/Maps";
+import LoginDialog from "@/components/dialog/Login";
+import Link from "next/link";
+import Footer from "@/components/Landing/Footer";
 
 // Animation variants
 const fadeInUp = {
@@ -60,6 +64,57 @@ const slideInRight = {
 
 const EventsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedEvent, setSelectedEvent] = useState<EventResponse | null>(
+    null,
+  );
+  const [selectedEventForMap, setSelectedEventForMap] =
+    useState<EventResponse | null>(null);
+  const [isEventDialogOpen, setIsEventDialogOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const { events, loading, error } = usePopularEvents();
+
+  const handleEventClick = (event: EventResponse) => {
+    setSelectedEvent(event);
+    setIsEventDialogOpen(true);
+  };
+
+  const handleViewOnMap = (event: EventResponse) => {
+    setSelectedEventForMap(event);
+  };
+
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
+
+  const handleRegister = () => {
+    window.location.href = "/register";
+  };
+
+  const handleJoinClick = (event: EventResponse) => {
+    // Check if user is logged in (you'll need to implement this check based on your auth)
+    const isLoggedIn = false; // Replace with actual auth check
+
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+    } else {
+      // Handle join event logic here
+      console.log("Joining event:", event.id);
+      // Make API call to join event
+    }
+  };
+
+  const handleCreateEventClick = () => {
+    // Check if user is logged in
+    const isLoggedIn = false; // Replace with actual auth check
+
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+    } else {
+      // Navigate to create event page or open create event modal
+      console.log("Create event");
+    }
+  };
 
   const slides = [
     {
@@ -210,14 +265,6 @@ const EventsPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
       {/* Navigation */}
@@ -280,6 +327,7 @@ const EventsPage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg shadow-[#5d87ff]/20 flex items-center gap-2"
+                onClick={handleLogin}
               >
                 Get Started
                 <ArrowRight className="h-5 w-5" />
@@ -363,7 +411,7 @@ const EventsPage = () => {
                 variants={fadeInUp}
                 className="text-4xl font-bold text-[#2d3748] mb-6"
               >
-                Bring Families, Communities, and Groups Together — Effortlessly
+                Bring Families, Communities, and Groups Together Effortlessly
               </motion.h2>
 
               <motion.p
@@ -457,7 +505,7 @@ const EventsPage = () => {
                 className="text-[#64748b] mb-6 leading-relaxed"
               >
                 The Events feature in Shristi Universe is built to serve diverse
-                needs — from intimate family occasions to large public community
+                needs from intimate family occasions to large public community
                 gatherings. Events are not limited to family activities alone;
                 users can organize events for families, communities, and groups,
                 making it a versatile solution for real-life connections.
@@ -468,17 +516,16 @@ const EventsPage = () => {
                 className="text-[#64748b] mb-6 leading-relaxed"
               >
                 This flexibility makes Shristi Universe more than just an event
-                tool — it becomes a complete family and community event
-                management platform.
+                tool it becomes a complete family and community event management
+                platform.
               </motion.p>
             </motion.div>
 
             <motion.div variants={slideInRight} className="lg:w-1/2">
               <div className="bg-[#3d4f6f] rounded-3xl p-8 text-white">
-                <div className="flex items-center justify-between mb-8">
+                {/* <div className="flex items-center justify-between mb-8">
                   <span className="text-white/60 text-sm">Event Platform</span>
-                  <span className="font-bold text-xl">SU</span>
-                </div>
+                </div> */}
                 <h3 className="text-3xl font-bold mb-2">Events</h3>
                 <p className="text-white/60 mb-8">
                   Complete Management Platform
@@ -497,13 +544,38 @@ const EventsPage = () => {
                     <span className="text-2xl font-bold">8</span>
                   </div>
                 </div>
-                <button className="mt-6 bg-[#5d87ff] text-white px-6 py-3 rounded-full text-sm font-medium w-full hover:bg-[#4a6fe0] transition-colors flex items-center justify-center gap-2">
-                  Explore Features
-                  <ArrowRight className="h-4 w-4" />
-                </button>
+                <Link href="/features">
+                  <button className="mt-6 bg-[#5d87ff] text-white px-6 py-3 rounded-full text-sm font-medium w-full hover:bg-[#4a6fe0] transition-colors flex items-center justify-center gap-2">
+                    Explore Features
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </motion.div>
+
+          {loading ? (
+            <div className="text-center py-16">
+              <Loader2 className="h-12 w-12 text-blue-600 animate-spin mx-auto mb-4" />
+              <p className="text-gray-600">Loading events...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-16">
+              <div className="bg-red-50 border border-red-200 rounded-2xl p-8 inline-block">
+                <p className="text-red-600 font-medium">{error}</p>
+              </div>
+            </div>
+          ) : (
+            <>
+              <EventSiteCarousel
+                events={events}
+                onCreateClick={handleCreateEventClick}
+                onEventClick={handleEventClick}
+                onViewMap={handleViewOnMap}
+                onJoinClick={handleJoinClick}
+              />
+            </>
+          )}
 
           {/* Event Categories Section */}
           <motion.div
@@ -511,7 +583,7 @@ const EventsPage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="mb-24"
+            className="mt-18 mb-24"
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
@@ -556,7 +628,7 @@ const EventsPage = () => {
                         key={idx}
                         className="flex items-start gap-2 text-sm text-[#64748b]"
                       >
-                        <div className="h-1.5 w-1.5 bg-[#5d87ff] rounded-full mt-2 flex-shrink-0" />
+                        <div className="h-1.5 w-1.5 bg-[#5d87ff] rounded-full mt-2 shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -646,7 +718,7 @@ const EventsPage = () => {
               className="bg-[#5d87ff]/5 rounded-2xl p-6 border border-[#5d87ff]/20"
             >
               <div className="flex items-start gap-3">
-                <Shield className="h-6 w-6 text-[#5d87ff] flex-shrink-0 mt-1" />
+                <Shield className="h-6 w-6 text-[#5d87ff] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-[#2d3748] mb-2">
                     Flexible Privacy Settings
@@ -857,7 +929,7 @@ const EventsPage = () => {
                   If you are looking for a reliable way to manage family events,
                   community programs, or group activities without complexity,
                   Shristi Universe provides the perfect digital space to bring
-                  people together — effortlessly.
+                  people together effortlessly.
                 </p>
 
                 <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -879,7 +951,10 @@ const EventsPage = () => {
                   ))}
                 </div>
 
-                <button className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                <button
+                  className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2"
+                  onClick={handleLogin}
+                >
                   Start Planning Your First Event
                   <ArrowRight className="h-5 w-5" />
                 </button>
@@ -890,76 +965,73 @@ const EventsPage = () => {
       </main>
 
       {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="bg-[#2d3748] py-12"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
-              <p className="text-white/70 text-sm">
-                Bringing families and communities together through meaningful
-                events.
-              </p>
+      <Footer />
+
+      {/* Event Details Dialog */}
+      {selectedEvent && (
+        <EventDetailsDialog
+          event={selectedEvent}
+          isOpen={isEventDialogOpen}
+          onClose={() => {
+            setIsEventDialogOpen(false);
+            setSelectedEvent(null);
+          }}
+        />
+      )}
+
+      {/* Map Modal */}
+      {selectedEventForMap && (
+        <div
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedEventForMap(null)}
+        >
+          <div
+            className="w-full max-w-4xl rounded-3xl shadow-2xl bg-white overflow-hidden animate-in fade-in zoom-in duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-linear-to-r from-blue-50 to-white">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {selectedEventForMap.name}
+                </h3>
+                <p className="text-gray-600 flex items-center gap-2 mt-1">
+                  <MapPin className="h-4 w-4" />
+                  {selectedEventForMap.city?.name}
+                </p>
+              </div>
+              <button
+                onClick={() => setSelectedEventForMap(null)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+              >
+                <div className="h-8 w-8 flex items-center justify-center text-gray-500 hover:text-gray-700 text-xl">
+                  ✕
+                </div>
+              </button>
             </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Features</h4>
-              <ul className="space-y-2">
-                {["Events", "Heritage Sites", "Family Tree", "Finance"].map(
-                  (item) => (
-                    <li key={item}>
-                      <a
-                        href="#"
-                        className="text-white/70 hover:text-white text-sm transition-colors"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  ),
-                )}
-              </ul>
+            <div className="p-4">
+              <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                <GoogleMapEmbed
+                  lat={selectedEventForMap.latitude ?? 0}
+                  lng={selectedEventForMap.longitude ?? 0}
+                />
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-gray-600 text-sm">
+                  Showing location of {selectedEventForMap.name}
+                </p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                {["About", "Contact", "Blog"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                {["Privacy", "Terms"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 text-center">
-            <p className="text-white/70 text-sm">
-              &copy; 2026 Shristi Universe. All rights reserved.
-            </p>
           </div>
         </div>
-      </motion.footer>
+      )}
+      <LoginDialog
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onLogin={handleLogin}
+        onRegister={handleRegister}
+        message="Please login to join events or create your own events"
+        feature="join or create events"
+      />
     </div>
   );
 };
