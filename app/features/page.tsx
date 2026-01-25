@@ -14,8 +14,8 @@ import {
 import Footer from "@/components/Landing/Footer";
 import royalFamilyTree from "@/public/assets/images/RoyalFamilyTree.jpg";
 import bouddhanathStupa from "@/public/assets/images/bouddhanath-stupa.jpg";
-import EventPlanning from "@/public/assets/images/EventPlanning.png";
-import Finance from "@/public/assets/images/Finance.png";
+import EventPlanning from "@/public/assets/images/event.png";
+import Finance from "@/public/assets/images/finance.png";
 
 export const metadata: Metadata = {
   title:
