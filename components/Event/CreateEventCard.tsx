@@ -1,8 +1,4 @@
-export default function CreateHeritageCard({
-  onClick,
-}: {
-  onClick: () => void;
-}) {
+export default function CreateEventCard({ onClick }: { onClick: () => void }) {
   return (
     <div className="group cursor-pointer h-full" onClick={onClick}>
       <div className="bg-linear-to-br from-blue-50 via-white to-blue-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ease-out hover:-translate-y-2 h-full flex flex-col border-2 border-dashed border-blue-200 hover:border-blue-300">
@@ -32,10 +28,10 @@ export default function CreateHeritageCard({
             </div>
             <div className="text-center">
               <span className="text-blue-700 font-bold text-lg">
-                Add Heritage Site
+                Create Event
               </span>
               <p className="text-sm text-gray-600 mt-1 max-w-xs">
-                Share and preserve your cultural heritage
+                Bring your community together
               </p>
             </div>
           </div>
@@ -44,7 +40,7 @@ export default function CreateHeritageCard({
         {/* Bottom text */}
         <div className="bg-linear-to-r from-blue-50 to-blue-100 p-5 text-center">
           <p className="text-sm text-blue-700 font-medium">
-            Click to start documenting your legacy
+            Click to start planning your event
           </p>
         </div>
       </div>

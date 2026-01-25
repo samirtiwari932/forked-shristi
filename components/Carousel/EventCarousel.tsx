@@ -42,7 +42,7 @@ export default function EventAnimatedCarousel({ events, onJoinClick }: any) {
   };
 
   return (
-    <div className="relative h-[420px] flex items-center justify-center">
+    <div className="relative h-105 flex items-center justify-center">
       <AnimatePresence initial={false}>
         {cards.map(({ pos, data }) => (
           <motion.div

@@ -17,7 +17,7 @@ const ContactUs = () => {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -34,13 +34,13 @@ const ContactUs = () => {
       setIsLoading(false);
       toast.error(
         error.response?.data?.message ||
-          "Failed to send the message. Please try again."
+          "Failed to send the message. Please try again.",
       );
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#f0f4ff] to-[#e8edff] dark:from-gray-900 dark:to-gray-800">
+    <div className="flex flex-col min-h-screen bg-linear-to-br from-[#f0f4ff] to-[#e8edff] dark:from-gray-900 dark:to-gray-800">
       {/* Navbar */}
       <Navbar />
       <Sidebar />
@@ -49,7 +49,7 @@ const ContactUs = () => {
       <main className="flex-1 flex items-center justify-center py-8 px-4">
         <div className="flex flex-col md:flex-row w-full max-w-5xl h-full md:h-[80vh] rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 items-stretch">
           {/* Left Illustration */}
-          <div className="hidden md:flex flex-1 items-center justify-center bg-gradient-to-br from-[#5d87ff] to-[#4a70d4] p-10">
+          <div className="hidden md:flex flex-1 items-center justify-center bg-linear-to-br from-[#5d87ff] to-[#4a70d4] p-10">
             <img
               src="/assets/images/login_image.png"
               alt="Contact Illustration"

@@ -37,6 +37,7 @@ import {
 import { motion } from "framer-motion";
 import LiveFinanceOverview from "@/components/Finance/LiveFinanceOverview";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Landing/Footer";
 
 // Animation variants
 const fadeInUp = {
@@ -177,57 +178,6 @@ export default function FinancePage() {
     },
   ]);
 
-  const financeFeatures: FinanceFeature[] = [
-    {
-      id: 1,
-      icon: <Wallet className="h-6 w-6" />,
-      title: "Family Tree Treasury",
-      description: "Centralized fund management for entire family tree",
-      features: [
-        "Track collective family savings",
-        "Manage shared expenses transparently",
-        "Monitor contributions from all family members",
-        "Generate treasury reports",
-      ],
-    },
-    {
-      id: 2,
-      icon: <Gift className="h-6 w-6" />,
-      title: "Puja & Ritual Funds",
-      description: "Dedicated management for religious and ceremonial funds",
-      features: [
-        "Separate accounts for each puja/ritual",
-        "Track donations and expenses",
-        "Set fundraising goals",
-        "Maintain religious event budgets",
-      ],
-    },
-    {
-      id: 3,
-      icon: <Heart className="h-6 w-6" />,
-      title: "Donation Management",
-      description: "Organize and track charitable contributions",
-      features: [
-        "Record individual and collective donations",
-        "Track donation history with donor details",
-        "Generate tax-friendly reports",
-        "Set recurring donation schedules",
-      ],
-    },
-    {
-      id: 4,
-      icon: <PieChart className="h-6 w-6" />,
-      title: "Expense Tracking",
-      description: "Monitor all family group expenditures",
-      features: [
-        "Categorize expenses (events, maintenance, etc.)",
-        "Real-time balance updates",
-        "Set monthly/yearly budgets",
-        "Analyze spending patterns",
-      ],
-    },
-  ];
-
   const programFeatures: ProgramFeature[] = [
     {
       id: 1,
@@ -358,6 +308,10 @@ export default function FinancePage() {
     "Build collective family wealth systematically",
     "Ensure financial legacy preservation across generations",
   ];
+
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -668,7 +622,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.1 }}
-                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
+                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center shrink-0 mt-1"
                       >
                         <span className="text-white font-bold text-sm">
                           {item.step}
@@ -707,7 +661,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.1 }}
-                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
+                        className="w-8 h-8 bg-[#5d87ff] rounded-lg flex items-center justify-center shrink-0 mt-1"
                       >
                         <span className="text-white font-bold text-sm">
                           {item.step}
@@ -786,7 +740,7 @@ export default function FinancePage() {
                         transition={{ delay: idx * 0.1 }}
                         className="flex items-start gap-3"
                       >
-                        <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0 mt-0.5" />
                         <span className="text-[#64748b]">{permission}</span>
                       </motion.li>
                     ))}
@@ -802,7 +756,7 @@ export default function FinancePage() {
               className="mt-8 bg-[#5d87ff]/5 rounded-2xl p-6 border border-[#5d87ff]/20"
             >
               <div className="flex items-start gap-3">
-                <Shield className="h-6 w-6 text-[#5d87ff] flex-shrink-0 mt-1" />
+                <Shield className="h-6 w-6 text-[#5d87ff] shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-[#2d3748] mb-2">
                     Building Trust Through Structure
@@ -873,7 +827,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.2 }}
-                        className="w-6 h-6 bg-[#5d87ff]/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                        className="w-6 h-6 bg-[#5d87ff]/10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
                       >
                         <div className="w-2 h-2 bg-[#5d87ff] rounded-full" />
                       </motion.div>
@@ -949,7 +903,7 @@ export default function FinancePage() {
                     >
                       <motion.div
                         whileHover={{ scale: 1.2 }}
-                        className="w-6 h-6 bg-[#ef4444]/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                        className="w-6 h-6 bg-[#ef4444]/10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
                       >
                         <div className="w-2 h-2 bg-[#ef4444] rounded-full" />
                       </motion.div>
@@ -1426,7 +1380,7 @@ export default function FinancePage() {
                 Why Shristi Universe for Finance Management?
               </h2>
               <p className="text-[#64748b] max-w-2xl mx-auto">
-                Not just a finance tool—it is a community-centric ecosystem that
+                Not just a finance tool it is a community-centric ecosystem that
                 connects multiple aspects of family and community management
               </p>
             </motion.div>
@@ -1435,7 +1389,7 @@ export default function FinancePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 lg:p-12 border border-[#e2ded9]"
+              className="bg-linear-to-br from-[#5d87ff]/5 to-[#3d4f6f]/5 rounded-3xl p-8 lg:p-12 border border-[#e2ded9]"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
                 {[
@@ -1518,7 +1472,7 @@ export default function FinancePage() {
                       whileHover={{ x: 5 }}
                       className="flex items-center gap-3 bg-white rounded-xl px-4 py-3"
                     >
-                      <CheckCircle className="h-5 w-5 text-[#5d87ff] flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0" />
                       <span className="text-[#2d3748]">{benefit}</span>
                     </motion.div>
                   ))}
@@ -1537,13 +1491,14 @@ export default function FinancePage() {
                     Join thousands of families and communities who have
                     transformed their financial management with Shristi
                     Universe. Start building trust, maintaining transparency,
-                    and planning for the future—together.
+                    and planning for the future together.
                   </p>
                   <div className="space-y-4">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-full bg-[#5d87ff] text-white font-semibold py-4 px-6 rounded-xl hover:bg-[#4a6fd9] transition-colors flex items-center justify-center gap-2"
+                      onClick={handleLogin}
                     >
                       Start Managing Finances
                       <ArrowRight className="h-5 w-5" />
@@ -1567,74 +1522,7 @@ export default function FinancePage() {
       </main>
 
       {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="bg-[#2d3748] py-12"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
-              <p className="text-white/70 text-sm">
-                Empowering families and communities with transparent financial
-                management.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Product</h4>
-              <ul className="space-y-2">
-                {["Features", "Pricing", "Security"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                {["About", "Contact", "Blog"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                {["Privacy", "Terms"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 text-center">
-            <p className="text-white/70 text-sm">
-              &copy; 2026 Shristi Universe. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </motion.footer>
+      <Footer />
     </div>
   );
 }

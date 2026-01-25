@@ -58,7 +58,7 @@ const Card: React.FC<{
     className={classNames(
       "rounded-xl bg-white shadow-sm border transition-all duration-200",
       hover && "hover:shadow-md hover:border-gray-300",
-      className
+      className,
     )}
     style={{
       borderColor: "rgba(0,0,0,0.08)",
@@ -78,14 +78,14 @@ const yearsRange = {
 };
 
 const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (
-  props
+  props,
 ) => (
   <input
     {...props}
     className={classNames(
       "w-full rounded-lg border bg-white px-4 py-3 text-sm outline-none transition-all",
       "border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20",
-      props.className
+      props.className,
     )}
   />
 );
@@ -124,7 +124,7 @@ const AdBsConverter: React.FC<AdBsConverterProps> = ({
     try {
       const ymd = ymdFromIso(todayISO)!;
       const adDateString = `${ymd.y}-${String(ymd.m).padStart(2, "0")}-${String(
-        ymd.d
+        ymd.d,
       ).padStart(2, "0")}`;
       const response = await convertDate({
         date: adDateString,
@@ -160,7 +160,7 @@ const AdBsConverter: React.FC<AdBsConverterProps> = ({
 
         const adDateString = `${ymd.y}-${String(ymd.m).padStart(
           2,
-          "0"
+          "0",
         )}-${String(ymd.d).padStart(2, "0")}`;
         const response = await convertDate({
           date: adDateString,
@@ -214,7 +214,7 @@ const AdBsConverter: React.FC<AdBsConverterProps> = ({
       console.error("Conversion error:", e);
       setError(
         e?.message ||
-          "Conversion failed. Please check your inputs and try again."
+          "Conversion failed. Please check your inputs and try again.",
       );
     } finally {
       setIsLoading(false);
@@ -225,7 +225,7 @@ const AdBsConverter: React.FC<AdBsConverterProps> = ({
     <div
       className={classNames(
         "w-full bg-gradient-to-br from-gray-50 to-blue-50 p-4 sm:p-6 md:p-8 relative",
-        className
+        className,
       )}
       style={{
         background: `linear-gradient(135deg, ${LIGHT_BG} 0%, #f0f4ff 100%)`,

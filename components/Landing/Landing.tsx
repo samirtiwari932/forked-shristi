@@ -7,8 +7,6 @@ import Familytree from "@/public/assets/images/Familytree.jpg";
 import {
   Menu,
   X,
-  Sun,
-  Moon,
   ChevronLeft,
   ChevronRight,
   Smartphone,
@@ -36,6 +34,9 @@ import FamilySearchDialog from "./FamilyTreeSearch/FamilyTreeSearchDialog";
 import AdBsConverter from "@/components/common/DateConverter";
 import { GoogleMapEmbed } from "../Heritage/Maps";
 import Image, { StaticImageData } from "next/image";
+
+import EventPlanning from "@/public/assets/images/event.png";
+import Finance from "@/public/assets/images/finance.png";
 
 const HeritageDetailsDialog = ({
   heritage,
@@ -253,7 +254,7 @@ type Feature = {
   title: string;
   description: string;
   icon: string;
-  image: StaticImageData | string;
+  image: StaticImageData;
   alt: string;
 };
 
@@ -279,8 +280,7 @@ const features: Feature[] = [
     description:
       "Plan family gatherings, reunions, and celebrations. Keep memories alive with organized and documented events.",
     icon: "📖",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: EventPlanning,
     alt: "Beautifully decorated event celebration table",
   },
   {
@@ -288,18 +288,8 @@ const features: Feature[] = [
     description:
       "Manage family funds transparently. Track budgets, contributions, and expenses for group events and shared programs.",
     icon: "💰",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: Finance,
     alt: "Calculator and financial planning documents",
-  },
-  {
-    title: "Story & Document Vault",
-    description:
-      "Securely store and share important documents, stories, and photos. Access them anytime to keep your legacy safe.",
-    icon: "📦",
-    image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&h=600&fit=crop&auto=format&q=80",
-    alt: "Old archive library with books and documents",
   },
 ];
 
@@ -644,7 +634,7 @@ const Landing: React.FC = () => {
           </a>
           <a
             href="/features"
-            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+            className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             Features
           </a>
@@ -693,7 +683,7 @@ const Landing: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden mx-4 bg-primary text-white shadow-lg rounded-lg mt-2 p-3">
           <a
-            href="https://shristiuniverse.com/login"
+            href="/login"
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full text-center hover:bg-blue-600 rounded-md border py-2 px-3 shadow-lg font-semibold transition-colors duration-300 mb-2 dark:bg-gray-700 dark:text-white dark:hover:bg-blue-600"
@@ -702,7 +692,7 @@ const Landing: React.FC = () => {
             Login
           </a>
           <a
-            href="https://shristiuniverse.com/register"
+            href="/register"
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full text-center hover:bg-green-600 rounded-md border py-2 px-3 shadow-lg font-semibold transition-colors duration-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-green-600"
@@ -716,6 +706,13 @@ const Landing: React.FC = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             About Us
+          </a>
+          <a
+            href="/features"
+            className="block w-full text-center hover:bg-purple-600 rounded-md border py-2 px-3 shadow-lg font-semibold transition-colors duration-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-purple-600 mt-2"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Features
           </a>
           {/* <button
             onClick={() => {
@@ -761,22 +758,22 @@ const Landing: React.FC = () => {
           </div>
         </div>
       </main>
+
       <section className="relative overflow-hidden bg-linear-to-br from-indigo-50 via-white to-blue-50">
-        {/* dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/30" */}
-        {/* Subtle animated background glows */}
+        {/* Background glows */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-linear-to-br from-[#5d87ff]/20 to-purple-500/10 blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-linear-to-tr from-blue-400/20 to-cyan-400/10 blur-3xl animate-pulse delay-1000"></div>
         </div>
 
-        <div className="relative container mx-auto px-6 py-15  max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="relative container mx-auto px-4 sm:px-6 py-8 md:py-15 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left: Text + Search */}
-            <div className="space-y-10">
+            <div className="space-y-6 md:space-y-10">
               {/* Badge */}
-              <div className="inline-flex items-center gap-3 bg-white/90  backdrop-blur-md border border-gray-200/50 dark:border-white/20 rounded-full px-5 py-2.5 text-sm font-semibold text-[#5d87ff] shadow-sm">
+              <div className="inline-flex items-center gap-2 md:gap-3 bg-white/90 backdrop-blur-md border border-gray-200/50 dark:border-white/20 rounded-full px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-semibold text-[#5d87ff] shadow-sm">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 md:w-5 md:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -792,7 +789,7 @@ const Landing: React.FC = () => {
               </div>
 
               {/* Hero Title */}
-              <h1 className="text-5xl md:text-6xl lg:text-5xl font-bold leading-tight text-gray-900 ">
+              <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900">
                 Build & Explore Your
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#5d87ff] to-indigo-600">
                   Family Tree
@@ -800,259 +797,296 @@ const Landing: React.FC = () => {
                 in One Place
               </h1>
 
-              {/* Description */}
-              <p className="text-lg md:text-xl text-gray-600  leading-relaxed max-w-2xl">
+              {/* Description - Hide on mobile */}
+              <p className="hidden md:block text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
                 Start exploring your lineage now and uncover the connections,
                 stories, and generations that shaped your family. Build your
                 family tree effortlessly and keep your heritage preserved for
                 the future.
               </p>
 
-              {/* PROMINENT SEARCH BAR with Filter */}
-              <div className="max-w-xl">
-                <div className="group relative">
-                  {/* Subtle glow */}
-                  <div className="absolute inset-0 bg-linear-to-r from-[#5d87ff] to-indigo-600 rounded-2xl blur-xl opacity-35 group-hover:opacity-50 transition-opacity duration-400"></div>
+              {/* MOBILE-OPTIMIZED CTA & SEARCH */}
+              <div className="max-w-xl space-y-4">
+                {/* ========== COMPACT CTA FOR MOBILE ========== */}
+                <div className="md:hidden bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                  <div className="p-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="shrink-0 w-10 h-10 bg-linear-to-br from-[#5d87ff] to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
+                        <TreePine className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-sm font-bold text-gray-900 dark:text-white">
+                          Create Your Family Tree
+                        </h3>
+                        <p className="text-xs text-gray-600 dark:text-gray-300">
+                          Build your legacy, preserve stories
+                        </p>
+                      </div>
+                    </div>
 
-                  {/* Create Your Family Tree CTA - Compact Version */}
-                  <div className="mt-8 max-w-3xl mx-auto">
-                    <div className="relative group">
-                      <div className="absolute -inset-0.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                    <button
+                      onClick={() => setIsLoginOpen(true)}
+                      className="w-full px-4 py-2.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                      Start Now
+                    </button>
 
-                      <div className="relative bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
-                        <div className="p-6">
-                          {/* Horizontal Layout */}
-                          <div className="flex flex-col md:flex-row items-center gap-6">
-                            <div className="shrink-0 w-12 h-12 bg-lienar-to-br from-[#5d87ff] to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
-                              <TreePine className="w-7 h-7 text-white" />
-                            </div>
+                    <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700 flex items-center justify-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center gap-1">
+                        <svg
+                          className="w-3 h-3 text-green-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        Private
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <svg
+                          className="w-3 h-3 text-green-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        Free to Start
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                            <div className="flex-1 text-center md:text-left">
-                              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                                Create Your Family Tree
-                              </h3>
-                              <p className="text-sm text-gray-600 dark:text-gray-300">
-                                Build your legacy, preserve stories, connect
-                                relatives.
-                              </p>
-                            </div>
-
-                            <div className="shrink-0 flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                              <button
-                                onClick={() => setIsLoginOpen(true)}
-                                className="px-5 py-2.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto"
-                              >
-                                Start Now
-                              </button>
-                            </div>
+                {/* ========== DESKTOP FULL CTA ========== */}
+                <div className="hidden md:block">
+                  <div className="relative group">
+                    <div className="absolute -inset-0.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                    <div className="relative bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+                      <div className="p-6">
+                        <div className="flex flex-col md:flex-row items-center gap-6">
+                          <div className="shrink-0 w-12 h-12 bg-linear-to-br from-[#5d87ff] to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
+                            <TreePine className="w-7 h-7 text-white" />
                           </div>
-
-                          {/* Trust indicators */}
-                          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-center gap-6 text-xs text-gray-500 dark:text-gray-400">
-                            <div className="flex items-center gap-1.5">
-                              <svg
-                                className="w-3.5 h-3.5 text-green-500"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              Private & Secure
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              <svg
-                                className="w-3.5 h-3.5 text-green-500"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              Free to Start
-                            </div>
+                          <div className="flex-1 text-center md:text-left">
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                              Create Your Family Tree
+                            </h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                              Build your legacy, preserve stories, connect
+                              relatives.
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => setIsLoginOpen(true)}
+                            className="px-5 py-2.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+                          >
+                            Start Now
+                          </button>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-center gap-6 text-xs text-gray-500 dark:text-gray-400">
+                          <div className="flex items-center gap-1.5">
+                            <svg
+                              className="w-3.5 h-3.5 text-green-500"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            Private & Secure
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <svg
+                              className="w-3.5 h-3.5 text-green-500"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            Free to Start
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Search Bar Container */}
-                  <div className="relative bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-xl ring-1 ring-gray-200/60 dark:ring-white/20 mt-6">
-                    <div className="flex items-center gap-2 p-3 pl-5">
-                      {/* Search Type Dropdown */}
-                      <div className="relative">
-                        <button
-                          onClick={() =>
-                            setShowSearchTypeMenu(!showSearchTypeMenu)
-                          }
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                          {searchType === "familyTree" ? (
-                            <>
-                              <TreePine className="w-4 h-4" />
-                              <span>Family</span>
-                            </>
-                          ) : (
-                            <>
-                              <svg
-                                className="w-4 h-4"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                />
-                              </svg>
-                              <span>Person</span>
-                            </>
-                          )}
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </button>
-
-                        {/* Dropdown Menu */}
-                        {showSearchTypeMenu && (
-                          <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl ring-1 ring-black/5 dark:ring-white/10 py-2 z-10">
-                            <button
-                              onClick={() => {
-                                setSearchType("familyTree");
-                                setShowSearchTypeMenu(false);
-                              }}
-                              className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
-                            >
-                              <TreePine className="w-4 h-4 text-[#5d87ff]" />
-                              <div>
-                                <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                  Family Tree
-                                </div>
-                                <div className="text-xs text-gray-500 dark:text-gray-400">
-                                  Search by family name
-                                </div>
-                              </div>
-                            </button>
-                            <button
-                              onClick={() => {
-                                setSearchType("person");
-                                setShowSearchTypeMenu(false);
-                              }}
-                              className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
-                            >
-                              <svg
-                                className="w-4 h-4 text-[#5d87ff]"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                />
-                              </svg>
-                              <div>
-                                <div className="text-sm font-medium text-gray-900 dark:text-white">
-                                  Person
-                                </div>
-                                <div className="text-xs text-gray-500 dark:text-gray-400">
-                                  Search by person name
-                                </div>
-                              </div>
-                            </button>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Vertical Divider */}
-                      <div className="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
-
-                      {/* Search Icon */}
-                      <svg
-                        className="w-5 h-5 text-gray-500 dark:text-gray-400 shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        />
-                      </svg>
-
-                      {/* Input */}
-                      <input
-                        type="text"
-                        placeholder={
-                          searchType === "familyTree"
-                            ? "Search family name, gotra..."
-                            : "Search person name, ancestor..."
-                        }
-                        className="flex-1 bg-transparent text-base text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none font-medium"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyDown={(e) =>
-                          e.key === "Enter" && handleFamilySearch()
-                        }
-                      />
-
-                      {/* Button */}
+                {/* ========== SEARCH BAR - COMPACT ON MOBILE ========== */}
+                <div className="relative bg-white dark:bg-gray-900/95 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-lg md:shadow-xl ring-1 ring-gray-200/60 dark:ring-white/20">
+                  <div className="flex items-center gap-2 p-2 md:p-3 md:pl-5">
+                    {/* Search Type Dropdown */}
+                    <div className="relative">
                       <button
-                        onClick={handleFamilySearch}
-                        className="px-6 py-2.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-[#5d87ff]/40 transform hover:scale-105 transition-all duration-300 whitespace-nowrap"
-                        disabled={isSearching || !searchQuery.trim()}
+                        onClick={() =>
+                          setShowSearchTypeMenu(!showSearchTypeMenu)
+                        }
+                        className="flex items-center gap-1 md:gap-2 px-2 md:px-3 py-1.5 md:py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300"
                       >
-                        {isSearching ? (
-                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        {searchType === "familyTree" ? (
+                          <>
+                            <TreePine className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                            <span className="hidden sm:inline">Family</span>
+                          </>
                         ) : (
-                          <>Search</>
+                          <>
+                            <svg
+                              className="w-3.5 h-3.5 md:w-4 md:h-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                              />
+                            </svg>
+                            <span className="hidden sm:inline">Person</span>
+                          </>
                         )}
+                        <svg
+                          className="w-3 h-3 md:w-4 md:h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
                       </button>
+
+                      {showSearchTypeMenu && (
+                        <div className="absolute top-full left-0 mt-2 w-44 md:w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl ring-1 ring-black/5 dark:ring-white/10 py-2 z-10">
+                          <button
+                            onClick={() => {
+                              setSearchType("familyTree");
+                              setShowSearchTypeMenu(false);
+                            }}
+                            className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
+                          >
+                            <TreePine className="w-4 h-4 text-[#5d87ff]" />
+                            <div>
+                              <div className="text-sm font-medium text-gray-900 dark:text-white">
+                                Family Tree
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Search by family
+                              </div>
+                            </div>
+                          </button>
+                          <button
+                            onClick={() => {
+                              setSearchType("person");
+                              setShowSearchTypeMenu(false);
+                            }}
+                            className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-left"
+                          >
+                            <svg
+                              className="w-4 h-4 text-[#5d87ff]"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                              />
+                            </svg>
+                            <div>
+                              <div className="text-sm font-medium text-gray-900 dark:text-white">
+                                Person
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Search by person
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      )}
                     </div>
+
+                    {/* Divider */}
+                    <div className="h-6 md:h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
+
+                    {/* Search Icon - Hide on small mobile */}
+                    <svg
+                      className="hidden sm:block w-4 h-4 md:w-5 md:h-5 text-gray-500 dark:text-gray-400 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+
+                    {/* Input */}
+                    <input
+                      type="text"
+                      placeholder={
+                        searchType === "familyTree"
+                          ? "Search family..."
+                          : "Search person..."
+                      }
+                      className="flex-1 bg-transparent text-sm md:text-base text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none font-medium"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      onKeyDown={(e) =>
+                        e.key === "Enter" && handleFamilySearch()
+                      }
+                    />
+
+                    {/* Button */}
+                    <button
+                      onClick={handleFamilySearch}
+                      className="px-3 md:px-6 py-2 md:py-2.5 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white text-xs md:text-sm font-semibold rounded-lg md:rounded-xl hover:shadow-lg hover:shadow-[#5d87ff]/40 transform hover:scale-105 transition-all duration-300 whitespace-nowrap"
+                      disabled={isSearching || !searchQuery.trim()}
+                    >
+                      {isSearching ? (
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <>Search</>
+                      )}
+                    </button>
                   </div>
                 </div>
 
-                {/* Updated suggestions based on search type */}
-                <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+                {/* ========== SUGGESTIONS - MOBILE OPTIMIZED ========== */}
+                <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm px-1">
                   <span className="text-gray-500 dark:text-gray-400 whitespace-nowrap">
                     Try:
                   </span>
                   {searchType === "familyTree" ? (
                     <>
-                      {[
-                        "Subedi",
-                        "Royal Family",
-                        "Gurung Pariwar",
-                        "Shah",
-                        "Rana",
-                      ].map((term) => (
+                      {["Subedi", "Royal Family", "Shah"].map((term) => (
                         <button
                           key={term}
                           onClick={() => setSearchQuery(term)}
-                          className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
+                          className="px-2 md:px-3 py-1 md:py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
                         >
                           {term}
                         </button>
@@ -1060,33 +1094,32 @@ const Landing: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      {["Ram Sharma", "Sita Devi", "Krishna Prasad"].map(
-                        (term) => (
-                          <button
-                            key={term}
-                            onClick={() => setSearchQuery(term)}
-                            className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
-                          >
-                            {term}
-                          </button>
-                        ),
-                      )}
+                      {["Ram Sharma", "Sita Devi"].map((term) => (
+                        <button
+                          key={term}
+                          onClick={() => setSearchQuery(term)}
+                          className="px-2 md:px-3 py-1 md:py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
+                        >
+                          {term}
+                        </button>
+                      ))}
                     </>
                   )}
                 </div>
               </div>
             </div>
 
-            {/* Right: Family Tree Image – Floating & Elegant */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
-                {/* Glow backdrop */}
-                <div className="absolute inset-0 bg-linear-to-br from-[#5d87ff]/25 to-indigo-500/15 rounded-3xl blur-3xl scale-90"></div>
+            {/* ========== RIGHT: FAMILY TREE IMAGE - MOBILE OPTIMIZED ========== */}
+            <div className="relative flex justify-center lg:justify-end mt-6 lg:mt-0">
+              <div className="relative w-full max-w-md lg:max-w-none">
+                {/* Glow backdrop - reduced on mobile */}
+                <div className="absolute inset-0 bg-linear-to-br from-[#5d87ff]/25 to-indigo-500/15 rounded-2xl md:rounded-3xl blur-2xl md:blur-3xl scale-90"></div>
 
-                {/* Main card */}
-                <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl shadow-2xl p-8 ring-1 ring-gray-200/50 dark:ring-white/10">
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-                    <div className="px-6 py-3 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white font-bold rounded-full shadow-xl text-sm">
+                {/* Main card - simplified on mobile */}
+                <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl p-4 md:p-8 ring-1 ring-gray-200/50 dark:ring-white/10">
+                  {/* Badge - smaller on mobile */}
+                  <div className="absolute -top-3 md:-top-6 left-1/2 -translate-x-1/2 z-10">
+                    <div className="px-3 py-1.5 md:px-6 md:py-3 bg-linear-to-r from-[#5d87ff] to-indigo-600 text-white font-bold rounded-full shadow-lg md:shadow-xl text-xs md:text-sm whitespace-nowrap">
                       Your Family Legacy Lives Here
                     </div>
                   </div>
@@ -1094,12 +1127,10 @@ const Landing: React.FC = () => {
                   <Image
                     src={Familytree}
                     alt="Interactive Family Tree Visualization"
-                    className="w-full max-w-2xl mx-auto rounded-2xl shadow-2xl"
-                    style={{ maxHeight: "600px", objectFit: "contain" }}
+                    className="w-full mx-auto rounded-xl md:rounded-2xl shadow-lg md:shadow-2xl"
+                    style={{ maxHeight: "400px", objectFit: "contain" }}
                   />
                 </div>
-
-                {/* Floating mini cards */}
               </div>
             </div>
           </div>
