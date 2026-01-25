@@ -14,18 +14,20 @@ import {
   Star,
   ArrowRight,
   Target,
-  ChevronLeft,
-  ChevronRight,
-  Edit,
   Zap,
-  Heart,
   TrendingUp,
   MapPin,
-  UserPlus,
-  Bell,
-  Share2,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { usePopularEvents } from "@/lib/hooks/usePopularEvents";
+import { EventResponse } from "@/types/event";
+import {
+  EventSiteCarousel,
+  EventDetailsDialog,
+} from "@/components/Event/index";
+import { Loader2 } from "lucide-react";
+import { GoogleMapEmbed } from "@/components/Heritage/Maps";
+import LoginDialog from "@/components/dialog/Login";
 
 // Animation variants
 const fadeInUp = {
@@ -60,6 +62,57 @@ const slideInRight = {
 
 const EventsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedEvent, setSelectedEvent] = useState<EventResponse | null>(
+    null,
+  );
+  const [selectedEventForMap, setSelectedEventForMap] =
+    useState<EventResponse | null>(null);
+  const [isEventDialogOpen, setIsEventDialogOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const { events, loading, error } = usePopularEvents();
+
+  const handleEventClick = (event: EventResponse) => {
+    setSelectedEvent(event);
+    setIsEventDialogOpen(true);
+  };
+
+  const handleViewOnMap = (event: EventResponse) => {
+    setSelectedEventForMap(event);
+  };
+
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
+
+  const handleRegister = () => {
+    window.location.href = "/register";
+  };
+
+  const handleJoinClick = (event: EventResponse) => {
+    // Check if user is logged in (you'll need to implement this check based on your auth)
+    const isLoggedIn = false; // Replace with actual auth check
+
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+    } else {
+      // Handle join event logic here
+      console.log("Joining event:", event.id);
+      // Make API call to join event
+    }
+  };
+
+  const handleCreateEventClick = () => {
+    // Check if user is logged in
+    const isLoggedIn = false; // Replace with actual auth check
+
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+    } else {
+      // Navigate to create event page or open create event modal
+      console.log("Create event");
+    }
+  };
 
   const slides = [
     {
@@ -209,14 +262,6 @@ const EventsPage = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
@@ -504,6 +549,29 @@ const EventsPage = () => {
               </div>
             </motion.div>
           </motion.div>
+
+          {loading ? (
+            <div className="text-center py-16">
+              <Loader2 className="h-12 w-12 text-blue-600 animate-spin mx-auto mb-4" />
+              <p className="text-gray-600">Loading events...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-16">
+              <div className="bg-red-50 border border-red-200 rounded-2xl p-8 inline-block">
+                <p className="text-red-600 font-medium">{error}</p>
+              </div>
+            </div>
+          ) : (
+            <>
+              <EventSiteCarousel
+                events={events}
+                onCreateClick={handleCreateEventClick}
+                onEventClick={handleEventClick}
+                onViewMap={handleViewOnMap}
+                onJoinClick={handleJoinClick}
+              />
+            </>
+          )}
 
           {/* Event Categories Section */}
           <motion.div
@@ -960,6 +1028,71 @@ const EventsPage = () => {
           </div>
         </div>
       </motion.footer>
+      {/* Event Details Dialog */}
+      {selectedEvent && (
+        <EventDetailsDialog
+          event={selectedEvent}
+          isOpen={isEventDialogOpen}
+          onClose={() => {
+            setIsEventDialogOpen(false);
+            setSelectedEvent(null);
+          }}
+        />
+      )}
+
+      {/* Map Modal */}
+      {selectedEventForMap && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedEventForMap(null)}
+        >
+          <div
+            className="w-full max-w-4xl rounded-3xl shadow-2xl bg-white overflow-hidden animate-in fade-in zoom-in duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {selectedEventForMap.name}
+                </h3>
+                <p className="text-gray-600 flex items-center gap-2 mt-1">
+                  <MapPin className="h-4 w-4" />
+                  {selectedEventForMap.city?.name}
+                </p>
+              </div>
+              <button
+                onClick={() => setSelectedEventForMap(null)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+              >
+                <div className="h-8 w-8 flex items-center justify-center text-gray-500 hover:text-gray-700 text-xl">
+                  ✕
+                </div>
+              </button>
+            </div>
+            <div className="p-4">
+              <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                <GoogleMapEmbed
+                  lat={selectedEventForMap.latitude ?? 0}
+                  lng={selectedEventForMap.longitude ?? 0}
+                />
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-gray-600 text-sm">
+                  Showing location of {selectedEventForMap.name}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <LoginDialog
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onLogin={handleLogin}
+        onRegister={handleRegister}
+        message="Please login to join events or create your own events"
+        feature="join or create events"
+      />
     </div>
   );
 };
