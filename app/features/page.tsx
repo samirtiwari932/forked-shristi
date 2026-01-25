@@ -44,10 +44,11 @@ export const metadata: Metadata = {
 /* =========================
    FEATURES DATA
 ========================= */
+
 const features = [
   {
     id: "family-tree",
-    title: "Digital Family Tree Builder",
+    title: "Family Tree Builder", // Changed from "Digital Family Tree Builder"
     description:
       "Visually build your multi-generation family tree and preserve relationships across generations.",
     longDescription:
@@ -59,7 +60,7 @@ const features = [
   },
   {
     id: "event",
-    title: "Family Groups & Event Management",
+    title: "Event Planning", // Changed from "Family Groups & Event Management"
     description:
       "Create private family groups and organize events like reunions, birthdays, and ceremonies.",
     longDescription:
@@ -72,7 +73,7 @@ const features = [
   },
   {
     id: "finance",
-    title: "Shared Family Finance Management",
+    title: "Finance Management", // Changed from "Shared Family Finance Management"
     description:
       "Track shared budgets, event expenses, and collective family savings transparently.",
     longDescription:
@@ -85,7 +86,7 @@ const features = [
   },
   {
     id: "heritage-sites",
-    title: "Heritage Site Preservation",
+    title: "Heritage Preservation", // Changed from "Heritage Site Preservation"
     description:
       "Document ancestral homes, cultural landmarks, and important family locations.",
     longDescription:
@@ -249,7 +250,7 @@ export default function FeaturesPage() {
 
             <p className="text-white/90 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
               Shristi Universe helps families preserve stories, heritage,
-              relationships, and memories in a secure digital environment —
+              relationships, and memories in a secure digital environment
               strengthening connections across generations.
             </p>
 
