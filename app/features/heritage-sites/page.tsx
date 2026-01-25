@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   MapPin,
@@ -43,6 +43,7 @@ import {
   HeritageDetailsDialog,
 } from "@/components/Heritage/index";
 import LoginDialog from "@/components/dialog/Login";
+import Footer from "@/components/Landing/Footer";
 
 // Animation variants (same as finance page)
 const fadeInUp = {
@@ -77,8 +78,9 @@ const slideInRight = {
 
 const HeritagePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeSection, setActiveSection] = useState("hero");
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const heritageSectionRef = useRef<HTMLDivElement | null>(null);
 
   const [selectedHeritage, setSelectedHeritage] =
     useState<HeritageResponse | null>(null);
@@ -458,27 +460,29 @@ const HeritagePage = () => {
             </motion.div>
           </motion.div>
 
-          {loading ? (
-            <div className="text-center py-16">
-              <Loader2 className="h-12 w-12 text-blue-600 animate-spin mx-auto mb-4" />
-              <p className="text-gray-600">Loading heritage sites...</p>
-            </div>
-          ) : error ? (
-            <div className="text-center py-16">
-              <div className="bg-red-50 border border-red-200 rounded-2xl p-8 inline-block">
-                <p className="text-red-600 font-medium">{error}</p>
+          <div ref={heritageSectionRef}>
+            {loading ? (
+              <div className="text-center py-16">
+                <Loader2 className="h-12 w-12 text-blue-600 animate-spin mx-auto mb-4" />
+                <p className="text-gray-600">Loading heritage sites...</p>
               </div>
-            </div>
-          ) : (
-            <>
-              <HeritageSiteCarousel
-                sites={heritages}
-                onCreateClick={handleCreateHeritageClick}
-                onSiteClick={handleHeritageClick}
-                onViewMap={handleViewOnMap}
-              />
-            </>
-          )}
+            ) : error ? (
+              <div className="text-center py-16">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-8 inline-block">
+                  <p className="text-red-600 font-medium">{error}</p>
+                </div>
+              </div>
+            ) : (
+              <>
+                <HeritageSiteCarousel
+                  sites={heritages}
+                  onCreateClick={handleCreateHeritageClick}
+                  onSiteClick={handleHeritageClick}
+                  onViewMap={handleViewOnMap}
+                />
+              </>
+            )}
+          </div>
 
           {/* Heritage Types Section */}
           <motion.div
@@ -486,7 +490,7 @@ const HeritagePage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="mb-24"
+            className="mt-18 mb-24"
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
@@ -1101,6 +1105,7 @@ const HeritagePage = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-full bg-[#5d87ff] text-white font-semibold py-4 px-6 rounded-xl hover:bg-[#4a6fd9] transition-colors flex items-center justify-center gap-2"
+                      onClick={handleLogin}
                     >
                       Begin Preserving Heritage
                       <ArrowRight className="h-5 w-5" />
@@ -1109,6 +1114,12 @@ const HeritagePage = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-full bg-[#f1ede8] text-[#2d3748] font-semibold py-4 px-6 rounded-xl hover:bg-[#e2ded9] transition-colors"
+                      onClick={() =>
+                        heritageSectionRef.current?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        })
+                      }
                     >
                       Explore Heritage Sites
                     </motion.button>
@@ -1182,75 +1193,7 @@ const HeritagePage = () => {
       </main>
 
       {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="bg-[#2d3748] py-12"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
-              <p className="text-white/70 text-sm">
-                Empowering heritage preservation through digital innovation.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Features</h4>
-              <ul className="space-y-2">
-                {["Heritage Sites", "Family Tree", "Events", "Finance"].map(
-                  (item) => (
-                    <li key={item}>
-                      <a
-                        href="#"
-                        className="text-white/70 hover:text-white text-sm transition-colors"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                {["About", "Contact", "Blog"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                {["Privacy", "Terms"].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-white/70 hover:text-white text-sm transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 text-center">
-            <p className="text-white/70 text-sm">
-              &copy; 2026 Shristi Universe. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </motion.footer>
+      <Footer />
 
       {/* Heritage Details Dialog */}
       {selectedHeritage && (
