@@ -1,5 +1,6 @@
 // components/FamilySearchDialog.tsx
 import { X, Users, Calendar, Search, Lock, TreePine } from "lucide-react";
+import defaultTreeImage from "@/public/assets/images/default_treeImage.png";
 
 import { FamilyTreeSearchResponse } from "@/types/family";
 
@@ -12,7 +13,7 @@ interface FamilySearchDialogProps {
 }
 
 const getDefaultTreeImage = () => {
-  return "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80";
+  return defaultTreeImage.src;
 };
 
 export default function FamilySearchDialog({

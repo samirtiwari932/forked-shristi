@@ -7,8 +7,6 @@ import Familytree from "@/public/assets/images/Familytree.jpg";
 import {
   Menu,
   X,
-  Sun,
-  Moon,
   ChevronLeft,
   ChevronRight,
   Smartphone,
@@ -36,6 +34,9 @@ import FamilySearchDialog from "./FamilyTreeSearch/FamilyTreeSearchDialog";
 import AdBsConverter from "@/components/common/DateConverter";
 import { GoogleMapEmbed } from "../Heritage/Maps";
 import Image, { StaticImageData } from "next/image";
+
+import EventPlanning from "@/public/assets/images/event.png";
+import Finance from "@/public/assets/images/finance.png";
 
 const HeritageDetailsDialog = ({
   heritage,
@@ -253,7 +254,7 @@ type Feature = {
   title: string;
   description: string;
   icon: string;
-  image: StaticImageData | string;
+  image: StaticImageData;
   alt: string;
 };
 
@@ -279,8 +280,7 @@ const features: Feature[] = [
     description:
       "Plan family gatherings, reunions, and celebrations. Keep memories alive with organized and documented events.",
     icon: "📖",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: EventPlanning,
     alt: "Beautifully decorated event celebration table",
   },
   {
@@ -288,18 +288,8 @@ const features: Feature[] = [
     description:
       "Manage family funds transparently. Track budgets, contributions, and expenses for group events and shared programs.",
     icon: "💰",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: Finance,
     alt: "Calculator and financial planning documents",
-  },
-  {
-    title: "Story & Document Vault",
-    description:
-      "Securely store and share important documents, stories, and photos. Access them anytime to keep your legacy safe.",
-    icon: "📦",
-    image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&h=600&fit=crop&auto=format&q=80",
-    alt: "Old archive library with books and documents",
   },
 ];
 

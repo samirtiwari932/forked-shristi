@@ -14,6 +14,8 @@ import {
 import Footer from "@/components/Landing/Footer";
 import royalFamilyTree from "@/public/assets/images/RoyalFamilyTree.jpg";
 import bouddhanathStupa from "@/public/assets/images/bouddhanath-stupa.jpg";
+import EventPlanning from "@/public/assets/images/EventPlanning.png";
+import Finance from "@/public/assets/images/Finance.png";
 
 export const metadata: Metadata = {
   title:
@@ -55,7 +57,7 @@ const features = [
       "Create detailed digital family trees with photos, biographies, and relationships to preserve your family legacy forever.",
     icon: Users,
     tag: "Core Feature",
-    image: royalFamilyTree,
+    image: royalFamilyTree.src,
     imageType: "local" as const,
   },
   {
@@ -67,8 +69,7 @@ const features = [
       "Plan, manage, and share family events securely with private groups, updates, photos, and schedules.",
     icon: Calendar,
     tag: "Organize",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: EventPlanning.src,
     imageType: "url" as const,
   },
   {
@@ -80,8 +81,7 @@ const features = [
       "Manage shared finances, contributions, and goals in a secure and transparent digital environment.",
     icon: DollarSign,
     tag: "Finance",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop&auto=format&q=80",
+    image: Finance.src,
     imageType: "url" as const,
   },
   {
@@ -171,7 +171,7 @@ export default function FeaturesPage() {
                         />
                       ) : (
                         <img
-                          src={feature.image as string}
+                          src={feature.image}
                           alt=""
                           className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
                         />
