@@ -177,57 +177,6 @@ export default function FinancePage() {
     },
   ]);
 
-  const financeFeatures: FinanceFeature[] = [
-    {
-      id: 1,
-      icon: <Wallet className="h-6 w-6" />,
-      title: "Family Tree Treasury",
-      description: "Centralized fund management for entire family tree",
-      features: [
-        "Track collective family savings",
-        "Manage shared expenses transparently",
-        "Monitor contributions from all family members",
-        "Generate treasury reports",
-      ],
-    },
-    {
-      id: 2,
-      icon: <Gift className="h-6 w-6" />,
-      title: "Puja & Ritual Funds",
-      description: "Dedicated management for religious and ceremonial funds",
-      features: [
-        "Separate accounts for each puja/ritual",
-        "Track donations and expenses",
-        "Set fundraising goals",
-        "Maintain religious event budgets",
-      ],
-    },
-    {
-      id: 3,
-      icon: <Heart className="h-6 w-6" />,
-      title: "Donation Management",
-      description: "Organize and track charitable contributions",
-      features: [
-        "Record individual and collective donations",
-        "Track donation history with donor details",
-        "Generate tax-friendly reports",
-        "Set recurring donation schedules",
-      ],
-    },
-    {
-      id: 4,
-      icon: <PieChart className="h-6 w-6" />,
-      title: "Expense Tracking",
-      description: "Monitor all family group expenditures",
-      features: [
-        "Categorize expenses (events, maintenance, etc.)",
-        "Real-time balance updates",
-        "Set monthly/yearly budgets",
-        "Analyze spending patterns",
-      ],
-    },
-  ];
-
   const programFeatures: ProgramFeature[] = [
     {
       id: 1,
@@ -358,6 +307,10 @@ export default function FinancePage() {
     "Build collective family wealth systematically",
     "Ensure financial legacy preservation across generations",
   ];
+
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1426,7 +1379,7 @@ export default function FinancePage() {
                 Why Shristi Universe for Finance Management?
               </h2>
               <p className="text-[#64748b] max-w-2xl mx-auto">
-                Not just a finance tool—it is a community-centric ecosystem that
+                Not just a finance tool it is a community-centric ecosystem that
                 connects multiple aspects of family and community management
               </p>
             </motion.div>
@@ -1537,13 +1490,14 @@ export default function FinancePage() {
                     Join thousands of families and communities who have
                     transformed their financial management with Shristi
                     Universe. Start building trust, maintaining transparency,
-                    and planning for the future—together.
+                    and planning for the future together.
                   </p>
                   <div className="space-y-4">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-full bg-[#5d87ff] text-white font-semibold py-4 px-6 rounded-xl hover:bg-[#4a6fd9] transition-colors flex items-center justify-center gap-2"
+                      onClick={handleLogin}
                     >
                       Start Managing Finances
                       <ArrowRight className="h-5 w-5" />

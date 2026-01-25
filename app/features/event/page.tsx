@@ -28,6 +28,7 @@ import {
 import { Loader2 } from "lucide-react";
 import { GoogleMapEmbed } from "@/components/Heritage/Maps";
 import LoginDialog from "@/components/dialog/Login";
+import Link from "next/link";
 
 // Animation variants
 const fadeInUp = {
@@ -325,6 +326,7 @@ const EventsPage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg shadow-[#5d87ff]/20 flex items-center gap-2"
+                onClick={handleLogin}
               >
                 Get Started
                 <ArrowRight className="h-5 w-5" />
@@ -408,7 +410,7 @@ const EventsPage = () => {
                 variants={fadeInUp}
                 className="text-4xl font-bold text-[#2d3748] mb-6"
               >
-                Bring Families, Communities, and Groups Together — Effortlessly
+                Bring Families, Communities, and Groups Together Effortlessly
               </motion.h2>
 
               <motion.p
@@ -502,7 +504,7 @@ const EventsPage = () => {
                 className="text-[#64748b] mb-6 leading-relaxed"
               >
                 The Events feature in Shristi Universe is built to serve diverse
-                needs — from intimate family occasions to large public community
+                needs from intimate family occasions to large public community
                 gatherings. Events are not limited to family activities alone;
                 users can organize events for families, communities, and groups,
                 making it a versatile solution for real-life connections.
@@ -513,17 +515,16 @@ const EventsPage = () => {
                 className="text-[#64748b] mb-6 leading-relaxed"
               >
                 This flexibility makes Shristi Universe more than just an event
-                tool — it becomes a complete family and community event
-                management platform.
+                tool it becomes a complete family and community event management
+                platform.
               </motion.p>
             </motion.div>
 
             <motion.div variants={slideInRight} className="lg:w-1/2">
               <div className="bg-[#3d4f6f] rounded-3xl p-8 text-white">
-                <div className="flex items-center justify-between mb-8">
+                {/* <div className="flex items-center justify-between mb-8">
                   <span className="text-white/60 text-sm">Event Platform</span>
-                  <span className="font-bold text-xl">SU</span>
-                </div>
+                </div> */}
                 <h3 className="text-3xl font-bold mb-2">Events</h3>
                 <p className="text-white/60 mb-8">
                   Complete Management Platform
@@ -542,10 +543,12 @@ const EventsPage = () => {
                     <span className="text-2xl font-bold">8</span>
                   </div>
                 </div>
-                <button className="mt-6 bg-[#5d87ff] text-white px-6 py-3 rounded-full text-sm font-medium w-full hover:bg-[#4a6fe0] transition-colors flex items-center justify-center gap-2">
-                  Explore Features
-                  <ArrowRight className="h-4 w-4" />
-                </button>
+                <Link href="/features">
+                  <button className="mt-6 bg-[#5d87ff] text-white px-6 py-3 rounded-full text-sm font-medium w-full hover:bg-[#4a6fe0] transition-colors flex items-center justify-center gap-2">
+                    Explore Features
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </motion.div>
@@ -579,7 +582,7 @@ const EventsPage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="mb-24"
+            className="mt-18 mb-24"
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
@@ -925,7 +928,7 @@ const EventsPage = () => {
                   If you are looking for a reliable way to manage family events,
                   community programs, or group activities without complexity,
                   Shristi Universe provides the perfect digital space to bring
-                  people together — effortlessly.
+                  people together effortlessly.
                 </p>
 
                 <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -947,7 +950,10 @@ const EventsPage = () => {
                   ))}
                 </div>
 
-                <button className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                <button
+                  className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2"
+                  onClick={handleLogin}
+                >
                   Start Planning Your First Event
                   <ArrowRight className="h-5 w-5" />
                 </button>

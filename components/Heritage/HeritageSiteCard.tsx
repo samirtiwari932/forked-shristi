@@ -6,10 +6,12 @@ export default function HeritageSiteCard({
   site,
   onClick,
   onViewMap,
+  onJoinClick,
 }: {
   site: HeritageResponse;
   onClick: () => void;
   onViewMap?: (site: HeritageResponse) => void;
+  onJoinClick?: (site: HeritageResponse) => void;
 }) {
   const [imgError, setImgError] = useState(false);
   const firstImage = site.medias.find((m) => m.type === "IMAGE");

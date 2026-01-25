@@ -42,6 +42,7 @@ import {
   HeritageSiteCarousel,
   HeritageDetailsDialog,
 } from "@/components/Heritage/index";
+import LoginDialog from "@/components/dialog/Login";
 
 // Animation variants (same as finance page)
 const fadeInUp = {
@@ -94,6 +95,26 @@ const HeritagePage = () => {
 
   const handleViewOnMap = (heritage: HeritageResponse) => {
     setSelectedHeritageForMap(heritage);
+  };
+
+  const handleCreateHeritageClick = () => {
+    // Check if user is logged in
+    const isLoggedIn = false; // Replace with actual auth check
+
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+    } else {
+      // Navigate to create event page or open create event modal
+      console.log("Create event");
+    }
+  };
+
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
+
+  const handleRegister = () => {
+    window.location.href = "/register";
   };
 
   const slides = [
@@ -452,7 +473,7 @@ const HeritagePage = () => {
             <>
               <HeritageSiteCarousel
                 sites={heritages}
-                onCreateClick={() => setIsLoginOpen(true)}
+                onCreateClick={handleCreateHeritageClick}
                 onSiteClick={handleHeritageClick}
                 onViewMap={handleViewOnMap}
               />
@@ -1289,6 +1310,15 @@ const HeritagePage = () => {
           </div>
         </div>
       )}
+
+      <LoginDialog
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onLogin={handleLogin}
+        onRegister={handleRegister}
+        message="Please login to create your heritage site."
+        feature="create your heritage site"
+      />
     </div>
   );
 };
