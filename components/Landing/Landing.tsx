@@ -216,6 +216,7 @@ const HeritageDetailsDialog = ({
         </div>
       </div>
     </div>
+
   );
 };
 
@@ -329,8 +330,7 @@ const HeritageSiteCard = ({
               />
               {site.medias.filter((m) => m.type === "IMAGE").length > 1 && (
                 <div className="absolute top-2 right-2 bg-black/60 text-white px-2 py-1 rounded-full text-xs">
-                  +{site.medias.filter((m) => m.type === "IMAGE").length - 1}{" "}
-                  photos
+                  +{site.medias.filter((m) => m.type === "IMAGE").length - 1} photos
                 </div>
               )}
             </>
@@ -371,6 +371,7 @@ const HeritageSiteCard = ({
         </div>
       </div>
     </div>
+
   );
 };
 
@@ -764,7 +765,7 @@ const Landing: React.FC = () => {
         <div className="md:hidden fixed inset-x-0 top-16 z-50 mx-4 bg-white dark:bg-gray-800 shadow-2xl rounded-xl p-4 animate-fade-in">
           <div className="space-y-2">
             <a
-              href="https://shristiuniverse.com/login"
+              href="/login"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
@@ -773,24 +774,24 @@ const Landing: React.FC = () => {
               Login
             </a>
             <a
-              href="https://shristiuniverse.com/register"
+              href="/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center bg-green-500 text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
+              className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
               onClick={() => setIsMenuOpen(false)}
             >
               SignUp
             </a>
             <a
               href="/about"
-              className="block w-full text-center bg-purple-500 text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
+              className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
             </a>
             <a
               href="/features"
-              className="block w-full text-center bg-indigo-500 text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
+              className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
@@ -815,7 +816,7 @@ const Landing: React.FC = () => {
           <button
             className="px-6 py-3 bg-blue-500 text-white rounded-lg text-base hover:bg-blue-600 transition active:scale-95 min-h-[44px]"
             onClick={() =>
-              window.open("https://shristiuniverse.com/login", "_blank")
+              window.open("/login", "_blank")
             }
           >
             Connect Now
@@ -1091,6 +1092,7 @@ const Landing: React.FC = () => {
                           </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
 
@@ -1226,9 +1228,7 @@ const Landing: React.FC = () => {
                         className="flex-1 bg-transparent text-base text-gray-900 placeholder-gray-500 outline-none font-medium"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyDown={(e) =>
-                          e.key === "Enter" && handleFamilySearch()
-                        }
+                        onKeyDown={(e) => e.key === "Enter" && handleFamilySearch()}
                       />
 
                       {/* Button */}
@@ -1245,6 +1245,7 @@ const Landing: React.FC = () => {
                       </button>
                     </div>
                   </div>
+
                 </div>
 
                 {/* Desktop suggestions */}
@@ -1254,13 +1255,7 @@ const Landing: React.FC = () => {
                   </span>
                   {searchType === "familyTree" ? (
                     <>
-                      {[
-                        "Subedi",
-                        "Royal Family",
-                        "Gurung Pariwar",
-                        "Shah",
-                        "Rana",
-                      ].map((term) => (
+                      {["Subedi", "Royal Family", "Gurung Pariwar", "Shah", "Rana"].map((term) => (
                         <button
                           key={term}
                           onClick={() => setSearchQuery(term)}
@@ -1272,17 +1267,15 @@ const Landing: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      {["Ram Sharma", "Sita Devi", "Krishna Prasad"].map(
-                        (term) => (
-                          <button
-                            key={term}
-                            onClick={() => setSearchQuery(term)}
-                            className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
-                          >
-                            {term}
-                          </button>
-                        ),
-                      )}
+                      {["Ram Sharma", "Sita Devi", "Krishna Prasad"].map((term) => (
+                        <button
+                          key={term}
+                          onClick={() => setSearchQuery(term)}
+                          className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
+                        >
+                          {term}
+                        </button>
+                      ))}
                     </>
                   )}
                 </div>
@@ -1436,11 +1429,10 @@ const Landing: React.FC = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`Go to feature ${index + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-[#5d87ff] w-8"
-                      : "bg-gray-300 dark:bg-gray-600 w-2"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
+                    ? "bg-[#5d87ff] w-8"
+                    : "bg-gray-300 dark:bg-gray-600 w-2"
+                    }`}
                 />
               ))}
             </div>
@@ -1783,12 +1775,7 @@ const Landing: React.FC = () => {
                 ) : (
                   <div className="w-40 h-40 mx-auto animate-pulse rounded-xl bg-gray-200" />
                 )}
-                <a
-                  href={PLAY_STORE_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 inline-block text-sm font-semibold text-[#3CB371] underline"
-                >
+                <a href={PLAY_STORE_URL} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm font-semibold text-[#3CB371] underline">
                   Open link
                 </a>
               </div>
@@ -1861,7 +1848,7 @@ const Landing: React.FC = () => {
               </p>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://shristiuniverse.com/login"
+                  href="/login"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsLoginOpen(false)}
@@ -1879,7 +1866,7 @@ const Landing: React.FC = () => {
               <p className="text-center text-sm text-gray-600 mt-4">
                 Don't have an account?{" "}
                 <a
-                  href="https://shristiuniverse.com/register"
+                  href="/register"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsLoginOpen(false)}

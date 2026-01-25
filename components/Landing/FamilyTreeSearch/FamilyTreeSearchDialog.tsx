@@ -98,8 +98,7 @@ export default function FamilySearchDialog({
                               alt={item.name}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                               onError={(e) => {
-                                (e.target as HTMLImageElement).src =
-                                  getDefaultTreeImage();
+                                (e.target as HTMLImageElement).src = getDefaultTreeImage();
                               }}
                             />
                           </div>
@@ -173,8 +172,10 @@ export default function FamilySearchDialog({
               Login required to view full family tree details
             </p>
           </div>
+
         </div>
       </div>
+
     </>
   );
 }

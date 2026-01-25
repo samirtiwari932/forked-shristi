@@ -1,4 +1,6 @@
-import { Metadata } from "next";
+"use client";
+
+import { useState, useEffect } from "react";
 import {
   Users,
   Calendar,
@@ -8,39 +10,49 @@ import {
   Eye,
   Heart,
   Flag,
+  CheckCircle,
+  Star,
+  Shield,
+  Sparkles,
+  Globe,
+  Award,
+  TrendingUp,
+  Zap,
+  ArrowRight,
+  Quote,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
-// import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
 
-export const metadata: Metadata = {
-  title: "Shristi Universe - Preserve Your Family Legacy & Heritage Digitally",
-  description:
-    "Discover Shristi Universe - the ultimate digital platform to preserve family history, safeguard heritage, and share memories securely. Build family trees, document traditions, manage events, and store important records online, keeping your family legacy alive for generations.",
+// Animation variants matching your Finance page
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
-  keywords: [
-    "family tree builder",
-    "heritage preservation",
-    "event management",
-    "finance tracker",
-    "family connection platform",
-    "cultural heritage preservation",
-    "multi-generation family tree",
-    "family group management",
-  ],
-  authors: [{ name: "Shristi Universe" }],
-  creator: "Shristi Universe",
-  publisher: "Shristi Universe",
-
-  openGraph: {
-    title:
-      "About Us - Family Connection,Heritage Preservation & Event plan Platform | Shristi Universe",
-    description:
-      "Helping families connect, preserve heritage, and manage shared memories — all in one place.Build family trees, organize events, and create lasting legacies.",
-    url: "/about",
-    siteName: "Shristi Universe",
-    type: "website",
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
   },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 };
 
 const features = [
@@ -49,224 +61,570 @@ const features = [
     title: "Family Tree",
     description:
       "Visually build multi-generation family trees to preserve relationships and legacy.",
+    color: "#5d87ff",
   },
   {
     icon: Calendar,
     title: "Family Groups & Events",
     description:
       "Create family groups, share updates, and organize meaningful events.",
+    color: "#22c55e",
   },
   {
     icon: DollarSign,
     title: "Manage Finances",
     description:
       "Track shared family budgets and event expenses with transparency.",
+    color: "#f59e0b",
   },
   {
     icon: Landmark,
     title: "Heritage Sites",
     description:
       "Preserve cultural landmarks and family heritage for future generations.",
+    color: "#8b5cf6",
+  },
+];
+
+const stats = [
+  { number: "10K+", label: "Active Families", icon: Users },
+  { number: "50K+", label: "Family Trees Created", icon: TrendingUp },
+  { number: "100K+", label: "Memories Preserved", icon: Heart },
+  { number: "99.9%", label: "Satisfaction Rate", icon: Star },
+];
+
+const values = [
+  {
+    icon: Users,
+    title: "Family First",
+    description:
+      "Everything we build prioritizes family connections and wellbeing.",
+  },
+  {
+    icon: Shield,
+    title: "Privacy",
+    description:
+      "Your family data is secure and only accessible to those you choose.",
+  },
+  {
+    icon: Sparkles,
+    title: "Inclusivity",
+    description: "We celebrate all family structures and traditions.",
+  },
+  {
+    icon: Award,
+    title: "Legacy",
+    description: "Helping you create lasting memories for generations to come.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
       <Navbar />
+      {/* Hero Section */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="relative w-full bg-linear-to-br from-[#5d87ff] via-[#4a7cff] to-[#3d6fe6] py-24 overflow-hidden"
+      >
+        {/* Animated background elements */}
+        <motion.div
+          animate={{
+            rotate: 360,
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+            scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="absolute top-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-0 left-20 w-72 h-72 bg-white/5 rounded-full blur-2xl"
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <motion.div variants={fadeInUp} className="text-center">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-6"
+            >
+              <Sparkles className="h-4 w-4" />
+              Preserving Legacies Since 2020
+            </motion.span>
+
+            <motion.h1
+              variants={fadeInUp}
+              className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            >
+              About <span className="text-white/90">Shristi Universe</span>
+            </motion.h1>
+
+            <motion.p
+              variants={fadeInUp}
+              transition={{ delay: 0.1 }}
+              className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+            >
+              Empowering families to preserve their legacy, celebrate their
+              heritage, and build lasting connections across generations.
+            </motion.p>
+          </motion.div>
+        </div>
+      </motion.div>
 
       <main className="flex-1">
-        {/* Page Header - Full width */}
-        <div className="w-full bg-linear-to-r from-[#5d87ff] to-[#4a7cff] py-16 text-center text-white">
-          <h1 className="text-5xl font-bold mb-2">
-            About <span className="text-white">Shristi Universe</span>
-          </h1>
-        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+          {/* Stats Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6 -mt-32 mb-24 relative z-20"
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white rounded-2xl border border-[#e2ded9] p-6 text-center shadow-lg"
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                  className="w-12 h-12 bg-[#5d87ff]/10 rounded-xl flex items-center justify-center mx-auto mb-4"
+                >
+                  <stat.icon className="h-6 w-6 text-[#5d87ff]" />
+                </motion.div>
+                <h3 className="text-3xl font-bold text-[#2d3748] mb-2">
+                  {stat.number}
+                </h3>
+                <p className="text-[#64748b] text-sm">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
 
-        {/* Alternating Layout Sections */}
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          {/* Section 1: Our Mission with image on right */}
-          <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
-            <div className="lg:w-1/2">
-              <div className="flex items-center gap-3 mb-6">
-                <Target className="w-8 h-8 text-[#5d87ff]" />
-                <h2 className="text-3xl font-bold text-gray-800">
-                  Our Mission – Protecting Family Legacy and Heritage
-                </h2>
-              </div>
-              <p className="text-gray-600 text-lg leading-relaxed">
+          {/* Mission Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="flex flex-col lg:flex-row items-center gap-12 mb-24"
+          >
+            <motion.div variants={slideInLeft} className="lg:w-1/2">
+
+              <motion.h2
+                variants={fadeInUp}
+                className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6"
+              >
+                Our Mission- Protecting Family Legacy and Heritage
+              </motion.h2>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-[#64748b] mb-6 leading-relaxed text-lg"
+              >
                 Our mission at Shristi Universe is to help families preserve
                 their legacy and heritage in today's modern era using digital
                 technology. We provide a comprehensive platform where users can
-                create family trees, store precious memories, organize events,
-                and safeguard historical heritage sites for generations to come.
-              </p>
-            </div>
-            <div className="lg:w-1/2">
-              <div className="bg-linear-to-br from-blue-100 to-indigo-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">👨‍👩‍👧‍👦</div>
-                  <p className="text-gray-700 font-medium">
-                    Family Connections
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+                create trees, store precious memories, and safeguard historical
+                heritage sites for generations to come.
+              </motion.p>
 
-          {/* Section 2: Why Choose Us with image on left */}
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-12 mb-20">
-            <div className="lg:w-1/2">
-              <div className="flex items-center gap-3 mb-6">
-                <Heart className="w-8 h-8 text-[#5d87ff]" />
-                <h2 className="text-3xl font-bold text-gray-800">
-                  Why Choose Us
-                </h2>
-              </div>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              <motion.div
+                variants={fadeInUp}
+                className="bg-[#f1ede8] rounded-2xl p-6 border border-[#e2ded9] mb-6"
+              >
+                <h3 className="text-lg font-bold text-[#2d3748] mb-4 flex items-center gap-2">
+                  <Zap className="h-5 w-5 text-[#5d87ff]" />
+                  Key Features:
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    "Create detailed family trees effortlessly.",
+                    "Preserve and protect heritage sites linked to your family.",
+                    "Organize events and celebrations.",
+                    "Store and share photographs, documents, and memories securely.",
+                    "Celebrate and pass down your family, community and group legacy to future generations.",
+                  ].map((item, idx) => (
+                    <motion.li
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      whileHover={{ x: 5 }}
+                      className="flex items-start gap-3"
+                    >
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff] shrink-0 mt-0.5" />
+                      <span className="text-[#2d3748]">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </motion.div>
+
+            <motion.div variants={slideInRight} className="lg:w-1/2">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-linear-to-br from-[#5d87ff]/10 to-[#3d6fe6]/10 rounded-3xl h-96 lg:h-125 overflow-hidden border border-[#e2ded9] shadow-xl relative"
+              >
+                <img
+                  src="/assets/images/FamilyConnection.png"
+                  alt="Family Connection"
+                  className="w-full h-full object-center"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-[#2d3748]/20 to-transparent" />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Why Choose Us Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="flex flex-col lg:flex-row-reverse items-center gap-12 mb-24"
+          >
+            <motion.div variants={slideInRight} className="lg:w-1/2">
+
+              <motion.h2
+                variants={fadeInUp}
+                className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6"
+              >
+                Why Choose Us
+              </motion.h2>
+
+              <motion.p
+                variants={fadeInUp}
+                className="text-[#64748b] mb-6 leading-relaxed text-lg"
+              >
                 Shristi Universe is a unique digital family platform focused on
                 preserving family history, promoting cultural heritage
                 preservation, and fostering family unity. Unlike standard social
                 platforms or genealogy apps, our platform offers a secure and
                 meaningful way to practice digital memory preservation.
+              </motion.p>
+
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-[#5d87ff] rounded-2xl p-6 mb-6"
+              >
+                <Quote className="h-8 w-8 text-white/50 mb-3" />
+                <p className="text-white font-medium leading-relaxed text-lg">
+                  "As a complete family genealogy platform, Shristi Universe
+                  allows families, communities, and groups to build and
+                  visualize detailed family trees, making it one of the best
+                  platforms to preserve heritage and family memories online."
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  "Secure & private family spaces",
+                  "Easy-to-use interface for all ages",
+                  "Comprehensive legacy tools",
+                  "Cross-platform accessibility",
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-[#e2ded9]"
+                  >
+                    <div className="w-2 h-2 bg-[#5d87ff] rounded-full" />
+                    <span className="text-[#2d3748] font-medium">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div variants={slideInLeft} className="lg:w-1/2">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-linear-to-br from-[#22c55e]/10 to-[#16a34a]/10 rounded-3xl h-96 lg:h-125 overflow-hidden border border-[#e2ded9] shadow-xl relative"
+              >
+                <img
+                  src="/assets/images/Trusted.png"
+                  alt="Trusted Platform"
+                  className="w-full h-full"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-[#2d3748]/20 to-transparent" />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* What We Stand For */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-24"
+          >
+            <motion.div variants={fadeInUp} className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
+                <Flag className="h-4 w-4" />
+                Our Values
+              </span>
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-4">
+                What We Stand For
+              </h2>
+              <p className="text-[#64748b] max-w-2xl mx-auto text-lg">
+                Our core values guide everything we do at Shristi Universe
               </p>
+            </motion.div>
 
-              <p className="text-gray-600 text-lg leading-relaxed">
-                As a complete family genealogy platform, Shristi Universe allows
-                families, communities, and groups to build and visualize
-                detailed family trees, making it one of the best platforms to
-                preserve heritage and family memories online.
-              </p>
-
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
-                  <span className="text-gray-700">
-                    Secure & private family spaces
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
-                  <span className="text-gray-700">
-                    Easy-to-use interface for all ages
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
-                  <span className="text-gray-700">
-                    Comprehensive legacy tools
-                  </span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#5d87ff] rounded-full"></div>
-                  <span className="text-gray-700">
-                    Cross-platform accessibility
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="lg:w-1/2">
-              <div className="bg-linear-to-br from-green-100 to-emerald-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">🏆</div>
-                  <p className="text-gray-700 font-medium">Trusted Choice</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 3: Our Vision with image on right */}
-          <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
-            <div className="lg:w-1/2">
-              <div className="flex items-center gap-3 mb-6">
-                <Eye className="w-8 h-8 text-[#5d87ff]" />
-                <h2 className="text-3xl font-bold text-gray-800">Our Vision</h2>
-              </div>
-              <p className="text-gray-600 text-lg leading-relaxed mb-4">
-                We envision a world where every family's heritage is preserved,
-                connections are strengthened across generations, and shared
-                memories become timeless treasures.
-              </p>
-              <div className="bg-blue-50 p-5 rounded-xl border-l-4 border-[#5d87ff]">
-                <h3 className="font-bold text-gray-800 mb-2">For Heritage</h3>
-                <p className="text-gray-600">
-                  Preserving cultural traditions, family stories, and ancestral
-                  knowledge for future generations to cherish and learn from.
-                </p>
-              </div>
-            </div>
-            <div className="lg:w-1/2">
-              <div className="bg-linear-to-br from-purple-100 to-pink-100 rounded-2xl h-64 lg:h-80 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">🔭</div>
-                  <p className="text-gray-700 font-medium">Future Vision</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* What We Stand For Section */}
-          <div className="bg-linear-to-r from-gray-800 to-gray-900 rounded-2xl p-8 text-white mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <Flag className="w-8 h-8 text-white" />
-              <h2 className="text-3xl font-bold">What We Stand For</h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-                <h3 className="text-xl font-bold mb-2">Family First</h3>
-                <p className="text-gray-300">
-                  Everything we build prioritizes family connections and
-                  wellbeing.
-                </p>
-              </div>
-              <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-                <h3 className="text-xl font-bold mb-2">Privacy</h3>
-                <p className="text-gray-300">
-                  Your family data is secure and only accessible to those you
-                  choose.
-                </p>
-              </div>
-              <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-                <h3 className="text-xl font-bold mb-2">Inclusivity</h3>
-                <p className="text-gray-300">
-                  We celebrate all family structures and traditions.
-                </p>
-              </div>
-              <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm">
-                <h3 className="text-xl font-bold mb-2">Legacy</h3>
-                <p className="text-gray-300">
-                  Helping you create lasting memories for generations to come.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature Grid - Original but styled differently */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-12">
-              Our Core Features
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {features.map((f, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {values.map((value, index) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{
+                    y: -10,
+                    boxShadow:
+                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  }}
+                  className="bg-[#3d4f6f] rounded-2xl p-6 text-center hover:bg-[#3d4f6f]/90 transition-all duration-300"
                 >
-                  <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <f.icon className="w-8 h-8 text-[#5d87ff]" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                    {f.title}
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                  >
+                    <value.icon className="h-7 w-7 text-white" />
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {value.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{f.description}</p>
-                </div>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    {value.description}
+                  </p>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
+
+          {/* Core Features */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-24"
+          >
+            <motion.div variants={fadeInUp} className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-4">
+                <Star className="h-4 w-4" />
+                Platform Features
+              </span>
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-4">
+                Our Core Features
+              </h2>
+              <p className="text-[#64748b] max-w-2xl mx-auto text-lg">
+                Everything you need to preserve and celebrate your family legacy
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{
+                    y: -10,
+                    boxShadow:
+                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  }}
+                  className="bg-white rounded-2xl border border-[#e2ded9] p-6 text-center hover:border-[#5d87ff]/30 transition-all duration-300"
+                >
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-16 h-16 bg-[#5d87ff]/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                  >
+                    <feature.icon className="h-8 w-8 text-[#5d87ff]" />
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-[#2d3748] mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[#64748b] text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Join CTA Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="bg-linear-to-br from-[#5d87ff]/5 to-[#3d6fe6]/5 rounded-3xl p-8 lg:p-12 border border-[#e2ded9]"
+          >
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              <motion.div variants={slideInLeft} className="lg:w-1/2">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-6">
+                  <Eye className="h-4 w-4" />
+                  Get Started
+                </span>
+                <h2 className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6">
+                  Join Shristi Universe Today
+                </h2>
+                <p className="text-[#64748b] mb-8 leading-relaxed text-lg">
+                  Start your journey in preserving your family legacy with
+                  Shristi Universe. Build your family tree, store precious
+                  memories, and protect important documents — all in one secure
+                  digital platform.
+                </p>
+
+                <div className="space-y-4 mb-8">
+                  {[
+                    "Create your family tree in minutes",
+                    "Invite family members to collaborate",
+                    "Secure cloud storage for memories",
+                    "Access from any device, anywhere",
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-3"
+                    >
+                      <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
+                      <span className="text-[#2d3748] font-medium">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-[#5d87ff] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a7cff] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                  >
+                    <a href="/login">
+                      Start Your Family Tree Today
+                    </a>
+                    <ArrowRight className="h-5 w-5" />
+                  </motion.button>
+
+                </div>
+              </motion.div>
+
+              <motion.div variants={slideInRight} className="lg:w-1/2">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-linear-to-br from-[#f59e0b]/10 to-[#d97706]/10 rounded-3xl h-96 overflow-hidden border border-[#e2ded9] shadow-xl relative"
+                >
+                  <img
+                    src="/assets/images/JoinFt.png"
+                    alt="Join Family Tree"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#2d3748]/20 to-transparent" />
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </main>
 
-      {/* <Footer /> */}
+      {/* Footer */}
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="bg-[#2d3748] py-12"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
+              <p className="text-white/70 text-sm">
+                Preserving family legacies and heritage for generations to come.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Product</h4>
+              <ul className="space-y-2">
+                {["Features", "Pricing", "Security"].map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-white/70 hover:text-white text-sm transition-colors"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <ul className="space-y-2">
+                {["About", "Contact", "Blog"].map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-white/70 hover:text-white text-sm transition-colors"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Legal</h4>
+              <ul className="space-y-2">
+                {["Privacy", "Terms"].map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-white/70 hover:text-white text-sm transition-colors"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8 text-center">
+            <p className="text-white/70 text-sm">
+              &copy; 2026 Shristi Universe. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </motion.footer>
     </div>
   );
 }
