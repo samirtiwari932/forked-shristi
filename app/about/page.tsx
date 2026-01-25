@@ -121,7 +121,7 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
-       <Navbar />
+      <Navbar />
       {/* Hero Section */}
       <motion.div
         initial="hidden"
@@ -225,7 +225,7 @@ export default function AboutPage() {
             className="flex flex-col lg:flex-row items-center gap-12 mb-24"
           >
             <motion.div variants={slideInLeft} className="lg:w-1/2">
-            
+
               <motion.h2
                 variants={fadeInUp}
                 className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6"
@@ -300,12 +300,12 @@ export default function AboutPage() {
             className="flex flex-col lg:flex-row-reverse items-center gap-12 mb-24"
           >
             <motion.div variants={slideInRight} className="lg:w-1/2">
-          
+
               <motion.h2
                 variants={fadeInUp}
                 className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6"
               >
-                  Why Choose Us 
+                Why Choose Us
               </motion.h2>
 
               <motion.p
@@ -530,10 +530,12 @@ export default function AboutPage() {
                     whileTap={{ scale: 0.95 }}
                     className="bg-[#5d87ff] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a7cff] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
-                    Start Your Family Tree Today
+                    <a href="/login">
+                      Start Your Family Tree Today
+                    </a>
                     <ArrowRight className="h-5 w-5" />
                   </motion.button>
-                 
+
                 </div>
               </motion.div>
 

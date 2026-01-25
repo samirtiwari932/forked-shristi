@@ -785,21 +785,21 @@ const Landing: React.FC = () => {
               href="https://shristiuniverse.com/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center bg-green-500 text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
+              className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
               onClick={() => setIsMenuOpen(false)}
             >
               SignUp
             </a>
             <a
               href="/about"
-              className="block w-full text-center bg-purple-500 text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
+              className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
             </a>
             <a
               href="/features"
-              className="block w-full text-center bg-indigo-500 text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
+              className="block w-full text-center bg-[#5d87ff] text-white rounded-lg py-3 px-4 font-semibold transition-colors duration-300 active:scale-95"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
@@ -824,7 +824,7 @@ const Landing: React.FC = () => {
           <button
             className="px-6 py-3 bg-blue-500 text-white rounded-lg text-base hover:bg-blue-600 transition active:scale-95 min-h-[44px]"
             onClick={() =>
-              window.open("https://shristiuniverse.com/login", "_blank")
+              window.open("/login", "_blank")
             }
           >
             Connect Now
