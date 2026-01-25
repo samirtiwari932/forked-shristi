@@ -9,13 +9,11 @@ export default function HeritageSiteCarousel({
   onCreateClick,
   onSiteClick,
   onViewMap,
-  onJoinClick,
 }: {
   sites: HeritageResponse[];
   onCreateClick: () => void;
   onSiteClick: (site: HeritageResponse) => void;
   onViewMap?: (site: HeritageResponse) => void;
-  onJoinClick?: (site: HeritageResponse) => void;
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -82,7 +80,6 @@ export default function HeritageSiteCarousel({
               site={site}
               onClick={() => onSiteClick(site)}
               onViewMap={onViewMap}
-              onJoinClick={onJoinClick}
             />
           </div>
         ))}
