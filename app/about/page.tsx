@@ -58,13 +58,15 @@ const slideInRight = {
 const features = [
   {
     icon: Users,
+    href: "/features/family-tree",
     title: "Family Tree",
     description:
-      "Visually build multi-generation family trees to preserve relationships and legacy.",
+      "Visually build family trees to preserve relationships & legacy.",
     color: "#5d87ff",
   },
   {
     icon: Calendar,
+    href: "/features/event",
     title: "Family Groups & Events",
     description:
       "Create family groups, share updates, and organize meaningful events.",
@@ -72,6 +74,7 @@ const features = [
   },
   {
     icon: DollarSign,
+    href: "/features/finance",
     title: "Manage Finances",
     description:
       "Track shared family budgets and event expenses with transparency.",
@@ -79,6 +82,7 @@ const features = [
   },
   {
     icon: Landmark,
+    href: "/features/heritage",
     title: "Heritage Sites",
     description:
       "Preserve cultural landmarks and family heritage for future generations.",
@@ -447,34 +451,36 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{
-                    y: -10,
-                    boxShadow:
-                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  className="bg-white rounded-2xl border border-[#e2ded9] p-6 text-center hover:border-[#5d87ff]/30 transition-all duration-300"
-                >
+                <a key={index} href={feature.href}>
                   <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-[#5d87ff]/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                    key={index}
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{
+                      y: -10,
+                      boxShadow:
+                        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                    }}
+                    className="bg-white rounded-2xl border border-[#e2ded9] p-6 text-center hover:border-[#5d87ff]/30 transition-all duration-300"
                   >
-                    <feature.icon className="h-8 w-8 text-[#5d87ff]" />
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                      className="w-16 h-16 bg-[#5d87ff]/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                    >
+                      <feature.icon className="h-8 w-8 text-[#5d87ff]" />
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-[#2d3748] mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-[#64748b] text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
                   </motion.div>
-                  <h3 className="text-xl font-bold text-[#2d3748] mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-[#64748b] text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                </motion.div>
+                </a>
               ))}
             </div>
           </motion.div>
@@ -531,6 +537,7 @@ export default function AboutPage() {
                     className="bg-[#5d87ff] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a7cff] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <a href="/login">
+
                       Start Your Family Tree Today
                     </a>
                     <ArrowRight className="h-5 w-5" />
