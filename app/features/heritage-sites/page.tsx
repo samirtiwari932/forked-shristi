@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   MapPin,
@@ -44,6 +45,10 @@ import {
 } from "@/components/Heritage/index";
 import LoginDialog from "@/components/dialog/Login";
 import Footer from "@/components/Landing/Footer";
+
+import bouddhanath from "@/public/assets/images/bouddhanath-stupa.jpg";
+import pashupatinath from "@/public/assets/images/pashupatinath-temple.jpg.png";
+import swayambhunath from "@/public/assets/images/swayambhunath.jpg";
 
 // Animation variants (same as finance page)
 const fadeInUp = {
@@ -127,6 +132,7 @@ const HeritagePage = () => {
         "Store, manage, and preserve family and community heritage with secure digital records",
       bgColor: "bg-[#3d4f6f]",
       icon: <Castle className="h-12 w-12 text-white" />,
+      image: bouddhanath,
     },
     {
       id: 2,
@@ -135,6 +141,7 @@ const HeritagePage = () => {
         "Bridge generations through documented heritage sites and shared cultural stories",
       bgColor: "bg-[#2d3748]",
       icon: <History className="h-12 w-12 text-white" />,
+      image: pashupatinath,
     },
     {
       id: 3,
@@ -143,6 +150,7 @@ const HeritagePage = () => {
         "Discover culturally significant locations from communities worldwide",
       bgColor: "bg-[#3d4f6f]",
       icon: <Globe className="h-12 w-12 text-white" />,
+      image: swayambhunath,
     },
   ];
 
@@ -301,15 +309,27 @@ const HeritagePage = () => {
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="relative w-full h-125 overflow-hidden"
+        className="relative w-full h-125 overflow-hidden mt-8"
       >
-        <div className="absolute inset-0 flex transition-transform duration-500 ease-in-out">
+        <div className="absolute inset-0 flex transition-transform duration-500 ease-in-out ">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`${slide.bgColor} w-full h-full shrink-0 flex flex-col items-center justify-center text-white p-6 relative`}
+              className={`${slide.bgColor} w-full h-full shrink-0 flex flex-col items-center justify-center text-white p-6 relative overflow-hidden`}
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
+              {/* Background Image */}
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                className="object-cover opacity-30"
+                priority={slide.id === 1}
+              />
+
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+
               <div className="absolute top-10 left-10 w-32 h-32 bg-[#5d87ff]/10 rounded-full blur-3xl" />
               <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#5d87ff]/10 rounded-full blur-3xl" />
 
@@ -331,7 +351,10 @@ const HeritagePage = () => {
                 <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                   {slide.description}
                 </p>
-                <button className="bg-[#5d87ff] text-white font-semibold px-8 py-3.5 rounded-full hover:bg-[#4a72e6] transition-all duration-300 shadow-lg hover:shadow-xl">
+                <button
+                  className="bg-[#5d87ff] text-white font-semibold px-8 py-3.5 rounded-full hover:bg-[#4a72e6] transition-all duration-300 shadow-lg hover:shadow-xl"
+                  onClick={handleLogin}
+                >
                   Start Preserving Now
                 </button>
               </div>
