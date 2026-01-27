@@ -19,12 +19,12 @@ import {
   TreePine,
 } from "lucide-react";
 import { FaGooglePlay, FaApple } from "react-icons/fa";
-import logo from "@/public/assets/images/shristi_logo.png";
+import logo from "@/public/assets/images/shristi_logo-2.png";
 import family from "@/public/assets/images/family.png";
 import Footer from "./Footer";
 import Feedback from "@/components/ContactUs/feedback";
 import { Button } from "@/components/ui/button";
-import shristimob from "@/public/assets/images/shristimob.jpeg";
+import Srishtimob from "@/public/assets/images/Srishtimob.jpeg";
 import royalFamilyTree from "@/public/assets/images/RoyalFamilyTree.jpg";
 import bouddhanathStupa from "@/public/assets/images/bouddhanath-stupa.jpg";
 
@@ -221,9 +221,9 @@ const HeritageDetailsDialog = ({
 };
 
 const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.shristi.universe";
+  "https://play.google.com/store/apps/details?id=com.Srishti.universe";
 const APP_STORE_URL =
-  "https://apps.apple.com/us/app/shristi-universe/id6751426376";
+  "https://apps.apple.com/us/app/Srishti-universe/id6751426376";
 const DESKTOP_LANDING_URL = "";
 
 function isAndroidUA() {
@@ -532,7 +532,7 @@ const Landing: React.FC = () => {
     const timeout = 2000;
 
     if (platform === "ios") {
-      window.location.href = "shristiuniverse://";
+      window.location.href = "Srishtiuniverse://";
 
       setTimeout(() => {
         const elapsed = Date.now() - start;
@@ -540,21 +540,21 @@ const Landing: React.FC = () => {
         // and time elapsed is roughly what we expected (meaning main thread wasn't blocked by app switch)
         if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
           window.location.href =
-            "https://apps.apple.com/us/app/shristi-universe/id6751426376";
+            "https://apps.apple.com/us/app/Srishti-universe/id6751426376";
         }
       }, timeout);
     }
 
     if (platform === "android") {
       window.location.href =
-        "intent://shristiuniverse#Intent;scheme=shristi;package=com.shristi.universe;end";
+        "intent://Srishtiuniverse#Intent;scheme=Srishti;package=com.Srishti.universe;end";
       // Android intent usually handles fallback via the 'S.browser_fallback_url' extra if we added it,
       // but since we are manually falling back:
       setTimeout(() => {
         const elapsed = Date.now() - start;
         if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
           window.location.href =
-            "https://play.google.com/store/apps/details?id=com.shristi.universe";
+            "https://play.google.com/store/apps/details?id=com.Srishti.universe";
         }
       }, timeout);
     }
@@ -653,7 +653,7 @@ const Landing: React.FC = () => {
         <div className="flex items-center gap-2">
           <Image
             src={logo}
-            alt="Shristi Logo"
+            alt="Srishti Logo"
             width={120}
             height={60}
             className="h-10 w-auto md:h-20 object-contain"
@@ -676,7 +676,7 @@ const Landing: React.FC = () => {
             Features
           </a>
           <a
-            href="https://shristiuniverse.com/login"
+            href="https://Srishtiuniverse.com/login"
             target="_blank"
             rel="noopener noreferrer"
             className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
@@ -684,7 +684,7 @@ const Landing: React.FC = () => {
             Login
           </a>
           <a
-            href="https://shristiuniverse.com/register"
+            href="https://Srishtiuniverse.com/register"
             target="_blank"
             rel="noopener noreferrer"
             className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
@@ -728,7 +728,7 @@ const Landing: React.FC = () => {
                 <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                   Open{" "}
                   <span className="font-semibold text-[#5d87ff]">
-                    Shristi Universe
+                    Srishti Universe
                   </span>{" "}
                   on your {platform === "ios" ? "iPhone" : "Android"} for the
                   best performance and features.
@@ -1497,7 +1497,7 @@ const Landing: React.FC = () => {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   Download the{" "}
-                  <span className="text-[#5d87ff]">Shristi App</span>
+                  <span className="text-[#5d87ff]">Srishti App</span>
                 </h2>
                 <p className="text-gray-600">Your Family Tree in Your Pocket</p>
               </div>
@@ -1561,7 +1561,7 @@ const Landing: React.FC = () => {
                 <div className="relative w-full h-full bg-gray-900 rounded-[2rem] p-2 shadow-2xl">
                   <div className="w-full h-full bg-white rounded-[1.5rem] overflow-hidden relative">
                     <Image
-                      src={shristimob || "/placeholder.svg"}
+                      src={Srishtimob || "/placeholder.svg"}
                       alt="App Screenshot"
                       className="w-full h-full object-cover"
                     />
@@ -1580,7 +1580,7 @@ const Landing: React.FC = () => {
                 <h2 className="text-3xl md:text-4xl font-bold leading-tight">
                   <span className="text-gray-900">
                     <span className="text-[#5d87ff]">
-                      Download the Shristi App{" "}
+                      Download the Srishti App{" "}
                     </span>
                     Your Family Tree in Your Pocket
                   </span>
@@ -1682,7 +1682,7 @@ const Landing: React.FC = () => {
                 <div className="relative w-60 h-130 bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl">
                   <div className="w-full h-full bg-white rounded-4xl overflow-hidden relative">
                     <Image
-                      src={shristimob || "/placeholder.svg"}
+                      src={Srishtimob || "/placeholder.svg"}
                       alt="App Screenshot"
                       className="w-full h-full object-cover rounded-4xl"
                     />
@@ -1727,7 +1727,7 @@ const Landing: React.FC = () => {
 
             <div className="flex-1 min-w-0">
               <h4 className="font-semibold text-sm text-gray-900 truncate">
-                Shristi Universe
+                Srishti Universe
               </h4>
               <p className="text-xs text-gray-500 truncate">
                 Preserve your family legacy
