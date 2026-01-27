@@ -31,8 +31,8 @@ export default function Navbar() {
           <Link href="/" className="flex items-center">
             <span className="w-32 sm:w-40 lg:w-56">
               <img
-                src="/assets/images/shristi_logo.png"
-                alt="Shristi Logo"
+                src="/assets/images/shristi_logo-2.png"
+                alt="Srishti Logo"
                 className="h-10 sm:h-12 lg:h-14 w-auto"
               />
             </span>
@@ -60,9 +60,8 @@ export default function Navbar() {
                     </span>
                     {/* Active indicator slider - animated */}
                     <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#5d87ff] rounded-full transition-all duration-300 ease-out ${
-                        isActive ? "w-12 opacity-100" : "w-0 opacity-0"
-                      }`}
+                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#5d87ff] rounded-full transition-all duration-300 ease-out ${isActive ? "w-12 opacity-100" : "w-0 opacity-0"
+                        }`}
                     />
                   </Link>
                 );
@@ -73,14 +72,14 @@ export default function Navbar() {
           {/* Desktop Auth Buttons */}
           <nav className="hidden md:flex items-center space-x-2 ml-auto">
             <a
-              href="https://shristiuniverse.com/login"
+              href="/login"
               className="px-4 py-2 text-sm text-gray-700 hover:text-blue-500 transition-colors"
             >
               <button className="px-4 py-2 text-sm font-medium border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
                 Login
               </button>
             </a>
-            <a href="https://shristiuniverse.com/register">
+            <a href="/register">
               <button className="px-4 py-2 text-sm font-medium bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
                 Sign Up
               </button>
@@ -123,9 +122,8 @@ export default function Navbar() {
                     </span>
                     {/* Active indicator slider - animated */}
                     <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#5d87ff] rounded-full transition-all duration-300 ease-out ${
-                        isActive ? "w-10 opacity-100" : "w-0 opacity-0"
-                      }`}
+                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#5d87ff] rounded-full transition-all duration-300 ease-out ${isActive ? "w-10 opacity-100" : "w-0 opacity-0"
+                        }`}
                     />
                   </Link>
                 );
@@ -152,11 +150,10 @@ export default function Navbar() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className={`px-3 py-2 rounded-md transition-colors ${
-                          isActive
-                            ? "text-[#5d87ff] bg-[#5d87ff]/5 font-medium"
-                            : "text-gray-700 hover:text-[#5d87ff] hover:bg-gray-50"
-                        }`}
+                        className={`px-3 py-2 rounded-md transition-colors ${isActive
+                          ? "text-[#5d87ff] bg-[#5d87ff]/5 font-medium"
+                          : "text-gray-700 hover:text-[#5d87ff] hover:bg-gray-50"
+                          }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {link.label}
@@ -170,7 +167,7 @@ export default function Navbar() {
             {/* Auth Links */}
             <nav className="flex flex-col space-y-3">
               <a
-                href="https://shristiuniverse.com/login"
+                href="https://Srishtiuniverse.com/login"
                 className="px-3 py-2 text-gray-700 hover:text-blue-500 rounded-md hover:bg-gray-50 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -178,7 +175,7 @@ export default function Navbar() {
               </a>
               <div className="px-3 py-2">
                 <a
-                  href="https://shristiuniverse.com/register"
+                  href="https://Srishtiuniverse.com/register"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <button className="w-full px-4 py-2 text-sm font-medium bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">

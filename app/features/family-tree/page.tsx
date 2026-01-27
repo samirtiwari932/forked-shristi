@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import FamilyTreeContent from "./FamilyTreeContent";
 
 export const metadata: Metadata = {
-  title: "Family Tree Builder — Your Legacy Starts Here | Shristi Universe",
+  title: "Online Genealogy Builder | Shristi Universe",
   description:
-    "Create your family and community trees with Shristi Universe. Preserve family history, document genealogy, connect generations, and protect your legacy online.",
+    "Preserve family history, document genealogy, connect generations, and protect your legacy online creating genealogy trees using Shristi Universe.",
   keywords: [
     "family tree builder",
     "genealogy software",
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     "Shristi Universe",
   ],
   openGraph: {
-    title: "Family Tree Builder — Your Legacy Starts Here | Shristi Universe",
+    title: "Online Genealogy Builder | Shristi Universe",
     description:
-      "Create your family and community trees with Shristi Universe. Preserve family history, document genealogy, connect generations, and protect your legacy online.",
+      "Preserve family history, document genealogy, connect generations, and protect your legacy online creating genealogy trees using Shristi Universe.",
     url: "/features/family-tree",
     siteName: "Shristi Universe",
     type: "website",
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Family Tree Builder — Your Legacy Starts Here",
+    title: "Online Genealogy Builder | Shristi Universe",
     description:
-      "Create your family and community trees with Shristi Universe. Preserve family history, document genealogy, connect generations, and protect your legacy online.",
+      "Preserve family history, document genealogy, connect generations, and protect your legacy online creating genealogy trees using Shristi Universe.",
     images: ["/assets/images/Familytree.jpg"],
   },
 };

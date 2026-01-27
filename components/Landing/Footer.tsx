@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Info */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white">Shristi Universe</h2>
+            <h2 className="text-2xl font-bold text-white">Srishti Universe</h2>
             <p className="text-blue-400 text-sm leading-relaxed">
               Connecting generations through technology and shared heritage.
             </p>
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
               </a>
 
               <a
-                href="https://www.instagram.com/shristi.universe/"
+                href="https://www.instagram.com/Srishti.universe/"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
                 target="_blank"
               >
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Shristi Universe. All rights reserved.
+            © {new Date().getFullYear()} Srishti Universe. All rights reserved.
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
