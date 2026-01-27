@@ -5,7 +5,7 @@ import { ArrowUp } from "lucide-react";
 import Link from "next/link";
 
 /**
- * Shristi Universe – Terms & Conditions Page (React + Vite, .tsx)
+ * Srishti Universe – Terms & Conditions Page (React + Vite, .tsx)
  * Primary colors: #5d87ff (primary) and white
  * TailwindCSS recommended. If Tailwind isn't configured, inline styles still ensure colors render.
  * Leave space for logo at the top (replace the placeholder with your <img /> or Logo component).
@@ -37,8 +37,8 @@ export default function TermsAndConditions() {
           <Link href="/" title="Go to Home">
             <div className="h-10 w-[120px] rounded-xl cursor-pointer flex items-center justify-center">
               <img
-                src="/assets/images/shristi_logo.png"
-                alt="Shristi Universe"
+                src="/assets/images/Srishti_logo.png"
+                alt="Srishti Universe"
                 className="h-8 object-contain"
               />
             </div>
@@ -46,7 +46,7 @@ export default function TermsAndConditions() {
 
           <div className="flex-1">
             <h1 className="text-dark font-semibold text-lg leading-tight">
-              Shristi Universe — Terms & Conditions
+              Srishti Universe — Terms & Conditions
             </h1>
             <p className="text-dark/90 text-xs">
               Effective Date: June 18, 2025
@@ -86,7 +86,7 @@ export default function TermsAndConditions() {
                   style={{ backgroundColor: "#5d87ff" }}
                 />
                 <span>
-                  Service name: <strong>Shristi Universe</strong> ("Shristi",
+                  Service name: <strong>Srishti Universe</strong> ("Srishti",
                   "we", "us", "our")
                 </span>
               </li>
@@ -154,7 +154,7 @@ export default function TermsAndConditions() {
           <p>
             You must be at least 13 years old (or the minimum legal age in your
             country) to use our Services. If you are under 18, you confirm that
-            you have parental or guardian consent. By using Shristi, you
+            you have parental or guardian consent. By using Srishti, you
             represent that you meet these requirements.
           </p>
         </ArticleSection>
@@ -180,7 +180,7 @@ export default function TermsAndConditions() {
         </ArticleSection>
 
         <ArticleSection id="acceptable-use" title="3. Acceptable Use">
-          <p className="mb-3">Use Shristi lawfully and respectfully. Do not:</p>
+          <p className="mb-3">Use Srishti lawfully and respectfully. Do not:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>
               Post or share illegal, abusive, harassing, defamatory, or
@@ -236,7 +236,7 @@ export default function TermsAndConditions() {
               entries, posts, images, vault files).
             </li>
             <li>
-              By posting, you grant Shristi a{" "}
+              By posting, you grant Srishti a{" "}
               <strong>non-exclusive, worldwide, royalty-free license</strong> to
               use, display, and share your content within the Services as
               intended (e.g., blogs, groups, family tree sharing).
@@ -335,7 +335,7 @@ export default function TermsAndConditions() {
           title="9. Limitation of Liability"
         >
           <p>
-            To the maximum extent permitted by law, Shristi Universe and its
+            To the maximum extent permitted by law, Srishti Universe and its
             affiliates shall not be liable for any indirect, incidental, or
             consequential damages arising from your use of the Services.
           </p>
@@ -347,8 +347,8 @@ export default function TermsAndConditions() {
         >
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              All rights to Shristi’s branding, logos, software, and features
-              remain with Shristi Universe.
+              All rights to Srishti’s branding, logos, software, and features
+              remain with Srishti Universe.
             </li>
             <li>
               You may not copy, reproduce, or distribute our Services without
@@ -387,11 +387,11 @@ export default function TermsAndConditions() {
             <li>
               Email:{" "}
               <a
-                href="mailto:info@shristiuniverse.com"
+                href="mailto:info@Srishtiuniverse.com"
                 className="underline"
                 style={{ color: "#5d87ff" }}
               >
-                info@shristiuniverse.com
+                info@Srishtiuniverse.com
               </a>
             </li>
             <li>Address: Not publicly disclosed at this time</li>
@@ -400,7 +400,7 @@ export default function TermsAndConditions() {
 
         {/* Footer note */}
         <footer className="mt-10 mb-16 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} Shristi Universe. All rights reserved.
+          © {new Date().getFullYear()} Srishti Universe. All rights reserved.
         </footer>
       </main>
 
