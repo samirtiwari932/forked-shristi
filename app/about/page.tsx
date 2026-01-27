@@ -24,6 +24,7 @@ import {
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 
+
 // Animation variants matching your Finance page
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -173,7 +174,7 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
-              About <span className="text-white/90">Shristi Universe</span>
+              About <span className="text-white/90">Srishti Universe</span>
             </motion.h1>
 
             <motion.p
@@ -241,7 +242,7 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="text-[#64748b] mb-6 leading-relaxed text-lg"
               >
-                Our mission at Shristi Universe is to help families preserve
+                Our mission at Srishti Universe is to help families preserve
                 their legacy and heritage in today's modern era using digital
                 technology. We provide a comprehensive platform where users can
                 create trees, store precious memories, and safeguard historical
@@ -316,7 +317,7 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="text-[#64748b] mb-6 leading-relaxed text-lg"
               >
-                Shristi Universe is a unique digital family platform focused on
+                Srishti Universe is a unique digital family platform focused on
                 preserving family history, promoting cultural heritage
                 preservation, and fostering family unity. Unlike standard social
                 platforms or genealogy apps, our platform offers a secure and
@@ -329,7 +330,7 @@ export default function AboutPage() {
               >
                 <Quote className="h-8 w-8 text-white/50 mb-3" />
                 <p className="text-white font-medium leading-relaxed text-lg">
-                  "As a complete family genealogy platform, Shristi Universe
+                  "As a complete family genealogy platform, Srishti Universe
                   allows families, communities, and groups to build and
                   visualize detailed family trees, making it one of the best
                   platforms to preserve heritage and family memories online."
@@ -390,7 +391,7 @@ export default function AboutPage() {
                 What We Stand For
               </h2>
               <p className="text-[#64748b] max-w-2xl mx-auto text-lg">
-                Our core values guide everything we do at Shristi Universe
+                Our core values guide everything we do at Srishti Universe
               </p>
             </motion.div>
 
@@ -500,11 +501,11 @@ export default function AboutPage() {
                   Get Started
                 </span>
                 <h2 className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6">
-                  Join Shristi Universe Today
+                  Join Srishti Universe Today
                 </h2>
                 <p className="text-[#64748b] mb-8 leading-relaxed text-lg">
                   Start your journey in preserving your family legacy with
-                  Shristi Universe. Build your family tree, store precious
+                  Srishti Universe. Build your family tree, store precious
                   memories, and protect important documents — all in one secure
                   digital platform.
                 </p>
@@ -574,7 +575,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
+              <h4 className="text-white font-bold mb-4">Srishti Universe</h4>
               <p className="text-white/70 text-sm">
                 Preserving family legacies and heritage for generations to come.
               </p>
@@ -627,7 +628,7 @@ export default function AboutPage() {
           </div>
           <div className="border-t border-white/10 pt-8 text-center">
             <p className="text-white/70 text-sm">
-              &copy; 2026 Shristi Universe. All rights reserved.
+              &copy; 2026 Srishti Universe. All rights reserved.
             </p>
           </div>
         </div>

@@ -14,10 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shristi Universe - Connect, Manage & Preserve Your Family Legacy",
+  title: "Family Tree & Genealogy Platform for Communities | Srishti Universe",
   description:
-    "Helping families connect, manage, and preserve their legacy with family trees, events, finance management, and heritage sites all in one place.",
+    "Build family and organization trees, manage community events, track finance, and preserve heritage with a secure digital platform built for generations.",
 };
+
 
 export default function RootLayout({
   children,
