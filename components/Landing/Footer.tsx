@@ -70,22 +70,6 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg">Stay Updated</h3>
-            <p className="text-sm">
-              Subscribe to our newsletter for the latest updates.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-              />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-md transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Divider */}

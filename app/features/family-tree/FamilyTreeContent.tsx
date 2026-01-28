@@ -354,7 +354,7 @@ export default function FamilyTreeContent() {
             variants={staggerContainer}
             className="bg-[#2d3748] rounded-[3rem] p-10 lg:p-20 text-white relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#5d87ff]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-125 h-125 bg-[#5d87ff]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
               <div className="lg:w-1/2">
@@ -375,7 +375,7 @@ export default function FamilyTreeContent() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-[#5d87ff] text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-[#5d87ff]/30 hover:bg-[#4a73e6] transition-colors"
                 >
-                  <a href="https://Srishtiuniverse.com/login">
+                  <a href="/login">
                     Start Building Your Tree
                   </a>
                 </motion.button>
