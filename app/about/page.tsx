@@ -553,7 +553,7 @@ export default function AboutPage() {
                   className="bg-linear-to-br from-[#f59e0b]/10 to-[#d97706]/10 rounded-3xl h-96 overflow-hidden border border-[#e2ded9] shadow-xl relative"
                 >
                   <img
-                    src="/assets/images/JoinFt.png"
+                    src="/assets/images/JoinFT.png"
                     alt="Join Family Tree"
                     className="w-full h-full object-cover"
                   />
