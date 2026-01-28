@@ -252,7 +252,7 @@ export default function FeaturesPage() {
 
             <div className="rounded-3xl overflow-hidden border">
               <img
-                src="/assets/images/JoinFt.png"
+                src="/assets/images/JoinFT.png"
                 alt="Join Family Tree"
                 className="w-full h-full object-cover"
               />
