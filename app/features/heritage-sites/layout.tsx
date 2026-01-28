@@ -396,7 +396,7 @@ const HeritageComponent = () => {
                                 variants={fadeInUp}
                                 className="text-[#64748b] mb-4 leading-relaxed"
                             >
-                                Shristi Universe is building the world's most trusted platform
+                                Srishti Universe is building the world's most trusted platform
                                 for digital heritage preservation, designed to bridge the past,
                                 present, and future for families and communities across the
                                 globe.
@@ -630,7 +630,7 @@ const HeritageComponent = () => {
                                 Add and Preserve Heritage Sites from Your Location
                             </h2>
                             <p className="text-[#64748b] mb-6 leading-relaxed">
-                                Shristi Universe is a community-powered heritage platform,
+                                Srishti Universe is a community-powered heritage platform,
                                 allowing users to actively contribute to preservation efforts.
                                 Users can add heritage sites that belong to their local area or
                                 cultural background.
@@ -1017,7 +1017,7 @@ const HeritageComponent = () => {
                                 Connecting Heritage with Family and Community Life
                             </h2>
                             <p className="text-[#64748b] max-w-2xl mx-auto">
-                                Shristi Universe goes beyond heritage documentation by
+                                Srishti Universe goes beyond heritage documentation by
                                 integrating preservation with everyday digital life
                             </p>
                         </motion.div>
@@ -1161,7 +1161,7 @@ const HeritageComponent = () => {
                                     Your Cultural Legacy Awaits
                                 </h2>
                                 <p className="text-lg mb-8 text-white/80 max-w-3xl mx-auto">
-                                    Shristi Universe provides a future-ready solution for digital
+                                    Srishti Universe provides a future-ready solution for digital
                                     heritage preservation. From ancient temples to natural
                                     landmarks, from family histories to community traditions—every
                                     heritage deserves to be remembered.

@@ -19,22 +19,22 @@ import Finance from "@/public/assets/images/finance.png";
 
 export const metadata: Metadata = {
   title:
-    "Features | Digital Family Tree, Events & Heritage Tools - Shristi Universe",
+    "Features | Digital Family Tree, Events & Heritage Tools - Srishti Universe",
   description:
-    "Explore Shristi Universe features including digital family tree builder, family event management, shared finance tracking, and heritage preservation tools.",
+    "Explore Srishti Universe features including digital family tree builder, family event management, shared finance tracking, and heritage preservation tools.",
   openGraph: {
-    title: "Features - Shristi Universe",
+    title: "Features - Srishti Universe",
     description:
       "Discover powerful tools to build family trees, organize events, manage shared finances, and preserve cultural heritage digitally.",
     url: "/features",
-    siteName: "Shristi Universe",
+    siteName: "Srishti Universe",
     type: "website",
   },
   other: {
     "application/ld+json": JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      name: "Shristi Universe",
+      name: "Srishti Universe",
       applicationCategory: "FamilyApplication",
       operatingSystem: "Web",
       description:
@@ -135,7 +135,7 @@ export default function FeaturesPage() {
             </h1>
 
             <p className="text-[#64748b] text-lg max-w-3xl mx-auto leading-relaxed">
-              Shristi Universe is a{" "}
+              Srishti Universe is a{" "}
               <strong className="text-[#2d3748]">
                 digital family heritage platform
               </strong>{" "}
@@ -249,7 +249,7 @@ export default function FeaturesPage() {
             </h2>
 
             <p className="text-white/90 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-              Shristi Universe helps families preserve stories, heritage,
+              Srishti Universe helps families preserve stories, heritage,
               relationships, and memories in a secure digital environment
               strengthening connections across generations.
             </p>

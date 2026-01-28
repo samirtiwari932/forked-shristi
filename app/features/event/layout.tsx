@@ -429,7 +429,7 @@ const EventsComponent = () => {
                                 variants={fadeInUp}
                                 className="text-[#64748b] mb-6 leading-relaxed"
                             >
-                                Shristi Universe solves this problem by offering a powerful yet
+                                Srishti Universe solves this problem by offering a powerful yet
                                 simple Family Groups & Events feature designed to help families,
                                 communities, and organizations plan, manage, and participate in
                                 events with ease and joy.
@@ -442,7 +442,7 @@ const EventsComponent = () => {
                             >
                                 <p className="text-white font-medium leading-relaxed">
                                     Whether it's a private family birthday, an anniversary
-                                    celebration, a community Kul Puja, or a group meeting, Shristi
+                                    celebration, a community Kul Puja, or a group meeting, Srishti
                                     Universe provides a centralized and reliable event management
                                     experience that keeps everyone informed and involved.
                                 </p>
@@ -504,7 +504,7 @@ const EventsComponent = () => {
                                 variants={fadeInUp}
                                 className="text-[#64748b] mb-6 leading-relaxed"
                             >
-                                The Events feature in Shristi Universe is built to serve diverse
+                                The Events feature in Srishti Universe is built to serve diverse
                                 needs from intimate family occasions to large public community
                                 gatherings. Events are not limited to family activities alone;
                                 users can organize events for families, communities, and groups,
@@ -515,7 +515,7 @@ const EventsComponent = () => {
                                 variants={fadeInUp}
                                 className="text-[#64748b] mb-6 leading-relaxed"
                             >
-                                This flexibility makes Shristi Universe more than just an event
+                                This flexibility makes Srishti Universe more than just an event
                                 tool it becomes a complete family and community event management
                                 platform.
                             </motion.p>
@@ -595,7 +595,7 @@ const EventsComponent = () => {
                             </h2>
                             <p className="text-[#64748b] max-w-2xl mx-auto">
                                 To ensure a smooth and user-friendly experience, events in
-                                Shristi Universe are divided into three clear sections
+                                Srishti Universe are divided into three clear sections
                             </p>
                         </motion.div>
 
@@ -668,7 +668,7 @@ const EventsComponent = () => {
                                 Public vs Private Events: Full Control Over Privacy
                             </h2>
                             <p className="text-[#64748b] max-w-2xl mx-auto">
-                                Shristi Universe understands that not all events are meant for
+                                Srishti Universe understands that not all events are meant for
                                 everyone. That's why users can decide the visibility of each
                                 event.
                             </p>
@@ -785,7 +785,7 @@ const EventsComponent = () => {
                                 <p className="text-[#64748b] mb-6 leading-relaxed">
                                     By tracking participant counts, hosts can plan better and
                                     ensure smoother execution, also by managing the financial
-                                    standard. This makes Shristi Universe useful not just for
+                                    standard. This makes Srishti Universe useful not just for
                                     organizations but for everyday family and community life.
                                 </p>
                                 <motion.div
@@ -830,11 +830,11 @@ const EventsComponent = () => {
                                 Why Choose Us
                             </span>
                             <h2 className="text-4xl font-bold text-[#2d3748] mb-4">
-                                Why Shristi Universe Events Stand Out
+                                Why Srishti Universe Events Stand Out
                             </h2>
                             <p className="text-[#64748b] max-w-2xl mx-auto">
                                 Compared to generic event tools and social media platforms,
-                                Shristi Universe focuses on relationship-driven event management
+                                Srishti Universe focuses on relationship-driven event management
                             </p>
                         </motion.div>
 
@@ -918,7 +918,7 @@ const EventsComponent = () => {
                                     Transform the Way You Connect
                                 </h2>
                                 <p className="text-lg mb-8 text-white/80 max-w-3xl mx-auto leading-relaxed">
-                                    The Family Groups & Events feature in Shristi Universe
+                                    The Family Groups & Events feature in Srishti Universe
                                     transforms the way people connect, plan, and celebrate
                                     together. From private family occasions to large public
                                     community events, the platform offers a secure, organized, and
@@ -928,7 +928,7 @@ const EventsComponent = () => {
                                 <p className="text-lg mb-8 text-white/80 max-w-3xl mx-auto leading-relaxed">
                                     If you are looking for a reliable way to manage family events,
                                     community programs, or group activities without complexity,
-                                    Shristi Universe provides the perfect digital space to bring
+                                    Srishti Universe provides the perfect digital space to bring
                                     people together effortlessly.
                                 </p>
 

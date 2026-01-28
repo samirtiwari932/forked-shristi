@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import Landing from "@/components/Landing/Landing";
 
 export const metadata: Metadata = {
-  title: "Shristi Universe - Family Tree & Heritage Preservation",
+  title: "Srishti Universe - Family Tree & Heritage Preservation",
   description:
     "Build your family tree, preserve heritage, plan events and manage family finances in one place.",
   openGraph: {
-    title: "Shristi Universe",
+    title: "Srishti Universe",
     description:
       "Connect generations, preserve stories, and celebrate your roots.",
     images: "/assets/images/family.png",
