@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   ChevronLeft,
   ChevronRight,
@@ -8,6 +9,9 @@ import {
   BookOpen,
   Users,
 } from "lucide-react";
+import bouddhanath from "@/public/assets/images/bouddhanath-stupa.jpg";
+import pashupatinath from "@/public/assets/images/pashupatinath-temple.jpg.png";
+import swayambhunath from "@/public/assets/images/swayambhunath.jpg";
 
 const HeritageSlider = () => {
   const slides = [
@@ -19,6 +23,7 @@ const HeritageSlider = () => {
       bgColor: "bg-[#3d4f6f]",
       accentColor: "bg-[#5d87ff]",
       icon: <Castle className="h-12 w-12 text-white" />,
+      image: bouddhanath,
     },
     {
       id: 2,
@@ -28,6 +33,7 @@ const HeritageSlider = () => {
       bgColor: "bg-[#2d3748]",
       accentColor: "bg-[#5d87ff]",
       icon: <BookOpen className="h-12 w-12 text-white" />,
+      image: pashupatinath,
     },
     {
       id: 3,
@@ -37,6 +43,7 @@ const HeritageSlider = () => {
       bgColor: "bg-[#3d4f6f]",
       accentColor: "bg-[#5d87ff]",
       icon: <Users className="h-12 w-12 text-white" />,
+      image: swayambhunath,
     },
   ];
 
@@ -67,9 +74,21 @@ const HeritageSlider = () => {
         {slides.map((slide) => (
           <div
             key={slide.id}
-            className={`${slide.bgColor} w-full h-full flex-shrink-0 flex flex-col items-center justify-center text-white p-6 relative`}
+            className={`${slide.bgColor} w-full h-full flex-shrink-0 flex flex-col items-center justify-center text-white p-6 relative overflow-hidden`}
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
+            {/* Background Image */}
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover opacity-30"
+              priority={slide.id === 1}
+            />
+
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+
             {/* Decorative elements */}
             <div className="absolute top-10 left-10 w-32 h-32 bg-[#5d87ff]/10 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#5d87ff]/10 rounded-full blur-3xl" />
