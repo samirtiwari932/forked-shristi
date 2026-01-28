@@ -27,7 +27,7 @@ import Finance from "@/public/assets/images/finance.png";
 
 export const metadata: Metadata = {
   title:
-    "Features | Digital Family Tree, Events & Heritage Tools - Shristi Universe",
+    "Features | Digital Family Tree, Events & Heritage Tools - Srishti Universe",
   description:
     "Explore Shristi Universe features including digital family tree builder, family event management, shared finance tracking, and heritage preservation tools.",
 };

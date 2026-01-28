@@ -167,7 +167,7 @@ export default function Navbar() {
             {/* Auth Links */}
             <nav className="flex flex-col space-y-3">
               <a
-                href="https://Srishtiuniverse.com/login"
+                href="/login"
                 className="px-3 py-2 text-gray-700 hover:text-blue-500 rounded-md hover:bg-gray-50 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -175,7 +175,7 @@ export default function Navbar() {
               </a>
               <div className="px-3 py-2">
                 <a
-                  href="https://Srishtiuniverse.com/register"
+                  href="/register"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <button className="w-full px-4 py-2 text-sm font-medium bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">

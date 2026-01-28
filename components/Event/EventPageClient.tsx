@@ -43,7 +43,7 @@ export default function EventPageClient() {
             A Smarter Way to Create and Manage Events
           </h2>
           <p className="text-gray-600 mb-4">
-            The Events feature in Shristi Universe is built to serve diverse
+            The Events feature in Srishti Universe is built to serve diverse
             needs — from intimate family occasions to large public community
             gatherings. Events are not limited to family activities alone; users
             can organize events for families, communities, and groups, making it
@@ -59,7 +59,7 @@ export default function EventPageClient() {
             <li>Transfer event ownership when required</li>
           </ul>
           <p className="text-gray-600 mt-4">
-            This flexibility makes Shristi Universe more than just an event tool
+            This flexibility makes Srishti Universe more than just an event tool
             — it becomes a complete family and community event management
             platform.
           </p>
@@ -166,7 +166,7 @@ export default function EventPageClient() {
             Public vs Private Events: Full Control Over Privacy
           </h2>
           <p className="text-gray-600 mb-2">
-            Shristi Universe understands that not all events are meant for
+            Srishti Universe understands that not all events are meant for
             everyone. Users can decide the visibility of each event.
           </p>
           <ul className="list-disc pl-6 text-gray-600 space-y-2">
@@ -217,7 +217,7 @@ export default function EventPageClient() {
       {/* Section 5: Why it stands out */}
       <div className="mb-20">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">
-          Why Shristi Universe Events Stand Out
+          Why Srishti Universe Events Stand Out
         </h2>
         <ul className="list-disc pl-6 text-gray-600 space-y-1">
           <li>Built specifically for families, communities, and groups</li>
@@ -229,7 +229,7 @@ export default function EventPageClient() {
         </ul>
         <p className="text-gray-600 mt-2">
           While many platforms focus only on public events or business meetings,
-          Shristi Universe bridges the gap between personal, cultural, and
+          Srishti Universe bridges the gap between personal, cultural, and
           community events.
         </p>
       </div>
@@ -238,12 +238,12 @@ export default function EventPageClient() {
       <div className="mb-20 text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Conclusion</h2>
         <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          The Family Groups & Events feature in Shristi Universe transforms the
+          The Family Groups & Events feature in Srishti Universe transforms the
           way people connect, plan, and celebrate together. From private family
           occasions to large public community events, the platform offers a
           secure, organized, and joyful experience for everyone involved. If you
           are looking for a reliable way to manage family events, community
-          programs, or group activities without complexity, Shristi Universe
+          programs, or group activities without complexity, Srishti Universe
           provides the perfect digital space to bring people together —
           effortlessly.
         </p>

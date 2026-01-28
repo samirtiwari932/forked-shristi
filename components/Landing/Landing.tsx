@@ -72,7 +72,7 @@ const HeritageDetailsDialog = ({
           <h3 className="text-xl font-semibold">{heritage.title}</h3>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 hover:bg-gray-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="rounded-lg p-2 hover:bg-gray-100 min-h-11 min-w-11 flex items-center justify-center"
             aria-label="Close"
           >
             ✕
@@ -102,7 +102,7 @@ const HeritageDetailsDialog = ({
                         (prev) => (prev - 1 + images.length) % images.length,
                       )
                     }
-                    className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white min-h-11 min-w-11 flex items-center justify-center"
                   >
                     <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                   </button>
@@ -110,7 +110,7 @@ const HeritageDetailsDialog = ({
                     onClick={() =>
                       setCurrentImageIndex((prev) => (prev + 1) % images.length)
                     }
-                    className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white min-h-11 min-w-11 flex items-center justify-center"
                   >
                     <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                   </button>
@@ -145,7 +145,7 @@ const HeritageDetailsDialog = ({
               {isLong && (
                 <button
                   onClick={() => setShowFullDesc((prev) => !prev)}
-                  className="mt-2 text-sm font-medium text-[#5d87ff] hover:underline min-h-[44px] px-2"
+                  className="mt-2 text-sm font-medium text-[#5d87ff] hover:underline min-h-11 px-2"
                 >
                   {showFullDesc ? "Read less" : "Read more"}
                 </button>
@@ -362,7 +362,7 @@ const HeritageSiteCard = ({
                 e.stopPropagation();
                 onViewMap?.(site);
               }}
-              className="flex items-center gap-1 text-[#5d87ff] hover:underline ml-auto min-h-[44px] px-2"
+              className="flex items-center gap-1 text-[#5d87ff] hover:underline ml-auto min-h-11 px-2"
             >
               <MapPin className="h-3 w-3 md:h-3.5 md:w-3.5" />
               <span className="hidden sm:inline">Map</span>
@@ -412,7 +412,7 @@ export const HeritageSiteCarousel = ({
   return (
     <div className="relative group/carousel">
       <button
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 md:h-12 md:w-12 rounded-full bg-white dark:bg-gray-800 shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center min-h-[44px] min-w-[44px]"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 md:h-12 md:w-12 rounded-full bg-white dark:bg-gray-800 shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center min-h-11 min-w-11"
         onClick={() => scroll("left")}
       >
         <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-700 dark:text-gray-300" />
@@ -443,7 +443,7 @@ export const HeritageSiteCarousel = ({
       </div>
 
       <button
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 md:h-12 md:w-12 rounded-full bg-white dark:bg-gray-800 shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center min-h-[44px] min-w-[44px]"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 md:h-12 md:w-12 rounded-full bg-white dark:bg-gray-800 shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center min-h-11 min-w-11"
         onClick={() => scroll("right")}
       >
         <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-gray-700 dark:text-gray-300" />
@@ -676,7 +676,7 @@ const Landing: React.FC = () => {
             Features
           </a>
           <a
-            href="https://Srishtiuniverse.com/login"
+            href="/login"
             target="_blank"
             rel="noopener noreferrer"
             className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
@@ -684,7 +684,7 @@ const Landing: React.FC = () => {
             Login
           </a>
           <a
-            href="https://Srishtiuniverse.com/register"
+            href="/register"
             target="_blank"
             rel="noopener noreferrer"
             className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
@@ -814,7 +814,7 @@ const Landing: React.FC = () => {
             future generations.
           </p>
           <button
-            className="px-6 py-3 bg-blue-500 text-white rounded-lg text-base hover:bg-blue-600 transition active:scale-95 min-h-[44px]"
+            className="px-6 py-3 bg-blue-500 text-white rounded-lg text-base hover:bg-blue-600 transition active:scale-95 min-h-11"
             onClick={() =>
               window.open("/login", "_blank")
             }
@@ -954,7 +954,7 @@ const Landing: React.FC = () => {
                         <button
                           onClick={handleFamilySearch}
                           disabled={isSearching || !searchQuery.trim()}
-                          className="px-4 py-2.5 bg-[#5d87ff] text-white rounded-lg font-semibold hover:bg-[#4c73e6] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed min-w-[80px]"
+                          className="px-4 py-2.5 bg-[#5d87ff] text-white rounded-lg font-semibold hover:bg-[#4c73e6] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed min-w-20"
                         >
                           {isSearching ? (
                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto" />
@@ -1283,7 +1283,7 @@ const Landing: React.FC = () => {
             </div>
 
             {/* Right: Family Tree Image */}
-            <div className="hidden lg:block relative flex justify-center lg:justify-end">
+            <div className=" lg:block relative flex justify-center lg:justify-end">
               <div className="relative">
                 <div className="relative bg-gray-300 backdrop-blur-xl rounded-3xl shadow-2xl p-8 ring-1 ring-gray-200/50 dark:ring-white/10">
                   <div className="absolute -top-6 left-1/2 -translate-x-1/2">
@@ -1558,8 +1558,8 @@ const Landing: React.FC = () => {
             {/* Phone Mockup for Mobile */}
             <div className="bg-linear-to-br from-[#5d87ff]/5 to-[#5d87ff]/20 p-6 flex justify-center">
               <div className="relative w-48 h-96">
-                <div className="relative w-full h-full bg-gray-900 rounded-[2rem] p-2 shadow-2xl">
-                  <div className="w-full h-full bg-white rounded-[1.5rem] overflow-hidden relative">
+                <div className="relative w-full h-full bg-gray-900 rounded-4xl p-2 shadow-2xl">
+                  <div className="w-full h-full bg-white rounded-3xl overflow-hidden relative">
                     <Image
                       src={Srishtimob || "/placeholder.svg"}
                       alt="App Screenshot"
@@ -1758,7 +1758,7 @@ const Landing: React.FC = () => {
               <h3 className="text-lg font-semibold">Open on your phone</h3>
               <button
                 onClick={() => setShowQr(false)}
-                className="rounded-lg p-2 hover:bg-gray-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="rounded-lg p-2 hover:bg-gray-100 min-h-11 min-w-11 flex items-center justify-center"
               >
                 ✕
               </button>
@@ -1903,7 +1903,7 @@ const Landing: React.FC = () => {
               </div>
               <button
                 onClick={() => setSelectedHeritageForMap(null)}
-                className="rounded-lg p-2 hover:bg-gray-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="rounded-lg p-2 hover:bg-gray-100 min-h-11 min-w-11 flex items-center justify-center"
               >
                 ✕
               </button>
