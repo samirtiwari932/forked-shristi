@@ -677,7 +677,6 @@ const Landing: React.FC = () => {
           </a>
           <a
             href="/login"
-            target="_blank"
             rel="noopener noreferrer"
             className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
@@ -685,7 +684,6 @@ const Landing: React.FC = () => {
           </a>
           <a
             href="/register"
-            target="_blank"
             rel="noopener noreferrer"
             className="relative font-semibold text-base tracking-wide transition-colors duration-300 hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:left-0 after:-bottom-1 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
@@ -695,7 +693,7 @@ const Landing: React.FC = () => {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2"      
           onClick={() => setIsMenuOpen((v) => !v)}
           aria-label="Toggle menu"
         >
