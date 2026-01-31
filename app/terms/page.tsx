@@ -4,12 +4,6 @@ import React, { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import Link from "next/link";
 
-/**
- * Srishti Universe – Terms & Conditions Page (React + Vite, .tsx)
- * Primary colors: #5d87ff (primary) and white
- * TailwindCSS recommended. If Tailwind isn't configured, inline styles still ensure colors render.
- * Leave space for logo at the top (replace the placeholder with your <img /> or Logo component).
- */
 
 export default function TermsAndConditions() {
   const [showScrollTop, setShowScrollTop] = useState(false);
