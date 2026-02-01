@@ -84,7 +84,7 @@ export default function FamilyTreeContent() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
+    <div className="min-h-screen flex flex-col bg-[#f8f6f3] overflow-x-hidden touch-pan-y">
       <Navbar />
 
       {/* Hero Section */}
@@ -194,8 +194,12 @@ export default function FamilyTreeContent() {
                     <Users className="w-5 h-5 text-[#5d87ff]" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-[#2d3748]">Generations Connected</p>
-                    <p className="text-xs text-[#64748b]">Preserve history for the future</p>
+                    <p className="text-sm font-bold text-[#2d3748]">
+                      Generations Connected
+                    </p>
+                    <p className="text-xs text-[#64748b]">
+                      Preserve history for the future
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -206,7 +210,6 @@ export default function FamilyTreeContent() {
 
       <main className="flex-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 space-y-32">
-
           {/* Why It Matters */}
           <motion.section
             id="why-matters"
@@ -216,7 +219,10 @@ export default function FamilyTreeContent() {
             variants={staggerContainer}
           >
             <div className="flex flex-col lg:flex-row items-start gap-16">
-              <motion.div variants={slideInLeft} className="lg:w-1/2 sticky top-24">
+              <motion.div
+                variants={slideInLeft}
+                className="lg:w-1/2 sticky top-24"
+              >
                 <motion.span
                   variants={fadeInUp}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-[#5d87ff]/10 text-[#5d87ff] rounded-full text-sm font-medium mb-6"
@@ -224,12 +230,20 @@ export default function FamilyTreeContent() {
                   <History className="h-4 w-4" />
                   Preserve Your Story
                 </motion.span>
-                <motion.h2 variants={fadeInUp} className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6 leading-tight">
+                <motion.h2
+                  variants={fadeInUp}
+                  className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6 leading-tight"
+                >
                   Why Srishti Universe’s Tree Builder Matters
                 </motion.h2>
-                <motion.p variants={fadeInUp} className="text-[#64748b] text-lg leading-relaxed mb-8">
-                  Your family’s story deserves more than a static chart — it deserves to be experienced.
-                  We provide a complete social ecosystem to discover roots, grow lineage, and share experiences.
+                <motion.p
+                  variants={fadeInUp}
+                  className="text-[#64748b] text-lg leading-relaxed mb-8"
+                >
+                  Your family’s story deserves more than a static chart — it
+                  deserves to be experienced. We provide a complete social
+                  ecosystem to discover roots, grow lineage, and share
+                  experiences.
                 </motion.p>
 
                 <div className="space-y-4">
@@ -237,7 +251,7 @@ export default function FamilyTreeContent() {
                     "Build a tree from scratch or grow an existing lineage",
                     "Connect relatives across branches with photos & timelines",
                     "Invite members to collaborate and enrich shared history",
-                    "Preserve connections for future generations digitally"
+                    "Preserve connections for future generations digitally",
                   ].map((item, idx) => (
                     <motion.div
                       key={idx}
@@ -252,19 +266,35 @@ export default function FamilyTreeContent() {
                 </div>
               </motion.div>
 
-              <motion.div variants={slideInRight} className="lg:w-1/2 space-y-6">
+              <motion.div
+                variants={slideInRight}
+                className="lg:w-1/2 space-y-6"
+              >
                 <div className="bg-white p-8 rounded-3xl border border-[#e2ded9] shadow-sm hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 bg-[#5d87ff]/10 rounded-xl flex items-center justify-center mb-4">
                     <Users className="h-6 w-6 text-[#5d87ff]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#2d3748] mb-3">Community & Group Trees</h3>
+                  <h3 className="text-xl font-bold text-[#2d3748] mb-3">
+                    Community & Group Trees
+                  </h3>
                   <p className="text-[#64748b] leading-relaxed mb-4">
-                    Go beyond biological families. Create trees for community organizations, local clubs, school alumni networks, or cultural heritage groups.
+                    Go beyond biological families. Create trees for community
+                    organizations, local clubs, school alumni networks, or
+                    cultural heritage groups.
                   </p>
                   <ul className="space-y-2 text-sm text-[#64748b]">
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#5d87ff] rounded-full" /> Community organizations</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#5d87ff] rounded-full" /> School alumni networks</li>
-                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#5d87ff] rounded-full" /> Cultural heritage projects</li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-[#5d87ff] rounded-full" />{" "}
+                      Community organizations
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-[#5d87ff] rounded-full" />{" "}
+                      School alumni networks
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-[#5d87ff] rounded-full" />{" "}
+                      Cultural heritage projects
+                    </li>
                   </ul>
                 </div>
 
@@ -272,18 +302,25 @@ export default function FamilyTreeContent() {
                   <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4">
                     <Shield className="h-6 w-6 text-[#5d87ff]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">Preserving Legacy with Purpose</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    Preserving Legacy with Purpose
+                  </h3>
                   <p className="text-gray-300 leading-relaxed mb-4">
-                    A digital archive of memories. Ensure your legacy is preserved with context and depth.
+                    A digital archive of memories. Ensure your legacy is
+                    preserved with context and depth.
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white/5 p-3 rounded-lg backdrop-blur-sm">
                       <Camera className="h-5 w-5 mb-2 text-[#5d87ff]" />
-                      <span className="text-sm font-medium">Photos & Videos</span>
+                      <span className="text-sm font-medium">
+                        Photos & Videos
+                      </span>
                     </div>
                     <div className="bg-white/5 p-3 rounded-lg backdrop-blur-sm">
                       <Info className="h-5 w-5 mb-2 text-[#5d87ff]" />
-                      <span className="text-sm font-medium">Stories & Docs</span>
+                      <span className="text-sm font-medium">
+                        Stories & Docs
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -300,14 +337,21 @@ export default function FamilyTreeContent() {
             variants={staggerContainer}
           >
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <motion.span variants={fadeInUp} className="text-[#5d87ff] font-semibold tracking-wide uppercase text-sm mb-2 block">
+              <motion.span
+                variants={fadeInUp}
+                className="text-[#5d87ff] font-semibold tracking-wide uppercase text-sm mb-2 block"
+              >
                 Powerful Features
               </motion.span>
-              <motion.h2 variants={fadeInUp} className="text-3xl lg:text-5xl font-bold text-[#2d3748] mb-6">
+              <motion.h2
+                variants={fadeInUp}
+                className="text-3xl lg:text-5xl font-bold text-[#2d3748] mb-6"
+              >
                 Built for Connection
               </motion.h2>
               <motion.p variants={fadeInUp} className="text-[#64748b] text-lg">
-                Tools designed to make building your ancestry easy, intuitive, and collaborative.
+                Tools designed to make building your ancestry easy, intuitive,
+                and collaborative.
               </motion.p>
             </div>
 
@@ -316,18 +360,18 @@ export default function FamilyTreeContent() {
                 {
                   icon: <Search className="h-6 w-6" />,
                   title: "Smart Discovery",
-                  desc: "Search existing trees, check for matches, and request to join family trees to connect with distant relatives."
+                  desc: "Search existing trees, check for matches, and request to join family trees to connect with distant relatives.",
                 },
                 {
                   icon: <Share2 className="h-6 w-6" />,
                   title: "Collaborative & Social",
-                  desc: "Invite members to contribute photos, edit privileges, and interact through built-in social tools."
+                  desc: "Invite members to contribute photos, edit privileges, and interact through built-in social tools.",
                 },
                 {
                   icon: <Globe className="h-6 w-6" />,
                   title: "Intuitive Interface",
-                  desc: "Get started in minutes. Enter known ancestors and watch your tree expand organically."
-                }
+                  desc: "Get started in minutes. Enter known ancestors and watch your tree expand organically.",
+                },
               ].map((feature, i) => (
                 <motion.div
                   key={i}
@@ -338,8 +382,12 @@ export default function FamilyTreeContent() {
                   <div className="w-14 h-14 bg-[#5d87ff]/10 rounded-2xl flex items-center justify-center mb-6 text-[#5d87ff]">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-[#2d3748] mb-3">{feature.title}</h3>
-                  <p className="text-[#64748b] leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-xl font-bold text-[#2d3748] mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[#64748b] leading-relaxed">
+                    {feature.desc}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -358,16 +406,27 @@ export default function FamilyTreeContent() {
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
               <div className="lg:w-1/2">
-                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
+                <motion.div
+                  variants={fadeInUp}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-6 backdrop-blur-sm"
+                >
                   <Layers className="h-4 w-4" />
                   Unified Ecosystem
                 </motion.div>
-                <motion.h2 variants={fadeInUp} className="text-3xl lg:text-5xl font-bold mb-6">
+                <motion.h2
+                  variants={fadeInUp}
+                  className="text-3xl lg:text-5xl font-bold mb-6"
+                >
                   Integrating Events & Finance
                 </motion.h2>
-                <motion.p variants={fadeInUp} className="text-gray-300 text-lg leading-relaxed mb-8">
-                  Srishti Universe’s Family Tree Builder doesn’t exist in isolation. It’s deeply integrated with
-                  Event Planning and Finance Management to create a holistic platform for family life.
+                <motion.p
+                  variants={fadeInUp}
+                  className="text-gray-300 text-lg leading-relaxed mb-8"
+                >
+                  Srishti Universe’s Family Tree Builder doesn’t exist in
+                  isolation. It’s deeply integrated with Event Planning and
+                  Finance Management to create a holistic platform for family
+                  life.
                 </motion.p>
                 <motion.button
                   variants={fadeInUp}
@@ -375,9 +434,7 @@ export default function FamilyTreeContent() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-[#5d87ff] text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-[#5d87ff]/30 hover:bg-[#4a73e6] transition-colors"
                 >
-                  <a href="/login">
-                    Start Building Your Tree
-                  </a>
+                  <a href="/login">Start Building Your Tree</a>
                 </motion.button>
               </div>
 
@@ -391,12 +448,13 @@ export default function FamilyTreeContent() {
                       <Calendar className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold">
-                      <a href="/features/event">
-                        Event Planning
-                      </a>
+                      <a href="/features/event">Event Planning</a>
                     </h3>
                   </div>
-                  <p className="text-gray-400">Plan reunions and milestones directly from your tree. Link events to specific branches.</p>
+                  <p className="text-gray-400">
+                    Plan reunions and milestones directly from your tree. Link
+                    events to specific branches.
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -409,18 +467,17 @@ export default function FamilyTreeContent() {
                       <Wallet className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold">
-                      <a href="/features/finance">
-                        Finance Management
-                      </a>
+                      <a href="/features/finance">Finance Management</a>
                     </h3>
                   </div>
-                  <p className="text-gray-400">Track budgets, contributions, and expenses for shared family or community activities.</p>
+                  <p className="text-gray-400">
+                    Track budgets, contributions, and expenses for shared family
+                    or community activities.
+                  </p>
                 </motion.div>
               </div>
             </div>
           </motion.section>
-
-
         </div>
         {/* Footer */}
         <motion.footer
