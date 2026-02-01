@@ -27,7 +27,7 @@ import Finance from "@/public/assets/images/finance.png";
 
 export const metadata: Metadata = {
   title:
-    "Features | Digital Family Tree, Events & Heritage Tools - Shristi Universe",
+    "Features | Digital Family Tree, Events & Heritage Tools - Srishti Universe",
   description:
     "Explore Shristi Universe features including digital family tree builder, family event management, shared finance tracking, and heritage preservation tools.",
 };
@@ -252,7 +252,7 @@ export default function FeaturesPage() {
 
             <div className="rounded-3xl overflow-hidden border">
               <img
-                src="/assets/images/JoinFt.png"
+                src="/assets/images/JoinFT.png"
                 alt="Join Family Tree"
                 className="w-full h-full object-cover"
               />

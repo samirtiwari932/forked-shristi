@@ -143,7 +143,7 @@ export default function FamilyTreeContent() {
                 transition={{ delay: 0.1 }}
                 className="text-lg text-[#64748b] leading-relaxed mb-8"
               >
-                Create your family and community trees with Shristi Universe.
+                Create your family and community trees with Srishti Universe.
                 Preserve family history, document genealogy, connect
                 generations, and protect your legacy online.
               </motion.p>
@@ -225,7 +225,7 @@ export default function FamilyTreeContent() {
                   Preserve Your Story
                 </motion.span>
                 <motion.h2 variants={fadeInUp} className="text-3xl lg:text-4xl font-bold text-[#2d3748] mb-6 leading-tight">
-                  Why Shristi Universe’s Tree Builder Matters
+                  Why Srishti Universe’s Tree Builder Matters
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-[#64748b] text-lg leading-relaxed mb-8">
                   Your family’s story deserves more than a static chart — it deserves to be experienced.
@@ -354,7 +354,7 @@ export default function FamilyTreeContent() {
             variants={staggerContainer}
             className="bg-[#2d3748] rounded-[3rem] p-10 lg:p-20 text-white relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#5d87ff]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-125 h-125 bg-[#5d87ff]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
               <div className="lg:w-1/2">
@@ -366,7 +366,7 @@ export default function FamilyTreeContent() {
                   Integrating Events & Finance
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-gray-300 text-lg leading-relaxed mb-8">
-                  Shristi Universe’s Family Tree Builder doesn’t exist in isolation. It’s deeply integrated with
+                  Srishti Universe’s Family Tree Builder doesn’t exist in isolation. It’s deeply integrated with
                   Event Planning and Finance Management to create a holistic platform for family life.
                 </motion.p>
                 <motion.button
@@ -375,7 +375,7 @@ export default function FamilyTreeContent() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-[#5d87ff] text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-[#5d87ff]/30 hover:bg-[#4a73e6] transition-colors"
                 >
-                  <a href="https://shristiuniverse.com/login">
+                  <a href="/login">
                     Start Building Your Tree
                   </a>
                 </motion.button>
@@ -432,7 +432,7 @@ export default function FamilyTreeContent() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
               <div>
-                <h4 className="text-white font-bold mb-4">Shristi Universe</h4>
+                <h4 className="text-white font-bold mb-4">Srishti Universe</h4>
                 <p className="text-white/70 text-sm">
                   Empowering families and communities with transparent financial
                   management.
@@ -486,7 +486,7 @@ export default function FamilyTreeContent() {
             </div>
             <div className="border-t border-white/10 pt-8 text-center">
               <p className="text-white/70 text-sm">
-                &copy; 2026 Shristi Universe. All rights reserved.
+                &copy; 2026 Srishti Universe. All rights reserved.
               </p>
             </div>
           </div>

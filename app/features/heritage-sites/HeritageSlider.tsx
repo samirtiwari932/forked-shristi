@@ -69,12 +69,12 @@ const HeritageSlider = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[500px] overflow-hidden rounded-b-3xl">
+    <section className="relative w-full h-125 overflow-hidden rounded-b-3xl">
       <div className="absolute inset-0 flex transition-transform duration-500 ease-in-out">
         {slides.map((slide) => (
           <div
             key={slide.id}
-            className={`${slide.bgColor} w-full h-full flex-shrink-0 flex flex-col items-center justify-center text-white p-6 relative overflow-hidden`}
+            className={`${slide.bgColor} w-full h-full shrink-0 flex flex-col items-center justify-center text-white p-6 relative overflow-hidden`}
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {/* Background Image */}
@@ -87,7 +87,7 @@ const HeritageSlider = () => {
             />
 
             {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+            <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/60" />
 
             {/* Decorative elements */}
             <div className="absolute top-10 left-10 w-32 h-32 bg-[#5d87ff]/10 rounded-full blur-3xl" />

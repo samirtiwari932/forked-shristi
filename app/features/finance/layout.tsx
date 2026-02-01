@@ -323,7 +323,7 @@ export default function FinanceComponent() {
   }, []);
 
   return (
-     <div className="min-h-screen flex flex-col bg-[#f8f6f3] overflow-x-hidden touch-pan-y">
+    <div className="min-h-screen flex flex-col bg-[#f8f6f3] overflow-x-hidden touch-pan-y">
       {/* Navbar */}
       <Navbar />
 
@@ -385,7 +385,7 @@ export default function FinanceComponent() {
               >
                 Manage donations, track expenses, and plan finances for
                 families, community events, and heritage programs with
-                transparent and secure software by Shristi Universe.
+                transparent and secure software by Srishti Universe.
               </motion.p>
 
               <motion.div
@@ -455,7 +455,7 @@ export default function FinanceComponent() {
                 className="text-[#64748b] mb-4 leading-relaxed"
               >
                 Effective financial management is the backbone of every
-                successful family group and community organization. Shristi
+                successful family group and community organization. Srishti
                 Universe's Finance Management feature brings clarity,
                 transparency, and accountability to shared finances.
               </motion.p>
@@ -1258,7 +1258,7 @@ export default function FinanceComponent() {
                 Secure, Organized, and Future-Ready Finance Management
               </h2>
               <p className="text-[#64748b] max-w-2xl mx-auto">
-                Security and structure are fundamental to Shristi Universe's
+                Security and structure are fundamental to Srishti Universe's
                 design. Your financial data is protected with enterprise-grade
                 security.
               </p>
@@ -1360,7 +1360,7 @@ export default function FinanceComponent() {
                 Why Choose Us
               </span>
               <h2 className="text-3xl font-bold text-[#2d3748] mb-4">
-                Why Shristi Universe for Finance Management?
+                Why Srishti Universe for Finance Management?
               </h2>
               <p className="text-[#64748b] max-w-2xl mx-auto">
                 Not just a finance tool it is a community-centric ecosystem that
@@ -1472,7 +1472,7 @@ export default function FinanceComponent() {
                   </h3>
                   <p className="text-[#64748b] mb-6 leading-relaxed">
                     Join thousands of families and communities who have
-                    transformed their financial management with Shristi
+                    transformed their financial management with Srishti
                     Universe. Start building trust, maintaining transparency,
                     and planning for the future together.
                   </p>
