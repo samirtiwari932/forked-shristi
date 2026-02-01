@@ -85,7 +85,7 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
+    <div className="min-h-screen flex flex-col bg-[#f8f6f3] overflow-x-hidden touch-pan-y">
       <Navbar />
 
       {/* Back Link */}

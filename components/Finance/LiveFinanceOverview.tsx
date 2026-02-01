@@ -28,7 +28,7 @@ function CountUp({
     }, 16);
 
     return () => clearInterval(timer);
-  }, [end, duration, pathname]); // 👈 KEY FIX
+  }, [end, duration, pathname]);
 
   return (
     <span className="tabular-nums">
@@ -65,35 +65,23 @@ export default function LiveFinanceOverview() {
   }, []);
 
   return (
-    <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 relative overflow-hidden">
+    <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-200 relative overflow-hidden w-full">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-linear-to-br from-blue-50/30 to-transparent pointer-events-none" />
 
-      {/* Header with Live indicator */}
-      {/* <div className="flex items-center justify-between mb-7">
-        <h3 className="text-xl font-bold text-gray-800">Live Overview</h3>
-        <div className="flex items-center gap-2.5">
-          <span className="relative flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500" />
-          </span>
-          <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold uppercase tracking-wide">
-            Live
-          </span>
-        </div>
-      </div> */}
-
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5 relative">
         {/* Total Collection */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-gray-50/80 rounded-2xl p-5 border border-gray-100"
+          className="bg-gray-50/80 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border border-gray-100"
         >
-          <p className="text-sm text-gray-600 mb-1.5">Total Collection</p>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-1.5">
+            Total Collection
+          </p>
+          <p className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-900 break-words">
             <CountUp end={collection} duration={2500} />
           </p>
         </motion.div>
@@ -103,10 +91,12 @@ export default function LiveFinanceOverview() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-gray-50/80 rounded-2xl p-5 border border-gray-100"
+          className="bg-gray-50/80 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border border-gray-100"
         >
-          <p className="text-sm text-gray-600 mb-1.5">Expenses</p>
-          <p className="text-3xl font-bold text-red-600">
+          <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-1.5">
+            Expenses
+          </p>
+          <p className="text-lg sm:text-2xl lg:text-3xl font-bold text-red-600 break-words">
             <CountUp end={expenses} duration={2500} />
           </p>
         </motion.div>
@@ -116,22 +106,24 @@ export default function LiveFinanceOverview() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-linear-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100 col-span-2"
+          className="bg-linear-to-r from-green-50 to-emerald-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 border border-green-100 col-span-2"
         >
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600 mb-1.5">Net Balance</p>
-              <p className="text-4xl font-extrabold text-green-600">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-1.5">
+                Net Balance
+              </p>
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-green-600 break-words">
                 <CountUp end={balance} duration={3000} />
               </p>
             </div>
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center"
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center shrink-0"
             >
               <svg
-                className="w-6 h-6 text-green-600"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-green-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -147,7 +139,7 @@ export default function LiveFinanceOverview() {
           </div>
 
           {/* Progress indicator */}
-          <div className="mt-4">
+          <div className="mt-3 sm:mt-4">
             <div className="flex justify-between text-xs text-gray-500 mb-1">
               <span>Collection</span>
               <span>Balance</span>
