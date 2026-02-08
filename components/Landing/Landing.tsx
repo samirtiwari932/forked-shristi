@@ -216,7 +216,6 @@ const HeritageDetailsDialog = ({
         </div>
       </div>
     </div>
-
   );
 };
 
@@ -266,6 +265,7 @@ type Feature = {
   icon: string;
   image: StaticImageData | string;
   alt: string;
+  route: string;
 };
 
 const features: Feature[] = [
@@ -276,6 +276,7 @@ const features: Feature[] = [
     icon: "🌳",
     image: royalFamilyTree,
     alt: "Family tree illustration with generations",
+    route: "/features/family-tree",
   },
   {
     title: "Heritage Preservation",
@@ -284,6 +285,7 @@ const features: Feature[] = [
     icon: "📜",
     image: bouddhanathStupa,
     alt: "Historic temple architecture symbolizing heritage",
+    route: "/features/heritage-sites",
   },
   {
     title: "Event Planning",
@@ -292,6 +294,7 @@ const features: Feature[] = [
     icon: "📖",
     image: event.src,
     alt: "Beautifully decorated event celebration table",
+    route: "/features/event",
   },
   {
     title: "Finance Management",
@@ -300,6 +303,7 @@ const features: Feature[] = [
     icon: "💰",
     image: finance.src,
     alt: "Calculator and financial planning documents",
+    route: "/features/finance",
   },
 ];
 
@@ -330,7 +334,8 @@ const HeritageSiteCard = ({
               />
               {site.medias.filter((m) => m.type === "IMAGE").length > 1 && (
                 <div className="absolute top-2 right-2 bg-black/60 text-white px-2 py-1 rounded-full text-xs">
-                  +{site.medias.filter((m) => m.type === "IMAGE").length - 1} photos
+                  +{site.medias.filter((m) => m.type === "IMAGE").length - 1}{" "}
+                  photos
                 </div>
               )}
             </>
@@ -371,7 +376,6 @@ const HeritageSiteCard = ({
         </div>
       </div>
     </div>
-
   );
 };
 
@@ -693,7 +697,7 @@ const Landing: React.FC = () => {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden p-2"      
+          className="md:hidden p-2"
           onClick={() => setIsMenuOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -813,9 +817,7 @@ const Landing: React.FC = () => {
           </p>
           <button
             className="px-6 py-3 bg-blue-500 text-white rounded-lg text-base hover:bg-blue-600 transition active:scale-95 min-h-11"
-            onClick={() =>
-              window.open("/login", "_blank")
-            }
+            onClick={() => window.open("/login", "_blank")}
           >
             Connect Now
           </button>
@@ -1090,7 +1092,6 @@ const Landing: React.FC = () => {
                           </div>
                         </div>
                       </div>
-
                     </div>
                   </div>
 
@@ -1226,7 +1227,9 @@ const Landing: React.FC = () => {
                         className="flex-1 bg-transparent text-base text-gray-900 placeholder-gray-500 outline-none font-medium"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyDown={(e) => e.key === "Enter" && handleFamilySearch()}
+                        onKeyDown={(e) =>
+                          e.key === "Enter" && handleFamilySearch()
+                        }
                       />
 
                       {/* Button */}
@@ -1243,7 +1246,6 @@ const Landing: React.FC = () => {
                       </button>
                     </div>
                   </div>
-
                 </div>
 
                 {/* Desktop suggestions */}
@@ -1253,7 +1255,13 @@ const Landing: React.FC = () => {
                   </span>
                   {searchType === "familyTree" ? (
                     <>
-                      {["Subedi", "Royal Family", "Gurung Pariwar", "Shah", "Rana"].map((term) => (
+                      {[
+                        "Subedi",
+                        "Royal Family",
+                        "Gurung Pariwar",
+                        "Shah",
+                        "Rana",
+                      ].map((term) => (
                         <button
                           key={term}
                           onClick={() => setSearchQuery(term)}
@@ -1265,15 +1273,17 @@ const Landing: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      {["Ram Sharma", "Sita Devi", "Krishna Prasad"].map((term) => (
-                        <button
-                          key={term}
-                          onClick={() => setSearchQuery(term)}
-                          className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
-                        >
-                          {term}
-                        </button>
-                      ))}
+                      {["Ram Sharma", "Sita Devi", "Krishna Prasad"].map(
+                        (term) => (
+                          <button
+                            key={term}
+                            onClick={() => setSearchQuery(term)}
+                            className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium"
+                          >
+                            {term}
+                          </button>
+                        ),
+                      )}
                     </>
                   )}
                 </div>
@@ -1343,12 +1353,12 @@ const Landing: React.FC = () => {
                     </div>
                   </div>
                   <div className="mt-4 flex gap-2">
-                    <button className="flex-1 py-2 bg-[#5d87ff] text-white rounded-lg font-semibold text-sm hover:bg-[#4c73e6] active:scale-95 transition-all">
-                      Explore
-                    </button>
-                    <button className="flex-1 py-2 border border-[#5d87ff] text-[#5d87ff] rounded-lg font-semibold text-sm hover:bg-[#5d87ff] hover:text-white active:scale-95 transition-all">
-                      Learn More
-                    </button>
+                    <a
+                      href={feature.route}
+                      className="block w-full py-2 bg-[#5d87ff] text-white rounded-lg font-semibold text-sm hover:bg-[#4c73e6] active:scale-95 transition-all text-center"
+                    >
+                      Explore Feature
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1375,15 +1385,12 @@ const Landing: React.FC = () => {
                           {feature.description}
                         </p>
                         <div className="flex gap-3 pt-2">
-                          <Button className="bg-[#5d87ff] hover:bg-[#4c73e6] text-white px-5 py-3 text-sm rounded-lg shadow transition-all">
-                            Explore Feature
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="border-[#5d87ff] text-[#5d87ff] hover:bg-[#5d87ff] hover:text-white px-5 py-3 text-sm rounded-lg"
+                          <a
+                            href={feature.route}
+                            className="inline-block bg-[#5d87ff] hover:bg-[#4c73e6] text-white px-5 py-3 text-sm rounded-lg shadow transition-all"
                           >
-                            Learn More
-                          </Button>
+                            Explore Feature
+                          </a>
                         </div>
                       </div>
 
@@ -1427,10 +1434,11 @@ const Landing: React.FC = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`Go to feature ${index + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                    ? "bg-[#5d87ff] w-8"
-                    : "bg-gray-300 dark:bg-gray-600 w-2"
-                    }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? "bg-[#5d87ff] w-8"
+                      : "bg-gray-300 dark:bg-gray-600 w-2"
+                  }`}
                 />
               ))}
             </div>
@@ -1773,7 +1781,12 @@ const Landing: React.FC = () => {
                 ) : (
                   <div className="w-40 h-40 mx-auto animate-pulse rounded-xl bg-gray-200" />
                 )}
-                <a href={PLAY_STORE_URL} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm font-semibold text-[#3CB371] underline">
+                <a
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-block text-sm font-semibold text-[#3CB371] underline"
+                >
                   Open link
                 </a>
               </div>
