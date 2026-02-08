@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   title:
     "Features | Digital Family Tree, Events & Heritage Tools - Srishti Universe",
   description:
-    "Explore Shristi Universe features including digital family tree builder, family event management, shared finance tracking, and heritage preservation tools.",
+    "Explore Srishti Universe features including digital family tree builder, family event management, shared finance tracking, and heritage preservation tools.",
 };
 
 /* =========================
@@ -218,7 +218,7 @@ export default function FeaturesPage() {
               </span>
 
               <h2 className="text-3xl font-bold mb-6">
-                Join Shristi Universe Today
+                Join Srishti Universe Today
               </h2>
 
               <p className="text-[#64748b] mb-8">
