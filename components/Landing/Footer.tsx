@@ -1,32 +1,41 @@
+"use client";
+
 import React from "react";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-10 pb-4 px-6 md:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Main Footer Content */}
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="bg-[#2d3748] py-12"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Info */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white">Srishti Universe</h2>
-            <p className="text-blue-400 text-sm leading-relaxed">
+          <div>
+            <h4 className="text-white font-bold mb-4">Srishti Universe</h4>
+            <p className="text-white/70 text-sm mb-4">
               Connecting generations through technology and shared heritage.
             </p>
-            <div className="flex space-x-4 pt-2">
+
+            <div className="flex space-x-4">
               <a
                 href="https://www.facebook.com/profile.php?id=61578171212524"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
+                className="text-white/70 hover:text-white transition-colors"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaFacebook size={20} />
               </a>
 
               <a
                 href="https://www.instagram.com/Srishti.universe/"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
+                className="text-white/70 hover:text-white transition-colors"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaInstagram size={20} />
               </a>
@@ -34,18 +43,21 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg">Quick Links</h3>
-            <ul className="space-y-3">
+          <div>
+            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
               <li>
-                <a href="/" className="hover:text-blue-400 transition-colors">
+                <a
+                  href="/"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
                   Home
                 </a>
               </li>
               <li>
                 <a
                   href="/about"
-                  className="hover:text-blue-400 transition-colors"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   About Us
                 </a>
@@ -53,7 +65,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="/features"
-                  className="hover:text-blue-400 transition-colors"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Features
                 </a>
@@ -61,7 +73,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#contact"
-                  className="hover:text-blue-400 transition-colors"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Contact
                 </a>
@@ -69,34 +81,72 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Newsletter */}
-        </div>
+          {/* Product */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Product</h4>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="/features"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#security"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Security
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-800 my-4"></div>
+          {/* Legal */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://shristiuniverse.com/legal/privacy-policy/"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/terms"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Terms of Service
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Srishti Universe. All rights reserved.
-          </div>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a
-              href="https://shristiuniverse.com/legal/privacy-policy/"
-              className="text-gray-500 hover:text-blue-400 transition-colors text-sm"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="/terms"
-              className="text-gray-500 hover:text-blue-400 transition-colors text-sm"
-            >
-              Terms of Service
-            </a>
-          </div>
+        <div className="border-t border-white/10 pt-8 text-center">
+          <p className="text-white/70 text-sm">
+            &copy; {new Date().getFullYear()} Srishti Universe. All rights
+            reserved.
+          </p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
