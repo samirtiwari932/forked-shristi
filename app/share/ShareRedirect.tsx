@@ -1,5 +1,5 @@
 "use client";
-// app/share/ShareRedirect.tsx
+
 import { useEffect } from "react";
 
 interface ShareRedirectProps {
@@ -8,8 +8,6 @@ interface ShareRedirectProps {
 
 export default function ShareRedirect({ redirectUrl }: ShareRedirectProps) {
   useEffect(() => {
-    // Redirect real users to the React app
-    // Crawlers don't execute JS so they stay here and read the OG meta tags
     window.location.replace(redirectUrl);
   }, [redirectUrl]);
 

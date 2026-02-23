@@ -2,10 +2,8 @@
 import type { Metadata } from "next";
 import ShareRedirect from "./ShareRedirect";
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.shristiuniverse.com";
-const REACT_APP_URL =
-  process.env.NEXT_PUBLIC_REACT_APP_URL || "https://api.shristiuniverse.com";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const REACT_APP_URL = process.env.NEXT_PUBLIC_REACT_APP_URL;
 
 type ComponentType = "POST" | "HERITAGE" | "GROUP" | "FAMILYTREE";
 
@@ -30,7 +28,6 @@ async function getMetadata(component: ComponentType, id: string) {
   }
 }
 
-// ── This is the only thing Facebook/WhatsApp crawlers care about ──────────────
 export async function generateMetadata({
   searchParams,
 }: SharePageProps): Promise<Metadata> {
@@ -68,7 +65,6 @@ export async function generateMetadata({
   };
 }
 
-// ── Real users: immediately redirect to the React app ────────────────────────
 export default async function SharePage({ searchParams }: SharePageProps) {
   const params = await searchParams;
   const component =
