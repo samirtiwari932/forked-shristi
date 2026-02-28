@@ -2,8 +2,10 @@
 import type { Metadata } from "next";
 import ShareRedirect from "./ShareRedirect";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-const REACT_APP_URL = process.env.NEXT_PUBLIC_REACT_APP_URL;
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "https://api.shristiuniverse.com;";
+const REACT_APP_URL =
+  process.env.NEXT_PUBLIC_REACT_APP_URL || "https://shristiuniverse.com";
 
 type ComponentType = "POST" | "HERITAGE" | "GROUP" | "FAMILYTREE";
 
@@ -72,7 +74,7 @@ export default async function SharePage({ searchParams }: SharePageProps) {
   const id = params.id || "";
 
   const redirectMap: Record<ComponentType, string> = {
-    POST: `${REACT_APP_URL}/home/post/${id}`,
+    POST: `/home/post/${id}`,
     HERITAGE: `${REACT_APP_URL}/home/heritage/details/${id}`,
     GROUP: `${REACT_APP_URL}/home/group/${id}`,
     FAMILYTREE: `${REACT_APP_URL}/home/shared-tree/${id}`,
