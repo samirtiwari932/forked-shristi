@@ -8,7 +8,10 @@ interface ShareRedirectProps {
 
 export default function ShareRedirect({ redirectUrl }: ShareRedirectProps) {
   useEffect(() => {
-    window.location.replace(redirectUrl);
+    const timer = setTimeout(() => {
+      window.location.replace(redirectUrl);
+    }, 100);
+    return () => clearTimeout(timer);
   }, [redirectUrl]);
 
   return (
@@ -21,16 +24,17 @@ export default function ShareRedirect({ redirectUrl }: ShareRedirectProps) {
         height: "100vh",
         fontFamily: "sans-serif",
         gap: "16px",
+        background: "#ffffff",
       }}
     >
-      {/* Simple loading screen users see for a brief moment before redirect */}
       <img
         src="/assets/images/shristi_logo-2.png"
         alt="Srishti Universe"
         style={{ width: "80px", height: "80px", objectFit: "contain" }}
       />
-      <p style={{ color: "#6b7280", fontSize: "14px" }}>Redirecting you...</p>
-      {/* Fallback link in case JS redirect is slow */}
+      <p style={{ color: "#6b7280", fontSize: "14px", margin: 0 }}>
+        Redirecting you...
+      </p>
       <a
         href={redirectUrl}
         style={{

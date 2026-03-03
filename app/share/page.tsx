@@ -1,9 +1,9 @@
-// app/share/page.tsx
 import type { Metadata } from "next";
 import ShareRedirect from "./ShareRedirect";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://api.shristiuniverse.com;";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.shristiuniverse.com";
+
 const REACT_APP_URL =
   process.env.NEXT_PUBLIC_REACT_APP_URL || "https://shristiuniverse.com";
 
@@ -22,11 +22,34 @@ async function getMetadata(component: ComponentType, id: string) {
     };
     const url = endpointMap[component];
     if (!url) return null;
-    const res = await fetch(url, { next: { revalidate: 3600 } });
+
+    const res = await fetch(url, {
+      next: { revalidate: 3600 },
+      headers: { "Content-Type": "application/json" },
+    });
+
     if (!res.ok) return null;
     return await res.json();
   } catch {
     return null;
+  }
+}
+
+function stripSignedParams(url: string): string {
+  if (!url) return url;
+  try {
+    const parsed = new URL(url);
+    [
+      "X-Amz-Algorithm",
+      "X-Amz-Credential",
+      "X-Amz-Date",
+      "X-Amz-Expires",
+      "X-Amz-SignedHeaders",
+      "X-Amz-Signature",
+    ].forEach((param) => parsed.searchParams.delete(param));
+    return parsed.toString();
+  } catch {
+    return url;
   }
 }
 
@@ -44,8 +67,9 @@ export async function generateMetadata({
   const description =
     data?.description ||
     "Connect generations, preserve stories, and celebrate your roots.";
-  const image = data?.image || "/assets/images/family.png";
-  const url = data?.url || "https://shristiuniverse.com";
+  const rawImage = data?.image || `${REACT_APP_URL}/assets/images/family.png`;
+  const image = stripSignedParams(rawImage);
+  const url = data?.url || REACT_APP_URL;
 
   return {
     title,
@@ -74,13 +98,13 @@ export default async function SharePage({ searchParams }: SharePageProps) {
   const id = params.id || "";
 
   const redirectMap: Record<ComponentType, string> = {
-    POST: `/home/post/${id}`,
+    POST: `${REACT_APP_URL}/home/post/${id}`,
     HERITAGE: `${REACT_APP_URL}/home/heritage/details/${id}`,
     GROUP: `${REACT_APP_URL}/home/group/${id}`,
     FAMILYTREE: `${REACT_APP_URL}/home/shared-tree/${id}`,
   };
 
-  return (
-    <ShareRedirect redirectUrl={redirectMap[component] ?? REACT_APP_URL} />
-  );
+  const redirectUrl = redirectMap[component] ?? REACT_APP_URL;
+
+  return <ShareRedirect redirectUrl={redirectUrl} />;
 }
