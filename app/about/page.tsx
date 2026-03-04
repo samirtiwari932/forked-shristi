@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Landing/Footer";
 
 // Animation variants matching your Finance page
 const fadeInUp = {
@@ -559,7 +560,7 @@ export default function AboutPage() {
       </main>
 
       {/* Footer */}
-      <motion.footer
+      {/* <motion.footer
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -625,7 +626,9 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-      </motion.footer>
+      </motion.footer> */}
+
+      <Footer />
     </div>
   );
 }

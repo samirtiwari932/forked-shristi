@@ -24,6 +24,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import familyTreeImg from "@/public/assets/images/Familytree.jpg";
+import Footer from "@/components/Landing/Footer";
 
 // Animation variants
 const fadeInUp = {
@@ -480,7 +481,7 @@ export default function FamilyTreeContent() {
           </motion.section>
         </div>
         {/* Footer */}
-        <motion.footer
+        {/* <motion.footer
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -547,7 +548,9 @@ export default function FamilyTreeContent() {
               </p>
             </div>
           </div>
-        </motion.footer>
+        </motion.footer> */}
+
+        <Footer />
       </main>
     </div>
   );
