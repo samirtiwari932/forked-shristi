@@ -35,24 +35,6 @@ async function getMetadata(component: ComponentType, id: string) {
   }
 }
 
-function stripSignedParams(url: string): string {
-  if (!url) return url;
-  try {
-    const parsed = new URL(url);
-    [
-      "X-Amz-Algorithm",
-      "X-Amz-Credential",
-      "X-Amz-Date",
-      "X-Amz-Expires",
-      "X-Amz-SignedHeaders",
-      "X-Amz-Signature",
-    ].forEach((param) => parsed.searchParams.delete(param));
-    return parsed.toString();
-  } catch {
-    return url;
-  }
-}
-
 export async function generateMetadata({
   searchParams,
 }: SharePageProps): Promise<Metadata> {
@@ -67,8 +49,9 @@ export async function generateMetadata({
   const description =
     data?.description ||
     "Connect generations, preserve stories, and celebrate your roots.";
-  const rawImage = data?.image || `${REACT_APP_URL}/assets/images/family.png`;
-  const image = stripSignedParams(rawImage);
+
+  // Keep full signed URL as-is so image actually loads
+  const image = data?.image || `${REACT_APP_URL}/assets/images/family.png`;
   const url = data?.url || REACT_APP_URL;
 
   return {
