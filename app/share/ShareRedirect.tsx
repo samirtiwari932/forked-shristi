@@ -8,10 +8,10 @@ interface ShareRedirectProps {
 
 export default function ShareRedirect({ redirectUrl }: ShareRedirectProps) {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      window.location.replace(redirectUrl);
-    }, 100);
-    return () => clearTimeout(timer);
+    // const timer = setTimeout(() => {
+    //   window.location.replace(redirectUrl);
+    // }, 100);
+    // return () => clearTimeout(timer);
   }, [redirectUrl]);
 
   return (
