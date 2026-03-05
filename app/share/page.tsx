@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import ShareRedirect from "./ShareRedirect";
 
+// ✅ Force dynamic rendering — prevents static caching, ensures fresh metadata
+export const dynamic = "force-dynamic";
+
 const API_BASE_URL = "https://api.shristiuniverse.com";
 const REACT_APP_URL = "https://shristiuniverse.com";
 
@@ -49,8 +52,6 @@ export async function generateMetadata({
   const description =
     data?.description ||
     "Connect generations, preserve stories, and celebrate your roots.";
-
-  // Keep full signed URL as-is so image actually loads
   const image = data?.image || `${REACT_APP_URL}/assets/images/family.png`;
   const url = data?.url || REACT_APP_URL;
 
