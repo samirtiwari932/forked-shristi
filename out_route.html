@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    
+    <!-- Open Graph Tags (crucial for social sharing) -->
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
+    <meta property="og:image" content="${image}" />
+    <meta property="og:url" content="${metaUrl}" />
+    <meta property="og:site_name" content="Srishti Universe" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${title}" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${image}" />
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: sans-serif;
+        gap: 16px;
+        background: #ffffff;
+        margin: 0;
+      }
+      img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+      p {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 0;
+      }
+      a {
+        color: #3b82f6;
+        font-size: 13px;
+        text-decoration: underline;
+      }
+    </style>
+
+    <script>
+      // Immediately redirect standard users (crawlers ignore JS)
+      setTimeout(function() {
+        window.location.replace("${redirectUrl}");
+      }, 100);
+    </script>
+</head>
+<body>
+    <img src="/assets/images/shristi_logo-2.png" alt="Srishti Universe" />
+    <p>Redirecting you...</p>
+    <a href="${redirectUrl}">Click here if you are not redirected</a>
+</body>
+</html>
