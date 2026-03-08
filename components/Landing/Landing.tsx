@@ -518,6 +518,11 @@ const Landing: React.FC = () => {
   const [selectedHeritageForMap, setSelectedHeritageForMap] =
     useState<HeritageResponse | null>(null);
 
+  // ── NEW: optional person-search fields ──────────────────────────────────
+  const [personDob, setPersonDob] = useState("");
+  const [personAddress, setPersonAddress] = useState("");
+  // ────────────────────────────────────────────────────────────────────────
+
   const [platform, setPlatform] = useState<Platform>("desktop");
   const [open, setOpen] = useState(false);
   const [showStickyBanner, setShowStickyBanner] = useState(true);
@@ -540,8 +545,6 @@ const Landing: React.FC = () => {
 
       setTimeout(() => {
         const elapsed = Date.now() - start;
-        // If the user hasn't switched apps (visibility is still visible)
-        // and time elapsed is roughly what we expected (meaning main thread wasn't blocked by app switch)
         if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
           window.location.href =
             "https://apps.apple.com/us/app/Srishti-universe/id6751426376";
@@ -552,8 +555,6 @@ const Landing: React.FC = () => {
     if (platform === "android") {
       window.location.href =
         "intent://Srishtiuniverse#Intent;scheme=Srishti;package=com.Srishti.universe;end";
-      // Android intent usually handles fallback via the 'S.browser_fallback_url' extra if we added it,
-      // but since we are manually falling back:
       setTimeout(() => {
         const elapsed = Date.now() - start;
         if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
@@ -568,6 +569,7 @@ const Landing: React.FC = () => {
     setSelectedHeritageForMap(heritage);
   };
 
+  // ── UPDATED: handleFamilySearch now includes optional person fields ──────
   const handleFamilySearch = async () => {
     const query = searchQuery.trim();
     if (!query) return;
@@ -579,7 +581,11 @@ const Landing: React.FC = () => {
         results = await familyApi.searchFamilyTree({ name: query });
       } else {
         results = await familyApi.searchFamilyTree({
-          person: { name: query },
+          person: {
+            name: query,
+            ...(personDob && { dateOfBirth: personDob }),
+            ...(personAddress && { address: personAddress }),
+          },
         });
       }
       setSearchResults(results);
@@ -592,6 +598,7 @@ const Landing: React.FC = () => {
       setIsSearching(false);
     }
   };
+  // ────────────────────────────────────────────────────────────────────────
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -885,7 +892,7 @@ const Landing: React.FC = () => {
                 the future.
               </p>
 
-              {/* Search Section for Mobile */}
+              {/* ── MOBILE SEARCH ─────────────────────────────────────────────── */}
               <div className="md:hidden space-y-4">
                 <div className="relative">
                   <div className="bg-white rounded-xl shadow-lg p-3">
@@ -893,7 +900,11 @@ const Landing: React.FC = () => {
                       {/* Search Type */}
                       <div className="flex gap-2">
                         <button
-                          onClick={() => setSearchType("familyTree")}
+                          onClick={() => {
+                            setSearchType("familyTree");
+                            setPersonDob("");
+                            setPersonAddress("");
+                          }}
                           className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors ${searchType === "familyTree" ? "bg-[#5d87ff] text-white" : "bg-gray-100 text-gray-700"}`}
                         >
                           <TreePine className="w-4 h-4" />
@@ -963,6 +974,26 @@ const Landing: React.FC = () => {
                           )}
                         </button>
                       </div>
+
+                      {/* ── Optional Person Fields - Mobile ── */}
+                      {searchType === "person" && (
+                        <div className="flex flex-col gap-2">
+                          <input
+                            type="date"
+                            className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 outline-none focus:border-[#5d87ff] focus:ring-2 focus:ring-[#5d87ff]/20 text-sm"
+                            value={personDob}
+                            onChange={(e) => setPersonDob(e.target.value)}
+                            placeholder="Date of Birth (optional)"
+                          />
+                          <input
+                            type="text"
+                            placeholder="Address (optional)"
+                            className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 outline-none focus:border-[#5d87ff] focus:ring-2 focus:ring-[#5d87ff]/20 text-sm"
+                            value={personAddress}
+                            onChange={(e) => setPersonAddress(e.target.value)}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1023,7 +1054,7 @@ const Landing: React.FC = () => {
                 </div>
               </div>
 
-              {/* Desktop Search - Hidden on Mobile */}
+              {/* ── DESKTOP SEARCH ────────────────────────────────────────────── */}
               <div className="hidden md:block max-w-xl">
                 <div className="group relative">
                   {/* Create Your Family Tree CTA */}
@@ -1150,6 +1181,8 @@ const Landing: React.FC = () => {
                             <button
                               onClick={() => {
                                 setSearchType("familyTree");
+                                setPersonDob("");
+                                setPersonAddress("");
                                 setShowSearchTypeMenu(false);
                               }}
                               className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-100 transition-colors text-left"
@@ -1245,6 +1278,37 @@ const Landing: React.FC = () => {
                         )}
                       </button>
                     </div>
+
+                    {/* ── Optional Person Fields - Desktop ── */}
+                    {searchType === "person" && (
+                      <div className="flex gap-3 px-5 pb-3 pt-1 border-t border-gray-100">
+                        <div className="flex-1">
+                          <label className="block text-xs text-gray-500 mb-1 ml-0.5">
+                            Date of Birth{" "}
+                            <span className="text-gray-400">(optional)</span>
+                          </label>
+                          <input
+                            type="date"
+                            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 outline-none focus:border-[#5d87ff] focus:ring-2 focus:ring-[#5d87ff]/20 text-sm"
+                            value={personDob}
+                            onChange={(e) => setPersonDob(e.target.value)}
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <label className="block text-xs text-gray-500 mb-1 ml-0.5">
+                            Address{" "}
+                            <span className="text-gray-400">(optional)</span>
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="e.g. Kathmandu"
+                            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 outline-none focus:border-[#5d87ff] focus:ring-2 focus:ring-[#5d87ff]/20 text-sm"
+                            value={personAddress}
+                            onChange={(e) => setPersonAddress(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
