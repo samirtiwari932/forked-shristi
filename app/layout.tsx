@@ -28,8 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Google Tag Manager */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Google Tag Manager - Moved to body as per Next.js Script guidelines for afterInteractive */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -46,9 +46,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* GTM noscript */}
         <noscript>
           <iframe
