@@ -10,7 +10,7 @@ const REACT_APP_URL = "https://shristiuniverse.com";
 type ComponentType = "POST" | "HERITAGE" | "GROUP" | "FAMILYTREE";
 
 interface SharePageProps {
-  searchParams: Promise<{ component?: string; id?: string }>;
+  searchParams: Promise<{ component?: string; id?:   string }>;
 }
 
 async function getMetadata(component: ComponentType, id: string) {
