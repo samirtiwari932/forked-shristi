@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shristiuniverse.com"),
   title: "Family Tree & Genealogy Platform for Communities | Srishti Universe",
   description:
     "Build family and organization trees, manage community events, track finance, and preserve heritage with a secure digital platform built for generations.",
