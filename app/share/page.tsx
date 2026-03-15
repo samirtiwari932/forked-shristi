@@ -7,10 +7,10 @@ export const dynamic = "force-dynamic";
 const API_BASE_URL = "https://api.shristiuniverse.com";
 const REACT_APP_URL = "https://shristiuniverse.com";
 
-type ComponentType = "POST" | "HERITAGE" | "GROUP" | "FAMILYTREE";
+type ComponentType = "POST" | "HERITAGE" | "GROUP" | "FAMILYTREE" | "EVENT";
 
 interface SharePageProps {
-  searchParams: Promise<{ component?: string; id?: string }>;
+  searchParams: Promise<{ component?: string; id?:   string }>;
 }
 
 async function getMetadata(component: ComponentType, id: string) {
@@ -19,6 +19,7 @@ async function getMetadata(component: ComponentType, id: string) {
   const endpointMap: Partial<Record<ComponentType, string>> = {
     POST: `${API_BASE_URL}/v1/post/${id}/metadata`,
     HERITAGE: `${API_BASE_URL}/v1/heritage/${id}/metadata`,
+    EVENT: `${API_BASE_URL}/v1/post/${id}/metadata`,
   };
 
   const url = endpointMap[component];
@@ -86,6 +87,7 @@ export default async function SharePage({ searchParams }: SharePageProps) {
     HERITAGE: `${REACT_APP_URL}/home/heritage/details/${id}`,
     GROUP: `${REACT_APP_URL}/home/group/${id}`,
     FAMILYTREE: `${REACT_APP_URL}/home/shared-tree/${id}`,
+    EVENT: `${REACT_APP_URL}/home/shared-event/${id}`,
   };
 
   const redirectUrl = redirectMap[component] ?? REACT_APP_URL;
