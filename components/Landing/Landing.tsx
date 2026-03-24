@@ -559,7 +559,7 @@ const Landing: React.FC = () => {
         const elapsed = Date.now() - start;
         if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
           window.location.href =
-            "https://play.google.com/store/apps/details?id=com.Srishti.universe";
+            "https://play.google.com/store/apps/details?id=com.shristi.universe&hl=en";
         }
       }, timeout);
     }
