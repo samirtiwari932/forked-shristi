@@ -220,7 +220,7 @@ const HeritageDetailsDialog = ({
 };
 
 const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.Srishti.universe";
+  "https://play.google.com/store/apps/details?id=com.shristi.universe";
 const APP_STORE_URL =
   "https://apps.apple.com/us/app/Srishti-universe/id6751426376";
 const DESKTOP_LANDING_URL = "";
@@ -553,13 +553,11 @@ const Landing: React.FC = () => {
     }
 
     if (platform === "android") {
-      window.location.href =
-        "intent://Srishtiuniverse#Intent;scheme=Srishti;package=com.Srishti.universe;end";
+      window.location.href = "Srishtiuniverse://";
       setTimeout(() => {
         const elapsed = Date.now() - start;
         if (document.visibilityState !== "hidden" && elapsed < timeout + 500) {
-          window.location.href =
-            "https://play.google.com/store/apps/details?id=com.shristi.universe&hl=en";
+          window.location.href = PLAY_STORE_URL;
         }
       }, timeout);
     }
