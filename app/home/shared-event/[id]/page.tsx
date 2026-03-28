@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ShareRedirect from "../../../share/ShareRedirect";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 const API_BASE_URL = "https://api.shristiuniverse.com";
 const REACT_APP_URL = "https://shristiuniverse.com";
@@ -16,7 +16,7 @@ async function getEventMetadata(id: string) {
   const url = `${API_BASE_URL}/v1/post/${id}/metadata`;
 
   try {
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { next: { revalidate: 60 } });
     if (!res.ok) return null;
     const data = await res.json();
     return data;

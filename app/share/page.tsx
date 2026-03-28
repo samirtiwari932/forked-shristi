@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import ShareRedirect from "./ShareRedirect";
 
-// ✅ Force dynamic rendering — prevents static caching, ensures fresh metadata
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 const API_BASE_URL = "https://api.shristiuniverse.com";
 const REACT_APP_URL = "https://shristiuniverse.com";
@@ -10,7 +9,7 @@ const REACT_APP_URL = "https://shristiuniverse.com";
 type ComponentType = "POST" | "HERITAGE" | "GROUP" | "FAMILYTREE" | "EVENT";
 
 interface SharePageProps {
-  searchParams: Promise<{ component?: string; id?:   string }>;
+  searchParams: Promise<{ component?: string; id?: string }>;
 }
 
 async function getMetadata(component: ComponentType, id: string) {
@@ -20,6 +19,8 @@ async function getMetadata(component: ComponentType, id: string) {
     POST: `${API_BASE_URL}/v1/post/${id}/metadata`,
     HERITAGE: `${API_BASE_URL}/v1/heritage/${id}/metadata`,
     EVENT: `${API_BASE_URL}/v1/post/${id}/metadata`,
+    GROUP: `${API_BASE_URL}/v1/family/group/${id}/metadata`,
+    FAMILYTREE: `${API_BASE_URL}/v1/genealogy/family-tree/${id}/metadata`,
   };
 
   const url = endpointMap[component];
@@ -27,7 +28,7 @@ async function getMetadata(component: ComponentType, id: string) {
 
   try {
     console.log(`[SharePage] Fetching: ${url}`);
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { next: { revalidate: 60 } });
     console.log(`[SharePage] Status: ${res.status}`);
     if (!res.ok) return null;
     const data = await res.json();
@@ -54,7 +55,8 @@ export async function generateMetadata({
     data?.description ||
     "Connect generations, preserve stories, and celebrate your roots.";
   const image = data?.image || `${REACT_APP_URL}/assets/images/family.png`;
-  const url = data?.url || REACT_APP_URL;
+
+  const sharePageUrl = `${REACT_APP_URL}/share?component=${component.toLowerCase()}&id=${id}`;
 
   return {
     title,
@@ -63,9 +65,9 @@ export async function generateMetadata({
       title,
       description,
       images: [{ url: image, width: 1200, height: 630, alt: title }],
-      url,
+      url: sharePageUrl,
       siteName: "Srishti Universe",
-      type: "website",
+      type: "article",
     },
     twitter: {
       card: "summary_large_image",
