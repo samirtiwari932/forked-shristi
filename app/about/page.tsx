@@ -83,7 +83,7 @@ const features = [
   },
   {
     icon: Landmark,
-    href: "/features/heritage",
+    href: "/features/heritage-sites",
     title: "Heritage Sites",
     description:
       "Preserve cultural landmarks and family heritage for future generations.",
@@ -182,8 +182,7 @@ export default function AboutPage() {
               transition={{ delay: 0.1 }}
               className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
             >
-              Empowering families to preserve their legacy, celebrate their
-              heritage, and build lasting connections across generations.
+              Srishti Universe is a family tree and community management platform designed to help families and communities build structured hierarchies, preserve heritage, and stay connected.
             </motion.p>
           </motion.div>
         </div>
@@ -241,11 +240,14 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="text-[#64748b] mb-6 leading-relaxed text-lg"
               >
-                Our mission at Srishti Universe is to help families preserve
-                their legacy and heritage in today's modern era using digital
-                technology. We provide a comprehensive platform where users can
-                create trees, store precious memories, and safeguard historical
-                heritage sites for generations to come.
+                Our mission is to help families and communities build
+                digital family trees, manage relationships, and
+                <a href="https://shristiuniverse.com/features/heritage">preserve cultural heritage</a>
+                for future generations. Srishti Universe simplifies community management,
+                <a href="https://shristiuniverse.com/features/event">event coordination</a>, and structured
+                record keeping in one secure platform.
+                We aim to create a reliable solution where users can track lineage, manage members,
+                organize gatherings, and maintain transparency in community activities.
               </motion.p>
 
               <motion.div
@@ -315,11 +317,10 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="text-[#64748b] mb-6 leading-relaxed text-lg"
               >
-                Srishti Universe is a unique digital family platform focused on
-                preserving family history, promoting cultural heritage
-                preservation, and fostering family unity. Unlike standard social
-                platforms or genealogy apps, our platform offers a secure and
-                meaningful way to practice digital memory preservation.
+                Srishti Universe provides a complete <a href="https://shristiuniverse.com/features/family-tree">family tree platform</a>
+                and community management system designed for structured organization.
+                The platform helps users manage family hierarchy, organize events,
+                <a href="https://shristiuniverse.com/features/finance">track finances</a>, and preserve heritage in one place.
               </motion.p>
 
               <motion.div
@@ -530,14 +531,14 @@ export default function AboutPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.button
+                  <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="bg-[#5d87ff] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a7cff] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <a href="/login">Start Your Family Tree Today</a>
                     <ArrowRight className="h-5 w-5" />
-                  </motion.button>
+                  </motion.a>
                 </div>
               </motion.div>
 

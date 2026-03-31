@@ -3,20 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  Calendar,
-  Users,
-  Lock,
-  Globe,
-  CheckCircle,
-  Eye,
-  Clock,
-  Shield,
-  Star,
-  ArrowRight,
-  Target,
-  Zap,
-  TrendingUp,
-  MapPin,
+  Calendar, Users, Lock, Globe, CheckCircle, Eye, Clock, Shield, Star, ArrowRight, Target, Zap, TrendingUp, MapPin
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { usePopularEvents } from "@/lib/hooks/usePopularEvents";
@@ -322,16 +309,16 @@ const EventsComponent = () => {
                   ),
                 )}
               </motion.div>
-              <motion.button
+              <motion.a
                 variants={fadeInUp}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg shadow-[#5d87ff]/20 flex items-center gap-2"
-                onClick={handleLogin}
+                href="https://shristiuniverse.com/login"
               >
                 Get Started
                 <ArrowRight className="h-5 w-5" />
-              </motion.button>
+              </motion.a>
             </motion.div>
             <motion.div variants={slideInRight} className="relative">
               <motion.div
@@ -951,13 +938,13 @@ const EventsComponent = () => {
                   ))}
                 </div>
 
-                <button
+                <a
                   className="bg-[#5d87ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#4a6fe0] transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2"
-                  onClick={handleLogin}
+                  href="https://shristiuniverse.com/login"
                 >
                   Start Planning Your First Event
                   <ArrowRight className="h-5 w-5" />
-                </button>
+                </a>
               </div>
             </motion.div>
           </motion.div>
