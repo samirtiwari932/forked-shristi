@@ -383,9 +383,12 @@ export default function FinanceComponent() {
                 transition={{ delay: 0.1 }}
                 className="text-lg text-[#64748b] leading-relaxed mb-8"
               >
-                Manage donations, track expenses, and plan finances for
-                families, community events, and heritage programs with
-                transparent and secure software by Srishti Universe.
+                Manage donations, track expenses, and plan
+                finances for families, <a href="https://shristiuniverse.com/features/event">community events</a>, and
+                <a href="https://shristiuniverse.com/features/heritage-sites">heritage programs</a>  with transparent
+                and secure software by <a href="https://shristiuniverse.com/features/heritage-sites">Srishti Universe.</a>
+                Integrate financial tracking with your family tree and
+                manage contributions securely using Srishti Universe.
               </motion.p>
 
               <motion.div
@@ -405,11 +408,10 @@ export default function FinanceComponent() {
                     animate="visible"
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.05 }}
-                    className={`px-4 py-2 rounded-full text-sm ${
-                      tag === "Expense Tracking"
-                        ? "bg-[#5d87ff] text-white"
-                        : "bg-white border border-[#e2ded9] text-[#2d3748]"
-                    }`}
+                    className={`px-4 py-2 rounded-full text-sm ${tag === "Expense Tracking"
+                      ? "bg-[#5d87ff] text-white"
+                      : "bg-white border border-[#e2ded9] text-[#2d3748]"
+                      }`}
                   >
                     {tag}
                   </motion.span>
@@ -494,24 +496,33 @@ export default function FinanceComponent() {
                 </h3>
                 <div className="space-y-3">
                   {[
-                    "Family groups managing collective funds",
-                    "Community organizations and clubs",
-                    "Trusts and non-profit organizations",
-                    "Cultural and heritage preservation programs",
-                    "Event planning committees",
-                  ].map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      whileHover={{ x: 5 }}
-                      className="flex items-center gap-3 bg-white rounded-xl px-4 py-3"
-                    >
-                      <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
-                      <span className="text-[#2d3748]">{item}</span>
-                    </motion.div>
-                  ))}
+                    { name: "Family groups managing collective funds", link: "/heritage" },
+                    { name: "Community organizations and clubs" },
+                    { name: "Trusts and non-profit organizations" },
+                    { name: "Cultural and heritage preservation programs", link: "/heritage-sites" },
+                    { name: "Event planning committees", link: "/event" },
+                  ].map((item, idx) => {
+                    const content = (
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        whileHover={{ x: 5 }}
+                        className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 cursor-pointer"
+                      >
+                        <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
+                        <span className="text-[#2d3748]">{item.name}</span>
+                      </motion.div>
+                    );
+
+                    return item.link ? (
+                      <a key={idx} href={item.link}>
+                        {content}
+                      </a>
+                    ) : (
+                      <div key={idx}>{content}</div>
+                    );
+                  })}
                 </div>
               </motion.div>
             </motion.div>
@@ -1033,22 +1044,20 @@ export default function FinanceComponent() {
                           {transaction.description}
                         </td>
                         <td
-                          className={`px-6 py-4 font-semibold ${
-                            transaction.type === "credit"
-                              ? "text-[#22c55e]"
-                              : "text-[#ef4444]"
-                          }`}
+                          className={`px-6 py-4 font-semibold ${transaction.type === "credit"
+                            ? "text-[#22c55e]"
+                            : "text-[#ef4444]"
+                            }`}
                         >
                           {transaction.type === "credit" ? "+" : "-"}₹
                           {transaction.amount.toLocaleString()}
                         </td>
                         <td className="px-6 py-4">
                           <span
-                            className={`px-3 py-1 rounded-full text-sm ${
-                              transaction.type === "credit"
-                                ? "bg-[#22c55e]/10 text-[#22c55e]"
-                                : "bg-[#ef4444]/10 text-[#ef4444]"
-                            }`}
+                            className={`px-3 py-1 rounded-full text-sm ${transaction.type === "credit"
+                              ? "bg-[#22c55e]/10 text-[#22c55e]"
+                              : "bg-[#ef4444]/10 text-[#ef4444]"
+                              }`}
                           >
                             {transaction.type === "credit" ? "Credit" : "Debit"}
                           </span>

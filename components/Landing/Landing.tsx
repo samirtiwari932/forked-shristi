@@ -272,34 +272,34 @@ const features: Feature[] = [
   {
     title: "Family Tree Builder",
     description:
-      "Build and expand your family tree with ease. Connect generations, document relationships, and keep your ancestry alive.",
+      "Manage your entire family structure in one place using our <a href=\"https://shristiuniverse.com/features/family-tree\">family tree management system</a>. Add members, define relationships, and build a dynamic family tree. Srishti Universe makes it easy to track ancestry and organize family data securely.",
     icon: "🌳",
     image: royalFamilyTree,
     alt: "Family tree illustration with generations",
     route: "/features/family-tree",
   },
   {
-    title: "Heritage Preservation",
+    title: "Heritage Preservation & Secure Document Vault ",
     description:
-      "Preserve cultural and family heritage sites. Safeguard stories, photos, and history for future generations to explore.",
+      "Upload important family documents, photos, and historical records securely. Preserve your family heritage digitally and access it anytime with the help of <a href=\"https://shristiuniverse.com/features/heritage-sites\">heritage preservation feature</a>.",
     icon: "📜",
     image: bouddhanathStupa,
     alt: "Historic temple architecture symbolizing heritage",
     route: "/features/heritage-sites",
   },
   {
-    title: "Event Planning",
+    title: "Event Management for Families & Communities",
     description:
-      "Plan family gatherings, reunions, and celebrations. Keep memories alive with organized and documented events.",
+      "Plan family gatherings, community meetings, and celebrations effortlessly using the <a href=\"https://shristiuniverse.com/features/event\">event management system</a>. Create events, invite members, and track participation within Srishti Universe.",
     icon: "📖",
     image: event.src,
     alt: "Beautifully decorated event celebration table",
     route: "/features/event",
   },
   {
-    title: "Finance Management",
+    title: "Finance & Donation Tracking",
     description:
-      "Manage family funds transparently. Track budgets, contributions, and expenses for group events and shared programs.",
+      "Track community contributions, donations, and shared expenses transparently using the <a href=\"https://shristiuniverse.com/features/finance\">finance management feature</a>. Manage finances securely and maintain accountability across members.",
     icon: "💰",
     image: finance.src,
     alt: "Calculator and financial planning documents",
@@ -811,14 +811,14 @@ const Landing: React.FC = () => {
       <main className="container mx-auto px-4 md:px-12 lg:px-24 flex flex-col lg:flex-row items-center justify-between py-8 md:py-12">
         <div className="lg:w-1/2 w-full text-left mb-8 lg:mb-0">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
-            Build Your Family Tree <br className="hidden sm:block" /> Online
+            Family Tree & Community Management Platform
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6">
-            Uncover your ancestry, trace family roots, and preserve your
-            heritage with easy-to-use tools. From documenting family trees and
-            stories to planning events and managing family finances, our
-            platform helps you protect and share your family's history for
-            future generations.
+            Build your <a href="https://shristiuniverse.com/features/family-tree">family tree</a>,
+            manage community hierarchy, organize <a href="https://shristiuniverse.com/features/event">events</a>,
+            manage <a href="https://shristiuniverse.com/features/finance">finances</a>,
+            and preserve your <a href="https://shristiuniverse.com/features/heritage">heritage</a> in one place. Srishti Universe helps families
+            and communities stay connected, structured, and organized for generations.
           </p>
           <button
             className="px-6 py-3 bg-blue-500 text-white rounded-lg text-base hover:bg-blue-600 transition active:scale-95 min-h-11"
@@ -874,20 +874,20 @@ const Landing: React.FC = () => {
               </div>
 
               {/* Hero Title */}
-              <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900">
+              <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900">
                 Build & Explore Your
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#5d87ff] to-indigo-600">
                   Family Tree
                 </span>
                 in One Place
-              </h1>
+              </h2>
 
               {/* Description */}
               <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                Start exploring your lineage now and uncover the connections,
-                stories, and generations that shaped your family. Build your
-                family tree effortlessly and keep your heritage preserved for
-                the future.
+                Create and manage your family hierarchy digitally using our <a href="https://shristiuniverse.com/features/family-tree">family tree builder</a>.
+                Srishti Universe allows users to build structured family trees, track generations,
+                and connect relatives in one platform. Easily explore lineage, document family history,
+                and preserve heritage for future generations.
               </p>
 
               {/* ── MOBILE SEARCH ─────────────────────────────────────────────── */}
@@ -1440,9 +1440,9 @@ const Landing: React.FC = () => {
                       {/* Text */}
                       <div className="space-y-4 relative z-10">
                         <div className="text-6xl">{feature.icon}</div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
                           {feature.title}
-                        </h3>
+                        </h2>
                         <p className="text-base md:text-lg text-gray-600">
                           {feature.description}
                         </p>
@@ -1496,11 +1496,10 @@ const Landing: React.FC = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`Go to feature ${index + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-[#5d87ff] w-8"
-                      : "bg-gray-300 dark:bg-gray-600 w-2"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
+                    ? "bg-[#5d87ff] w-8"
+                    : "bg-gray-300 dark:bg-gray-600 w-2"
+                    }`}
                 />
               ))}
             </div>
