@@ -8,6 +8,14 @@ const REACT_APP_URL = "https://shristiuniverse.com";
 
 type ComponentType = "POST" | "HERITAGE" | "GROUP" | "FAMILYTREE" | "EVENT";
 
+const CONTENT_TYPE_MAP: Record<ComponentType, string> = {
+  POST: "POST",
+  HERITAGE: "HERITAGE",
+  EVENT: "EVENT",
+  GROUP: "family-group",
+  FAMILYTREE: "FAMILY_TREE",
+};
+
 interface SharePageProps {
   searchParams: Promise<{ component?: string; id?: string }>;
 }
@@ -15,16 +23,10 @@ interface SharePageProps {
 async function getMetadata(component: ComponentType, id: string) {
   if (!id) return null;
 
-  const endpointMap: Partial<Record<ComponentType, string>> = {
-    POST: `${API_BASE_URL}/v1/post/${id}/metadata`,
-    HERITAGE: `${API_BASE_URL}/v1/heritage/${id}/metadata`,
-    EVENT: `${API_BASE_URL}/v1/post/${id}/metadata`,
-    GROUP: `${API_BASE_URL}/v1/family/group/${id}/metadata`,
-    FAMILYTREE: `${API_BASE_URL}/v1/genealogy/family-tree/${id}/metadata`,
-  };
+  const contentType = CONTENT_TYPE_MAP[component];
+  if (!contentType) return null;
 
-  const url = endpointMap[component];
-  if (!url) return null;
+  const url = `${API_BASE_URL}/v1/share/${contentType}/${id}/metadata`;
 
   try {
     console.log(`[SharePage] Fetching: ${url}`);
