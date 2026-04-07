@@ -136,7 +136,7 @@ export default function FamilyTreeContent() {
                 variants={fadeInUp}
                 className="text-4xl lg:text-6xl font-bold text-[#2d3748] mb-6 leading-tight"
               >
-                Your Legacy Starts Here
+                Family Tree Builder for Genealogy & Community Management
               </motion.h1>
 
               <motion.p
@@ -144,9 +144,9 @@ export default function FamilyTreeContent() {
                 transition={{ delay: 0.1 }}
                 className="text-lg text-[#64748b] leading-relaxed mb-8"
               >
-                Create your family and community trees with Srishti Universe.
-                Preserve family history, document genealogy, connect
-                generations, and protect your legacy online.
+                Create your family tree and community genealogy with Srishti Universe.
+                Preserve your family history, document generations, build a digital
+                family tree, and protect your legacy online for future generations.
               </motion.p>
 
               <motion.div
@@ -154,23 +154,32 @@ export default function FamilyTreeContent() {
                 className="flex flex-wrap gap-3"
               >
                 {[
-                  "Genealogy",
-                  "Heritage Preservation",
-                  "Community Trees",
-                  "Social Connection",
-                ].map((tag, index) => (
-                  <motion.span
-                    key={tag}
-                    variants={scaleIn}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-4 py-2 bg-white border border-[#e2ded9] text-[#2d3748] rounded-full text-sm hover:border-[#5d87ff] transition-colors cursor-default"
-                  >
-                    {tag}
-                  </motion.span>
-                ))}
+                  { name: "Genealogy" },
+                  { name: "Heritage Preservation", link: "/features/heritage-sites" },
+                  { name: "Community Trees" },
+                  { name: "Social Connection", link: "https://shristiuniverse.com/" },
+                ].map((tag, index) => {
+                  const content = (
+                    <motion.span
+                      variants={scaleIn}
+                      initial="hidden"
+                      animate="visible"
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="px-4 py-2 bg-white border border-[#e2ded9] text-[#2d3748] rounded-full text-sm hover:border-[#5d87ff] transition-colors cursor-pointer"
+                    >
+                      {tag.name}
+                    </motion.span>
+                  );
+
+                  return tag.link ? (
+                    <a key={tag.name} href={tag.link}>
+                      {content}
+                    </a>
+                  ) : (
+                    <div key={tag.name}>{content}</div>
+                  );
+                })}
               </motion.div>
             </motion.div>
 

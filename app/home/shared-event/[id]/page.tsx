@@ -13,7 +13,7 @@ interface EventSharePageProps {
 async function getEventMetadata(id: string) {
   if (!id) return null;
 
-  const url = `${API_BASE_URL}/v1/post/${id}/metadata`;
+  const url = `${API_BASE_URL}/v1/share/event/${id}/metadata`;
 
   try {
     const res = await fetch(url, { next: { revalidate: 60 } });
