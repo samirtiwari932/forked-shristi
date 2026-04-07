@@ -38,6 +38,7 @@ import { GoogleMapEmbed } from "../Heritage/Maps";
 import Image, { StaticImageData } from "next/image";
 import event from "@/public/assets/images/event.png";
 import finance from "@/public/assets/images/finance.png";
+import FAQ from "../FAQ/Faq";
 
 const HeritageDetailsDialog = ({
   heritage,
@@ -874,20 +875,21 @@ const Landing: React.FC = () => {
               </div>
 
               {/* Hero Title */}
-              <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900">
+              <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900">
                 Build & Explore Your
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#5d87ff] to-indigo-600">
                   Family Tree
                 </span>
                 in One Place
-              </h1>
+              </h2>
 
               {/* Description */}
               <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                Start exploring your lineage now and uncover the connections,
-                stories, and generations that shaped your family. Build your
-                family tree effortlessly and keep your heritage preserved for
-                the future.
+                Create and manage your family hierarchy digitally using our
+                family tree builder. Srishti Universe allows users to build
+                structured family trees, track generations, and connect
+                relatives in one platform. Easily explore lineage, document
+                family history, and preserve heritage for future generations.
               </p>
 
               {/* ── MOBILE SEARCH ─────────────────────────────────────────────── */}
@@ -1766,6 +1768,7 @@ const Landing: React.FC = () => {
         </div>
       </section>
 
+      <FAQ />
       {/* Feedback Section */}
       <section id="contact">
         {" "}
