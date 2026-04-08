@@ -38,6 +38,7 @@ import { motion } from "framer-motion";
 import LiveFinanceOverview from "@/components/Finance/LiveFinanceOverview";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Landing/Footer";
+import Link from "next/link";
 
 // Animation variants
 const fadeInUp = {
@@ -90,6 +91,7 @@ interface UseCase {
   icon: React.ReactNode;
   title: string;
   description: string;
+  link: string;
 }
 
 interface SecurityFeature {
@@ -236,6 +238,8 @@ export default function FinanceComponent() {
       title: "Event Planning",
       description:
         "Manage finances for weddings, festivals, and family gatherings with transparent fund tracking",
+
+      link: "/features/event",
     },
     {
       id: 2,
@@ -243,6 +247,7 @@ export default function FinanceComponent() {
       title: "Community Organizations",
       description:
         "Track contributions and expenses for clubs, trusts, and non-profit organizations",
+      link: "/features",
     },
     {
       id: 3,
@@ -250,6 +255,7 @@ export default function FinanceComponent() {
       title: "Heritage Preservation",
       description:
         "Maintain financial records for cultural programs and legacy-driven initiatives",
+      link: "/features/heritage-sites",
     },
     {
       id: 4,
@@ -257,6 +263,7 @@ export default function FinanceComponent() {
       title: "Family Groups",
       description:
         "Manage collective family funds, shared expenses, and joint savings transparently",
+      link: "/features",
     },
   ];
 
@@ -383,12 +390,14 @@ export default function FinanceComponent() {
                 transition={{ delay: 0.1 }}
                 className="text-lg text-[#64748b] leading-relaxed mb-8"
               >
-                Manage donations, track expenses, and plan
-                finances for families, <a href="https://shristiuniverse.com/features/event">community events</a>, and
-                <a href="https://shristiuniverse.com/features/heritage-sites">heritage programs</a>  with transparent
-                and secure software by <a href="https://shristiuniverse.com/features/heritage-sites">Srishti Universe.</a>
-                Integrate financial tracking with your family tree and
-                manage contributions securely using Srishti Universe.
+                Manage donations, track expenses, and plan finances for
+                families, <Link href="/features/event">community events</Link>,
+                and{" "}
+                <Link href="/features/heritage-sites">heritage programs</Link>{" "}
+                with transparent and secure software by{" "}
+                <Link href="/">Srishti Universe.</Link>
+                Integrate financial tracking with your family tree and manage
+                contributions securely using Srishti Universe.
               </motion.p>
 
               <motion.div
@@ -408,10 +417,11 @@ export default function FinanceComponent() {
                     animate="visible"
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.05 }}
-                    className={`px-4 py-2 rounded-full text-sm ${tag === "Expense Tracking"
-                      ? "bg-[#5d87ff] text-white"
-                      : "bg-white border border-[#e2ded9] text-[#2d3748]"
-                      }`}
+                    className={`px-4 py-2 rounded-full text-sm ${
+                      tag === "Expense Tracking"
+                        ? "bg-[#5d87ff] text-white"
+                        : "bg-white border border-[#e2ded9] text-[#2d3748]"
+                    }`}
                   >
                     {tag}
                   </motion.span>
@@ -494,21 +504,30 @@ export default function FinanceComponent() {
                 <h3 className="text-xl font-bold text-[#2d3748] mb-6">
                   Perfect For:
                 </h3>
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   {[
-                    { name: "Family groups managing collective funds", link: "/heritage" },
+                    {
+                      name: "Family groups managing collective funds",
+                    },
                     { name: "Community organizations and clubs" },
                     { name: "Trusts and non-profit organizations" },
-                    { name: "Cultural and heritage preservation programs", link: "/heritage-sites" },
-                    { name: "Event planning committees", link: "/event" },
+                    {
+                      name: "Cultural and heritage preservation programs",
+                      link: "/features/heritage-sites",
+                    },
+                    {
+                      name: "Event planning committees",
+                      link: "/features/event",
+                    },
                   ].map((item, idx) => {
-                    const content = (
+                    const Item = (
                       <motion.div
+                        key={idx}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.1 }}
                         whileHover={{ x: 5 }}
-                        className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 cursor-pointer"
+                        className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 w-full"
                       >
                         <CheckCircle className="h-5 w-5 text-[#5d87ff]" />
                         <span className="text-[#2d3748]">{item.name}</span>
@@ -516,11 +535,13 @@ export default function FinanceComponent() {
                     );
 
                     return item.link ? (
-                      <a key={idx} href={item.link}>
-                        {content}
-                      </a>
+                      <Link key={idx} href={item.link} className="block w-full">
+                        {Item}
+                      </Link>
                     ) : (
-                      <div key={idx}>{content}</div>
+                      <div key={idx} className="w-full">
+                        {Item}
+                      </div>
                     );
                   })}
                 </div>
@@ -1044,20 +1065,22 @@ export default function FinanceComponent() {
                           {transaction.description}
                         </td>
                         <td
-                          className={`px-6 py-4 font-semibold ${transaction.type === "credit"
-                            ? "text-[#22c55e]"
-                            : "text-[#ef4444]"
-                            }`}
+                          className={`px-6 py-4 font-semibold ${
+                            transaction.type === "credit"
+                              ? "text-[#22c55e]"
+                              : "text-[#ef4444]"
+                          }`}
                         >
                           {transaction.type === "credit" ? "+" : "-"}₹
                           {transaction.amount.toLocaleString()}
                         </td>
                         <td className="px-6 py-4">
                           <span
-                            className={`px-3 py-1 rounded-full text-sm ${transaction.type === "credit"
-                              ? "bg-[#22c55e]/10 text-[#22c55e]"
-                              : "bg-[#ef4444]/10 text-[#ef4444]"
-                              }`}
+                            className={`px-3 py-1 rounded-full text-sm ${
+                              transaction.type === "credit"
+                                ? "bg-[#22c55e]/10 text-[#22c55e]"
+                                : "bg-[#ef4444]/10 text-[#ef4444]"
+                            }`}
                           >
                             {transaction.type === "credit" ? "Credit" : "Debit"}
                           </span>
@@ -1094,34 +1117,35 @@ export default function FinanceComponent() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {useCases.map((useCase, index) => (
-                <motion.div
-                  key={useCase.id}
-                  variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{
-                    y: -10,
-                    boxShadow:
-                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  className="bg-white rounded-2xl border border-[#e2ded9] p-6 text-center hover:border-[#5d87ff]/30 transition-all duration-300"
-                >
+                <Link key={useCase.id} href={useCase.link} className="block">
                   <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                    className="w-14 h-14 bg-[#5d87ff]/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{
+                      y: -10,
+                      boxShadow:
+                        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                    }}
+                    className="bg-white rounded-2xl border border-[#e2ded9] p-6 text-center hover:border-[#5d87ff]/30 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="text-[#5d87ff]">{useCase.icon}</div>
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                      className="w-14 h-14 bg-[#5d87ff]/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                    >
+                      <div className="text-[#5d87ff]">{useCase.icon}</div>
+                    </motion.div>
+                    <h3 className="font-bold text-[#2d3748] mb-2">
+                      {useCase.title}
+                    </h3>
+                    <p className="text-[#64748b] text-sm">
+                      {useCase.description}
+                    </p>
                   </motion.div>
-                  <h3 className="font-bold text-[#2d3748] mb-2">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-[#64748b] text-sm">
-                    {useCase.description}
-                  </p>
-                </motion.div>
+                </Link>
               ))}
             </div>
 
