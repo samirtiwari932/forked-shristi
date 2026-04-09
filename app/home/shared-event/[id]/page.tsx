@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ShareRedirect from "../../../share/ShareRedirect";
+import { redirect } from "next/navigation";
 
 export const revalidate = 60;
 
@@ -61,5 +61,5 @@ export async function generateMetadata({
 export default async function SharedEventPage({ params }: EventSharePageProps) {
   const { id } = await params;
   const redirectUrl = `${REACT_APP_URL}/home/shared-event/${id}`;
-  return <ShareRedirect redirectUrl={redirectUrl} />;
+  redirect(redirectUrl);
 }
