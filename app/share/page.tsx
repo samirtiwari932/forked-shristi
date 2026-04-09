@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ShareRedirect from "./ShareRedirect";
+import { redirect } from "next/navigation";
 
 export const revalidate = 60;
 
@@ -52,6 +52,8 @@ export async function generateMetadata({
 
   const data = await getMetadata(component, id);
 
+  console.log(`[SharePage] Metadata:`, data);
+
   const title = data?.title || "Srishti Universe";
   const description =
     data?.description ||
@@ -96,5 +98,5 @@ export default async function SharePage({ searchParams }: SharePageProps) {
 
   const redirectUrl = redirectMap[component] ?? REACT_APP_URL;
 
-  return <ShareRedirect redirectUrl={redirectUrl} />;
+  redirect(redirectUrl);
 }
