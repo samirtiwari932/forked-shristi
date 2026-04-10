@@ -824,7 +824,7 @@ const Landing: React.FC = () => {
             manage{" "}
             <a href="https://shristiuniverse.com/features/finance">finances</a>,
             and preserve your{" "}
-            <a href="https://shristiuniverse.com/features/heritage">heritage</a>{" "}
+            <a href="https://shristiuniverse.com/features/heritage-sites">heritage</a>{" "}
             in one place. Srishti Universe helps families and communities stay
             connected, structured, and organized for generations.
           </p>
@@ -1514,11 +1514,10 @@ const Landing: React.FC = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`Go to feature ${index + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-[#5d87ff] w-8"
-                      : "bg-gray-300 dark:bg-gray-600 w-2"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
+                    ? "bg-[#5d87ff] w-8"
+                    : "bg-gray-300 dark:bg-gray-600 w-2"
+                    }`}
                 />
               ))}
             </div>
