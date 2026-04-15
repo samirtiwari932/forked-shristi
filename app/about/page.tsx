@@ -541,14 +541,16 @@ export default function AboutPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-[#5d87ff] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a7cff] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                  >
-                    <a href="/login">Start Your Family Tree Today</a>
-                    <ArrowRight className="h-5 w-5" />
-                  </motion.a>
+                  <Link href="/login">
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-[#5d87ff] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a7cff] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    >
+                      <a href="/login">Start Your Family Tree Today</a>
+                      <ArrowRight className="h-5 w-5" />
+                    </motion.a>
+                  </Link>
                 </div>
               </motion.div>
 
