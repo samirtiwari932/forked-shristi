@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
@@ -13,14 +14,13 @@ const Footer: React.FC = () => {
       className="bg-[#2d3748] py-12"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
           {/* Brand Info */}
           <div>
             <h4 className="text-white font-bold mb-4">Srishti Universe</h4>
             <p className="text-white/70 text-sm mb-4">
               Connecting generations through technology and shared heritage.
             </p>
-
             <div className="flex space-x-4">
               <a
                 href="https://www.facebook.com/profile.php?id=61578171212524"
@@ -30,7 +30,6 @@ const Footer: React.FC = () => {
               >
                 <FaFacebook size={20} />
               </a>
-
               <a
                 href="https://www.instagram.com/Srishti.universe/"
                 className="text-white/70 hover:text-white transition-colors"
@@ -47,36 +46,75 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/about"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/features"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Features
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/#contact"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Features */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">Features</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/features/family-tree"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Family Tree
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/features/event"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Events
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/features/finance"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Finance
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/features/heritage-sites"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Heritage
+                </Link>
               </li>
             </ul>
           </div>
@@ -86,28 +124,28 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-semibold mb-4">Product</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/features"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Features
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#pricing"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#security"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Security
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -127,12 +165,12 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a
+                <Link
                   href="/terms"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Terms of Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
