@@ -3,24 +3,39 @@ stages:
   - deploy
   - release
 
+workflow:
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+(-rc[0-9]+)?$/'
+
 variables:
   DOCKER_HOST: tcp://docker:2375
+
+before_script:
+  - export VERSION_TAG=${CI_COMMIT_TAG#v}
+  - |
+    if [[ "$CI_COMMIT_TAG" =~ -rc ]]; then
+      export ENVIRONMENT=dev
+    else
+      export ENVIRONMENT=prod
+    fi
 
 build_docker:
   stage: build-docker
   image: docker:27
   services:
     - docker:27.5.1-dind
-  before_script:
-    - export VERSION_TAG=${CI_COMMIT_TAG#v}
   script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
     - docker build -t $CI_REGISTRY_IMAGE:$VERSION_TAG .
     - docker push $CI_REGISTRY_IMAGE:$VERSION_TAG
-    - docker build -t $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:latest
-  only:
-    - tags
+    - |
+      if [[ "$ENVIRONMENT" == "dev" ]]; then
+        docker build -t $CI_REGISTRY_IMAGE:dev-latest .
+        docker push $CI_REGISTRY_IMAGE:dev-latest
+      else
+        docker build -t $CI_REGISTRY_IMAGE:latest .
+        docker push $CI_REGISTRY_IMAGE:latest
+      fi
 
 deploy:
   stage: deploy
@@ -31,18 +46,27 @@ deploy:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | base64 -d > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan -H "$REMOTE_HOST" >> ~/.ssh/known_hosts
+    - |
+      if [[ "$CI_COMMIT_TAG" =~ -rc ]]; then
+        export SERVICE=shristi-next-dev
+        export ENVIRONMENT=dev
+      else
+        export SERVICE=shristi-next
+        export ENVIRONMENT=prod
+      fi
   script:
-    - ssh $REMOTE_USER@$REMOTE_HOST "cd deployment/ && docker compose pull shristi-next && docker compose up shristi-next -d"
+    - ssh $REMOTE_USER@$REMOTE_HOST "
+      cd deployment/ &&
+      docker compose -f docker-compose.yml -f docker-compose.$ENVIRONMENT.yml pull $SERVICE &&
+      docker compose -f docker-compose.yml -f docker-compose.$ENVIRONMENT.yml up -d --no-deps $SERVICE &&
+      docker image prune -f
+      "
   dependencies:
     - build_docker
-  only:
-    - tags
 
 release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
-  before_script:
-    - export VERSION_TAG=${CI_COMMIT_TAG#v}
   script:
     - echo "running release_job"
   release:
@@ -51,5 +75,5 @@ release:
     description: "Automated release for tag:$CI_COMMIT_TAG"
   dependencies:
     - deploy
-  only:
-    - tags
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/'
