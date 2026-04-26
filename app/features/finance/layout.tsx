@@ -400,32 +400,21 @@ export default function FinanceComponent() {
                 contributions securely using Srishti Universe.
               </motion.p>
 
-              <motion.div
-                variants={staggerContainer}
-                className="flex flex-wrap gap-3"
-              >
+              <div className="flex flex-wrap gap-3">
                 {[
                   "Donations",
                   "Expense Tracking",
                   "Fund Planning",
                   "Transparency",
-                ].map((tag, index) => (
-                  <motion.span
+                ].map((tag) => (
+                  <span
                     key={tag}
-                    variants={scaleIn}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className={`px-4 py-2 rounded-full text-sm ${tag === "Expense Tracking"
-                      ? "bg-[#5d87ff] text-white"
-                      : "bg-white border border-[#e2ded9] text-[#2d3748]"
-                      }`}
+                    className="px-4 py-2 rounded-full text-sm bg-white border border-[#e2ded9] text-[#2d3748]"
                   >
                     {tag}
-                  </motion.span>
+                  </span>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
 
             <motion.div variants={slideInRight} className="lg:w-1/2">
@@ -1064,20 +1053,22 @@ export default function FinanceComponent() {
                           {transaction.description}
                         </td>
                         <td
-                          className={`px-6 py-4 font-semibold ${transaction.type === "credit"
-                            ? "text-[#22c55e]"
-                            : "text-[#ef4444]"
-                            }`}
+                          className={`px-6 py-4 font-semibold ${
+                            transaction.type === "credit"
+                              ? "text-[#22c55e]"
+                              : "text-[#ef4444]"
+                          }`}
                         >
                           {transaction.type === "credit" ? "+" : "-"}₹
                           {transaction.amount.toLocaleString()}
                         </td>
                         <td className="px-6 py-4">
                           <span
-                            className={`px-3 py-1 rounded-full text-sm ${transaction.type === "credit"
-                              ? "bg-[#22c55e]/10 text-[#22c55e]"
-                              : "bg-[#ef4444]/10 text-[#ef4444]"
-                              }`}
+                            className={`px-3 py-1 rounded-full text-sm ${
+                              transaction.type === "credit"
+                                ? "bg-[#22c55e]/10 text-[#22c55e]"
+                                : "bg-[#ef4444]/10 text-[#ef4444]"
+                            }`}
                           >
                             {transaction.type === "credit" ? "Credit" : "Debit"}
                           </span>
